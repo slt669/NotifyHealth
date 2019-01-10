@@ -1,585 +1,152 @@
-﻿<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
-    <meta charset="utf-8" />
-    <title>Notify Health | Dashboard</title>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
-
-    <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
-    <link href="../Content/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
-    <link href="../Content/plugins/bootstrap/bootstrap-4.1.1/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/plugins/font-awesome/5.1/css/all.css" rel="stylesheet" />
-    <link href="../Content/css/animate.min.css" rel="stylesheet" />
-    <link href="../Content/css/style.min.css" rel="stylesheet" />
-    <!-- ================== END BASE CSS STYLE ================== -->
-    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
-    <link href="../Content/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
-    <link href="../Content/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
-    @*<link href="../Content/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />*@
-    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
-    <!-- ================== BEGIN BASE JS ================== -->
-    <script src="../Content/plugins/pace/pace.min.js"></script>
-    <!-- ================== END BASE JS ================== -->
-    <!--[if lt IE 9]>
-        <script src="../Content/crossbrowserjs/excanvas.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-    <!-- begin #page-loader -->
-    <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
-    <!-- end #page-loader -->
-    <!-- begin #page-container -->
-    <div id="page-container" class="fade page-container page-header-fixed page-sidebar-fixed page-with-two-sidebar page-with-footer">
-        <!-- begin #header -->
-        <div id="header" class="header navbar navbar-default navbar-fixed-top">
-            <!-- begin container-fluid -->
-            <div class="container-fluid">
-                <!-- begin mobile sidebar expand / collapse button -->
-                <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><img src="../Content/img/logo.png" class="logo" alt="" /> Notify Health</a>
-                    <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <!-- end mobile sidebar expand / collapse button -->
-                <!-- begin navbar-right -->
-                <!-- end navbar-right -->
+﻿          <!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+    <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Dashboard <small>Welcome back John Smith</small></h1>
+<!-- end page-header -->
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-3 -->
+    <div class="col-lg-3 col-sm-6">
+        <!-- begin widget -->
+        <div class="widget widget-stat bg-primary text-white">
+            <div class="widget-stat-icon"><i class="fa fa-users"></i></div>
+            <div class="widget-stat-info">
+                <div class="widget-stat-title">New Clients</div>
+                <div class="widget-stat-number">839</div>
+                <div class="widget-stat-text">(Last 30 Days)</div>
             </div>
-            <!-- end container-fluid -->
         </div>
-        <!-- end #header -->
-        <!-- begin #sidebar -->
-        <div id="sidebar" class="sidebar">
-            <!-- begin sidebar scrollbar -->
-            <div data-scrollbar="true" data-height="100%">
-                <!-- begin sidebar nav -->
-                <ul class="nav">
-                    <li class="nav-header">Navigation</li>
-                    <li class="has-sub active">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b>
-                            <i class="fa fa-home"></i>
-                            <span>Dashboard <span class="label label-theme m-l-3">NEW</span></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="active"><a href="index.html">Dashboard v1</a></li>
-                            <li>@Html.ActionLink("Programs", "Programs", "Home")</li>
-                            <li>@Html.ActionLink("Campaigns", "Campaigns", "Home")</li>
-                            <li>@Html.ActionLink("Notifications", "Notifications", "Home")</li>
-                            <li>@Html.ActionLink("Clients", "Clients", "Home")</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="bootstrap_4.html">
-                            <div class="icon-img"><img src="../Content/img/bootstrap-4.png" alt="" /></div>
-                            <span>Bootstrap 4</span>
-                        </a>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <span class="badge pull-right">10</span>
-                            <i class="fa fa-inbox"></i>
-                            <span>Email</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="email_inbox.html">Inbox</a></li>
-                            <li><a href="email_compose.html">Compose</a></li>
-                            <li><a href="email_detail.html">Detail</a></li>
-                        </ul>
-                    </li>
+        <!-- end widget -->
+    </div>
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-lg-3 col-sm-6">
+        <!-- begin widget -->
+        <div class="widget widget-stat bg-success text-white">
+            <div class="widget-stat-icon"><i class="fa fa-handshake"></i></div>
+            <div class="widget-stat-info">
+                <div class="widget-stat-title">Clients</div>
+                <div class="widget-stat-number">2,291</div>
+                <div class="widget-stat-text">(Since @DateTime.Now.ToShortDateString())</div>
+            </div>
+        </div>
+        <!-- end widget -->
+    </div>
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-lg-3 col-sm-6">
+        <!-- begin widget -->
+        <div class="widget widget-stat bg-grey text-white">
+            <div class="widget-stat-icon"><i class="fa fa-bell"></i></div>
+            <div class="widget-stat-info">
+                <div class="widget-stat-title">Total Notifications Sent</div>
+                <div class="widget-stat-number">515</div>
+                <div class="widget-stat-text">(Last 30 Days)</div>
+            </div>
+        </div>
+        <!-- end widget -->
+    </div>
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-lg-3 col-sm-6">
+        <!-- begin widget -->
+        <div class="widget widget-stat bg-inverse text-white">
+            <div class="widget-stat-icon"><i class="fa fa-exchange-alt"></i></div>
+            <div class="widget-stat-info">
+                <div class="widget-stat-title">Transactions</div>
+                <div class="widget-stat-number">29</div>
+                <div class="widget-stat-text">(3 New Transactions Today)</div>
+            </div>
+        </div>
+        <!-- end widget -->
+    </div>
+    <!-- end col-3 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-6 -->
+    <div class="col-lg-6">
+        <!-- begin panel -->
+        <div class="widget">
+            <div class="widget-header bg-inverse-dark">
+
+                <ul class="widget-header-btn">
+                    <li><a href="#" class="btn btn-white">1 Jan 2019 - 31 Jan 2019 <i class="fa fa-cog"></i></a></li>
                 </ul>
-                <!-- end sidebar nav -->
-            </div>
-            <!-- end sidebar scrollbar -->
-        </div>
-        <div class="sidebar-bg"></div>
-        <!-- end #sidebar -->
-        <!-- begin #content -->
-        <div id="content" class="content">
-            <!-- begin breadcrumb -->
-            <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-            <!-- end breadcrumb -->
-            <!-- begin page-header -->
-            <h1 class="page-header">Dashboard <small>header small text goes here...</small></h1>
-            <!-- end page-header -->
-            <!-- begin row -->
-            <div class="row">
-                <!-- begin col-3 -->
-                <div class="col-lg-3 col-sm-6">
-                    <!-- begin widget -->
-                    <div class="widget widget-stat bg-primary text-white">
-                        <div class="widget-stat-btn"><a href="#" data-click="widget-reload"><i class="fa fa-redo"></i></a></div>
-                        <div class="widget-stat-icon"><i class="fa fa-users"></i></div>
-                        <div class="widget-stat-info">
-                            <div class="widget-stat-title">New Visitors</div>
-                            <div class="widget-stat-number">839</div>
-                            <div class="widget-stat-text">(3.10% better than last week)</div>
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-3 -->
-                <!-- begin col-3 -->
-                <div class="col-lg-3 col-sm-6">
-                    <!-- begin widget -->
-                    <div class="widget widget-stat bg-success text-white">
-                        <div class="widget-stat-btn"><a href="#" data-click="widget-reload"><i class="fa fa-redo"></i></a></div>
-                        <div class="widget-stat-icon"><i class="fa fa-gem"></i></div>
-                        <div class="widget-stat-info">
-                            <div class="widget-stat-title">New Registered VIP</div>
-                            <div class="widget-stat-number">2,291</div>
-                            <div class="widget-stat-text">(10.2% better than last week)</div>
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-3 -->
-                <!-- begin col-3 -->
-                <div class="col-lg-3 col-sm-6">
-                    <!-- begin widget -->
-                    <div class="widget widget-stat bg-grey text-white">
-                        <div class="widget-stat-btn"><a href="#" data-click="widget-reload"><i class="fa fa-redo"></i></a></div>
-                        <div class="widget-stat-icon"><i class="fa fa-hdd"></i></div>
-                        <div class="widget-stat-info">
-                            <div class="widget-stat-title">Total Bandwidth Used</div>
-                            <div class="widget-stat-number">982Gb</div>
-                            <div class="widget-stat-text">(1,239Gb Left)</div>
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-3 -->
-                <!-- begin col-3 -->
-                <div class="col-lg-3 col-sm-6">
-                    <!-- begin widget -->
-                    <div class="widget widget-stat bg-inverse text-white">
-                        <div class="widget-stat-btn"><a href="#" data-click="widget-reload"><i class="fa fa-redo"></i></a></div>
-                        <div class="widget-stat-icon"><i class="fa fa-file"></i></div>
-                        <div class="widget-stat-info">
-                            <div class="widget-stat-title">Pending Invoice</div>
-                            <div class="widget-stat-number">29</div>
-                            <div class="widget-stat-text">(3 new transaction)</div>
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-3 -->
-            </div>
-            <!-- end row -->
-            <!-- begin row -->
-            <div class="row">
-                <!-- begin col-6 -->
-                <div class="col-lg-6">
-                    <!-- begin widget -->
-                    <div class="widget widget-chart">
-                        <!-- begin widget-header -->
-                        <div class="widget-header bg-inverse-dark">
-                            <ul class="widget-header-btn">
-                                <li><a href="#" class="btn btn-white">1 Nov 2017 - 31 Nov 2017 <i class="fa fa-cog"></i></a></li>
-                            </ul>
-                            <h4 class="text-white">Visitor Analytics</h4>
-                        </div>
-                        <!-- end widget-header -->
-                        <!-- begin widget-body -->
-                        <div class="widget-body">
-                            <!-- begin chart-placeholder -->
-                            <ul class="widget-chart-placeholder text-center inline">
-                                <li><span class="legend-circle bg-primary"></span> Total Visitors</li>
-                                <li><span class="legend-circle bg-info"></span> New Visitors</li>
-                                <li><span class="legend-circle bg-inverse"></span> Returned Visitors</li>
-                            </ul>
-                            <!-- end chart-placeholder -->
-                            <!-- begin visitor-chart -->
-                            <div id="flot-visitor-chart" class="m-b-15" data-height="230px"></div>
-                            <!-- end visitor-chart -->
-                            <!-- begin row -->
-                            <div class="row col-lg-with-border">
-                                <div class="col-lg-4 text-center">
-                                    <div class="m-b-2">Total Visitors</div>
-                                    <h4 class="m-0">3,192,489</h4>
-                                </div>
-                                <div class="col-lg-4 text-center">
-                                    <div class="m-b-2">Bounce Rate</div>
-                                    <h4 class="m-0">30.25%</h4>
-                                </div>
-                                <div class="col-lg-4 text-center">
-                                    <div class="m-b-2">Avg Time on Site</div>
-                                    <h4 class="m-0">00:03:42</h4>
-                                </div>
-                            </div>
-                            <!-- end row -->
-                        </div>
-                        <!-- end widget-body -->
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-6 -->
-                <!-- begin col-6 -->
-                <div class="col-lg-6">
-                    <!-- begin widget -->
-                    <div class="widget widget-chart">
-                        <!-- begin widget-header -->
-                        <div class="widget-header bg-inverse-dark">
-                            <ul class="widget-header-btn">
-                                <li><a href="#" class="btn btn-white">1 Nov 2017 - 31 Nov 2017 <i class="fa fa-cog"></i></a></li>
-                            </ul>
-                            <h4 class="text-white">Server Load</h4>
-                        </div>
-                        <!-- end widget-header -->
-                        <!-- begin widget-body -->
-                        <div class="widget-body">
 
-                        </div>
-                        <!-- end widget-body -->
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-6 -->
+                <h4 class="text-white">Notifications Bar Chart </h4>
             </div>
-            <!-- end row -->
-            <!-- begin row -->
-            <div class="row">
-                <!-- begin col-4 -->
-                <div class="col-lg-4">
-                    <!-- begin widget -->
-                    <div class="widget">
-                        <div class="widget-header bg-inverse-dark">
-                            <ul class="widget-header-btn">
-                                <li><a href="javascript:;" class="btn btn-white"><i class="fa fa-plus"></i></a></li>
-                            </ul>
-                            <h4 class="text-white">Todo List</h4>
-                        </div>
-                        <ul class="widget-todolist">
-                            <li class="widget-todolist-title">Today</li>
-                            <li class="completed">
-                                <div class="checkbox">
-                                    <label>
-                                        <i class="far fa-square" data-click="todolist-checkbox"></i>
-                                        <input type="checkbox" name="todolist_checkbox" checked />
-                                    </label>
-                                </div>
-                                <div class="info">
-                                    <h4>Mobile Apps Development Discussion</h4>
-                                    <p>Today 11:15pm</p>
-                                </div>
-                                <div class="action">
-                                    <a href="#" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                        <li><a href="#">Delete</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                    <label>
-                                        <i class="far fa-square" data-click="todolist-checkbox"></i>
-                                        <input type="checkbox" name="todolist_checkbox" />
-                                    </label>
-                                </div>
-                                <div class="info">
-                                    <h4>Meet with Client <span class="label label-danger">URGENT</span></h4>
-                                    <p>Today 3:15pm</p>
-                                </div>
-                                <div class="action">
-                                    <a href="#" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                        <li><a href="#">Delete</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="widget-todolist-title">Tomorrow</li>
-                            <li>
-                                <div class="checkbox">
-                                    <label>
-                                        <i class="far fa-square" data-click="todolist-checkbox"></i>
-                                        <input type="checkbox" name="todolist_checkbox" />
-                                    </label>
-                                </div>
-                                <div class="info">
-                                    <h4>Business Proposal Presentation</h4>
-                                    <p>Tomorrow 12:45pm</p>
-                                </div>
-                                <div class="action">
-                                    <a href="#" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                        <li><a href="#">Delete</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                    <label>
-                                        <i class="far fa-square" data-click="todolist-checkbox"></i>
-                                        <input type="checkbox" name="todolist_checkbox" />
-                                    </label>
-                                </div>
-                                <div class="info">
-                                    <h4>New Idea Brainstorming</h4>
-                                    <p>Tomorrow 5:30pm</p>
-                                </div>
-                                <div class="action">
-                                    <a href="#" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                        <li><a href="#">Delete</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                    <label>
-                                        <i class="far fa-square" data-click="todolist-checkbox"></i>
-                                        <input type="checkbox" name="todolist_checkbox" />
-                                    </label>
-                                </div>
-                                <div class="info">
-                                    <h4>Annual Dinner Preparation</h4>
-                                    <p>Tomorrow 6:30pm</p>
-                                </div>
-                                <div class="action">
-                                    <a href="#" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                        <li><a href="#">Delete</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-4 -->
-                <!-- begin col-4 -->
-                <div class="col-lg-4">
-                    <!-- begin widget -->
-                    <div class="widget widget-form">
-                        <div class="widget-header bg-inverse-dark">
-                            <h4 class="text-white">Widget Simple Form</h4>
-                        </div>
-                        <div class="widget-body p-b-15">
-                            <form class="form-input-flat" method="POST" name="sample_form">
-                                <div class="form-group">
-                                    <label class="col-form-label">Title</label>
-                                    <input type="text" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-form-label">Content</label>
-                                    <textarea class="form-control" rows="5"></textarea>
-                                </div>
-                                <div class="m-b-10 p-b-2">
-                                    <button type="submit" class="btn btn-lime btn-block btn-lg">Quick Post</button>
-                                </div>
-                                <p class="help-block text-muted f-s-11 m-b-0">
-                                    <span class="text-danger">*</span> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-4 -->
-                <!-- begin col-4 -->
-                <div class="col-lg-4">
-                    <!-- begin widget -->
-                    <div class="widget">
-                        <div class="widget-header bg-inverse-dark">
-                            <h4 class="text-white">Task Lists</h4>
-                        </div>
-                        <div class="widget-body p-0">
-                            <div data-scrollbar="true" data-height="347px">
-                                <ul class="widget-task-list">
-                                    <li>
-                                        <h4>Mobile App Development</h4>
-                                        <p>Due: 12 November 2015</p>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar progress-bar-success" style="width: 80%">80%</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h4>UI Element Improvement</h4>
-                                        <p>Due: 06 December 2015</p>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar progress-bar-warning" style="width: 50%">50%</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h4>New Server Installation</h4>
-                                        <p>Due: 10 December 2015</p>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar progress-bar-danger" style="width: 20%">20%</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h4>Windows 10 Installation</h4>
-                                        <p>Due: 12 December 2015</p>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar progress-bar-grey" style="width: 10%">10%</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h4>Business Proposal Preparation</h4>
-                                        <p>Due: 15 December 2015</p>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar progress-bar-primary" style="width: 90%">90%</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </div>
-                <!-- end col-4 -->
-            </div>
-            <!-- end row -->
-            <!-- begin #footer -->
-            <div id="footer" class="footer">
-                <span class="pull-right">
-                    <a href="javascript:;" class="btn-scroll-to-top" data-click="scroll-top">
-                        <i class="fa fa-arrow-up"></i> <span class="hidden-xs">Back to Top</span>
-                    </a>
-                </span>
-                &copy; 2018 <b>Source Admin</b> All Right Reserved
-            </div>
-            <!-- end #footer -->
         </div>
-        <!-- end #content -->
-        <!-- begin #sidebar-right -->
-        <!-- end #sidebar-right -->
-    </div>
-    <!-- end page container -->
-    <!-- begin theme-panel -->
-    <div class="theme-panel">
-        <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-tint"></i></a>
-        <div class="theme-panel-content">
-            <h5 class="m-t-0">Font Family</h5>
-            <div class="row row-space-10">
-                <div class="col-lg-12">
-                    <a href="#" class="btn btn-default btn-block btn-sm m-b-10 active" data-value="" data-src="" data-click="body-font-family">
-                        Default
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="#" class="btn btn-default btn-block btn-sm m-b-10" data-value="font-nunito" data-src="http://fonts.googleapis.com/css?family=Nunito:400,300,700" data-click="body-font-family">
-                        Nunito
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="#" class="btn btn-default btn-block btn-sm m-b-10" data-value="font-open-sans" data-src="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" data-click="body-font-family">
-                        Open Sans
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="#" class="btn btn-default btn-block btn-sm m-b-10" data-value="font-roboto" data-src="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" data-click="body-font-family">
-                        Roboto
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="#" class="btn btn-default btn-block btn-sm m-b-10" data-value="font-lato" data-src="https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900" data-click="body-font-family">
-                        Lato
-                    </a>
-                </div>
-                <div class="col-lg-12">
-                    <a href="#" class="btn btn-default btn-block btn-sm text-ellipsis" data-value="font-helvetica-arial" data-src="" data-click="body-font-family">
-                        Helvetica Neue, Helvetica , Arial
-                    </a>
-                </div>
-            </div>
-            <div class="horizontal-divider"></div>
-            <h5 class="m-t-0">Header Theme</h5>
-            <ul class="theme-list clearfix">
-                <li><a href="javascript:;" class="bg-inverse" data-value="navbar-inverse" data-click="header-theme-selector" data-toggle="tooltip" data-title="Default">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-grey" data-value="navbar-grey" data-click="header-theme-selector" data-toggle="tooltip" data-title="Grey">&nbsp;</a></li>
-                <li class="active"><a href="javascript:;" class="bg-white" data-value="navbar-default" data-click="header-theme-selector" data-toggle="tooltip" data-title="Light">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-purple" data-value="navbar-purple" data-click="header-theme-selector" data-toggle="tooltip" data-title="Purple">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-primary" data-value="navbar-primary" data-click="header-theme-selector" data-toggle="tooltip" data-title="Primary">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-success" data-value="navbar-success" data-click="header-theme-selector" data-toggle="tooltip" data-title="Success">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-lime" data-value="navbar-lime" data-click="header-theme-selector" data-toggle="tooltip" data-title="Lime">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-warning" data-value="navbar-warning" data-click="header-theme-selector" data-toggle="tooltip" data-title="Warning">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-danger" data-value="navbar-danger" data-click="header-theme-selector" data-toggle="tooltip" data-title="Danger">&nbsp;</a></li>
-            </ul>
-            <div class="horizontal-divider"></div>
-            <h5 class="m-t-0">Sidebar Highlight Color</h5>
-            <ul class="theme-list clearfix">
-                <li><a href="javascript:;" class="bg-inverse" data-value="sidebar-highlight-inverse" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Inverse">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-grey" data-value="sidebar-highlight-grey" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Grey">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-white" data-value="sidebar-highlight-light" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Light">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-purple" data-value="sidebar-highlight-purple" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Purple">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-primary" data-value="sidebar-highlight-primary" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Primary">&nbsp;</a></li>
-                <li class="active"><a href="javascript:;" class="bg-success" data-value="" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Default">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-lime" data-value="sidebar-highlight-lime" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Lime">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-warning" data-value="sidebar-highlight-warning" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Warning">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-danger" data-value="sidebar-highlight-danger" data-click="sidebar-highlight-selector" data-toggle="tooltip" data-title="Danger">&nbsp;</a></li>
-            </ul>
-            <div class="horizontal-divider"></div>
-            <h5 class="m-t-0">Sidebar Theme</h5>
-            <ul class="theme-list clearfix">
-                <li class="active"><a href="javascript:;" class="bg-inverse" data-value="" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Default">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-grey" data-value="sidebar-grey" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Grey">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-white" data-value="sidebar-light" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Light">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-purple" data-value="sidebar-purple" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Purple">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-primary" data-value="sidebar-primary" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Primary">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-success" data-value="sidebar-success" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Success">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-lime" data-value="sidebar-lime" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Lime">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-warning" data-value="sidebar-warning" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Warning">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-danger" data-value="sidebar-danger" data-click="sidebar-theme-selector" data-toggle="tooltip" data-title="Danger">&nbsp;</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- end theme-panel -->
-    <!-- ================== BEGIN BASE JS ================== -->
-    <script src="../Content/plugins/jquery/jquery-3.3.1.min.js"></script>
-    <script src="../Content/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="../Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.bundle.min.js"></script>
-    <!--[if lt IE 9]>
-        <script src="../Content/crossbrowserjs/html5shiv.js"></script>
-        <script src="../Content/crossbrowserjs/respond.min.js"></script>
-    <![endif]-->
-    <script src="../Content/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="../Content/plugins/jquery-cookie/jquery.cookie.js"></script>
-    <!-- ================== END BASE JS ================== -->
-    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="../Content/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-    <script src="../Content/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script src="../Content/plugins/flot/jquery.flot.min.js"></script>
-    <script src="../Content/plugins/flot/jquery.flot.time.min.js"></script>
-    <script src="../Content/plugins/flot/jquery.flot.resize.min.js"></script>
-    <script src="../Content/plugins/flot/jquery.flot.pie.min.js"></script>
-    <script src="../Content/plugins/flot/jquery.flot.stack.min.js"></script>
-    <script src="../Content/plugins/flot/jquery.flot.crosshair.min.js"></script>
-    <script src="../Content/plugins/flot/jquery.flot.categories.js"></script>
-    <script src="../Content/plugins/flot/CurvedLines/curvedLines.js"></script>
-    <script src="../Content/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="../Content/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
-    @*<script src="../Content/plugins/gritter/js/jquery.gritter.js"></script>*@
-    <script src="../Content/js/page-index.demo.js"></script>
-    <script src="../Content/js/demo.min.js"></script>
-    <script src="../Content/js/apps.min.js"></script>
-    <!-- ================== END PAGE LEVEL JS ================== -->
 
-    <script>$(document).ready(function() {
-		    App.init();
-		    Demo.init();
-		    PageDemo.init();
-		});</script>
-</body>
-</html>
+
+        <div id="bar-chart" style="height: 230px"></div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-6 -->
+    <!-- begin col-6 -->
+    <div class="col-lg-6">
+        <!-- begin widget -->
+        <div class="widget">
+            <div class="widget-header bg-inverse-dark">
+                <h4 class="text-white">Clients</h4>
+            </div>
+            <div class="widget-body p-0">
+
+                <table id="assets-data-table" class="table  table-striped  table-hover  cell-border compact" cellspacing="0" style="width:100%;">
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Phone Carrier</th>
+
+                    </tr>
+                    <tr>
+                        <th>Paul Lizer</th>
+                        <td>7194257147</td>
+                        <td>Verizon Wireless</td>
+                    </tr>
+                    <tr>
+                        <th>Eric Vorhies</th>
+                        <td>9417135378</td>
+                        <td>Verizon Wireless</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- end widget -->
+    </div>
+    <!-- end col-4 -->
+</div>
+<!-- end row -->
+
+<script src="../Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="../Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.bundle.min.js"></script>
+<!--[if lt IE 9]>
+    <script src="../Content/crossbrowserjs/html5shiv.js"></script>
+    <script src="../Content/crossbrowserjs/respond.min.js"></script>
+<![endif]-->
+<script src="../Content/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../Content/plugins/jquery-cookie/jquery.cookie.js"></script>
+<!-- ================== END BASE JS ================== -->
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="../Content/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="../Content/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="../Content/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
+<script src="../Content/plugins/gritter/js/jquery.gritter.js"></script>
+<script src="../Content/plugins/morris/raphael.min.js"></script>
+<script src="../Content/plugins/morris/morris.js"></script>
+<script src="../Content/js/page-chart-morris.demo.js"></script>
+@*<script src="../Content/js/page-index.demo.js"></script>*@
+<script src="../Content/js/demo.min.js"></script>
+<script src="../Content/js/apps.min.js"></script>
+<script>
+    $(document).ready(function () {
+   
+        handleMorrisBarChart();
+    });</script>

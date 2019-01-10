@@ -1,3 +1,288 @@
-﻿
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>Notify Health | Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="Stephen Thompson" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
+    <link href="../Content/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="../Content/plugins/bootstrap/bootstrap-4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/plugins/font-awesome/5.1/css/all.css" rel="stylesheet" />
+    <link href="../Content/css/animate.min.css" rel="stylesheet" />
+    <link href="../Content/css/style.min.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../Content/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
+    <link href="../Content/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+    <link href="../Content/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../Content/plugins/pace/pace.min.js"></script>
+    <link href="../Content/plugins/morris/morris.css" rel="stylesheet" />
+    <!-- ================== END BASE JS ================== -->
+    <!--[if lt IE 9]>
+        <script src="../Content/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
+    <!-- end #page-loader -->
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-container page-header-fixed page-sidebar-fixed page-with-two-sidebar page-with-footer">
+        <!-- begin #header -->
+        <div id="header" class="header navbar navbar-default navbar-fixed-top">
+            <!-- begin container-fluid -->
+            <div class="container-fluid">
+                <!-- begin mobile sidebar expand / collapse button -->
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand"><img src="../Content/img/logo.png" class="logo" alt="" /> Notify Health</a>
+                    <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- end mobile sidebar expand / collapse button -->
+                <!-- begin navbar-right -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="navbar-form form-input-flat">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter keyword..." />
+                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle has-notify" data-click="toggle-notify">
+                            <i class="fa fa-bell"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-notification pull-right">
+                            <li class="dropdown-header">Notifications (5)</li>
+                            <li class="notification-item">
+                                <a href="javascript:;">
+                                    <div class="media"><i class="fa fa-exclamation-triangle"></i></div>
+                                    <div class="message">
+                                        <h6 class="title">Server Error Reports</h6>
+                                        <div class="time">3 minutes ago</div>
+                                    </div>
+                                    <div class="option" data-toggle="tooltip" data-title="Mark as Read" data-click="set-message-status" data-status="unread" data-container="body">
+                                        <i class="fa fa-circle"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="notification-item">
+                                <a href="javascript:;">
+                                    <div class="media"><img src="../Content/img/user_1.jpg" alt="" /></div>
+                                    <div class="message">
+                                        <h6 class="title">Solvia Smith</h6>
+                                        <p class="desc">Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+                                        <div class="time">25 minutes ago</div>
+                                    </div>
+                                    <div class="option read" data-toggle="tooltip" data-title="Mark as Unread" data-click="set-message-status" data-status="read" data-container="body">
+                                        <i class="fa fa-circle"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="notification-item">
+                                <a href="javascript:;">
+                                    <div class="media"><img src="../Content/img/user_2.jpg" alt="" /></div>
+                                    <div class="message">
+                                        <h6 class="title">Olivia</h6>
+                                        <p class="desc">Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+                                        <div class="time">35 minutes ago</div>
+                                    </div>
+                                    <div class="option read" data-toggle="tooltip" data-title="Mark as Unread" data-click="set-message-status" data-status="read" data-container="body">
+                                        <i class="fa fa-circle"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="notification-item">
+                                <a href="javascript:;">
+                                    <div class="media"><i class="fa fa-user-plus media-object"></i></div>
+                                    <div class="message">
+                                        <h6 class="title"> New User Registered</h6>
+                                        <div class="time">1 hour ago</div>
+                                    </div>
+                                    <div class="option read" data-toggle="tooltip" data-title="Mark as Unread" data-click="set-message-status" data-status="read" data-container="body">
+                                        <i class="fa fa-circle"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="notification-item">
+                                <a href="javascript:;">
+                                    <div class="media bg-success"><i class="fa fa-credit-card"></i></div>
+                                    <div class="message">
+                                        <h6 class="title"> New Item Sold</h6>
+                                        <div class="time">2 hour ago</div>
+                                    </div>
+                                    <div class="option read" data-toggle="tooltip" data-title="Mark as Read" data-click="set-message-status" data-status="read" data-container="body">
+                                        <i class="fa fa-circle"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-footer text-center">
+                                <a href="javascript:;">View more</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown navbar-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="image"><img src="../Content/img/user_profile.jpg" alt="" /></span>
+                            <span class="hidden-xs">John Smith</span> <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:;">Edit Profile</a></li>
+                            <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
+                            <li><a href="javascript:;">Calendar</a></li>
+                            <li><a href="javascript:;">Setting</a></li>
+                            <li class="divider"></li>
+                            <li><a href="javascript:;">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end navbar-right -->
+            </div>
+            <!-- end container-fluid -->
+        </div>
+        <!-- end #header -->
+        <!-- begin #sidebar -->
+        <div id="sidebar" class="sidebar">
+            <!-- begin sidebar scrollbar -->
+            <div data-scrollbar="true" data-height="100%">
+                <!-- begin sidebar nav -->
+                <ul class="nav">
+                    <li class="nav-header">Navigation</li>
+                    <li class="has-sub active">
+                        <a href="javascript:;">
+                            <i class="fa fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <span class="badge pull-right">10</span>
+                            <i class="fa fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="email_inbox.html">Inbox</a></li>
+                            <li><a href="email_compose.html">Compose</a></li>
+                            <li><a href="email_detail.html">Detail</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Programs", "Home")">
+                            <i class="fa fa-gem"></i>
+                            <span>Programs</span>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-suitcase"></i>
+                            <span>Campaigns</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calendar.html">
+                            <i class="fa fa-calendar"></i>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                    <li class="divider has-minify-btn">
+                        <!-- begin sidebar minify button -->
+                        <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-left"></i></a>
+                        <!-- end sidebar minify button -->
+                    </li>
+                    <li class="nav-header">Projects</li>
+                    <li class="nav-project">
+                        <ul class="project-list">
+                            <li>
+                                <div class="icon"><i class="far fa-circle text-success-light"></i></div>
+                                <div class="info">
+                                    <div class="title"><a href="javascript:;">iPhone Apps Development</a></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" style="width: 60%"></div>
+                                    </div>
+                                    <div class="desc">Donec tristique malesuada nibh quis lobortis. Quisque viverra faucibus hendrerit.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="far fa-circle text-danger-light"></i></div>
+                                <div class="info">
+                                    <div class="title"><a href="javascript:;">Website Redesign</a></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-danger" style="width: 30%"></div>
+                                    </div>
+                                    <div class="desc">Integer fermentum arcu et dolor sodales, quis laoreet justo aliquam.</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end sidebar nav -->
+            </div>
+            <!-- end sidebar scrollbar -->
+        </div>
+        <div class="sidebar-bg"></div>
+        <!-- end #sidebar -->
+        <!-- begin #content -->
+        <div id="content" class="content">
             @RenderBody()
-       
+
+            <!-- begin #footer -->
+            <div id="footer" class="footer">
+                <span class="pull-right">
+                    <a href="javascript:;" class="btn-scroll-to-top" data-click="scroll-top">
+                        <i class="fa fa-arrow-up"></i> <span class="hidden-xs">Back to Top</span>
+                    </a>
+                </span>
+                &copy; @DateTime.Now.Year.ToString() <b>Notify Health</b> All Right Reserved
+            </div>
+            <!-- end #footer -->
+        </div>
+        <!-- end #content -->
+
+
+
+    </div>
+    <!-- end page container -->
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.bundle.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="../Content/crossbrowserjs/html5shiv.js"></script>
+        <script src="../Content/crossbrowserjs/respond.min.js"></script>
+    <![endif]-->
+    <script src="../Content/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../Content/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <!-- ================== END BASE JS ================== -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="../Content/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="../Content/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../Content/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
+    <script src="../Content/plugins/gritter/js/jquery.gritter.js"></script>
+    <script src="../Content/plugins/morris/raphael.min.js"></script>
+    <script src="../Content/plugins/morris/morris.js"></script>
+    <script src="../Content/js/page-chart-morris.demo.js"></script>
+    @*<script src="../Content/js/page-index.demo.js"></script>*@
+    <script src="../Content/js/demo.min.js"></script>
+    <script src="../Content/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+        $(document).ready(function () {
+            App.init();
+        });</script>
+</body>
+</html>
+

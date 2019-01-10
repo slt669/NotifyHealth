@@ -395,5 +395,118 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
+
+        /// <summary>
+        /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// EXAMPLE
+        /// </summary>
+        /// <param name="apiPhoneNumber"></param>
+
+        //private void CollectPhoneStatus(string apiPhoneNumber)
+        //{
+        //    // These values dont reside in the function in the service but are here to support the example
+        //    apiCompany = "notify";
+        //    apiUsername = "notifyhealth_cpc001";
+        //    apiPassword = "6U7gQ458wGUNKm2tS6";
+
+        //    HttpClient apiReq = new HttpClient();
+        //    XmlDocument apiResponseXML = new XmlDocument();
+
+        //    apiURL = "https://api.data24-7.com/v/2.0";
+
+        //    eventLog1.WriteEntry("Calling Carrier Lookup API with: " + apiPhoneNumber, EventLogEntryType.Information, 8100);
+
+        //    apiURL += "?compcode=" + apiCompany + "&user=" + apiUsername + "&pass=" + apiPassword + "&api=T&p1=" + apiPhoneNumber;
+
+        //    try
+        //    {
+        //        apiResponseXML.Load(apiURL);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        eventLog1.WriteEntry("Error Loading XML via Carrier Lookup API. Error: " + e.Message, EventLogEntryType.Error, 8500);
+        //    }
+
+        //    XmlElement root = apiResponseXML.DocumentElement;
+        //    XmlNodeList nodes = root.SelectNodes("/response/results/result");
+
+        //    foreach (XmlNode node in nodes)
+        //    {
+        //        clientPhone = new Phone
+        //        {
+        //            Number = apiPhoneNumber,
+        //            CarrierName = node["carrier_name"].InnerText,
+        //            Address = node["sms_address"].InnerText,
+        //            Wireless = node["wless"].InnerText,
+        //            Status = node["status"].InnerText
+        //        };
+        //    }
+
+        //    apiReq.Dispose();
+        //}
+
+        //private void QueueOnBoardingNotification()
+        //{
+        //    // These values dont reside in the function in the service but are here to support the example
+        //    int noticeNT = 1;
+
+        //    try
+        //    {
+        //        SqlCommand sqlCommand = new SqlCommand();
+
+        //        sqlConnection.Open();
+        //        sqlCommand.Connection = sqlConnection;
+
+        //        String query = @"IF NOT EXISTS (SELECT * 
+			     //                           FROM queue 
+			     //                           WHERE Client_ID = @c_id 
+			     //                           AND Notification_ID = (SELECT Notification_ID 
+								//	                                FROM notifications
+								//	                                WHERE notifications.N_Type_ID = @n_t
+        //                                                            AND notifications.Organization_ID = @o_id))
+
+        //                        BEGIN
+        //                        INSERT INTO dbo.queue
+        //                        VALUES (@c_id,
+	       //                             (SELECT Notification_ID 
+		      //                              FROM notifications
+		      //                              WHERE notifications.N_Type_ID = @n_t)
+        //                                    AND notifications.Organization_ID = @o_id),
+	       //                             @t)
+        //                        END";
+
+        //        sqlCommand.CommandText = query;
+
+        //        sqlCommand.Parameters.AddWithValue("@c_id", Convert.ToInt32(currentPerson.Client_ID));
+        //        sqlCommand.Parameters.AddWithValue("@n_t", noticeNT);
+        //        sqlCommand.Parameters.AddWithValue("@o_id", $global: org_id);
+        //        sqlCommand.Parameters.AddWithValue("@t", DateTime.Now);
+
+        //        int output = sqlCommand.ExecuteNonQuery();
+
+        //        sqlConnection.Close();
+
+        //        if (output < 0)
+        //        {
+        //            eventLog1.WriteEntry("SQL activity failed while adding notification to queue.", EventLogEntryType.Error, 3120);
+        //        }
+        //        else if (output < 0)
+        //        {
+        //            eventLog1.WriteEntry("No action taken, notification type (" + noticeNT + ") already queued to client " + currentPerson.Client_ID, EventLogEntryType.Error, 3120);
+        //        }
+        //        else if (output == 1)
+        //        {
+        //            eventLog1.WriteEntry("Queued notification type (" + noticeNT + ") to client " + currentPerson.Client_ID, EventLogEntryType.Information, 2010);
+        //        }
+
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        eventLog1.WriteEntry("SQL activity failed while adding transaction date with error. " + e.ToString(), EventLogEntryType.Error, 3121);
+        //    }
+        //}
+
+
+
     }
 }
