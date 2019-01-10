@@ -1,0 +1,34 @@
+﻿@model NotifyHealth.Models.Programs
+
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+
+            <h4 class="modal-title">Add Program</h4>
+        </div>
+        @using (Ajax.BeginForm("CreatePrograms", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "CreateAssetSuccess", UpdateTargetId = "frmEmp" }, new { @class = "form-horizontal", role = "form" }))
+        {
+
+
+
+
+            <div class="modal-body" id="frmEmp">
+                @Html.Partial("_ProgramsModal")
+            </div>
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                <input type="submit" class="btn btn-primary" name="Save" value="Save">
+            </div>
+
+        }
+
+    </div>
+</div>

@@ -1,0 +1,72 @@
+﻿@model NotifyHealth.Models.Programs
+
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Delete Programs</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+
+        </div>
+
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProgramId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProgramId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StatusId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StatusId)
+                </dd>
+
+            </dl>
+            @using (Html.BeginForm("DeletePrograms", "Home", null))
+            {
+                @*@using (Ajax.BeginForm("DeleteSpeedDial", "Services", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "DeleteAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
+                    {*@
+
+
+                @*@Html.ActionLink("Back to List", "SpeedDial", null, new { data_dismiss = "modal" })*@
+
+                <div class="modal-footer">
+                    @Html.HiddenFor(x => x.ProgramId)
+                    @Html.HiddenFor(x => x.Description)
+                    @Html.HiddenFor(x => x.Name)
+                    @Html.HiddenFor(x => x.StatusId)
+
+                    <button type="button" data-dismiss="modal" data-url="@Url.Action("Back to List","Home",null)" class="btn btn-secondary">Back to List</button>
+                    <input type="submit" class="btn btn-primary" name="Delete" value="Delete">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
