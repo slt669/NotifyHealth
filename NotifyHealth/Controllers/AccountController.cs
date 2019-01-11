@@ -1,6 +1,6 @@
 ﻿using NotifyHealth.Data_Access_Layer;
 using NotifyHealth.Models.ViewModels;
-using ContractManagement.Utils;
+using NotifyHealth.Utils;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System;

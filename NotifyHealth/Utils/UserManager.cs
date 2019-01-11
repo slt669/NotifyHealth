@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ContractManagement.Utils
+namespace NotifyHealth.Utils
 {
     public class UserManager
     {
@@ -148,16 +148,16 @@ namespace ContractManagement.Utils
             public int DisplayOrder { get; set; }
         }
 
-        //public class MenuModel
-        //{
-        //    public List<AccessRights> menu { get; set; }
-        //    public List<Tenant> tenants { get; set; }
-        //    public DataAccessRights dataAccessRights { get; set; }
-        //    public List<Users> user { get; set; }
-        //    public Tenant defaultTenant { get; set; }
-        //    public string tenantId { get; set; }
+        public class MenuModel
+        {
+            public List<AccessRights> menu { get; set; }
+            //public List<Tenant> tenants { get; set; }
+            public DataAccessRights dataAccessRights { get; set; }
+            public List<Users> user { get; set; }
+            //public Tenant defaultTenant { get; set; }
+            public string tenantId { get; set; }
 
-        //}
+        }
 
         public class DataAccessRights
         {

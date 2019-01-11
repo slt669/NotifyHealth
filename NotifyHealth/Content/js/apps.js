@@ -304,7 +304,7 @@ var handleSidebarMinifyFloatMenu = function() {
 			clearTimeout(floatSubMenuTimeout);
 
 			var targetMenu = $(this).closest('li').find('.sub-menu').first();
-			if (targetFloatMenu == this && $('#float-sub-menu').length !== 0) {
+			if (targetFloatMenu === this && $('#float-sub-menu').length !== 0) {
 				return;
 			} else {
 				targetFloatMenu = this;
@@ -393,7 +393,7 @@ var handleUnlimitedTopMenuRender = function() {
                     finalScrollWidth = containerWidth - marginLeft - 128;
                 }
 
-                if (finalScrollWidth != 0) {
+                if (finalScrollWidth !== 0) {
                     $(obj).animate({ marginLeft: '-' + finalScrollWidth + 'px'}, 150, function() {
                         $(obj).find('.menu-control.menu-control-left').addClass('show');
                     });
@@ -443,7 +443,7 @@ var handleUnlimitedTopMenuRender = function() {
             $(targetMenu).animate({ marginLeft: '-' + finalScrollWidth + 'px'}, speed);
         }
         
-        if (prevWidth != fullWidth && fullWidth >= viewWidth) {
+        if (prevWidth !== fullWidth && fullWidth >= viewWidth) {
             $(targetMenu).find('.menu-control.menu-control-right').addClass('show');
         } else {
             $(targetMenu).find('.menu-control.menu-control-right').removeClass('show');

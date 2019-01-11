@@ -29,7 +29,7 @@ var handleSetMessageStatus = function() {
         
         var status = $(this).attr('data-status');
         var tooltipText = 'Mark as Read';
-        if (status == 'read') {
+        if (status === 'read') {
             $(this).removeClass('read');
             $(this).attr('data-status','unread');
         } else {
@@ -52,71 +52,6 @@ var handleNotificationClicked = function() {
     });
 };
 
-
-/* 03. Handle Right Sidebar - Calendar Render
------------------------------------------------- */
-var handleScheduleCalendar = function() {
-    "use strict";
-    
-    var monthNames = ["January", "February", "March", "April", "May", "June",  "July", "August", "September", "October", "November", "December"];
-    var dayNames = ["S", "M", "T", "W", "T", "F", "S"];
-
-    var now = new Date(),
-        month = now.getMonth() + 1,
-        year = now.getFullYear();
-
-    var events = [
-        [
-            '4/' + month + '/' + year,
-            'Client Meeting',
-            '#',
-            '#17B6A4',
-            '<address class="m-b-0 text-inverse f-s-12">'+
-            '   <strong>Twitter, Inc.</strong><br />'+
-            '   795 Folsom Ave, Suite 600<br />'+
-            '   San Francisco, CA 94107 <br />'+
-            '   P: (123) 456-7890'+
-            '</address>'
-        ],
-        [
-            '7/' + month + '/' + year,
-            'Bootstrap.com',
-            'http://www.getbootstrap.com',
-            '#30373e'
-        ],
-        [
-            '18/' + month + '/' + year,
-            'Popover with HTML Content',
-            '#',
-            '#30373e',
-            'Some contents here <div class="text-right"><a href="http://www.google.com">view more >>></a></div>'
-        ],
-        [
-            '28/' + month + '/' + year,
-            'Source Admin Launched',
-            'http://www.seantheme.com/source-admin-v1.5/',
-            '#30373e',
-        ]
-    ];
-    var calendarTarget = $('#schedule-calendar');
-    $(calendarTarget).calendar({
-        months: monthNames,
-        days: dayNames,
-        events: events,
-        tooltip_options:{
-            placement: 'top',
-            html: true,
-            container: 'body'
-        },
-        popover_options:{
-            placement: 'top',
-            html: true,
-            container: 'body'
-        }
-    });
-};
-
-
 /* 04. Handle Theme - Color Theme Changing
 ------------------------------------------------ */
 var handleThemePanel = function() {
@@ -132,10 +67,10 @@ var handleThemePanel = function() {
         if (!targetRemoveClass) {
             targetRemoveClass = 'navbar-default';
         }
-        if (targetClass == 'navbar-inverse') {
-            $(targetContainer).find('.logo').attr('src','assets/img/logo-white.png');
+        if (targetClass === 'navbar-inverse') {
+            $(targetContainer).find('.logo').attr('src','Content/img/logo-white.png');
         } else {
-            $(targetContainer).find('.logo').attr('src','assets/img/logo.png');
+            $(targetContainer).find('.logo').attr('src','Content/img/logo.png');
         }
         $('[data-click="header-theme-selector"]').not(this).closest('li').removeClass('active');
         $(this).closest('li').addClass('active');
@@ -224,10 +159,10 @@ var handlePageLoadThemeSelect = function() {
             if (!targetRemoveClass) {
                 targetRemoveClass = 'navbar-default';
             }
-            if (targetClass == 'navbar-inverse') {
-                $(targetContainer).find('.logo').attr('src','assets/img/logo-white.png');
+            if (targetClass === 'navbar-inverse') {
+                $(targetContainer).find('.logo').attr('src','Content/img/logo-white.png');
             } else {
-                $(targetContainer).find('.logo').attr('src','assets/img/logo.png');
+                $(targetContainer).find('.logo').attr('src','Content/img/logo.png');
             }
             $('[data-click="header-theme-selector"]').not(targetLi).closest('li').removeClass('active');
             $(targetLi).closest('li').addClass('active');

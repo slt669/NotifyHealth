@@ -5446,6 +5446,8 @@
     <Content Include="Views\Shared\_CreateProgramsPartial.cshtml" />
     <Content Include="Views\Shared\_EditProgramsPartial.cshtml" />
     <Content Include="Views\Shared\_DeleteProgramsPartial.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
