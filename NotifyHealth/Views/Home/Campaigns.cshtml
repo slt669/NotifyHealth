@@ -59,11 +59,26 @@
                     "processing": true,
                     "deferRender": true,
                     "columns": [
-                        {
 
-                            "title": "Name", "data": "Name", "searchable": true ,
+                        { "title": "Name", "data": "Name", "searchable": true, },
+                        { "title": "Description", "data": "Description", "searchable": true, },
+                        { "title": "Programs", "data": "Programs", "searchable": true, },
+                        { "title": "Status", "data": "StatusId", "searchable": true, },
+                               {
+                                "title": "Actions",
+                                   "data": "CampaignId",
+                                "searchable": false,
+                                "sortable": false,
+                                "render": function (data, type, full, meta) {
+                                    return '<a href="@Url.Action("Edit", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("Delete", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                }
+                            }
+                        
+                        
+                       
+                          
 
-                        }
+                        
                     ],
                     "order": [0, "Asc"],
                     });

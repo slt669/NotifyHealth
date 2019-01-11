@@ -56,8 +56,8 @@ namespace NotifyHealth.Controllers
                 //Session["DataAccessRights"] = usermanager.dar;
                 //Session["UserName"] = model.Email;
                 //Session["UserFullName"] = usermanager.accset.Forename + " " + usermanager.accset.Surname;
-                //Session["UserSessionId"] = usermanager.SessionId;
-                //Session["UserSessionGUID"] = usermanager.SessionGUID;
+                Session["UserSessionId"] = usermanager.SessionId;
+                Session["UserSessionGUID"] = usermanager.SessionGUID;
                 //Session["UserTenantList"] = usermanager.ltn;
                 //Session["UserTenant"] = usermanager.TenantId;
                 //Session["UserLogonId"] = usermanager.accset.UserLogonID;
@@ -105,6 +105,55 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Login", "Account", new { error = errormessage });
 
         }
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+
+        public ActionResult Settings(string req)
+        {
+            Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            Response.AppendHeader("Pragma", "no-cache"); // HTTP 1.0.
+            Response.AppendHeader("Expires", "0"); // Proxies.
+            AccountSettingsViewModel AccountSettings = new AccountSettingsViewModel();
+            AccountSettings = dbc.GetAccountDetails(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString());
+            AccountSettings.HintQuestion = dbc.GetSecurityQuestions();
+
+            if (AccountSettings.MustChangePwd == "1") ViewBag.Message = "Please set a new password";
+
+            return View(AccountSettings);
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Settings(AccountSettingsViewModel data, string updateBtn)
+        {
+            Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            Response.AppendHeader("Pragma", "no-cache"); // HTTP 1.0.
+            Response.AppendHeader("Expires", "0"); // Proxies.
+            data.HintQuestion = dbc.GetSecurityQuestions();
+
+
+            if (ModelState.IsValid)
+            {
+
+                string UpdateMessage = dbc.ManageAccount(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString(), data);
+
+                if (UpdateMessage != "Account Settings updated successfully!")
+                {
+                    TempData["UpdateMessage"] = UpdateMessage;
+                    return View(data);
+                }
+                else
+                {
+                    TempData["UpdateMessage"] = UpdateMessage;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+
+            return View(data);
+        }
+
 
     }
 }

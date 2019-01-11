@@ -5,7 +5,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using NotifyHealth.Models;
+using NotifyHealth.Models.ViewModels;
+
 namespace NotifyHealth.Data_Access_Layer
 {
     public class NotifyHealthDB
@@ -215,6 +218,215 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
+        public AccountSettingsViewModel GetAccountDetails(Int32 SessionId, String SessionGUID)
+        {
+            ReturnValidationError = "99999";
+
+            try
+            {
+
+                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                StoredProcedure = "usp103GetAccountDetails";
+
+                AccountSettingsViewModel asvm = new AccountSettingsViewModel();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@SessionId", SqlDbType.Int, 4).Value = SessionId;
+                    command.Parameters.Add("@SessionGUID", SqlDbType.NVarChar, 50).Value = SessionGUID;
+                    command.Parameters.Add("@ValidationMessage", SqlDbType.NVarChar, 500).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        asvm.OldPassword = reader["Password"].ToString();
+                        asvm.Title = reader["Title"].ToString();
+                        asvm.Forename = reader["Forename"].ToString();
+                        asvm.Surname = reader["Surname"].ToString();
+                        asvm.LogonName = reader["Username"].ToString();
+                        //MobileTelephoneNo = reader["MobileTelephoneNo"].ToString();
+                        asvm.WorkTelephoneNo = reader["WorkTelephoneNo"].ToString();
+                        //HomeTelephoneNo = reader["HomeTelephoneNo"].ToString();
+                        //FaxTelephoneNo = reader["FaxTelephoneNo"].ToString();
+                        asvm.JobTitle = reader["JobTitle"].ToString();
+                        int x = reader.GetOrdinal("SecurityQuestionId");
+                        if (!reader.IsDBNull(x)) asvm.HintQuestionID = Convert.ToInt16(reader["SecurityQuestionId"]);
+                        asvm.HintAnswer = reader["SecurityAnswer"].ToString();
+                        asvm.MustChangePwd = reader["MustChangePwd"].ToString();
+                        asvm.UserID = Convert.ToInt32(reader["UserID"]);
+                        asvm.UserLogonID = Convert.ToInt32(reader["UserLogonID"]);
+                        asvm.UserRole = Convert.ToInt32(reader["UserRoleID"]);
+                        asvm.CompanyName = reader["CompanyName"].ToString();
+                        asvm.CompanyId = reader["CompanyId"] as int? ?? default(int);
+                        int y = reader.GetOrdinal("CustomerType");
+                        if (!reader.IsDBNull(y)) asvm.CustomerType = Convert.ToChar(reader["CustomerType"]) as char? ?? default(char);
+                    }
+                    //SecurityQuestionId = Convert.ToInt32(StringId);
+
+                    reader.Close();
+                    connection.Close();
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                    ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+                    if (ReturnValidationError != "0")
+                    {
+                        //Global.gStatusMessage = ReturnValidationMessage;
+                    }
+                    else
+                    {
+                        //Global.gStatusMessage = ReturnValidationMessage;
+                    }
+                }
+                return asvm;
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+
+        public List<SelectListItem> GetSecurityQuestions(string selected = "")
+        {
+            try
+            {
+                var strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                var StoredProcedure = "usp107ListSecurityQuestion";
+
+                List<SelectListItem> sqs = new List<SelectListItem>();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        SelectListItem sq = new SelectListItem();
+                        sq.Value = reader["SecurityQuestionID"].ToString();
+                        sq.Text = reader["SecurityQuestion"].ToString();
+                        if (selected == sq.Value)
+                        {
+                            sq.Selected = true;
+                        }
+
+
+                        sqs.Add(sq);
+
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                }
+                return sqs;
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public string ManageAccount(Int32 SessionId, String SessionGUID, AccountSettingsViewModel asvm)
+        {
+            string ReturnValidationError;
+
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                StoredProcedure = "usp102ManageAccount";
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@SessionId", SqlDbType.Int, 4).Value = SessionId;
+                    command.Parameters.Add("@SessionGUID", SqlDbType.NVarChar, 36).Value = SessionGUID;
+                    command.Parameters.Add("UpdateType", SqlDbType.NVarChar, 20).Value = "EndUserUpdate";
+                    command.Parameters.Add("@Password", SqlDbType.NVarChar, 50).Value = asvm.NewPassword;
+                    command.Parameters.Add("@PasswordRepeat", SqlDbType.NVarChar, 50).Value = asvm.CheckPassword;
+                    //command.Parameters.Add("@Title", SqlDbType.NVarChar, 50).Value = asvm.Title;
+                    command.Parameters.Add("@Forename", SqlDbType.NVarChar, 50).Value = asvm.Forename;
+                    command.Parameters.Add("@Surname", SqlDbType.NVarChar, 50).Value = asvm.Surname;
+                    command.Parameters.Add("@WorkTelephoneNo", SqlDbType.NVarChar, 50).Value = asvm.WorkTelephoneNo;
+                    command.Parameters.Add("@JobTitle", SqlDbType.NVarChar, 50).Value = asvm.JobTitle;
+                    command.Parameters.Add("@SecurityQuestionId", SqlDbType.Int, 4).Value = asvm.HintQuestionID;
+                    command.Parameters.Add("@SecurityAnswer", SqlDbType.NVarChar, 50).Value = asvm.HintAnswer;
+                    command.Parameters.Add("@ValidationMessage", SqlDbType.NVarChar, 500).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader[0].ToString());
+                        EndUserName = reader["EndUserName"].ToString();
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                    ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+                    if (ReturnValidationError != "0")
+                    {
+                        return ReturnValidationMessage;
+                    }
+                }
+
+                return "Account Settings updated successfully!";
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+
         /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///  /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///   /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

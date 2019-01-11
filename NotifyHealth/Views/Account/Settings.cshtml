@@ -1,0 +1,264 @@
+﻿@model NotifyHealth.Models.ViewModels.AccountSettingsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (@ViewBag.Message != null)
+{
+    <div class="alert alert-warning" id="warning">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <strong>@ViewBag.Message</strong>
+    </div>
+}
+<ol class="breadcrumb pull-right">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+    <li class="breadcrumb-item active">Settings</li>
+</ol>
+<h1 class="page-header">Settings</h1>
+<br />
+<div class="container-fluid">
+    @using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { id = "asform" }))
+    {
+
+        <div class="card">
+
+            <div class="card-block">
+
+                <div class="form-horizontal">
+                    <hr />
+
+
+                    <div class="col-lg-7">
+
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Forename, new { @class = "col-sm-3 form-control-label" })
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.Forename, new { @class = "col-sm-8 form-control" })
+
+                                @Html.ValidationMessageFor(model => model.Forename, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Surname, new { @class = "col-sm-3 form-control-label" })
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.Surname, new { @class = "col-sm-8 form-control" })
+                                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Surname, new { @class = "col-sm-2 form-control-label" })
+                            <div class="col-sm-10">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.HintQuestion, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
+                            <div class="col-sm-10">
+                                @Html.DropDownListFor(model => model.HintQuestionID, Model.HintQuestion, new { @class = "col-sm-8 form-control" })
+                                @Html.ValidationMessageFor(model => model.HintQuestionID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.HintAnswer, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.HintAnswer, new { @class = "col-sm-8 form-control" })
+
+                                @Html.ValidationMessageFor(model => model.HintAnswer, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.OldPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.OldPassword, new { @name = "OldPassword", @type = "password", @class = "col-sm-8 form-control", @disabled = "" })
+                                    @*<input id="OldPassword" type="password" class="col-sm-8 form-control" value="@Html.DisplayTextFor(model => model.OldPassword)">*@
+
+
+                                    <div class="input-group-addon">
+                                        <i toggle="#OldPassword" class="fa fa-fw fa-eye field-icon toggle-3password">
+                                        </i>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="pwd-container">
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.NewPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <input id="NewPassword" type="password" class="col-sm-8 form-control" name="NewPassword" value="@Html.DisplayTextFor(model => model.NewPassword)">
+
+
+                                        <div class="input-group-addon">
+                                            <i toggle="#NewPassword" class="fa fa-fw fa-eye field-icon toggle-password">
+                                            </i>
+                                        </div>
+                                    </div>
+                                    <span class="pwstrength_viewport_verdict"></span>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.CheckPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+
+                                        <input id="CheckPassword" type="password" class="col-sm-8 form-control" name="CheckPassword" value="@Html.DisplayTextFor(m => m.CheckPassword)">
+                                        <div class="input-group-addon">
+                                            <i toggle="#CheckPassword" class="fa fa-fw fa-eye field-icon toggle-2password">
+                                            </i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Update Settings" name="updateBtn" id="updateBtn" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    }
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="MessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <h4>@TempData["UpdateMessage"]</h4>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/pwstrength.js"></script>
+@if (TempData["UpdateMessage"] != null)
+{
+    <script>
+        $(function () {
+
+            $("#MessageModal").modal('show');
+
+
+        });
+    </script>
+}
+
+
+
+
+<script>
+        var MustChangePwd = '@Model.MustChangePwd';
+        if (MustChangePwd == '1') {
+            $("label[for='NewPassword']").text('New Password*');
+            $("label[for='CheckPassword']").text('Repeat New Password*');
+        }
+
+            $(".toggle-password").click(function () {
+
+                $(this).toggleClass("field-icon fa-eye-slash");
+                var input = $($(this).attr("toggle"));
+                if (input.attr("type") == "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+            $(".toggle-2password").click(function () {
+
+                $(this).toggleClass("field-icon fa-eye-slash");
+                var input = $($(this).attr("toggle"));
+                if (input.attr("type") == "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+            $(".toggle-3password").click(function () {
+
+
+                $(this).toggleClass("field-icon fa-eye-slash");
+                var input = $($(this).attr("toggle"));
+                if (input.attr("type") == "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+
+        $(function () {
+            $("#asform")[0].reset();
+
+
+            $(document).on('click', ':submit', function (e) {
+                e.preventDefault();
+                if (MustChangePwd == '1') {
+                    if ($('#NewPassword').val() == "") {
+                        $(".modal-body").html('<h4>You must set a new password!</h4>');
+                        $("#MessageModal").modal('show');
+                        return;
+                    }
+                }
+                if ($('.pwstrength_viewport_verdict').text() == 'Weak') {
+                    $(".modal-body").html('<h4>Password is too weak</h4>');
+                    $("#MessageModal").modal('show');
+                }
+                else if ($('#NewPassword').val() != $('#CheckPassword').val()) {
+                    $(".modal-body").html('<h4>Passwords do not match!</h4>');
+                    $("#MessageModal").modal('show');
+                }
+                else { $('#asform').submit(); }
+
+            })
+
+            "use strict";
+            var options = {};
+            options.ui = {
+                container: "#pwd-container",
+                showStatus: true,
+                showProgressBar: false,
+                viewports: {
+                    verdict: ".pwstrength_viewport_verdict"
+                }
+            };
+            //$('#NewPassword').pwstrength(options);
+
+            //$('#CheckPassword').pwstrength(options);
+        });
+</script>
+
+
+
+
+
+

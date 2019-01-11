@@ -8,7 +8,7 @@
     <div class="modal-content">
         <div class="modal-header">
 
-            <h4 class="modal-title">Edit Speed Dial</h4>
+            <h4 class="modal-title">Edit</h4>
         </div>
 
         @using (Ajax.BeginForm("EditPrograms", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "UpdateAssetSuccess", UpdateTargetId = "frmEdit" }, new { @class = "form-horizontal", role = "form" }))

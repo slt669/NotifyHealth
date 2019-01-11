@@ -59,11 +59,21 @@
                     "processing": true,
                     "deferRender": true,
                     "columns": [
-                        {
-
-                            "title": "FirstName", "data": "FirstName", "searchable": true ,
-
-                        }
+                        
+                        { "title": "First Name", "data": "FirstName", "searchable": true, },
+                        { "title": "Last Name", "data": "LastName", "searchable": true, },
+                        { "title": "Client Status", "data": "CStatusId", "searchable": true, },
+                        { "title": "Phone Status", "data": "PStatusId", "searchable": true, },
+                        { "title": "Participation Reason", "data": "ParticipationId", "searchable": true },
+                               {
+                                "title": "Actions",
+                                   "data": "ClientId",
+                                "searchable": false,
+                                "sortable": false,
+                                "render": function (data, type, full, meta) {
+                                    return '<a href="@Url.Action("Edit", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("Delete", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                }
+                            }                    
                     ],
                     "order": [0, "Asc"],
                     });

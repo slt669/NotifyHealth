@@ -5,10 +5,40 @@
 @{
     ViewBag.Title = "Notifications";
 }
+<head>
 
-<h2>Notifications</h2>
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 
-<table id="assets-data-table" class="table  table-striped  table-hover  cell-border compact" cellspacing="0" style="width:100%;"></table>
+    <link href="../Content/plugins/font-awesome/5.1/css/all.css" rel="stylesheet" />
+    <link href="../Content/css/animate.min.css" rel="stylesheet" />
+    <link href="../Content/css/style.min.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+</head>
+<ol class="breadcrumb pull-right">
+    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+    <li class="breadcrumb-item active">Notifications</li>
+</ol>
+<h1 class="page-header">Notifications</h1>
+<div class="section-container section-with-top-border">
+    <p class="m-b-20">
+
+    </p>
+    <!-- begin panel -->
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("Create","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Notifications
+    </button>
+    <div class="panel pagination-inverse m-b-0 clearfix">
+
+        <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
+    </div>
+    @*<table id="assets-data-table" class="table  table-striped  table-hover  cell-border compact" cellspacing="0" style="width:100%;"></table>*@
+</div>
 
 
 
@@ -60,11 +90,23 @@
                     "deferRender": true,
                     "columns": [
                         {
+                            "title": "Period", "data": "Period", "searchable": true,
+                        },
+                        { "title": "Text", "data": "Text", "searchable": true, },
+                        { "title": "NotificationType", "data": "NTypeId", "searchable": true, },
+                        { "title": "Status", "data": "StatusId", "searchable": true, },
+                        { "title": "Campaigns", "data": "CampaignId", "searchable": true, },
+                                {
+                                "title": "Actions",
+                                    "data": "NotificationId",
+                                "searchable": false,
+                                "sortable": false,
+                                "render": function (data, type, full, meta) {
+                                    return '<a href="@Url.Action("Edit", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("Delete", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                }
+                            }
 
-                            "title": "Text", "data": "Text", "searchable": true ,
-
-                        }
-                    ],
+                  ],
                     "order": [0, "Asc"],
                     });
                 },

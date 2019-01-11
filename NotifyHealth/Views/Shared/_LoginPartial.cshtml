@@ -19,11 +19,14 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (@Session["timestamp"] != null)
                 {
-                    <li class="nav-item">
-                        <span style="color:white; padding-right:27px;">Last refreshed: @Session["timestamp"]</span>
-                    </li>
-
+       
                 }
+                <li class="dropdown navbar-user">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        <span style="color:black; padding-right:1px;">Last refreshed: @Session["timestamp"]</span>
+                    </a>
+                 
+                </li>
                 <li class="dropdown">
                     <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle has-notify" data-click="toggle-notify">
                         <i class="fa fa-bell"></i>
@@ -103,7 +106,7 @@
                         <span class="hidden-xs">John Smith</span> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:;">Settings</a></li>
+                        <li><a href="@Url.Action("Settings", "Account")">Settings</a></li>
                         <li class="divider"></li>
                         <li><a href="@Url.Action("Logoff", "Account")">Log out</a></li>
                     </ul>

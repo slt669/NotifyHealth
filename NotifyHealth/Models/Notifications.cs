@@ -14,7 +14,7 @@ namespace NotifyHealth.Models
         public int StatusId { get; set; }
         public int? CampaignId { get; set; }
 
-        //public NotificationType NotificationType { get; set; }
+        public NotificationType NotificationType { get; set; }
         //public Status Status { get; set; }
         public Campaigns Campaigns { get; set; }
 
