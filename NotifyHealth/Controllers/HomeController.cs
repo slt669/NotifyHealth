@@ -39,7 +39,7 @@ namespace NotifyHealth.Controllers
             return View();
         }
 
-        public List<Programs> MyGlobalVariableInitializer()
+        public List<Programs> MyGlobalProgramsInitializer()
         {
             List<Programs> dtsource = new List<Programs>();
             dtsource = (List<Programs>)TempData["dtsource"];
@@ -91,7 +91,7 @@ namespace NotifyHealth.Controllers
         {
             var model = new Programs();
             //string id = RouteData.Values["userID"].ToString();
-            List<Programs> dtsource = MyGlobalVariableInitializer();
+            List<Programs> dtsource = MyGlobalProgramsInitializer();
 
             model.OrganizationID = organizationID;
             return View("_CreateProgramsPartial", model);
@@ -110,7 +110,7 @@ namespace NotifyHealth.Controllers
             }
             ViewBag.Message = "Sucess or Failure Message";
             ModelState.Clear();
-            List<Programs> dtsource = MyGlobalVariableInitializer();
+            List<Programs> dtsource = MyGlobalProgramsInitializer();
 
             char delete = 'N';
             db.UpdatePrograms(model.OrganizationID, model.Description, model.Name, model.ProgramId, delete);
@@ -130,7 +130,7 @@ namespace NotifyHealth.Controllers
         {
             var testID = 1;
             //var asset = DbContext.Assets.FirstOrDefault(x => x.AssetID == id);
-            List<Programs> dtsource = MyGlobalVariableInitializer();
+            List<Programs> dtsource = MyGlobalProgramsInitializer();
             Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == testID);
 
             //AssetViewModel assetViewModel = MapToViewModel(asset);
@@ -156,7 +156,7 @@ namespace NotifyHealth.Controllers
                 }
                 ViewBag.Message = "Sucess or Failure Message";
                 ModelState.Clear();
-                List<Programs> dtsource = MyGlobalVariableInitializer();
+                List<Programs> dtsource = MyGlobalProgramsInitializer();
                 char delete = 'N';
                 db.UpdatePrograms(model.OrganizationID, model.Description, model.Name, model.ProgramId, delete);
             }
@@ -186,7 +186,7 @@ namespace NotifyHealth.Controllers
         public ActionResult Delete(int? id)
         {
             var testID = 4;
-            List<Programs> dtsource = MyGlobalVariableInitializer();
+            List<Programs> dtsource = MyGlobalProgramsInitializer();
 
             Programs delete = dtsource.FirstOrDefault(x => x.ProgramId == testID);
 
@@ -206,7 +206,7 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-                List<Programs> dtsource = MyGlobalVariableInitializer();
+                List<Programs> dtsource = MyGlobalProgramsInitializer();
 
                 char delete = 'Y';
                 db.UpdatePrograms(model.OrganizationID, model.Description, model.Name, model.ProgramId, delete);
@@ -240,6 +240,14 @@ namespace NotifyHealth.Controllers
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        public List<Campaigns> MyGlobalCampaignsInitializer()
+        {
+            List<Campaigns> dtsource = new List<Campaigns>();
+            dtsource = (List<Campaigns>)TempData["dtsource"];
+
+            TempData["dtsource"] = dtsource;
+            return dtsource;
+        }
         /// <summary>
         /// Campaigns
         /// </summary>
@@ -297,6 +305,130 @@ namespace NotifyHealth.Controllers
             return Json(result);
         }
 
+        public ActionResult CreateCampaign(int? campaignId)
+        {
+            var model = new Campaigns();
+
+            List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+
+            model.CampaignId = campaignId;
+            return View("_CreateCampaignsPartial", model);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult CreateCampaigns(Campaigns model)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View("_CampaignsModal", model);
+            }
+            ViewBag.Message = "Sucess or Failure Message";
+            ModelState.Clear();
+            List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+
+            char delete = 'N';
+            db.UpdateCampaigns(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+
+
+
+            return RedirectToAction("Campaigns", new { controller = "Home", campaignId = model.CampaignId });
+
+        }
+        // GET: Asset/Edit/5
+        //[SessionFilterAttribute]
+        public ActionResult EditCampaign(int? id)
+        {
+            var testID = 1;
+
+            List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+            Campaigns edit = dtsource.FirstOrDefault(x => x.ProgramId == testID);
+
+
+
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_EditCampaignsPartial", edit);
+            return View(edit);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult EditCampaigns(Campaigns model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+
+                    return View("_EditCampaignsPartial", model);
+                }
+                ViewBag.Message = "Sucess or Failure Message";
+                ModelState.Clear();
+                List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+                char delete = 'N';
+                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+
+            }
+            return PartialView("_EditCampaignsPartial", model);
+
+        }
+
+        public ActionResult DeleteCampaign(int? id)
+        {
+            var testID = 4;
+            List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+
+            Campaigns delete = dtsource.FirstOrDefault(x => x.CampaignId == testID);
+
+
+
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_DeleteCampaignsPartial", delete);
+            return View(delete);
+
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCampaigns(Campaigns model)
+        {
+            try
+            {
+                List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+
+                char delete = 'Y';
+                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+            }
+
+            return RedirectToAction("Campaigns", new { campaignId = model.CampaignId });
+
+        }
+        /// <summary>
+        /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// //////////////////////////////////////////////////////////////
+        /// 
+        /// //////////////////////////////////////////////////////////////
+        /// 
+        /// 
+        /// <returns></returns>
+        public List<Notifications> MyGlobalNotificationsInitializer()
+        {
+            List<Notifications> dtsource = new List<Notifications>();
+            dtsource = (List<Notifications>)TempData["dtsource"];
+
+            TempData["dtsource"] = dtsource;
+            return dtsource;
+        }
         public ActionResult Notifications(int? organizationID)
         {
 
@@ -346,6 +478,122 @@ namespace NotifyHealth.Controllers
             };
 
             return Json(result);
+        }
+        public ActionResult CreateNotification(int notificationId)
+        {
+            var model = new Notifications();
+
+            List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+
+            model.NotificationId = notificationId;
+            return View("_CreateNotificationsPartial", model);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult CreateNotifications(Notifications model)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View("_NotificationsModal", model);
+            }
+            ViewBag.Message = "Sucess or Failure Message";
+            ModelState.Clear();
+            List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+
+            char delete = 'N';
+            db.UpdateNotifications(model.CampaignId, model.NTypeId, model.Period, model.Text, delete);
+
+
+
+            return RedirectToAction("Notifications", new { controller = "Home", campaignId = model.CampaignId });
+
+        }
+        // GET: Asset/Edit/5
+        //[SessionFilterAttribute]
+        public ActionResult EditNotification(int? id)
+        {
+            var testID = 1;
+
+            List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+            Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == testID);
+
+
+
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_EditNotificationsPartial", edit);
+            return View(edit);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult EditNotifications(Notifications model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+
+                    return View("_EditNotificationsPartial", model);
+                }
+                ViewBag.Message = "Sucess or Failure Message";
+                ModelState.Clear();
+                List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+                char delete = 'N';
+                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+
+            }
+            return PartialView("_EditNotificationsPartial", model);
+
+        }
+
+        public ActionResult DeleteNotification(int? id)
+        {
+            var testID = 4;
+            List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+
+            Notifications delete = dtsource.FirstOrDefault(x => x.CampaignId == testID);
+
+
+
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_DeleteNotificationsPartial", delete);
+            return View(delete);
+
+        }
+
+        [HttpPost]
+        public ActionResult DeleteNotifications(Notifications model)
+        {
+            try
+            {
+                List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+
+                char delete = 'Y';
+                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+            }
+
+            return RedirectToAction("Notifications", new { notificationId = model.NotificationId });
+
+        }
+        public List<Clients> MyGlobalClientsInitializer()
+        {
+            List<Clients> dtsource = new List<Clients>();
+            dtsource = (List<Clients>)TempData["dtsource"];
+
+            TempData["dtsource"] = dtsource;
+            return dtsource;
         }
         public ActionResult Clients(int? organizationID)
         {
@@ -397,7 +645,114 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
+        public ActionResult CreateClient(int clientId)
+        {
+            var model = new Clients();
 
+            List<Clients> dtsource = MyGlobalClientsInitializer();
+
+            model.ClientId = clientId;
+            return View("_CreateClientsPartial", model);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult CreateClients(Clients model)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View("_ClientsModal", model);
+            }
+            ViewBag.Message = "Sucess or Failure Message";
+            ModelState.Clear();
+            List<Clients> dtsource = MyGlobalClientsInitializer();
+
+            char delete = 'N';
+            db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+
+
+
+            return RedirectToAction("Clients", new { controller = "Home", clientId = model.ClientId });
+
+        }
+        // GET: Asset/Edit/5
+        //[SessionFilterAttribute]
+        public ActionResult EditClient(int? id)
+        {
+            var testID = 1;
+
+            List<Clients> dtsource = MyGlobalClientsInitializer();
+            Clients edit = dtsource.FirstOrDefault(x => x.ClientId == testID);
+
+
+
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_EditClientsPartial", edit);
+            return View(edit);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult EditClients(Clients model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+
+                    return View("_EditClientsPartial", model);
+                }
+                ViewBag.Message = "Sucess or Failure Message";
+                ModelState.Clear();
+                List<Clients> dtsource = MyGlobalClientsInitializer();
+                char delete = 'N';
+                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+
+            }
+            return PartialView("_EditClientsPartial", model);
+
+        }
+
+        public ActionResult DeleteClient(int? id)
+        {
+            var testID = 4;
+            List<Clients> dtsource = MyGlobalClientsInitializer();
+
+            Clients delete = dtsource.FirstOrDefault(x => x.ClientId == testID);
+
+
+
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_DeleteClientsPartial", delete);
+            return View(delete);
+
+        }
+
+        [HttpPost]
+        public ActionResult DeleteClients(Clients model)
+        {
+            try
+            {
+                List<Clients> dtsource = MyGlobalClientsInitializer();
+
+                char delete = 'Y';
+                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+            }
+
+            return RedirectToAction("Clients", new { clientId = model.ClientId });
+
+        }
         /// <summary>
         /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// EXAMPLE

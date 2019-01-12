@@ -5452,6 +5452,17 @@
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
+    <Content Include="Views\Shared\_CreateCampaignsPartial.cshtml" />
+    <Content Include="Views\Shared\_CampaignsModal.cshtml" />
+    <Content Include="Views\Shared\_EditCampaignsPartial.cshtml" />
+    <Content Include="Views\Shared\_DeleteCampaignsPartial.cshtml" />
+    <Content Include="Views\Shared\_CreateNotificationsPartial.cshtml" />
+    <Content Include="Views\Shared\_NotificationsModal.cshtml" />
+    <Content Include="Views\Shared\_EditNotificationsPartial.cshtml" />
+    <Content Include="Views\Shared\_DeleteNotificationsPartial.cshtml" />
+    <Content Include="Views\Shared\_CreateClientsPartial.cshtml" />
+    <Content Include="Views\Shared\_EditClientsPartial.cshtml" />
+    <Content Include="Views\Shared\_DeleteClientsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

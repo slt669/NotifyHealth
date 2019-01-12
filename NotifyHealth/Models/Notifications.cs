@@ -17,7 +17,7 @@ namespace NotifyHealth.Models
         public NotificationType NotificationType { get; set; }
         //public Status Status { get; set; }
         public Campaigns Campaigns { get; set; }
-
+        public int? OrganizationID { get; set; }
         //public ICollection<Queue> Queue { get; set; }
         //public ICollection<Transactions> Transactions { get; set; }
     }

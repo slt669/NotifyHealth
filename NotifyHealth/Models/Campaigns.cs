@@ -7,7 +7,7 @@ namespace NotifyHealth.Models
 {
     public class Campaigns
     {
-        public int CampaignId { get; set; }
+        public int? CampaignId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int StatusId { get; set; }
@@ -15,7 +15,7 @@ namespace NotifyHealth.Models
 
         public Programs Programs { get; set; }
         //public Status Status { get; set; }
-
+        public int? OrganizationID { get; set; }
         //public ICollection<ClientMemberships> ClientMemberships { get; set; }
     }
 }

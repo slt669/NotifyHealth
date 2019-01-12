@@ -29,7 +29,7 @@ namespace NotifyHealth.Models
         public int ParticipationId { get; set; }
         [ReadOnly(true)]
         public int ATypeId { get; set; }
-
+        public int? OrganizationID { get; set; }
         //public ClientStatus ClientStatus { get; set; }
         //public PhoneStatus PhoneStatus { get; set; }
         //public ParticipationReason ParticipationReason { get; set; }
