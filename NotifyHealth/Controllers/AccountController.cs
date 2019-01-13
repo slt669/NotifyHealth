@@ -86,7 +86,7 @@ namespace NotifyHealth.Controllers
 
             try
             {
-                //dbc.LogoutSession(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString());
+                dbc.LogoutSession(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString());
                 TempData["UpdateMessage"] = errormessage;
 
             }

@@ -5463,6 +5463,7 @@
     <Content Include="Views\Shared\_CreateClientsPartial.cshtml" />
     <Content Include="Views\Shared\_EditClientsPartial.cshtml" />
     <Content Include="Views\Shared\_DeleteClientsPartial.cshtml" />
+    <Content Include="Views\Shared\_ClientsModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

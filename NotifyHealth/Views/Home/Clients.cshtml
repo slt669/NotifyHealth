@@ -5,18 +5,68 @@
 @{
     ViewBag.Title = "Clients";
 }
+<head>
 
-<h2>Clients</h2>
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 
-<table id="assets-data-table" class="table  table-striped  table-hover  cell-border compact" cellspacing="0" style="width:100%;"></table>
+    <link href="../Content/plugins/font-awesome/5.1/css/all.css" rel="stylesheet" />
+    <link href="../Content/css/animate.min.css" rel="stylesheet" />
+    <link href="../Content/css/style.min.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+</head>
+<h1 class="page-header">Clients</h1>
+<div class="section-container section-with-top-border">
+    <p class="m-b-20">
+
+    </p>
+    <!-- begin panel -->
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateClient","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Clients
+    </button>
+    <div class="panel pagination-inverse m-b-0 clearfix">
+
+        <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
+    </div>
+</div>
 
 
+<div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="createAssetContainer">
+    </div>
+</div>
 
+<div class="modal fade" id="editAssetModal" tabindex="-1" role="dialog" aria-labelledby="EditAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="editAssetContainer">
+    </div>
+</div>
+<div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="DeleteAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="deleteAssetContainer">
+    </div>
+</div>
+
+
+<!-- ================== BEGIN BASE JS ================== -->
 <script src="../Content/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="../Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!--[if lt IE 9]>
+    <script src="../Content/crossbrowserjs/html5shiv.js"></script>
+    <script src="../Content/crossbrowserjs/respond.min.js"></script>
+<![endif]-->
+<!-- ================== END BASE JS ================== -->
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
 <script src="../Content/plugins/DataTables/media/js/jquery.dataTables.js"></script>
 <script src="../Content/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
 <script src="../Content/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+<!-- ================== END PAGE LEVEL JS ================== -->
+
 <script type="text/javascript">
 
         var assetListVM;
@@ -59,21 +109,21 @@
                     "processing": true,
                     "deferRender": true,
                     "columns": [
-                        
+
                         { "title": "First Name", "data": "FirstName", "searchable": true, },
                         { "title": "Last Name", "data": "LastName", "searchable": true, },
-                        { "title": "Client Status", "data": "CStatusId", "searchable": true, },
-                        { "title": "Phone Status", "data": "PStatusId", "searchable": true, },
-                        { "title": "Participation Reason", "data": "ParticipationId", "searchable": true },
+                        { "title": "Client Status", "data": "ClientStatus", "searchable": true, },
+                        { "title": "Phone Status", "data": "PhoneStatus", "searchable": true, },
+                        { "title": "Participation Reason", "data": "ParticipationReason", "searchable": true },
                                {
                                 "title": "Actions",
                                    "data": "ClientId",
                                 "searchable": false,
                                 "sortable": false,
                                 "render": function (data, type, full, meta) {
-                                    return '<a href="@Url.Action("Edit", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("Delete", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                    return '<a href="@Url.Action("EditClient", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("DeleteClient", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
                                 }
-                            }                    
+                            }
                     ],
                     "order": [0, "Asc"],
                     });

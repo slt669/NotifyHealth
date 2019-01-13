@@ -4,14 +4,13 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace NotifyHealth.Models
 {
     public class Clients
     {
-        public int ClientId { get; set; }
-        [ReadOnly(true)]
-        public int CStatusId { get; set; }
+        public int? ClientId { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
@@ -25,15 +24,42 @@ namespace NotifyHealth.Models
         [ReadOnly(true)]
         public string MessageAddress { get; set; }
         [ReadOnly(true)]
-        public int? PStatusId { get; set; }
-        public int ParticipationId { get; set; }
-        [ReadOnly(true)]
-        public int ATypeId { get; set; }
+
         public int? OrganizationID { get; set; }
-        //public ClientStatus ClientStatus { get; set; }
-        //public PhoneStatus PhoneStatus { get; set; }
-        //public ParticipationReason ParticipationReason { get; set; }
-        //public AccountType AccountType { get; set; }
+
+        [Display(Name = "CStatusId")]
+        public virtual int CStatusId { get; set; }
+
+        [Display(Name = "Statuses")]
+        public virtual IEnumerable<SelectListItem> ClientStatuses { get; set; }
+
+        [Display(Name = "Client Status")]
+        public string ClientStatus { get; set; }
+        [Display(Name = "PStatusId")]
+        public virtual int PStatusId { get; set; }
+
+        [Display(Name = "Statuses")]
+        public virtual IEnumerable<SelectListItem> PhoneStatuses { get; set; }
+
+        [Display(Name = "Phone Status")]
+        public string PhoneStatus { get; set; }
+
+        [Display(Name = "PStatusId")]
+        public virtual int ParticipationId { get; set; }
+
+        [Display(Name = "Participation Reasons")]
+        public virtual IEnumerable<SelectListItem> ParticipationReasons { get; set; }
+
+        [Display(Name = "Participation Reason")]
+        public string ParticipationReason { get; set; }
+        [Display(Name = "ATypeId")]
+        public virtual int ATypeId { get; set; }
+
+        [Display(Name = "Account Types")]
+        public virtual IEnumerable<SelectListItem> AccountTypes { get; set; }
+
+        [Display(Name = "Account Type")]
+        public string AccountType { get; set; }
 
         //public ICollection<ClientMemberships> ClientMemberships { get; set; }
         //public ICollection<Queue> Queue { get; set; }

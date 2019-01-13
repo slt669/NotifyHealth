@@ -20,33 +20,54 @@
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 
 </head>
-<ol class="breadcrumb pull-right">
-    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-    <li class="breadcrumb-item active">Notifications</li>
-</ol>
 <h1 class="page-header">Notifications</h1>
 <div class="section-container section-with-top-border">
     <p class="m-b-20">
 
     </p>
     <!-- begin panel -->
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("Create","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
+
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateNotification","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Notifications
     </button>
     <div class="panel pagination-inverse m-b-0 clearfix">
 
         <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
     </div>
-    @*<table id="assets-data-table" class="table  table-striped  table-hover  cell-border compact" cellspacing="0" style="width:100%;"></table>*@
+
+</div>
+<div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="createAssetContainer">
+    </div>
 </div>
 
+<div class="modal fade" id="editAssetModal" tabindex="-1" role="dialog" aria-labelledby="EditAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="editAssetContainer">
+    </div>
+</div>
+<div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="DeleteAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="deleteAssetContainer">
+    </div>
+</div>
 
-
+<!-- ================== BEGIN BASE JS ================== -->
 <script src="../Content/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="../Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!--[if lt IE 9]>
+    <script src="../Content/crossbrowserjs/html5shiv.js"></script>
+    <script src="../Content/crossbrowserjs/respond.min.js"></script>
+<![endif]-->
+<!-- ================== END BASE JS ================== -->
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
 <script src="../Content/plugins/DataTables/media/js/jquery.dataTables.js"></script>
 <script src="../Content/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
 <script src="../Content/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+<!-- ================== END PAGE LEVEL JS ================== -->
+
+
+
 <script type="text/javascript">
 
         var assetListVM;
@@ -93,16 +114,16 @@
                             "title": "Period", "data": "Period", "searchable": true,
                         },
                         { "title": "Text", "data": "Text", "searchable": true, },
-                        { "title": "NotificationType", "data": "NTypeId", "searchable": true, },
-                        { "title": "Status", "data": "StatusId", "searchable": true, },
-                        { "title": "Campaigns", "data": "CampaignId", "searchable": true, },
+                        { "title": "Notification Type", "data": "NotificationType", "searchable": true, },
+                        { "title": "Status", "data": "Status", "searchable": true, },
+                        { "title": "Campaigns", "data": "Campaign", "searchable": true, },
                                 {
                                 "title": "Actions",
                                     "data": "NotificationId",
                                 "searchable": false,
                                 "sortable": false,
                                 "render": function (data, type, full, meta) {
-                                    return '<a href="@Url.Action("Edit", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("Delete", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                    return '<a href="@Url.Action("EditNotification", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("DeleteNotification", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
                                 }
                             }
 

@@ -427,6 +427,51 @@ namespace NotifyHealth.Data_Access_Layer
             }
         }
 
+        public void LogoutSession(Int32 SessionId, String SessionGUID)
+        {
+            ReturnValidationError = "99999";
+
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                StoredProcedure = "usp109LogoutSession";
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@SessionId", SqlDbType.Int, 4).Value = SessionId;
+                    command.Parameters.Add("@SessionGUID", SqlDbType.VarChar, 36).Value = SessionGUID;
+                    command.Parameters.Add("@ValidationMessage", SqlDbType.NVarChar, 500).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader[0].ToString());
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+
         /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///  /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///   /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -471,6 +516,7 @@ namespace NotifyHealth.Data_Access_Layer
                         PD.Name = reader["Name"] as string;
                         PD.ProgramId = reader["Program_ID"] as int? ?? default(int);
                         PD.StatusId = reader["Status_ID"] as int? ?? default(int);
+                        PD.Status = reader["Value"] as string;
                         PL.Add(PD);
                     }
 
@@ -528,8 +574,10 @@ namespace NotifyHealth.Data_Access_Layer
                         Campaigns CD = new Campaigns();
                         CD.CampaignId = reader["Campaign_ID"] as int? ?? default(int);
                         CD.Description = reader["Description"] as string;
-                        CD.Name = reader["Name"] as string;
+                        CD.Name = reader["Campaign"] as string;
                         CD.ProgramId = reader["Program_ID"] as int? ?? default(int);
+                        CD.Status = reader["Value"] as string;
+                        CD.Program = reader["Program"] as string;
                         CL.Add(CD);
                     }
 
@@ -591,6 +639,9 @@ namespace NotifyHealth.Data_Access_Layer
                         ND.Period = reader["Period"] as int? ?? default(int);
                         ND.StatusId = reader["Status_ID"] as int? ?? default(int);
                         ND.Text = reader["Text"] as string;
+                        ND.NotificationType = reader["NotificationType"] as string;
+                        ND.Campaign = reader["Campaign"] as string;
+                        ND.Status = reader["Value"] as string;
                         NL.Add(ND);
                     }
 
@@ -656,6 +707,10 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.PhoneNumber = reader["Phone_Number"] as string;
                         CD.PStatusId = reader["P_Status_ID"] as int? ?? default(int);
                         CD.CStatusId = reader["C_Status_ID"] as int? ?? default(int);
+                        CD.ParticipationReason = reader["ParticipationReason"] as string;
+                        CD.ClientStatus = reader["ClientStatus"] as string;
+                        CD.PhoneStatus = reader["PhoneStatus"] as string;
+                        CD.AccountType = reader["AccountType"] as string;
                         CL.Add(CD);
                     }
 
@@ -716,6 +771,431 @@ namespace NotifyHealth.Data_Access_Layer
 
 
                 }
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public void UpdateCampaigns(int? OrganizationId, string Description, string Name, int? ProgramId, char Delete)
+        {
+            //ReturnValidationError = "99999";
+
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp007UpdateCampaigns";
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@ProgramId", SqlDbType.BigInt, 4).Value = ProgramId;
+                    command.Parameters.Add("@Description", SqlDbType.VarChar, 200).Value = Description;
+                    command.Parameters.Add("@Name", SqlDbType.VarChar, 200).Value = Name;
+                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader[0].ToString());
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public void UpdateNotifications(int? OrganizationId, string Text, int Period, int? NotificationId, char Delete)
+        {
+            //ReturnValidationError = "99999";
+
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp008UpdateNotifications";
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@NotificationId", SqlDbType.BigInt, 4).Value = NotificationId;
+                    command.Parameters.Add("@Text", SqlDbType.VarChar, 200).Value = Text;
+                    command.Parameters.Add("@Period", SqlDbType.Int, 200).Value = Period;
+                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader[0].ToString());
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public void UpdateClients(int? OrganizationId, string FirstName, string LastName, int? ClientId, char Delete)
+        {
+            //ReturnValidationError = "99999";
+
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp009UpdateClients";
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@ClientId", SqlDbType.BigInt, 4).Value = ClientId;
+                    command.Parameters.Add("@FirstName", SqlDbType.VarChar, 200).Value = FirstName;
+                    command.Parameters.Add("@LastName", SqlDbType.Int, 200).Value = LastName;
+                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader[0].ToString());
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public List<SelectListItem> GetClientStatus(string selected = "")
+        {
+            try
+            {
+                var strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                var StoredProcedure = "usp110GetClientStatus";
+
+                List<SelectListItem> sqs = new List<SelectListItem>();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        SelectListItem sq = new SelectListItem();
+                        sq.Value = reader["C_Status_ID"].ToString();
+                        sq.Text = reader["Value"].ToString();
+                        if (selected == sq.Value)
+                        {
+                            sq.Selected = true;
+                        }
+
+
+                        sqs.Add(sq);
+
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                }
+                return sqs;
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public List<SelectListItem> GetAccountTypes(string selected = "")
+        {
+            try
+            {
+                var strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                var StoredProcedure = "usp111GetAccountTypes";
+
+                List<SelectListItem> sqs = new List<SelectListItem>();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        SelectListItem sq = new SelectListItem();
+                        sq.Value = reader["A_Type_ID"].ToString();
+                        sq.Text = reader["Value"].ToString();
+                        if (selected == sq.Value)
+                        {
+                            sq.Selected = true;
+                        }
+
+
+                        sqs.Add(sq);
+
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                }
+                return sqs;
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public List<SelectListItem> GetNotificationTypes(string selected = "")
+        {
+            try
+            {
+                var strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                var StoredProcedure = "usp112GetNotificationTypes";
+
+                List<SelectListItem> sqs = new List<SelectListItem>();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        SelectListItem sq = new SelectListItem();
+                        sq.Value = reader["N_Type_ID"].ToString();
+                        sq.Text = reader["Value"].ToString();
+                        if (selected == sq.Value)
+                        {
+                            sq.Selected = true;
+                        }
+
+
+                        sqs.Add(sq);
+
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                }
+                return sqs;
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public List<SelectListItem> GetParticipationReasons(string selected = "")
+        {
+            try
+            {
+                var strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                var StoredProcedure = "usp113GetParticipationReasons";
+
+                List<SelectListItem> sqs = new List<SelectListItem>();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        SelectListItem sq = new SelectListItem();
+                        sq.Value = reader["Participation_ID"].ToString();
+                        sq.Text = reader["Value"].ToString();
+                        if (selected == sq.Value)
+                        {
+                            sq.Selected = true;
+                        }
+
+
+                        sqs.Add(sq);
+
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                }
+                return sqs;
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public List<SelectListItem> GetPhoneStatus(string selected = "")
+        {
+            try
+            {
+                var strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                var StoredProcedure = "usp114GetPhoneStatus";
+
+                List<SelectListItem> sqs = new List<SelectListItem>();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        SelectListItem sq = new SelectListItem();
+                        sq.Value = reader["P_Status_ID"].ToString();
+                        sq.Text = reader["Value"].ToString();
+                        if (selected == sq.Value)
+                        {
+                            sq.Selected = true;
+                        }
+
+
+                        sqs.Add(sq);
+
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                }
+                return sqs;
             }
             catch (Exception ex)
             {

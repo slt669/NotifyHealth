@@ -1,1 +1,38 @@
-﻿
+﻿@model NotifyHealth.Models.Campaigns
+
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+
+            <h4 class="modal-title">Edit</h4>
+        </div>
+
+        @using (Ajax.BeginForm("EditCampaigns", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "UpdateAssetSuccess", UpdateTargetId = "frmEdit" }, new { @class = "form-horizontal", role = "form" }))
+
+        {
+
+
+
+            <div class="modal-body" id="frmEdit">
+                @Html.Partial("_CampaignsModal")
+            </div>
+
+
+
+
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                <input type="submit" class="btn btn-primary" name="Save" value="Save">
+            </div>
+
+        }
+    </div>
+</div>

@@ -87,12 +87,12 @@ namespace NotifyHealth.Controllers
 
         // GET: Asset/Create
         //[SessionFilterAttribute]
-        public ActionResult Create(int? organizationID)
+        public ActionResult CreateProgram(int? organizationID)
         {
             var model = new Programs();
             //string id = RouteData.Values["userID"].ToString();
             List<Programs> dtsource = MyGlobalProgramsInitializer();
-
+            model.Statuses = GetStatusList();
             model.OrganizationID = organizationID;
             return View("_CreateProgramsPartial", model);
         }
@@ -132,7 +132,7 @@ namespace NotifyHealth.Controllers
             //var asset = DbContext.Assets.FirstOrDefault(x => x.AssetID == id);
             List<Programs> dtsource = MyGlobalProgramsInitializer();
             Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == testID);
-
+            edit.Statuses = GetStatusList();
             //AssetViewModel assetViewModel = MapToViewModel(asset);
 
 
@@ -310,7 +310,7 @@ namespace NotifyHealth.Controllers
             var model = new Campaigns();
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
-
+            model.Statuses = GetStatusList();
             model.CampaignId = campaignId;
             return View("_CreateCampaignsPartial", model);
         }
@@ -344,7 +344,7 @@ namespace NotifyHealth.Controllers
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             Campaigns edit = dtsource.FirstOrDefault(x => x.ProgramId == testID);
-
+            edit.Statuses = GetStatusList();
 
 
 
@@ -368,7 +368,7 @@ namespace NotifyHealth.Controllers
                 ModelState.Clear();
                 List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
                 char delete = 'N';
-                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateCampaigns(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
             }
             catch (Exception ex)
             {
@@ -403,7 +403,7 @@ namespace NotifyHealth.Controllers
                 List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
                 char delete = 'Y';
-                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateCampaigns(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
             }
             catch (Exception ex)
             {
@@ -479,13 +479,14 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
-        public ActionResult CreateNotification(int notificationId)
+        public ActionResult CreateNotification(int? organizationID)
         {
             var model = new Notifications();
-
+            model.Statuses = GetStatusList();
+            model.NotificationTypes = db.GetNotificationTypes();
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
-            model.NotificationId = notificationId;
+            model.OrganizationID = organizationID;
             return View("_CreateNotificationsPartial", model);
         }
 
@@ -503,7 +504,7 @@ namespace NotifyHealth.Controllers
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
             char delete = 'N';
-            db.UpdateNotifications(model.CampaignId, model.NTypeId, model.Period, model.Text, delete);
+            db.UpdateNotifications(model.CampaignId, model.Text, model.Period, model.NotificationId, delete);
 
 
 
@@ -518,8 +519,8 @@ namespace NotifyHealth.Controllers
 
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
             Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == testID);
-
-
+            edit.Statuses = GetStatusList();
+            edit.NotificationTypes = db.GetNotificationTypes();
 
 
             if (Request.IsAjaxRequest())
@@ -542,7 +543,7 @@ namespace NotifyHealth.Controllers
                 ModelState.Clear();
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
                 char delete = 'N';
-                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateNotifications(model.CampaignId, model.Text, model.Period, model.NotificationId, delete);
             }
             catch (Exception ex)
             {
@@ -577,7 +578,7 @@ namespace NotifyHealth.Controllers
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
                 char delete = 'Y';
-                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateNotifications(model.CampaignId, model.Text, model.Period, model.NotificationId, delete);
             }
             catch (Exception ex)
             {
@@ -645,13 +646,16 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
-        public ActionResult CreateClient(int clientId)
+        public ActionResult CreateClient(int? organizationID)
         {
             var model = new Clients();
 
             List<Clients> dtsource = MyGlobalClientsInitializer();
-
-            model.ClientId = clientId;
+            model.ClientStatuses = db.GetClientStatus();
+            model.AccountTypes = db.GetAccountTypes();
+            model.ParticipationReasons = db.GetParticipationReasons();
+            model.PhoneStatuses = db.GetPhoneStatus();
+            model.ClientId = organizationID;
             return View("_CreateClientsPartial", model);
         }
 
@@ -669,7 +673,7 @@ namespace NotifyHealth.Controllers
             List<Clients> dtsource = MyGlobalClientsInitializer();
 
             char delete = 'N';
-            db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+            db.UpdateClients(model.OrganizationID, model.FirstName, model.LastName, model.ClientId, delete);
 
 
 
@@ -684,7 +688,10 @@ namespace NotifyHealth.Controllers
 
             List<Clients> dtsource = MyGlobalClientsInitializer();
             Clients edit = dtsource.FirstOrDefault(x => x.ClientId == testID);
-
+            edit.ClientStatuses = db.GetClientStatus();
+            edit.AccountTypes = db.GetAccountTypes();
+            edit.ParticipationReasons = db.GetParticipationReasons();
+            edit.PhoneStatuses = db.GetPhoneStatus();
 
 
 
@@ -708,7 +715,7 @@ namespace NotifyHealth.Controllers
                 ModelState.Clear();
                 List<Clients> dtsource = MyGlobalClientsInitializer();
                 char delete = 'N';
-                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateClients(model.OrganizationID, model.FirstName, model.LastName, model.ClientId, delete);
             }
             catch (Exception ex)
             {
@@ -743,7 +750,7 @@ namespace NotifyHealth.Controllers
                 List<Clients> dtsource = MyGlobalClientsInitializer();
 
                 char delete = 'Y';
-                db.UpdatePrograms(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateClients(model.OrganizationID, model.FirstName, model.LastName, model.ClientId, delete);
             }
             catch (Exception ex)
             {
@@ -752,6 +759,16 @@ namespace NotifyHealth.Controllers
 
             return RedirectToAction("Clients", new { clientId = model.ClientId });
 
+        }
+
+        public SelectList GetStatusList()
+        {
+            SelectList asl = new SelectList(new List<SelectListItem>
+            {
+                new SelectListItem{ Text = "Enabled", Value = "1"},
+                new SelectListItem{ Text = "Disabled", Value = "0"},
+            }, "Value", "Text");
+            return asl;
         }
         /// <summary>
         /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

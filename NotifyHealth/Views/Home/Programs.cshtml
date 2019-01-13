@@ -20,18 +20,13 @@
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 
 </head>
-
-<ol class="breadcrumb pull-right">
-    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-    <li class="breadcrumb-item active">Programs</li>
-</ol>
 <h1 class="page-header">Programs</h1>
 <div class="section-container section-with-top-border">
     <p class="m-b-20">
    
     </p>
     <!-- begin panel -->
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("Create","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateProgram","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Programs
     </button>
     <div class="panel pagination-inverse m-b-0 clearfix">
@@ -127,7 +122,7 @@
                             "title": "Description", "data": "Description", "searchable": true,
                         },
                         {
-                            "title": "StatusId", "data": "StatusId", "searchable": true,
+                            "title": "Status", "data": "Status", "searchable": true,
                         },
                               {
                                 "title": "Actions",

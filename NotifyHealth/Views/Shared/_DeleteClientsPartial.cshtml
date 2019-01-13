@@ -1,1 +1,72 @@
-﻿
+﻿@model NotifyHealth.Models.Clients
+
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Delete Clients</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+
+        </div>
+
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneCarrier)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneCarrier)
+                </dd>
+
+            </dl>
+            @using (Html.BeginForm("DeleteClients", "Home", null))
+            {
+                @*@using (Ajax.BeginForm("DeleteSpeedDial", "Services", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "DeleteAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
+                    {*@
+
+
+                @*@Html.ActionLink("Back to List", "SpeedDial", null, new { data_dismiss = "modal" })*@
+
+                <div class="modal-footer">
+                    @Html.HiddenFor(x => x.FirstName)
+                    @Html.HiddenFor(x => x.LastName)
+                    @Html.HiddenFor(x => x.PhoneNumber)
+                    @Html.HiddenFor(x => x.PhoneCarrier)
+
+                    <button type="button" data-dismiss="modal" data-url="@Url.Action("Back to List","Home",null)" class="btn btn-secondary">Back to List</button>
+                    <input type="submit" class="btn btn-primary" name="Delete" value="Delete">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
