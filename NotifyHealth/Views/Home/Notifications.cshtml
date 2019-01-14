@@ -27,9 +27,14 @@
     </p>
     <!-- begin panel -->
 
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateNotification","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" onclick="@Url.Action("NotificationWizard","Home", new { @organizationID = Request["organizationID"] })" @*data-url="@Url.Action("NotificationWizard","Home", new { @organizationID = Request["organizationID"] })"*@ id="btnCreateAsset">
         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Notifications
     </button>
+
+    <button type="button" class="btn btn-success btn-md" onclick="@Url.Action("NotificationWizard","Home", new { @organizationID = Request["organizationID"] })">
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> NotificationWizard
+    </button>
+    @Html.ActionLink("NotificationWizard", "NotificationWizard")
     <div class="panel pagination-inverse m-b-0 clearfix">
 
         <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>

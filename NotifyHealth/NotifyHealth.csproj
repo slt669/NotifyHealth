@@ -5465,6 +5465,8 @@
     <Content Include="Views\Shared\_EditClientsPartial.cshtml" />
     <Content Include="Views\Shared\_DeleteClientsPartial.cshtml" />
     <Content Include="Views\Shared\_ClientsModal.cshtml" />
+    <Content Include="Views\Home\NotificationWizard.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

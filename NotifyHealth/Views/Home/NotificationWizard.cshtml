@@ -1,0 +1,240 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<body>
+
+
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">
+        New Notification Wizard<br>
+        <small>Follow the wizard to add new notifications to send to your clients.</small>
+    </h1>
+    <!-- end page-header -->
+    <!-- begin form-wizard -->
+    <form action="/" method="POST" data-parsley-validate="true" name="form-wizard" class="form-input-flat">
+        <!-- begin #wizard -->
+        <div id="wizard">
+            <ol>
+                <li>
+                    Select Program
+                </li>
+                <li>
+                    Select Campaign
+                </li>
+                <li>
+                    Notification Details
+                </li>
+                <li>
+                    Approve Creation
+                </li>
+                <li>
+                    Status
+                </li>
+            </ol>
+            <!-- begin wizard step-1 -->
+            <div class="wizard-step-1">
+                <fieldset>
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-6 -->
+                        <div class="col-lg-6 offset-lg-3">
+                            <h3 class="form-header form-header-lg m-b-10"><span class="icon text-purple"><i class="fab fa-dropbox"></i></span> Select Program</h3>
+                            <p class="m-b-20">
+
+                            </p>
+                            <div class="form-group m-b-20">
+                                <select class="form-control form-control-lg" name="program" data-parsley-required="true" data-parsley-group="wizard-step-1">
+                                    <option value="">Please select Program</option>
+                                    <option value="1">Interaction</option>
+                                    <option value="2">Pregnancy</option>
+                                    <option value="2">Addiction</option>
+                                </select>
+                            </div>
+                            <div class="f-s-11 text-muted">
+                                <span class="text-danger">*</span> Selected Program defines which campaigns that are available in step 2.
+                            </div>
+                        </div>
+                        <!-- end col-6 -->
+                    </div>
+                    <!-- end col-6 -->
+                </fieldset>
+            </div>
+            <!-- end wizard step-1 -->
+            <!-- begin wizard step-2 -->
+            <div class="wizard-step-2">
+                <fieldset>
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-6 -->
+                        <div class="col-lg-6 offset-lg-3">
+                            <h3 class="form-header form-header-lg m-b-10"><span class="icon text-purple"><i class="fab fa-dropbox"></i></span> Select Campaign</h3>
+                            <p class="m-b-20">
+                                Select which Campaign that you want to add a new Notification.
+                            </p>
+                            <div class="form-group m-b-20">
+                                <select class="form-control form-control-lg" name="camapign" data-parsley-required="true" data-parsley-group="wizard-step-2">
+                                    <option value="">Please select Campaign</option>
+                                    <option value="2">Milestones</option>
+                                    <option value="3">Test and Screenings</option>
+                                    <option value="4">At Risk</option>
+                                    <option value="5">First Child</option>
+                                    <option value="6">Multiples Birth</option>
+                                </select>
+                            </div>
+                            <div class="f-s-11 text-muted">
+                                <span class="text-danger">*</span> Notifications are grouped into Campaigns. This simple grouping allows you to send targeted messages to your clients.
+                            </div>
+                        </div>
+                        <!-- end col-6 -->
+                    </div>
+                    <!-- end col-6 -->
+                </fieldset>
+            </div>
+            <!-- end wizard step-2 -->
+            <!-- begin wizard step-3 -->
+            <div class="wizard-step-3">
+                <fieldset>
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-6 -->
+                        <div class="col-lg-6 offset-lg-3">
+                            <h3 class="form-header form-header-lg m-b-10"><span class="icon text-success"><i class="fab fa-dropbox"></i></span> Notification Details</h3>
+                            <p class="m-b-20">
+
+                            </p>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Type</label>
+                                        <select name="Type" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required>
+                                            <option value="">Select Type</option>
+                                            <option value="1" selected="selected">Day</option>
+                                            <option value="2">Week</option>
+                                            <option value="3">Month</option>
+                                            <option value="4">Year</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Period</label>
+                                        <input type="text" name="period" placeholder="" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required />
+                                        <div class="f-s-11 text-muted">
+                                            <span class="text-danger">*</span> The number of Days, Weeks, Months, or Years after a client's campaign start date for them to receive this message.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Text</label>
+                                    <input type="text" name="text" placeholder="" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required />
+                                    <div class="f-s-11 text-muted">
+                                        <span class="text-danger">*</span> The body of the message. This is the text that the client will receive.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select name="status" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required>
+                                        <option value="">Select Status</option>
+                                        <option value="0">Disabled</option>
+                                        <option value="1" selected="selected">Enabled</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col-6 -->
+                    </div>
+                    <!-- end row -->
+                </fieldset>
+            </div>
+            <!-- end wizard step-3 -->
+            <!-- begin wizard step-4 -->
+            <div class="wizard-step-4">
+                <fieldset>
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-6 -->
+                        <div class="col-lg-6 offset-lg-3">
+                            <h3 class="form-header form-header-lg m-b-10"><span class="icon text-success"><i class="fab fa-dropbox"></i></span> Confirm Notification Details</h3>
+                            <p class="m-b-20">
+
+                            </p>
+
+
+                            <p class="m-b-20">Review the details entered in Step 4. </p>
+                            <div class="f-s-11 text-muted">
+                                <span class="text-danger">*</span> If the details are wrong, Select <bold>Previous</bold> to correct.
+                            </div>
+                </fieldset>
+            </div>
+            <!-- end wizard step-5 -->
+            <div class="wizard-step-5">
+                <fieldset>
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-6 -->
+                        <div class="col-lg-6 offset-lg-3">
+                            <h3 class="form-header form-header-lg m-b-10"><span class="icon text-success"><i class="fab fa-dropbox"></i></span> Success or Failure</h3>
+                            <p class="m-b-20">
+
+                            </p>
+
+
+                            <p class="m-b-20">Notification Successfully Added or Failed to Add to [CAMPAIGN NAME]</p>
+                            <p><a href="javascript:;" class="btn btn-success btn-lg">Create Another or Contact Support?</a></p>
+                            <p class="m-b-20"></p>
+                            <div class="f-s-11 text-muted">
+                                <span class="text-danger">*</span> If possible, disable PREVIOUS BUTTON ON THIS STEP.
+                            </div>
+                </fieldset>
+            </div>
+
+            <!-- end wizard step-5 -->
+
+        </div>
+        <!-- end #wizard -->
+    </form>
+    <!-- end form-wizard -->
+    <!-- end #content -->
+    <!-- end page container -->
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.bundle.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="../Content/crossbrowserjs/html5shiv.js"></script>
+        <script src="../Content/crossbrowserjs/respond.min.js"></script>
+    <![endif]-->
+    <script src="../Content/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../Content/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <!-- ================== END BASE JS ================== -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="../Content/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
+    <script src="../Content/plugins/parsley/dist/parsley.js"></script>
+    <script src="../Content/plugins/bootstrap-wizard/js/bwizard.min.js"></script>
+    <script src="../Content/js/page-form-wizards.demo.min.js"></script>
+    <script src="../Content/js/demo.min.js"></script>
+    <script src="../Content/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+        $(document).ready(function () {
+
+            PageDemo.init();
+        });
+    </script>
+</body>
+</html>

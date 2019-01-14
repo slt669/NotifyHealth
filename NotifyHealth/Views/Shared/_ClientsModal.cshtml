@@ -41,24 +41,26 @@
         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
             @Html.TextBoxFor(model => model.PhoneNumber, new { @id = "PhoneNumber", @class = "col-sm-12 form-control" })
+    
+
         </div>
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneCarrier, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.PhoneCarrier, new { @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @class = "col-sm-12 form-control" })
         </div>
     </div>
     <div class="form-group row">
-        @Html.LabelFor(model => model.MessageAddress, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+        @Html.LabelFor(model => model.MessageAddress, htmlAttributes: new {@class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.MessageAddress, new { @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.MessageAddress, new { @id = "MessageAddress", @class = "col-sm-12 form-control" })
         </div>
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneStatus, htmlAttributes: new {@class = "col-sm-12 form-control-label" })
         <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.PStatusId, Model.PhoneStatuses, new { @id = "PhoneStatus", @class = "col-sm-12 form-control" })
+            @Html.DropDownListFor(model => model.PStatusId, Model.PhoneStatuses, new { @id = "PStatusId", @class = "col-sm-12 form-control" })
             @Html.ValidationMessageFor(model => model.PStatusId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -91,11 +93,13 @@
                     data: { PhoneNumber},
                     dataType: "json",
                     success: function (data) {
-                        $("#PhoneStatus").val(data["status"]);
+                        $("#PhoneCarrier").val(data["CarrierName"]);
+                        $("#MessageAddress").val(data["Address"]);
+                        $("#Wireless").val(data["Wireless"]);
+                        $("#PStatusId").val(data["ParsedStatus"]);
                     },
                     error: function (jqXHR, exception) {
-                    alert("Hello! I am an alert box!!");
-
+                
                     }
                     });
 

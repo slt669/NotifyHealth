@@ -14,9 +14,9 @@ namespace NotifyHealth.Models
         public string Address { get; set; }
 
         public string Wireless { get; set; }
+        public int ParsedStatus { get; set; }
+
         public string Status { get; set; }
-
-
     }
 
 }

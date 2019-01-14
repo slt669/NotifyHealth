@@ -480,6 +480,23 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
+
+                public ActionResult NotificationWizard(int? organizationID)
+        {
+
+
+            try
+            {
+
+                ViewBag.organizationID = 1;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+            }
+            return View();
+        }
+
         public ActionResult CreateNotification(int? organizationID)
         {
             var model = new Notifications();
@@ -777,7 +794,7 @@ namespace NotifyHealth.Controllers
         /// </summary>
         /// <param name="apiPhoneNumber"></param>
 
-        public void CollectPhoneStatus(string apiPhoneNumber)
+        public JsonResult CollectPhoneStatus(string apiPhoneNumber)
         {
             // These values dont reside in the function in the service but are here to support the example
             string apiCompany = "notify";
@@ -806,7 +823,7 @@ namespace NotifyHealth.Controllers
             XmlElement root = apiResponseXML.DocumentElement;
             XmlNodeList nodes = root.SelectNodes("/response/results/result");
 
-            ClientPhone Phone =null;
+            ClientPhone Phone = null;
 
             foreach (XmlNode node in nodes)
             {
@@ -819,9 +836,18 @@ namespace NotifyHealth.Controllers
                     Status = node["status"].InnerText
                 };
             }
-            Phone.Status.ToString();
 
-            apiReq.Dispose();
+            if (Phone.Status == "OK")
+            {
+                Phone.ParsedStatus = 2;
+            }
+            else
+            {
+                Phone.ParsedStatus = 1;
+
+            }
+                    apiReq.Dispose();
+            return Json(Phone, JsonRequestBehavior.AllowGet);
         }
 
 

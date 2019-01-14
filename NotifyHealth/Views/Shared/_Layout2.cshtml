@@ -1,0 +1,139 @@
+﻿
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]--><head>
+    <meta charset="utf-8" />
+    <title>Notify Health | Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
+    <link href="../Content/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="../Content/plugins/bootstrap/bootstrap-4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/plugins/font-awesome/5.1/css/all.css" rel="stylesheet" />
+    <link href="../Content/css/animate.min.css" rel="stylesheet" />
+    <link href="../Content/css/style.min.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../Content/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
+    <link href="../Content/plugins/bootstrap-wizard/css/bwizard.min.css" rel="stylesheet" />
+    <link href="../Content/plugins/parsley/src/parsley.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../Content/plugins/pace/pace.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+    <!--[if lt IE 9]>
+        <script src="../Content/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
+    <!-- end #page-loader -->
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-container page-header-fixed page-sidebar-fixed page-with-two-sidebar page-with-footer">
+
+        <!-- end #header -->
+        <!-- begin #sidebar -->
+        <div id="sidebar" class="sidebar">
+            <!-- begin sidebar scrollbar -->
+            <div data-scrollbar="true" data-height="100%">
+                <!-- begin sidebar nav -->
+                <ul class="nav">
+                    <li class="nav-user">
+                        <div class="image">
+                            @*<img src="../Content/img/user_profile.jpg" alt="" />*@
+                        </div>
+                        <div class="info">
+                            <div class="name dropdown">
+                                <a href="javascript:;" data-toggle="dropdown">Organisation</a>
+                                @*<ul class="dropdown-menu">
+                                        <li><a href="javascript:;">Edit Profile</a></li>
+                                        <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
+                                        <li><a href="javascript:;">Calendar</a></li>
+                                        <li><a href="javascript:;">Setting</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;">Log Out</a></li>
+                                    </ul>*@
+                            </div>
+                            @*<div class="position">Front End Designer</div>*@
+                        </div>
+                    </li>
+                    <li class="nav-header">Navigation</li>
+                    <li class="has-sub active">
+                        <a href="@Url.Action("Index", "Home")">
+                            <i class="fa fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="@Url.Action("Notifications", "Home")">
+                            <span class="badge pull-right">10</span>
+                            <i class="fa fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Programs", "Home")">
+                            <i class="fa fa-gem"></i>
+                            <span>Programs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Campaigns", "Home")">
+                            <i class="fa fa-suitcase"></i>
+                            <span>Campaigns</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Clients", "Home")">
+                            <i class="fa fa-calendar"></i>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                    <li class="divider has-minify-btn">
+                        <!-- begin sidebar minify button -->
+                        <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-left"></i></a>
+                        <!-- end sidebar minify button -->
+                    </li>
+                </ul>
+                <!-- end sidebar nav -->
+            </div>
+            <!-- end sidebar scrollbar -->
+        </div>
+        <div class="sidebar-bg"></div>
+        <!-- end #sidebar -->
+        <!-- begin #content -->
+        <div id="content" class="content">
+            @Html.Partial("_LoginPartial")
+            @RenderBody()
+
+            <!-- begin #footer -->
+            <div id="footer" class="footer">
+                <span class="pull-right">
+                    <a href="javascript:;" class="btn-scroll-to-top" data-click="scroll-top">
+                        <i class="fa fa-arrow-up"></i> <span class="hidden-xs">Back to Top</span>
+                    </a>
+                </span>
+                &copy; @DateTime.Now.Year.ToString() <b>Notify Health</b> All Right Reserved
+            </div>
+            <!-- end #footer -->
+        </div>
+        <!-- end #content -->
+
+
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            App.init();
+        });
+    </script>
+</body>
+</html>
+

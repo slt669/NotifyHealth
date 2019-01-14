@@ -103,8 +103,7 @@
                                 </div>
                             </div>
 
-                            @Html.TextBoxFor(m => m.PhotoFile, new { type = "file" })
-                            @*<img src="@Url.Content(Model.PhotoFile.ToString())" alt="Image" />*@
+
 
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.CheckPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
@@ -120,13 +119,19 @@
 
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Update Settings" name="updateBtn" id="updateBtn" class="btn btn-primary" />
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(m => m.PhotoFile, new { type = "file" })
+                                    @*<img src="@Url.Content(Model.PhotoFile.ToString())" alt="Image" />*@
+                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Update Settings" name="updateBtn" id="updateBtn" class="btn btn-primary" />
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
 
