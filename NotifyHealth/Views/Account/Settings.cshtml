@@ -10,14 +10,10 @@
         <strong>@ViewBag.Message</strong>
     </div>
 }
-<ol class="breadcrumb pull-right">
-    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-    <li class="breadcrumb-item active">Settings</li>
-</ol>
 <h1 class="page-header">Settings</h1>
 <br />
 <div class="container-fluid">
-    @using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { id = "asform" }))
+    @using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { id = "asform" , enctype = "multipart/form-data" }))
     {
 
         <div class="card">
@@ -107,7 +103,8 @@
                                 </div>
                             </div>
 
-
+                            @Html.TextBoxFor(m => m.PhotoFile, new { type = "file" })
+                            @*<img src="@Url.Content(Model.PhotoFile.ToString())" alt="Image" />*@
 
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.CheckPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })

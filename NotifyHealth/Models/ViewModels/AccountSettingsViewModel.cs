@@ -60,6 +60,7 @@ namespace NotifyHealth.Models.ViewModels
 
         public int UserRole { get; set; }
 
+        public HttpPostedFileBase PhotoFile { get; set; }
     }
 
 

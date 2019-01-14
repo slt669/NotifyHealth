@@ -152,6 +152,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Campaigns.cs" />
+    <Compile Include="Models\ClientPhone.cs" />
     <Compile Include="Models\Clients.cs" />
     <Compile Include="Models\DataTablesViewModel.cs" />
     <Compile Include="Models\Notifications.cs" />

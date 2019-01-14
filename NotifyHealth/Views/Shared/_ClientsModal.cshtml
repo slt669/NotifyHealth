@@ -40,7 +40,7 @@
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @id = "PhoneNumber", @class = "col-sm-12 form-control" })
         </div>
     </div>
     <div class="form-group row">
@@ -56,9 +56,9 @@
         </div>
     </div>
     <div class="form-group row">
-        @Html.LabelFor(model => model.PhoneStatus, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+        @Html.LabelFor(model => model.PhoneStatus, htmlAttributes: new {@class = "col-sm-12 form-control-label" })
         <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.PStatusId, Model.PhoneStatuses, new { @class = "col-sm-12 form-control" })
+            @Html.DropDownListFor(model => model.PStatusId, Model.PhoneStatuses, new { @id = "PhoneStatus", @class = "col-sm-12 form-control" })
             @Html.ValidationMessageFor(model => model.PStatusId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -78,5 +78,27 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+        $(document).ready(function () {
 
+            $('#PhoneNumber').keyup(function () {
 
+                var PhoneNumber = $("#PhoneNumber").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CollectPhoneStatus", "Home")?' + 'apiPhoneNumber=' + PhoneNumber,
+                    data: { PhoneNumber},
+                    dataType: "json",
+                    success: function (data) {
+                        $("#PhoneStatus").val(data["status"]);
+                    },
+                    error: function (jqXHR, exception) {
+                    alert("Hello! I am an alert box!!");
+
+                    }
+                    });
+
+        });
+    });
+</script>
