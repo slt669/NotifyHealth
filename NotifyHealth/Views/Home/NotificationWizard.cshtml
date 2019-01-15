@@ -1,4 +1,5 @@
-﻿@{
+﻿@model NotifyHealth.Models.Notifications
+@{
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
@@ -20,7 +21,9 @@
     </h1>
     <!-- end page-header -->
     <!-- begin form-wizard -->
-    <form action="/" method="POST" data-parsley-validate="true" name="form-wizard" class="form-input-flat">
+    @using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { @name = "form-wizard", @dataparsleyvalidate = "true", @class = "form-input-flat" }))
+    {
+
         <!-- begin #wizard -->
         <div id="wizard">
             <ol>
@@ -52,12 +55,13 @@
 
                             </p>
                             <div class="form-group m-b-20">
-                                <select class="form-control form-control-lg" name="program" data-parsley-required="true" data-parsley-group="wizard-step-1">
-                                    <option value="">Please select Program</option>
-                                    <option value="1">Interaction</option>
-                                    <option value="2">Pregnancy</option>
-                                    <option value="2">Addiction</option>
-                                </select>
+                                @Html.DropDownListFor(model => model.ProgramID, Model.Programs, new { @id = "Program-DropDownID", @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-1", required = String.Empty })
+                                @*<select class="form-control form-control-lg" name="program" data-parsley-required="true" data-parsley-group="wizard-step-1">
+                                        <option value="">Please select Program</option>
+                                        <option value="1">Interaction</option>
+                                        <option value="2">Pregnancy</option>
+                                        <option value="2">Addiction</option>
+                                    </select>*@
                             </div>
                             <div class="f-s-11 text-muted">
                                 <span class="text-danger">*</span> Selected Program defines which campaigns that are available in step 2.
@@ -81,14 +85,12 @@
                                 Select which Campaign that you want to add a new Notification.
                             </p>
                             <div class="form-group m-b-20">
-                                <select class="form-control form-control-lg" name="camapign" data-parsley-required="true" data-parsley-group="wizard-step-2">
-                                    <option value="">Please select Campaign</option>
-                                    <option value="2">Milestones</option>
-                                    <option value="3">Test and Screenings</option>
-                                    <option value="4">At Risk</option>
-                                    <option value="5">First Child</option>
-                                    <option value="6">Multiples Birth</option>
-                                </select>
+                                <select class="form-control form-control-lg" data-parsley-required="true" data-parsley-group="wizard-step-2" id="SelectedMakeId" name="SelectedMakeId"></select>
+
+                                @*   @Html.DropDownListFor(model => model.CampaignId, Model.Campaigns, new { @id = "CampaignDDL", @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-2", required = String.Empty })*@
+
+                                @* @Html.DropDownListFor(x => x.CampaignId, new SelectList(Enumerable.Empty<SelectListItem>(), new { @id = "CampaignDDL", @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-2", required = String.Empty }))*@
+
                             </div>
                             <div class="f-s-11 text-muted">
                                 <span class="text-danger">*</span> Notifications are grouped into Campaigns. This simple grouping allows you to send targeted messages to your clients.
@@ -128,7 +130,8 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Period</label>
-                                        <input type="text" name="period" placeholder="" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required />
+                                        @Html.TextBoxFor(model => model.Period, new { @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-3", required = String.Empty })
+                                        @*<input type="text" name="period" placeholder="" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required />*@
                                         <div class="f-s-11 text-muted">
                                             <span class="text-danger">*</span> The number of Days, Weeks, Months, or Years after a client's campaign start date for them to receive this message.
                                         </div>
@@ -138,7 +141,8 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <label>Text</label>
-                                    <input type="text" name="text" placeholder="" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required />
+                                    @Html.TextBoxFor(model => model.Text, new { @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-3", required = String.Empty })
+                                    @*<input type="text" name="text" placeholder="" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required />*@
                                     <div class="f-s-11 text-muted">
                                         <span class="text-danger">*</span> The body of the message. This is the text that the client will receive.
                                     </div>
@@ -147,11 +151,12 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select name="status" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required>
-                                        <option value="">Select Status</option>
-                                        <option value="0">Disabled</option>
-                                        <option value="1" selected="selected">Enabled</option>
-                                    </select>
+                                    @Html.DropDownListFor(model => model.StatusId, Model.Statuses, new { @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-3", required = String.Empty })
+                                    @*<select name="status" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required>
+                                            <option value="">Select Status</option>
+                                            <option value="0">Disabled</option>
+                                            <option value="1" selected="selected">Enabled</option>
+                                        </select>*@
                                 </div>
                             </div>
                         </div>
@@ -206,7 +211,8 @@
 
         </div>
         <!-- end #wizard -->
-    </form>
+
+    }
     <!-- end form-wizard -->
     <!-- end #content -->
     <!-- end page container -->
@@ -232,8 +238,45 @@
 
     <script>
         $(document).ready(function () {
-
             PageDemo.init();
+            $("#Program-DropDownID").val(1);
+    $('#Program-DropDownID').change(function () {
+       
+                var ProgramID = $('#Program-DropDownID').find('option:selected').val();
+
+                 $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCampaignDDL", "Home")?programID=' + ProgramID,
+                    dataType: "json",
+                    success: function (data) {
+                        $.each(data, function (index, value) {
+                            $("#SelectedMakeId").append("<option value=" + value.Value + ">" + value.Text + "</option>");
+                        });
+
+                    }
+                 });
+            });
+
+            $(window).load(function ()
+            {
+                
+     
+                     var ProgramID = $('#Program-DropDownID').find('option:selected').val();
+
+                 $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCampaignDDL", "Home")?programID=' + ProgramID,
+                    dataType: "json",
+                    success: function (data) {
+                        $.each(data, function (index, value) {
+                            $("#SelectedMakeId").append("<option value=" + value.Value + ">" + value.Text + "</option>");
+                        });
+
+                    }
+
+                });
+
+            });
         });
     </script>
 </body>

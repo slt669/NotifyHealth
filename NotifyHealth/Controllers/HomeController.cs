@@ -480,21 +480,41 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
-
-                public ActionResult NotificationWizard(int? organizationID)
-        {
-
-
+   
+        public ActionResult NotificationWizard(int? organizationID)
+        {    var model = new Notifications();
             try
             {
+                model.Statuses = GetStatusList();
+                model.Programs = db.GetProgramDDL();
+                model.Campaigns = db.GetCampaignDDL(organizationID);
+              
+                model.NotificationTypes = db.GetNotificationTypes();
+                List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
-                ViewBag.organizationID = 1;
+                model.OrganizationID = organizationID;
+            }      
+     
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+            }
+           return View(model);
+        }
+    
+        public JsonResult GetCampaignDDL(int? programID)
+        {
+            var model = new Notifications();
+            try
+            {
+                model.Campaigns = db.GetCampaignDDL(programID);
+
             }
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
             }
-            return View();
+            return Json(model.Campaigns, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult CreateNotification(int? organizationID)

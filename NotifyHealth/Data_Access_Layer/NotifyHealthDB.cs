@@ -539,7 +539,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return PL;
         }
-        public List<Campaigns> GetCampaigns(int? organizationID)
+        public List<Campaigns> GetCampaigns(int? Organization_ID)
         {
 
             List<Campaigns> CL = new List<Campaigns>();
@@ -559,7 +559,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
+                    command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = @Organization_ID;
                     //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
 
                     //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
@@ -1300,6 +1300,123 @@ namespace NotifyHealth.Data_Access_Layer
                         SelectListItem sq = new SelectListItem();
                         sq.Value = reader["P_Status_ID"].ToString();
                         sq.Text = reader["Value"].ToString();
+                        if (selected == sq.Value)
+                        {
+                            sq.Selected = true;
+                        }
+
+
+                        sqs.Add(sq);
+
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                }
+                return sqs;
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public List<SelectListItem> GetProgramDDL(string selected = "")
+        {
+            try
+            {
+                var strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                var StoredProcedure = "usp118GetProgramDDL";
+
+                List<SelectListItem> sqs = new List<SelectListItem>();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        SelectListItem sq = new SelectListItem();
+                        sq.Value = reader["Program_ID"].ToString();
+                        sq.Text = reader["Name"].ToString();
+                        if (selected == sq.Value)
+                        {
+                            sq.Selected = true;
+                        }
+
+
+                        sqs.Add(sq);
+
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+
+                    ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+
+                    if (ReturnError != "0")
+                    {
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                    }
+
+                }
+                return sqs;
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public List<SelectListItem> GetCampaignDDL(int? Program_ID, string selected = "")
+        {
+            try
+            {
+                var strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                var StoredProcedure = "usp119GetCampaignDDL";
+
+                List<SelectListItem> sqs = new List<SelectListItem>();
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@Program_ID", SqlDbType.BigInt, 4).Value = Program_ID;
+                    command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        SelectListItem sq = new SelectListItem();
+                        sq.Value = reader["Campaign_ID"].ToString();
+                        sq.Text = reader["Name"].ToString();
                         if (selected == sq.Value)
                         {
                             sq.Selected = true;
