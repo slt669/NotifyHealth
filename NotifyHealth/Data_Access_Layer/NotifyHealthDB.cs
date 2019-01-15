@@ -733,7 +733,133 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return CL;
         }
+        public List<ClientMemberships> GetClientMemberships(int? organizationID,int? ClientID)
+        {
 
+            List<ClientMemberships> CM = new List<ClientMemberships>();
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp0116GetClientMemberships";
+
+
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.CommandTimeout = 6000;
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
+                    command.Parameters.Add("@Client_ID", SqlDbType.BigInt, 4).Value = 10001;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ClientMemberships CD = new ClientMemberships();
+                        CD.ClientMembershipId = reader["Client_Membership_ID"] as int? ?? default(int);
+                        CD.ClientId = reader["Client_ID"] as int? ?? default(int);
+                        CD.CampaignId = reader["Campaign_ID"] as int? ?? default(int);
+                        DateTime? Date = reader["Start"] as DateTime?;
+                        CD.Start = Date.ToString();
+                        CD.Program = reader["Program"] as string;
+                        CD.Campaign = reader["Campaign"] as string;
+                        CM.Add(CD);
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+            return CM;
+        }
+
+        public List<Transactions> GetTransactions(int? organizationID, int? ClientID)
+        {
+
+            List<Transactions> T = new List<Transactions>();
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp117GetGetTransactions";
+
+
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.CommandTimeout = 6000;
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
+                    command.Parameters.Add("@Client_ID", SqlDbType.BigInt, 4).Value = 10001;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Transactions TD = new Transactions();
+                        TD.TransactionId = reader["Transaction_ID"] as int? ?? default(int);
+                        TD.ClientId = reader["Client_ID"] as int? ?? default(int);
+                        TD.Notification = reader["Notification"] as string;
+                        TD.Result = reader["Result"] as string;
+                        DateTime? Timestamp = reader["Timestamp"] as DateTime?;
+                        TD.Timestamp = Timestamp.ToString();
+
+                        T.Add(TD);
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+            return T;
+        }
         public void UpdatePrograms(int? OrganizationId,string Description, string Name, int? ProgramId,char Delete)
         {
             //ReturnValidationError = "99999";

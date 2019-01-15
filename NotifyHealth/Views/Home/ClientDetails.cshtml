@@ -1,0 +1,219 @@
+﻿@model NotifyHealth.Models.Clients
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
+
+    <link href="../Content/plugins/font-awesome/5.1/css/all.css" rel="stylesheet" />
+    <link href="../Content/css/animate.min.css" rel="stylesheet" />
+    <link href="../Content/css/style.min.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+</head>
+<h1 class="page-header">Client Details</h1>
+<div class="section-container section-with-top-border">
+    <p class="m-b-20">
+
+    </p>
+
+</div>
+<div class="panel pagination-inverse m-b-0 clearfix">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneCarrier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneCarrier)
+        </dd>
+
+    </dl>
+</div>
+
+
+<button type="button" data-dismiss="modal" data-url="@Url.Action("Back to List","Home",null)" class="btn btn-secondary">Back to List</button>
+<div class="panel pagination-inverse m-b-0 clearfix">
+
+    <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
+</div>
+<div class="panel pagination-inverse m-b-0 clearfix">
+
+    <table id="transactions-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
+</div>
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="../Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="../Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!--[if lt IE 9]>
+    <script src="../Content/crossbrowserjs/html5shiv.js"></script>
+    <script src="../Content/crossbrowserjs/respond.min.js"></script>
+<![endif]-->
+<!-- ================== END BASE JS ================== -->
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="../Content/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+<script src="../Content/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+<script src="../Content/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+<!-- ================== END PAGE LEVEL JS ================== -->
+
+
+<script type="text/javascript">
+
+    var assetListVM;
+    var transactionsListVM;
+    $(function () {
+        assetListVM = {
+            dt: null,
+
+            init: function () {
+                dt = $('#assets-data-table').DataTable(
+                    {
+                        "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
+                        responsive: true,
+                        dom: 'lf<"col-button"B>rtip',
+                        scrollX: true,
+                        scrollCollapse: true,
+                        buttons: ['colvis'],
+                        fixedColumns: {
+                            leftColumns: 2
+                        },
+
+                        "serverSide": true,
+                        "ajax": {
+                            "type": "POST",
+                            "url": '/Home/GetClientMemberships',
+                            "contentType": 'application/json; charset=utf-8',
+                            'data': function (data) {
+                                data = JSON.stringify(data);
+                                return data;
+                            }
+                        },
+                        "fnServerParams": function (aoData) {
+
+
+                            aoData['organizationID'] = 1;
+
+
+                        },
+                        "paging": true,
+                        "processing": true,
+                        "deferRender": true,
+                        "columns": [
+                            {
+
+                                "title": "Program", "data": "Program", "searchable": true,
+                            },
+                            {
+                                "title": "Campaign", "data": "Campaign", "searchable": true,
+                            },
+                            {
+                                "title": "Start", "data": "Start", "searchable": true,
+                            },
+                        ],
+                        "order": [0, "Asc"],
+                    });
+            },
+
+            refresh: function () {
+                dt.ajax.reload();
+            }
+               
+          
+
+        }
+        // initialize the datatables
+        assetListVM.init();
+    });
+    $(function () {
+        transactionsListVM = {
+            dt: null,
+
+            init: function () {
+                dt = $('#transactions-data-table').DataTable(
+                    {
+                        "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
+                        responsive: true,
+                        dom: 'lf<"col-button"B>rtip',
+                        scrollX: true,
+                        scrollCollapse: true,
+                        buttons: ['colvis'],
+                        fixedColumns: {
+                            leftColumns: 2
+                        },
+
+                        "serverSide": true,
+                        "ajax": {
+                            "type": "POST",
+                            "url": '/Home/GetTransactions',
+                            "contentType": 'application/json; charset=utf-8',
+                            'data': function (data) {
+                                data = JSON.stringify(data);
+                                return data;
+                            }
+                        },
+                        "fnServerParams": function (aoData) {
+
+
+                            aoData['organizationID'] = 1;
+
+
+                        },
+                        "paging": true,
+                        "processing": true,
+                        "deferRender": true,
+                        "columns": [
+                            {
+
+                                "title": "Notification", "data": "Notification", "searchable": true,
+                            },
+                            {
+                                "title": "Status", "data": "Result", "searchable": true,
+                            },
+                            {
+                                "title": "When", "data": "Timestamp", "searchable": true,
+                            },
+                        ],
+                        "order": [0, "Asc"],
+                    });
+            },
+
+            refresh: function () {
+                dt.ajax.reload();
+            }
+
+
+
+        }
+        // initialize the datatables
+        transactionsListVM.init();
+    });
+</script>

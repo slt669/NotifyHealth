@@ -664,6 +664,74 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
+        public JsonResult GetClientMemberships(DTParameters param, int? organizationID)
+        {
+            List<ClientMemberships> dtsource = new List<ClientMemberships>();
+
+
+            dtsource = db.GetClientMemberships(1, 10001);
+
+            TempData["dtsource"] = dtsource;
+            TempData["organizationID"] = organizationID;
+
+
+            List<String> columnSearch = new List<string>();
+
+            foreach (var col in param.Columns)
+            {
+                columnSearch.Add(col.Search.Value);
+            }
+
+            if (param.Length == -1)
+            {
+                param.Length = dtsource.Count();
+            }
+            List<ClientMemberships> data = new ResultSet().GetResult(param.Search.Value, param.SortOrder, param.Start, param.Length, dtsource, columnSearch);
+            int count = new ResultSet().Count(param.Search.Value, dtsource, columnSearch);
+            DTResult<ClientMemberships> result = new DTResult<ClientMemberships>
+            {
+                draw = param.Draw,
+                data = data,
+                recordsFiltered = count,
+                recordsTotal = count
+            };
+
+            return Json(result);
+        }
+        public JsonResult GetTransactions(DTParameters param, int? organizationID)
+        {
+            List<Transactions> dtsource = new List<Transactions>();
+
+
+            dtsource = db.GetTransactions(1, 10001);
+
+            TempData["dtsource"] = dtsource;
+            TempData["organizationID"] = organizationID;
+
+
+            List<String> columnSearch = new List<string>();
+
+            foreach (var col in param.Columns)
+            {
+                columnSearch.Add(col.Search.Value);
+            }
+
+            if (param.Length == -1)
+            {
+                param.Length = dtsource.Count();
+            }
+            List<Transactions> data = new ResultSet().GetResult(param.Search.Value, param.SortOrder, param.Start, param.Length, dtsource, columnSearch);
+            int count = new ResultSet().Count(param.Search.Value, dtsource, columnSearch);
+            DTResult<Transactions> result = new DTResult<Transactions>
+            {
+                draw = param.Draw,
+                data = data,
+                recordsFiltered = count,
+                recordsTotal = count
+            };
+
+            return Json(result);
+        }
         public ActionResult CreateClient(int? organizationID)
         {
             var model = new Clients();
@@ -697,6 +765,19 @@ namespace NotifyHealth.Controllers
 
             return RedirectToAction("Clients", new { controller = "Home", clientId = model.ClientId });
 
+        }
+
+        public ActionResult ClientDetails(int? organizationID)
+        {
+            var model = new Clients();
+
+            List<Clients> dtsource = MyGlobalClientsInitializer();
+            model.ClientStatuses = db.GetClientStatus();
+            model.AccountTypes = db.GetAccountTypes();
+            model.ParticipationReasons = db.GetParticipationReasons();
+            model.PhoneStatuses = db.GetPhoneStatus();
+            model.ClientId = organizationID;
+            return View("ClientDetails", model);
         }
         // GET: Asset/Edit/5
         //[SessionFilterAttribute]
@@ -846,7 +927,32 @@ namespace NotifyHealth.Controllers
                 Phone.ParsedStatus = 1;
 
             }
-                    apiReq.Dispose();
+
+            if (Phone.Wireless == "y")
+            {
+                if (string.IsNullOrEmpty(Phone.Address))
+                { Phone.ParticipationId = 11; }
+                // Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.
+
+               //  Submit button creates client account or updates user record but DO NOT INSERT into queue table
+
+                else
+                { Phone.ParticipationId = 12; }
+                //  Submit button inserts new record into Queue table and adds record to clients table
+                
+                // ASK FOR TEST DATA API TEST
+            }
+
+            else
+            {
+                Phone.ParticipationId = 8;
+                 // Popup warning that given phone number is NOT A WIRELESS PHONE NUMBER AND CANNOT BE USED to send messages but client will be saved
+
+                //Submit button creates client account or updates user record but DO NOT INSERT into queue table
+            }
+
+
+            apiReq.Dispose();
             return Json(Phone, JsonRequestBehavior.AllowGet);
         }
 

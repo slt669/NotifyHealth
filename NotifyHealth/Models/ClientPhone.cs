@@ -17,6 +17,8 @@ namespace NotifyHealth.Models
         public int ParsedStatus { get; set; }
 
         public string Status { get; set; }
+        public int ParticipationId { get; set; }
+        
     }
 
 }

@@ -152,6 +152,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Campaigns.cs" />
+    <Compile Include="Models\ClientMemberships.cs" />
     <Compile Include="Models\ClientPhone.cs" />
     <Compile Include="Models\Clients.cs" />
     <Compile Include="Models\DataTablesViewModel.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\Programs.cs" />
     <Compile Include="Models\ResultSet.cs" />
+    <Compile Include="Models\Transactions.cs" />
     <Compile Include="Models\ViewModels\AccountSettingsViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -5467,6 +5469,7 @@
     <Content Include="Views\Shared\_ClientsModal.cshtml" />
     <Content Include="Views\Home\NotificationWizard.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Home\ClientDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
