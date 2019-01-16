@@ -7,15 +7,16 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Delete Clients</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Delete Clients</h4>
+
 
 
 
         </div>
 
         <div class="modal-body">
-            <dl class="dl-horizontal">
+            <dl class="m-b-20">
                 <dt>
                     @Html.DisplayNameFor(model => model.FirstName)
                 </dt>
@@ -50,20 +51,20 @@
             @using (Html.BeginForm("DeleteClients", "Home", null))
             {
                 @*@using (Ajax.BeginForm("DeleteSpeedDial", "Services", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "DeleteAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
-                    {*@
+            {*@
 
 
                 @*@Html.ActionLink("Back to List", "SpeedDial", null, new { data_dismiss = "modal" })*@
 
-                <div class="modal-footer">
-                    @Html.HiddenFor(x => x.FirstName)
-                    @Html.HiddenFor(x => x.LastName)
-                    @Html.HiddenFor(x => x.PhoneNumber)
-                    @Html.HiddenFor(x => x.PhoneCarrier)
-
-                    <button type="button" data-dismiss="modal" data-url="@Url.Action("Back to List","Home",null)" class="btn btn-secondary">Back to List</button>
-                    <input type="submit" class="btn btn-primary" name="Delete" value="Delete">
-                </div>
+            <div class="modal-footer">
+                @Html.HiddenFor(x => x.FirstName)
+                @Html.HiddenFor(x => x.LastName)
+                @Html.HiddenFor(x => x.PhoneNumber)
+                @Html.HiddenFor(x => x.PhoneCarrier)
+                @Html.HiddenFor(x => x.ClientId)
+                <button type="button" data-dismiss="modal" data-url="@Url.Action("Back to List","Home",null)" class="btn btn-secondary">Back to List</button>
+                <input type="submit" class="btn btn-primary" name="Delete" value="Delete">
+            </div>
             }
         </div>
     </div>

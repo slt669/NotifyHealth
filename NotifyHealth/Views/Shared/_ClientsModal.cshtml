@@ -17,8 +17,8 @@
     <div class="form-group row">
         @Html.LabelFor(model => model.ClientStatus, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.ClientId, Model.ClientStatuses, new { @class = "col-sm-12 form-control" })
-            @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.CStatusId, Model.ClientStatuses, new { @class = "col-sm-12 form-control" })
+            @Html.ValidationMessageFor(model => model.CStatusId, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -41,8 +41,6 @@
         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
             @Html.TextBoxFor(model => model.PhoneNumber, new { @id = "PhoneNumber", @class = "col-sm-12 form-control" })
-    
-
         </div>
     </div>
     <div class="form-group row">
@@ -93,10 +91,10 @@
                     data: { PhoneNumber},
                     dataType: "json",
                     success: function (data) {
-                        $("#PhoneCarrier").val(data["CarrierName"]);
-                        $("#MessageAddress").val(data["Address"]);
+                        $("#PhoneCarrier").val(data["PhoneCarrier"]);
+                        $("#MessageAddress").val(data["MessageAddress"]);
                         $("#ParticipationId").val(data["ParticipationId"]);
-                        $("#PStatusId").val(data["ParsedStatus"]);
+                        $("#PStatusId").val(data["PStatusId"]);
                     },
                     error: function (jqXHR, exception) {
                 

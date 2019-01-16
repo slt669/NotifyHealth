@@ -43,9 +43,9 @@ namespace NotifyHealth.Controllers
         public List<Programs> MyGlobalProgramsInitializer()
         {
             List<Programs> dtsource = new List<Programs>();
-            dtsource = (List<Programs>)TempData["dtsource"];
+            dtsource = (List<Programs>)TempData["Programsdtsource"];
 
-            TempData["dtsource"] = dtsource;
+            TempData["Programsdtsource"] = dtsource;
             return dtsource;
         }
 
@@ -58,7 +58,7 @@ namespace NotifyHealth.Controllers
 
             dtsource = db.GetPrograms(Convert.ToInt32(Session["organizationID"]));
 
-            TempData["dtsource"] = dtsource;
+            TempData["Programsdtsource"] = dtsource;
             TempData["organizationID"] = organizationID;
 
 
@@ -254,9 +254,9 @@ namespace NotifyHealth.Controllers
         public List<Campaigns> MyGlobalCampaignsInitializer()
         {
             List<Campaigns> dtsource = new List<Campaigns>();
-            dtsource = (List<Campaigns>)TempData["dtsource"];
+            dtsource = (List<Campaigns>)TempData["Campaignsdtsource"];
 
-            TempData["dtsource"] = dtsource;
+            TempData["Campaignsdtsource"] = dtsource;
             return dtsource;
         }
         /// <summary>
@@ -288,7 +288,7 @@ namespace NotifyHealth.Controllers
 
             dtsource = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
 
-            TempData["dtsource"] = dtsource;
+            TempData["Campaignsdtsource"] = dtsource;
             TempData["organizationID"] = organizationID;
 
 
@@ -316,14 +316,14 @@ namespace NotifyHealth.Controllers
             return Json(result);
         }
 
-        public ActionResult CreateCampaign(int? campaignId)
+        public ActionResult CreateCampaign(int? organizationID)
         {
             var model = new Campaigns();
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             model.Programs = db.GetProgramDDL();
             model.Statuses = GetStatusList();
-            model.CampaignId = campaignId;
+            model.OrganizationID = organizationID;
             return View("_CreateCampaignsPartial", model);
         }
 
@@ -331,17 +331,17 @@ namespace NotifyHealth.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreateCampaigns(Campaigns model)
         {
-            if (!ModelState.IsValid)
-            {
+            //if (!ModelState.IsValid)
+            //{
 
-                return View("_CampaignsModal", model);
-            }
-            ViewBag.Message = "Sucess or Failure Message";
+            //    return View("_CampaignsModal", model);
+            //}
+            //ViewBag.Message = "Sucess or Failure Message";
             ModelState.Clear();
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
             char delete = 'N';
-            db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, delete);
+            db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name,model.CampaignId, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]),model.StatusId,delete);
 
 
 
@@ -383,23 +383,23 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
+            //    if (!ModelState.IsValid)
+            //    {
 
-                    return View("_EditCampaignsPartial", model);
-                }
-                ViewBag.Message = "Sucess or Failure Message";
-                ModelState.Clear();
+            //        return View("_EditCampaignsPartial", model);
+            //    }
+            //    ViewBag.Message = "Sucess or Failure Message";
+            //    ModelState.Clear();
                 List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
                 char delete = 'N';
-                db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.CampaignId, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
             }
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
 
             }
-            return PartialView("_EditCampaignsPartial", model);
+            return RedirectToAction("Campaigns", new { controller = "Home", campaignId = model.CampaignId });
 
         }
 
@@ -409,10 +409,6 @@ namespace NotifyHealth.Controllers
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
             Campaigns delete = dtsource.FirstOrDefault(x => x.CampaignId == id);
-
-
-
-
             if (Request.IsAjaxRequest())
                 return PartialView("_DeleteCampaignsPartial", delete);
             return View(delete);
@@ -427,7 +423,7 @@ namespace NotifyHealth.Controllers
                 List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
                 char delete = 'Y';
-                db.UpdateCampaigns(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.CampaignId, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
             }
             catch (Exception ex)
             {
@@ -448,9 +444,9 @@ namespace NotifyHealth.Controllers
         public List<Notifications> MyGlobalNotificationsInitializer()
         {
             List<Notifications> dtsource = new List<Notifications>();
-            dtsource = (List<Notifications>)TempData["dtsource"];
+            dtsource = (List<Notifications>)TempData["Notificationsdtsource"];
 
-            TempData["dtsource"] = dtsource;
+            TempData["Notificationsdtsource"] = dtsource;
             return dtsource;
         }
         public ActionResult Notifications(int? organizationID)
@@ -476,7 +472,7 @@ namespace NotifyHealth.Controllers
 
             dtsource = db.GetNotifications(Convert.ToInt32(Session["organizationID"]));
 
-            TempData["dtsource"] = dtsource;
+            TempData["Notificationsdtsource"] = dtsource;
             TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
 
 
@@ -510,7 +506,7 @@ namespace NotifyHealth.Controllers
             {
                 model.Statuses = GetStatusList();
                 model.Programs = db.GetProgramDDL();
-                model.Campaigns = db.GetCampaignDDL(organizationID);
+                //model.Campaigns = db.GetCampaignDDL(Convert.ToInt32(Session["organizationID"]));
               
                 model.NotificationTypes = db.GetNotificationTypes();
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
@@ -524,7 +520,23 @@ namespace NotifyHealth.Controllers
             }
            return View(model);
         }
-    
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult NotificationWizard(Notifications model)
+        {
+
+            ModelState.Clear();
+            List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+
+            char delete = 'N';
+            db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]), model.Text, model.Period, model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
+
+
+
+            return RedirectToAction("Notifications", new { controller = "Home", NotificationId = model.NotificationId });
+
+        }
+
         public JsonResult GetCampaignDDL(int? programID)
         {
             var model = new Notifications();
@@ -545,6 +557,8 @@ namespace NotifyHealth.Controllers
             var model = new Notifications();
             model.Statuses = GetStatusList();
             model.NotificationTypes = db.GetNotificationTypes();
+            model.Programs = db.GetProgramDDL();
+       
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
             model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
@@ -555,17 +569,12 @@ namespace NotifyHealth.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreateNotifications(Notifications model)
         {
-            if (!ModelState.IsValid)
-            {
 
-                return View("_NotificationsModal", model);
-            }
-            ViewBag.Message = "Sucess or Failure Message";
             ModelState.Clear();
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
             char delete = 'N';
-            db.UpdateNotifications(model.CampaignId, model.Text, model.Period, model.NotificationId, delete);
+            db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]),  model.Text, model.Period,model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
 
 
 
@@ -587,14 +596,13 @@ namespace NotifyHealth.Controllers
         //[SessionFilterAttribute]
         public ActionResult EditNotification(int? id)
         {
-            var testID = 1;
 
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
             Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == id);
             edit.Statuses = GetStatusList();
             edit.NotificationTypes = db.GetNotificationTypes();
-
-
+            edit.Programs = db.GetProgramDDL();
+            edit.Campaigns = db.GetCampaignDDL(edit.ProgramID);
             if (Request.IsAjaxRequest())
                 return PartialView("_EditNotificationsPartial", edit);
             return View(edit);
@@ -606,33 +614,33 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
+                //if (!ModelState.IsValid)
+                //{
 
-                    return View("_EditNotificationsPartial", model);
-                }
-                ViewBag.Message = "Sucess or Failure Message";
+                //    return View("_EditNotificationsPartial", model);
+                //}
+
                 ModelState.Clear();
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
                 char delete = 'N';
-                db.UpdateNotifications(model.CampaignId, model.Text, model.Period, model.NotificationId, delete);
+                db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]), model.Text, model.Period, model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
             }
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
 
             }
-            return PartialView("_EditNotificationsPartial", model);
+            return RedirectToAction("Notifications", new { controller = "Home", NotificationId = model.NotificationId });
 
         }
 
-        public ActionResult DeleteNotification(int? id)
+        public ActionResult DeleteNotification(int id)
         {
-            var testID = 4;
+
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
-            Notifications delete = dtsource.FirstOrDefault(x => x.CampaignId == id);
-
+            Notifications delete = dtsource.FirstOrDefault(x => x.NotificationId == id);
+            delete.NotificationId = id;
 
 
 
@@ -650,7 +658,7 @@ namespace NotifyHealth.Controllers
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
                 char delete = 'Y';
-                db.UpdateNotifications(model.CampaignId, model.Text, model.Period, model.NotificationId, delete);
+                db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]), model.Text, model.Period, model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
             }
             catch (Exception ex)
             {
@@ -663,9 +671,9 @@ namespace NotifyHealth.Controllers
         public List<Clients> MyGlobalClientsInitializer()
         {
             List<Clients> dtsource = new List<Clients>();
-            dtsource = (List<Clients>)TempData["dtsource"];
+            dtsource = (List<Clients>)TempData["Clientsdtsource"];
 
-            TempData["dtsource"] = dtsource;
+            TempData["Clientsdtsource"] = dtsource;
             return dtsource;
         }
         public ActionResult Clients(int? organizationID)
@@ -691,7 +699,7 @@ namespace NotifyHealth.Controllers
 
             dtsource = db.GetClients(Convert.ToInt32(Session["organizationID"]));
 
-            TempData["dtsource"] = dtsource;
+            TempData["Clientsdtsource"] = dtsource;
             TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
 
 
@@ -725,7 +733,7 @@ namespace NotifyHealth.Controllers
 
             dtsource = db.GetClientMemberships(Convert.ToInt32(Session["organizationID"]), clientID);
 
-            TempData["dtsource"] = dtsource;
+            TempData["ClientMembershipsdtsource"] = dtsource;
             TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
 
 
@@ -759,7 +767,7 @@ namespace NotifyHealth.Controllers
 
             dtsource = db.GetTransactions(Convert.ToInt32(Session["organizationID"]), clientID);
 
-            TempData["dtsource"] = dtsource;
+            TempData["Transactionsdtsource"] = dtsource;
             TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
 
 
@@ -795,7 +803,7 @@ namespace NotifyHealth.Controllers
             model.AccountTypes = db.GetAccountTypes();
             model.ParticipationReasons = db.GetParticipationReasons();
             model.PhoneStatuses = db.GetPhoneStatus();
-            model.ClientId = organizationID;
+            
             return View("_CreateClientsPartial", model);
         }
 
@@ -803,17 +811,13 @@ namespace NotifyHealth.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreateClients(Clients model)
         {
-            if (!ModelState.IsValid)
-            {
-
-                return View("_ClientsModal", model);
-            }
-            ViewBag.Message = "Sucess or Failure Message";
+ 
+       
             ModelState.Clear();
             List<Clients> dtsource = MyGlobalClientsInitializer();
 
             char delete = 'N';
-            db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.ClientId, delete);
+            db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId,model.ATypeId,model.PhoneNumber,model.MessageAddress,model.ParticipationId,model.PhoneCarrier,model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
 
 
 
@@ -862,29 +866,25 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-
-                    return View("_EditClientsPartial", model);
-                }
-                ViewBag.Message = "Sucess or Failure Message";
+      
                 ModelState.Clear();
                 List<Clients> dtsource = MyGlobalClientsInitializer();
                 char delete = 'N';
-                db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.ClientId, delete);
+                db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId, model.ATypeId, model.PhoneNumber, model.MessageAddress, model.ParticipationId,
+                    model.PhoneCarrier, model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
             }
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
 
             }
-            return PartialView("_EditClientsPartial", model);
 
+            return RedirectToAction("Clients", new { controller = "Home", ClientId = model.ClientId });
         }
 
         public ActionResult DeleteClient(int? id)
         {
-            var testID = 4;
+
             List<Clients> dtsource = MyGlobalClientsInitializer();
 
             Clients delete = dtsource.FirstOrDefault(x => x.ClientId == id);
@@ -906,7 +906,7 @@ namespace NotifyHealth.Controllers
                 List<Clients> dtsource = MyGlobalClientsInitializer();
 
                 char delete = 'Y';
-                db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.ClientId, delete);
+                db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId, model.ATypeId, model.PhoneNumber, model.MessageAddress, model.ParticipationId, model.PhoneCarrier, model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
             }
             catch (Exception ex)
             {
@@ -974,8 +974,8 @@ namespace NotifyHealth.Controllers
                 Phone = new ClientPhone
                 {
                     Number = apiPhoneNumber,
-                    CarrierName = node["carrier_name"].InnerText,
-                    Address = node["sms_address"].InnerText,
+                    PhoneCarrier = node["carrier_name"].InnerText,
+                    MessageAddress = node["sms_address"].InnerText,
                     Wireless = node["wless"].InnerText,
                     Status = node["status"].InnerText
                 };
@@ -983,17 +983,17 @@ namespace NotifyHealth.Controllers
 
             if (Phone.Status == "OK")
             {
-                Phone.ParsedStatus = 2;
+                Phone.PStatusId = 2;
             }
             else
             {
-                Phone.ParsedStatus = 1;
+                Phone.PStatusId = 1;
 
             }
 
             if (Phone.Wireless == "y")
             {
-                if (string.IsNullOrEmpty(Phone.Address))
+                if (string.IsNullOrEmpty(Phone.MessageAddress))
                 { Phone.ParticipationId = 11; }
                 // Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.
 

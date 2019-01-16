@@ -9,8 +9,9 @@
     </p>
 
 </div>
-<div class="panel pagination-inverse m-b-0 clearfix">
-    <dl class="dl-horizontal">
+
+<dl class="m-b-20">
+    <div class="well well-sm">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -18,7 +19,8 @@
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-
+    </div>
+    <div class="well well-sm">
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -26,7 +28,8 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
+    </div>
+    <div class="well well-sm">
         <dt>
             @Html.DisplayNameFor(model => model.Program)
         </dt>
@@ -34,7 +37,8 @@
         <dd>
             @Html.DisplayFor(model => model.Program)
         </dd>
-
+    </div>
+    <div class="well well-sm">
         <dt>
             @Html.DisplayNameFor(model => model.Status)
         </dt>
@@ -42,6 +46,8 @@
         <dd>
             @Html.DisplayFor(model => model.Status)
         </dd>
+    </div>
+    <div class="well well-sm">
         <dt>
             @Html.DisplayNameFor(model => model.RelatedNotifications)
         </dt>
@@ -49,6 +55,5 @@
         <dd>
             @Html.DisplayFor(model => model.RelatedNotifications)
         </dd>
-
-    </dl>
-</div>
+    </div>
+</dl>

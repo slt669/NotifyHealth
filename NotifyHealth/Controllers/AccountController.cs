@@ -74,7 +74,7 @@ namespace NotifyHealth.Controllers
                 Session["organizationID"] = 1;
                 Session["organization"] = "Pregnancy Health";
                 Session["User"] = "Paul Lizer";
-                Session["UserLogon"] = 10000;
+                Session["UserLogon"] = 1;
                 return RedirectToAction("Index", "Home"); // auth succeed 
             }
             // invalid username or password

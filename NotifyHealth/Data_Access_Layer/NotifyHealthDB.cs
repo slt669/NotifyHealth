@@ -912,7 +912,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
-        public void UpdateCampaigns(int? OrganizationId, string Description, string Name, int? ProgramId, char Delete)
+        public void UpdateCampaigns(int? OrganizationId, string Description, string Name, int? CampaignId, int? ProgramId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
             //ReturnValidationError = "99999";
 
@@ -927,12 +927,17 @@ namespace NotifyHealth.Data_Access_Layer
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = OrganizationId;
+                    command.Parameters.Add("@CampaignId", SqlDbType.BigInt, 4).Value = CampaignId;
                     command.Parameters.Add("@ProgramId", SqlDbType.BigInt, 4).Value = ProgramId;
                     command.Parameters.Add("@Description", SqlDbType.VarChar, 200).Value = Description;
                     command.Parameters.Add("@Name", SqlDbType.VarChar, 200).Value = Name;
-                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = StatusId;
                     command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
+                    command.Parameters.Add("@Created_By", SqlDbType.BigInt, 4).Value = Created_By;
+                    command.Parameters.Add("@Edited_By", SqlDbType.BigInt, 4).Value = Edited_By;
+                    command.Parameters.Add("@Created_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
+                    command.Parameters.Add("@Edited_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -957,7 +962,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
-        public void UpdateNotifications(int? OrganizationId, string Text, int Period, int? NotificationId, char Delete)
+        public void UpdateNotifications(int? OrganizationId, string Text, int Period,int NTypeId,int? NotificationId, int? CampaignId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
             //ReturnValidationError = "99999";
 
@@ -972,12 +977,18 @@ namespace NotifyHealth.Data_Access_Layer
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = OrganizationId;
                     command.Parameters.Add("@NotificationId", SqlDbType.BigInt, 4).Value = NotificationId;
                     command.Parameters.Add("@Text", SqlDbType.VarChar, 200).Value = Text;
                     command.Parameters.Add("@Period", SqlDbType.Int, 200).Value = Period;
-                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@NTypeId", SqlDbType.BigInt, 4).Value = NTypeId;
+                    command.Parameters.Add("@CampaignId", SqlDbType.BigInt, 4).Value = CampaignId;
+                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = StatusId;
                     command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
+                    command.Parameters.Add("@Created_By", SqlDbType.BigInt, 4).Value = Created_By;
+                    command.Parameters.Add("@Edited_By", SqlDbType.BigInt, 4).Value = Edited_By;
+                    command.Parameters.Add("@Created_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
+                    command.Parameters.Add("@Edited_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -1002,7 +1013,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
-        public void UpdateClients(int? OrganizationId, string FirstName, string LastName, int? ClientId, char Delete)
+        public void UpdateClients(int? OrganizationId, string FirstName, string LastName,int CStatusId, int PStatusId, int ATypeID,string PhoneNumber, string MessageAddress, int ParticipationID , string PhoneCarrier, int ClientId, int Created_By, int Edited_By, char Delete)
         {
             //ReturnValidationError = "99999";
 
@@ -1017,12 +1028,22 @@ namespace NotifyHealth.Data_Access_Layer
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = OrganizationId;
                     command.Parameters.Add("@ClientId", SqlDbType.BigInt, 4).Value = ClientId;
                     command.Parameters.Add("@FirstName", SqlDbType.VarChar, 200).Value = FirstName;
-                    command.Parameters.Add("@LastName", SqlDbType.Int, 200).Value = LastName;
-                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@LastName", SqlDbType.VarChar, 200).Value = LastName;
+                    command.Parameters.Add("@CStatusID", SqlDbType.BigInt, 4).Value = CStatusId; 
+                    command.Parameters.Add("@PStatusID", SqlDbType.BigInt, 4).Value = PStatusId;
+                    command.Parameters.Add("@ATypeID", SqlDbType.BigInt, 4).Value = ATypeID;
+                    command.Parameters.Add("@PhoneNumber", SqlDbType.VarChar, 12).Value = PhoneNumber;
+                    command.Parameters.Add("@PhoneCarrier", SqlDbType.VarChar, 50).Value = PhoneCarrier;
+                    command.Parameters.Add("@MessageAddress", SqlDbType.VarChar, 50).Value = MessageAddress;
+                    command.Parameters.Add("@ParticipationID", SqlDbType.BigInt, 4).Value = ParticipationID;
                     command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
+                    command.Parameters.Add("@Created_By", SqlDbType.BigInt, 4).Value = Created_By;
+                    command.Parameters.Add("@Edited_By", SqlDbType.BigInt, 4).Value = Edited_By;
+                    command.Parameters.Add("@Created_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
+                    command.Parameters.Add("@Edited_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 

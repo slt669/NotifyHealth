@@ -7,23 +7,30 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Delete Clients</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Delete Notifications</h4>
+
 
 
 
         </div>
 
         <div class="modal-body">
-            <dl class="dl-horizontal">
+            <dl class="m-b-20">
                 <dt>
-                    @Html.DisplayNameFor(model => model.NTypeId)
+                    @Html.DisplayNameFor(model => model.NotificationType)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.NTypeId)
+                    @Html.DisplayFor(model => model.NotificationType)
                 </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Campaign)
+                </dt>
 
+                <dd>
+                    @Html.DisplayFor(model => model.Campaign)
+                </dd>
                 <dt>
                     @Html.DisplayNameFor(model => model.Period)
                 </dt>
@@ -32,11 +39,11 @@
                     @Html.DisplayFor(model => model.Period)
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.StatusId)
+                    @Html.DisplayNameFor(model => model.Status)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.StatusId)
+                    @Html.DisplayFor(model => model.Status)
                 </dd>
                 <dt>
                     @Html.DisplayNameFor(model => model.Text)
@@ -55,15 +62,16 @@
 
                 @*@Html.ActionLink("Back to List", "SpeedDial", null, new { data_dismiss = "modal" })*@
 
-                <div class="modal-footer">
-                    @Html.HiddenFor(x => x.NTypeId)
-                    @Html.HiddenFor(x => x.Period)
-                    @Html.HiddenFor(x => x.Text)
-                    @Html.HiddenFor(x => x.StatusId)
-
-                    <button type="button" data-dismiss="modal" data-url="@Url.Action("Back to List","Home",null)" class="btn btn-secondary">Back to List</button>
-                    <input type="submit" class="btn btn-primary" name="Delete" value="Delete">
-                </div>
+            <div class="modal-footer">
+                @Html.HiddenFor(x => x.NTypeId)
+                @Html.HiddenFor(x => x.Period)
+                @Html.HiddenFor(x => x.Text)
+                @Html.HiddenFor(x => x.StatusId)
+                @Html.HiddenFor(x => x.CampaignId)
+                @Html.HiddenFor(x => x.NotificationId)
+                <button type="button" data-dismiss="modal" data-url="@Url.Action("Back to List","Home",null)" class="btn btn-secondary">Back to List</button>
+                <input type="submit" class="btn btn-primary" name="Delete" value="Delete">
+            </div>
             }
         </div>
     </div>

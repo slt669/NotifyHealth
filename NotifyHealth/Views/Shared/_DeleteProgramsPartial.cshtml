@@ -7,15 +7,16 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Delete Programs</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Delete Programs</h4>
+
 
 
 
         </div>
 
         <div class="modal-body">
-            <dl class="dl-horizontal">
+            <dl class="m-b-20">
                 <dt>
                     @Html.DisplayNameFor(model => model.ProgramId)
                 </dt>
@@ -50,7 +51,7 @@
             @using (Html.BeginForm("DeletePrograms", "Home", null))
             {
                 @*@using (Ajax.BeginForm("DeleteSpeedDial", "Services", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "DeleteAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
-                    {*@
+            {*@
 
 
                 @*@Html.ActionLink("Back to List", "SpeedDial", null, new { data_dismiss = "modal" })*@

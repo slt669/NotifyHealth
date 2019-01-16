@@ -21,7 +21,7 @@
     </h1>
     <!-- end page-header -->
     <!-- begin form-wizard -->
-    @using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { @name = "form-wizard", @dataparsleyvalidate = "true", @class = "form-input-flat" }))
+    @using (Html.BeginForm("NotificationWizard", "Home", FormMethod.Post, new { @name = "form-wizard", @dataparsleyvalidate = "true", @class = "form-input-flat" }))
     {
 
         <!-- begin #wizard -->
@@ -85,7 +85,7 @@
                                 Select which Campaign that you want to add a new Notification.
                             </p>
                             <div class="form-group m-b-20">
-                                <select class="form-control form-control-lg" data-parsley-required="true" data-parsley-group="wizard-step-2" id="SelectedMakeId" name="SelectedMakeId"></select>
+                                <select class="form-control form-control-lg" data-parsley-required="true" data-parsley-group="wizard-step-2" id="CampaignId" name="CampaignId"></select>
 
                                 @*   @Html.DropDownListFor(model => model.CampaignId, Model.Campaigns, new { @id = "CampaignDDL", @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-2", required = String.Empty })*@
 
@@ -118,13 +118,10 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Type</label>
-                                        <select name="Type" class="form-control form-control-lg" data-parsley-group="wizard-step-3" required>
-                                            <option value="">Select Type</option>
-                                            <option value="1" selected="selected">Day</option>
-                                            <option value="2">Week</option>
-                                            <option value="3">Month</option>
-                                            <option value="4">Year</option>
-                                        </select>
+                                                @Html.DropDownListFor(model => model.NTypeId, Model.NotificationTypes, new { @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-3", required = String.Empty })
+                             
+
+                                   
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -179,7 +176,7 @@
                             </p>
 
 
-                            <p class="m-b-20">Review the details entered in Step 4. </p>
+                            <p class="m-b-20">      <input type="submit" class="btn btn-primary" name="Save" value="Save"> </p>
                             <div class="f-s-11 text-muted">
                                 <span class="text-danger">*</span> If the details are wrong, Select <bold>Previous</bold> to correct.
                             </div>
@@ -228,7 +225,7 @@
     <script src="../Content/plugins/jquery-cookie/jquery.cookie.js"></script>
     <!-- ================== END BASE JS ================== -->
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="../Content/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
+
     <script src="../Content/plugins/parsley/dist/parsley.js"></script>
     <script src="../Content/plugins/bootstrap-wizard/js/bwizard.min.js"></script>
     <script src="../Content/js/page-form-wizards.demo.min.js"></script>
@@ -250,7 +247,7 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(data, function (index, value) {
-                            $("#SelectedMakeId").append("<option value=" + value.Value + ">" + value.Text + "</option>");
+                            $("#CampaignId").append("<option value=" + value.Value + ">" + value.Text + "</option>");
                         });
 
                     }
@@ -269,7 +266,7 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(data, function (index, value) {
-                            $("#SelectedMakeId").append("<option value=" + value.Value + ">" + value.Text + "</option>");
+                            $("#CampaignId").append("<option value=" + value.Value + ">" + value.Text + "</option>");
                         });
 
                     }

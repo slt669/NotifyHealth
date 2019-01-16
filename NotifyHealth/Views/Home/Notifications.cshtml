@@ -25,8 +25,10 @@
     <p class="m-b-20">
 
     </p>
-    <!-- begin panel -->
-    <button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("NotificationWizard", "Home", new { @organizationID = Session["organizationID"]})'" >
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateNotification","Home", new { @organizationID = Session["organizationID"]})" id="btnCreateAsset">
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Notifications
+    </button>
+    <button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("NotificationWizard", "Home", new { @organizationID = Session["organizationID"]})'">
         <span class="glyphicon" aria-hidden="true"></span> Notification Wizard
     </button>
     <div class="panel pagination-inverse m-b-0 clearfix">

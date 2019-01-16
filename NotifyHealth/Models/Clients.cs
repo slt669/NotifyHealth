@@ -10,7 +10,7 @@ namespace NotifyHealth.Models
 {
     public class Clients
     {
-        public int? ClientId { get; set; }
+        public int ClientId { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]

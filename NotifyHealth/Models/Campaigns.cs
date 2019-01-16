@@ -9,7 +9,7 @@ namespace NotifyHealth.Models
 {
     public class Campaigns
     {
-        public int? CampaignId { get; set; }
+        public int CampaignId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         [Display(Name = "Status Id")]
