@@ -133,7 +133,8 @@ namespace NotifyHealth.Controllers
             List<Programs> dtsource = MyGlobalProgramsInitializer();
             Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == id);
             edit.Statuses = GetStatusList();
-
+            ViewBag.organizationID = Session["organizationID"];
+            ViewBag.ProgramId = id;
 
 
             if (Request.IsAjaxRequest())
@@ -147,6 +148,8 @@ namespace NotifyHealth.Controllers
             List<Programs> dtsource = MyGlobalProgramsInitializer();
             Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == id);
             edit.Statuses = GetStatusList();
+            ViewBag.organizationID = Session["organizationID"];
+            ViewBag.ProgramId = id;
 
             return View("ProgramDetails", edit);
         }
@@ -246,7 +249,40 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
 
         }
+        public JsonResult GetCampaignsbyProgram(DTParameters param, int? organizationID, int? ProgramId)
+        {
+            List<Campaigns> dtsource = new List<Campaigns>();
 
+
+            dtsource = db.GetCampaignsbyProgram(Convert.ToInt32(Session["organizationID"]), ProgramId);
+
+            TempData["CampaignsbyProgramdtsource"] = dtsource;
+            TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
+
+
+            List<String> columnSearch = new List<string>();
+
+            foreach (var col in param.Columns)
+            {
+                columnSearch.Add(col.Search.Value);
+            }
+
+            if (param.Length == -1)
+            {
+                param.Length = dtsource.Count();
+            }
+            List<Campaigns> data = new ResultSet().GetResult(param.Search.Value, param.SortOrder, param.Start, param.Length, dtsource, columnSearch);
+            int count = new ResultSet().Count(param.Search.Value, dtsource, columnSearch);
+            DTResult<Campaigns> result = new DTResult<Campaigns>
+            {
+                draw = param.Draw,
+                data = data,
+                recordsFiltered = count,
+                recordsTotal = count
+            };
+
+            return Json(result);
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
