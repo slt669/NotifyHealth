@@ -26,7 +26,7 @@
    
     </p>
     <!-- begin panel -->
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateProgram","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateProgram","Home", new { @organizationID = Session["organizationID"]})" id="btnCreateAsset">
         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Programs
     </button>
     <div class="panel pagination-inverse m-b-0 clearfix">
@@ -130,7 +130,7 @@
                                 "searchable": false,
                                 "sortable": false,
                                 "render": function (data, type, full, meta) {
-                                    return '<a href="@Url.Action("Edit", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("Delete", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                    return '<a href="@Url.Action("EditProgram", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("ProgramDetails", "Home")?id=' + data + '"class="details">Details</a> |  <a href="@Url.Action("DeleteProgram", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
                                 }
                             }
 

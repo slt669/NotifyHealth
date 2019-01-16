@@ -37,7 +37,10 @@
             @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    @Html.HiddenFor(x => x.ProgramId)
+    @Html.HiddenFor(x => x.Description)
+    @Html.HiddenFor(x => x.Name)
+    @Html.HiddenFor(x => x.StatusId)
 </div>
 
 

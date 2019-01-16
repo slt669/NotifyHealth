@@ -1,0 +1,38 @@
+﻿@model NotifyHealth.Models.Notifications
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="page-header">Notifications Details</h1>
+<div class="section-container section-with-top-border">
+    <p class="m-b-20">
+
+    </p>
+
+</div>
+<div class="panel pagination-inverse m-b-0 clearfix">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Period)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Period)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>

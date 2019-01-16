@@ -71,7 +71,9 @@ namespace NotifyHealth.Controllers
                 //Session["CustomerType"] = usermanager.accset.CustomerType;
                 //Session["AdminFlag"] = false;
                 //if (returnUrl == "/") returnUrl = "/Home/Index";
-
+                Session["organizationID"] = 1;
+                Session["organization"] = "Pregnancy Health";
+                Session["User"] = "Paul Lizer";
                 return RedirectToAction("Index", "Home"); // auth succeed 
             }
             // invalid username or password

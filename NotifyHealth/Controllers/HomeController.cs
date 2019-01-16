@@ -15,7 +15,7 @@ namespace NotifyHealth.Controllers
         private NotifyHealthDB db = new NotifyHealthDB();
         public ActionResult Index(int? organizationID)
         {
-            ViewBag.organizationID = 1;
+            ViewBag.organizationID = Session["organizationID"];
             return View();
         }
         /// <summary>
@@ -31,7 +31,7 @@ namespace NotifyHealth.Controllers
             try
             {
 
-                ViewBag.organizationID = 1;
+                ViewBag.organizationID = Session["organizationID"];
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace NotifyHealth.Controllers
             List<Programs> dtsource = new List<Programs>();
 
 
-            dtsource = db.GetPrograms(1);
+            dtsource = db.GetPrograms(organizationID);
 
             TempData["dtsource"] = dtsource;
             TempData["organizationID"] = organizationID;
@@ -127,19 +127,28 @@ namespace NotifyHealth.Controllers
         }
         // GET: Asset/Edit/5
         //[SessionFilterAttribute]
-        public ActionResult Edit(int? id)
+        public ActionResult EditProgram(int? id)
         {
-            var testID = 1;
-            //var asset = DbContext.Assets.FirstOrDefault(x => x.AssetID == id);
+
             List<Programs> dtsource = MyGlobalProgramsInitializer();
-            Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == testID);
+            Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == id);
             edit.Statuses = GetStatusList();
-            //AssetViewModel assetViewModel = MapToViewModel(asset);
+
 
 
             if (Request.IsAjaxRequest())
                 return PartialView("_EditProgramsPartial", edit);
             return View(edit);
+        }
+        public ActionResult ProgramDetails(int? id)
+        {
+
+
+            List<Programs> dtsource = MyGlobalProgramsInitializer();
+            Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == id);
+            edit.Statuses = GetStatusList();
+
+            return View("ProgramDetails", edit);
         }
 
         // POST: Asset/Edit/5
@@ -184,12 +193,12 @@ namespace NotifyHealth.Controllers
 
         }
         //    [SessionFilterAttribute]
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteProgram(int? id)
         {
             var testID = 4;
             List<Programs> dtsource = MyGlobalProgramsInitializer();
 
-            Programs delete = dtsource.FirstOrDefault(x => x.ProgramId == testID);
+            Programs delete = dtsource.FirstOrDefault(x => x.ProgramId == id);
 
 
 
@@ -233,7 +242,7 @@ namespace NotifyHealth.Controllers
             //    return Content("success");
             //}
 
-            return RedirectToAction("Programs", new { organizationID = model.ProgramId });
+            return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
 
         }
 
@@ -337,6 +346,17 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Campaigns", new { controller = "Home", campaignId = model.CampaignId });
 
         }
+        public ActionResult CampaignDetails(int? id)
+        {
+
+
+            List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+            Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
+            edit.Statuses = GetStatusList();
+
+
+            return View("CampaignDetails", edit);
+        }
         // GET: Asset/Edit/5
         //[SessionFilterAttribute]
         public ActionResult EditCampaign(int? id)
@@ -344,7 +364,7 @@ namespace NotifyHealth.Controllers
             var testID = 1;
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
-            Campaigns edit = dtsource.FirstOrDefault(x => x.ProgramId == testID);
+            Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
             edit.Statuses = GetStatusList();
 
 
@@ -385,7 +405,7 @@ namespace NotifyHealth.Controllers
             var testID = 4;
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
-            Campaigns delete = dtsource.FirstOrDefault(x => x.CampaignId == testID);
+            Campaigns delete = dtsource.FirstOrDefault(x => x.CampaignId == id);
 
 
 
@@ -549,6 +569,17 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Notifications", new { controller = "Home", campaignId = model.CampaignId });
 
         }
+        public ActionResult NotificationDetails(int? id)
+        {
+
+
+            List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+            Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == id);
+            edit.Statuses = GetStatusList();
+            edit.NotificationTypes = db.GetNotificationTypes();
+
+            return View("NotificationDetails", edit);
+        }
         // GET: Asset/Edit/5
         //[SessionFilterAttribute]
         public ActionResult EditNotification(int? id)
@@ -556,7 +587,7 @@ namespace NotifyHealth.Controllers
             var testID = 1;
 
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
-            Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == testID);
+            Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == id);
             edit.Statuses = GetStatusList();
             edit.NotificationTypes = db.GetNotificationTypes();
 
@@ -597,7 +628,7 @@ namespace NotifyHealth.Controllers
             var testID = 4;
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
-            Notifications delete = dtsource.FirstOrDefault(x => x.CampaignId == testID);
+            Notifications delete = dtsource.FirstOrDefault(x => x.CampaignId == id);
 
 
 
@@ -787,26 +818,28 @@ namespace NotifyHealth.Controllers
 
         }
 
-        public ActionResult ClientDetails(int? organizationID)
+        public ActionResult ClientDetails(int? id)
         {
-            var model = new Clients();
+          
 
             List<Clients> dtsource = MyGlobalClientsInitializer();
-            model.ClientStatuses = db.GetClientStatus();
-            model.AccountTypes = db.GetAccountTypes();
-            model.ParticipationReasons = db.GetParticipationReasons();
-            model.PhoneStatuses = db.GetPhoneStatus();
-            model.ClientId = organizationID;
-            return View("ClientDetails", model);
+            Clients edit = dtsource.FirstOrDefault(x => x.ClientId == id);
+            edit.ClientStatuses = db.GetClientStatus();
+            edit.AccountTypes = db.GetAccountTypes();
+            edit.ParticipationReasons = db.GetParticipationReasons();
+            edit.PhoneStatuses = db.GetPhoneStatus();
+
+            return View("ClientDetails", edit);
         }
+      
         // GET: Asset/Edit/5
         //[SessionFilterAttribute]
         public ActionResult EditClient(int? id)
         {
-            var testID = 1;
+            //var testID = 1;
 
             List<Clients> dtsource = MyGlobalClientsInitializer();
-            Clients edit = dtsource.FirstOrDefault(x => x.ClientId == testID);
+            Clients edit = dtsource.FirstOrDefault(x => x.ClientId == id);
             edit.ClientStatuses = db.GetClientStatus();
             edit.AccountTypes = db.GetAccountTypes();
             edit.ParticipationReasons = db.GetParticipationReasons();
@@ -850,7 +883,7 @@ namespace NotifyHealth.Controllers
             var testID = 4;
             List<Clients> dtsource = MyGlobalClientsInitializer();
 
-            Clients delete = dtsource.FirstOrDefault(x => x.ClientId == testID);
+            Clients delete = dtsource.FirstOrDefault(x => x.ClientId == id);
 
 
 
@@ -901,6 +934,12 @@ namespace NotifyHealth.Controllers
             string apiCompany = "notify";
             string apiUsername = "notifyhealth_cpc001";
             string apiPassword = "6U7gQ458wGUNKm2tS6";
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //Take from Organisation Table 
+
+
 
             HttpClient apiReq = new HttpClient();
             XmlDocument apiResponseXML = new XmlDocument();

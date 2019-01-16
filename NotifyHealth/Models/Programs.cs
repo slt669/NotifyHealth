@@ -24,6 +24,7 @@ namespace NotifyHealth.Models
 
         //public ICollection<Campaigns> Campaigns { get; set; }
         public int? OrganizationID { get; set; }
-        
+
+        public int RelatedCampaigns { get; set; }
     }
 }

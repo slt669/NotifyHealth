@@ -5470,6 +5470,9 @@
     <Content Include="Views\Home\NotificationWizard.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Home\ClientDetails.cshtml" />
+    <Content Include="Views\Home\ProgramDetails.cshtml" />
+    <Content Include="Views\Home\CampaignDetails.cshtml" />
+    <Content Include="Views\Home\NotificationDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

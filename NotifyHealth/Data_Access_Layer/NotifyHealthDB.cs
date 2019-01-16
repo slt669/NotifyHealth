@@ -518,6 +518,7 @@ namespace NotifyHealth.Data_Access_Layer
                         PD.ProgramId = reader["Program_ID"] as int? ?? default(int);
                         PD.StatusId = reader["Status_ID"] as int? ?? default(int);
                         PD.Status = reader["Value"] as string;
+                        //PD.RelatedCampaigns = reader["Program_ID"] as int? ?? default(int);
                         PL.Add(PD);
                     }
 
