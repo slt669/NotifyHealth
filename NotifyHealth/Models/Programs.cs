@@ -26,5 +26,11 @@ namespace NotifyHealth.Models
         public int? OrganizationID { get; set; }
 
         public int RelatedCampaigns { get; set; }
+
+        public int Created_By { get; set; }
+        public int Edited_By { get; set; }
+        public int Created_When { get; set; }
+        public int Edited_When { get; set; }
+
     }
 }

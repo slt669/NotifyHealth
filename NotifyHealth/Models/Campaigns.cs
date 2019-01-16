@@ -12,11 +12,6 @@ namespace NotifyHealth.Models
         public int? CampaignId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-    
-        public int? ProgramId { get; set; }
-        public string Program { get; set; }
-
-        public Programs Programs { get; set; }
         [Display(Name = "Status Id")]
         public virtual int StatusId { get; set; }
 
@@ -28,6 +23,15 @@ namespace NotifyHealth.Models
 
         public int? OrganizationID { get; set; }
         public int RelatedNotifications { get; set; }
+
+        [Display(Name = "Program Id")]
+        public virtual int ProgramId { get; set; }
+
+        [Display(Name = "Programs")]
+        public virtual IEnumerable<SelectListItem> Programs { get; set; }
+
+        [Display(Name = "Program")]
+        public string Program { get; set; }
 
         //public ICollection<ClientMemberships> ClientMemberships { get; set; }
     }

@@ -56,7 +56,7 @@ namespace NotifyHealth.Controllers
             List<Programs> dtsource = new List<Programs>();
 
 
-            dtsource = db.GetPrograms(organizationID);
+            dtsource = db.GetPrograms(Convert.ToInt32(Session["organizationID"]));
 
             TempData["dtsource"] = dtsource;
             TempData["organizationID"] = organizationID;
@@ -94,7 +94,7 @@ namespace NotifyHealth.Controllers
             //string id = RouteData.Values["userID"].ToString();
             List<Programs> dtsource = MyGlobalProgramsInitializer();
             model.Statuses = GetStatusList();
-            model.OrganizationID = organizationID;
+            model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
             return View("_CreateProgramsPartial", model);
         }
 
@@ -104,17 +104,17 @@ namespace NotifyHealth.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreatePrograms(Programs model)
         {
-            if (!ModelState.IsValid)
-            {
+            //if (!ModelState.IsValid)
+            //{
 
-                return View("_ProgramsModal", model);
-            }
+            //    return View("_CreateProgramsPartial", model);
+            //}
             ViewBag.Message = "Sucess or Failure Message";
             ModelState.Clear();
             List<Programs> dtsource = MyGlobalProgramsInitializer();
 
             char delete = 'N';
-            db.UpdatePrograms(model.OrganizationID, model.Description, model.Name, model.ProgramId, delete);
+            db.UpdatePrograms(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
 
             //if (task.Exception != null)
             //{
@@ -159,16 +159,17 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
+                //if (!ModelState.IsValid)
+                //{
+                //    ViewBag.Message = "Failure";
+                //   return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
 
-                    return View("_EditProgramsPartial", model);
-                }
-                ViewBag.Message = "Sucess or Failure Message";
+                //}
+
                 ModelState.Clear();
                 List<Programs> dtsource = MyGlobalProgramsInitializer();
                 char delete = 'N';
-                db.UpdatePrograms(model.OrganizationID, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdatePrograms(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
             }
             catch (Exception ex)
             {
@@ -188,7 +189,7 @@ namespace NotifyHealth.Controllers
             //{
             //    return Content("success");
             //}
-            return PartialView("_EditProgramsPartial", model);
+            return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
             //return RedirectToAction("SpeedDial", new { userID = model.VoiceUserID });
 
         }
@@ -219,7 +220,7 @@ namespace NotifyHealth.Controllers
                 List<Programs> dtsource = MyGlobalProgramsInitializer();
 
                 char delete = 'Y';
-                db.UpdatePrograms(model.OrganizationID, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdatePrograms(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
             }
             catch (Exception ex)
             {
@@ -285,7 +286,7 @@ namespace NotifyHealth.Controllers
             List<Campaigns> dtsource = new List<Campaigns>();
 
 
-            dtsource = db.GetCampaigns(1);
+            dtsource = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
 
             TempData["dtsource"] = dtsource;
             TempData["organizationID"] = organizationID;
@@ -320,6 +321,7 @@ namespace NotifyHealth.Controllers
             var model = new Campaigns();
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+            model.Programs = db.GetProgramDDL();
             model.Statuses = GetStatusList();
             model.CampaignId = campaignId;
             return View("_CreateCampaignsPartial", model);
@@ -339,7 +341,7 @@ namespace NotifyHealth.Controllers
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
             char delete = 'N';
-            db.UpdateCampaigns(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+            db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, delete);
 
 
 
@@ -365,6 +367,7 @@ namespace NotifyHealth.Controllers
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
+            edit.Programs = db.GetProgramDDL();
             edit.Statuses = GetStatusList();
 
 
@@ -389,7 +392,7 @@ namespace NotifyHealth.Controllers
                 ModelState.Clear();
                 List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
                 char delete = 'N';
-                db.UpdateCampaigns(model.CampaignId, model.Description, model.Name, model.ProgramId, delete);
+                db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, delete);
             }
             catch (Exception ex)
             {
@@ -471,10 +474,10 @@ namespace NotifyHealth.Controllers
             List<Notifications> dtsource = new List<Notifications>();
 
 
-            dtsource = db.GetNotifications(1);
+            dtsource = db.GetNotifications(Convert.ToInt32(Session["organizationID"]));
 
             TempData["dtsource"] = dtsource;
-            TempData["organizationID"] = organizationID;
+            TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
 
 
             List<String> columnSearch = new List<string>();
@@ -512,7 +515,7 @@ namespace NotifyHealth.Controllers
                 model.NotificationTypes = db.GetNotificationTypes();
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
-                model.OrganizationID = organizationID;
+                model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
             }      
      
             catch (Exception ex)
@@ -544,7 +547,7 @@ namespace NotifyHealth.Controllers
             model.NotificationTypes = db.GetNotificationTypes();
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
-            model.OrganizationID = organizationID;
+            model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
             return View("_CreateNotificationsPartial", model);
         }
 
@@ -686,10 +689,10 @@ namespace NotifyHealth.Controllers
             List<Clients> dtsource = new List<Clients>();
 
 
-            dtsource = db.GetClients(1);
+            dtsource = db.GetClients(Convert.ToInt32(Session["organizationID"]));
 
             TempData["dtsource"] = dtsource;
-            TempData["organizationID"] = organizationID;
+            TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
 
 
             List<String> columnSearch = new List<string>();
@@ -720,10 +723,10 @@ namespace NotifyHealth.Controllers
             List<ClientMemberships> dtsource = new List<ClientMemberships>();
 
 
-            dtsource = db.GetClientMemberships(organizationID, clientID);
+            dtsource = db.GetClientMemberships(Convert.ToInt32(Session["organizationID"]), clientID);
 
             TempData["dtsource"] = dtsource;
-            TempData["organizationID"] = organizationID;
+            TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
 
 
             List<String> columnSearch = new List<string>();
@@ -754,10 +757,10 @@ namespace NotifyHealth.Controllers
             List<Transactions> dtsource = new List<Transactions>();
 
 
-            dtsource = db.GetTransactions(organizationID, clientID);
+            dtsource = db.GetTransactions(Convert.ToInt32(Session["organizationID"]), clientID);
 
             TempData["dtsource"] = dtsource;
-            TempData["organizationID"] = organizationID;
+            TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
 
 
             List<String> columnSearch = new List<string>();
@@ -810,7 +813,7 @@ namespace NotifyHealth.Controllers
             List<Clients> dtsource = MyGlobalClientsInitializer();
 
             char delete = 'N';
-            db.UpdateClients(model.OrganizationID, model.FirstName, model.LastName, model.ClientId, delete);
+            db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.ClientId, delete);
 
 
 
@@ -868,7 +871,7 @@ namespace NotifyHealth.Controllers
                 ModelState.Clear();
                 List<Clients> dtsource = MyGlobalClientsInitializer();
                 char delete = 'N';
-                db.UpdateClients(model.OrganizationID, model.FirstName, model.LastName, model.ClientId, delete);
+                db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.ClientId, delete);
             }
             catch (Exception ex)
             {
@@ -903,7 +906,7 @@ namespace NotifyHealth.Controllers
                 List<Clients> dtsource = MyGlobalClientsInitializer();
 
                 char delete = 'Y';
-                db.UpdateClients(model.OrganizationID, model.FirstName, model.LastName, model.ClientId, delete);
+                db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.ClientId, delete);
             }
             catch (Exception ex)
             {

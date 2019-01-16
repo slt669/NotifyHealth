@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using NotifyHealth.Models;
 using NotifyHealth.Models.ViewModels;
 using System.Text;
-
+using System.Web.Mvc;
 namespace NotifyHealth.Data_Access_Layer
 {
     public class NotifyHealthDB
@@ -862,7 +862,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return T;
         }
-        public void UpdatePrograms(int? OrganizationId,string Description, string Name, int? ProgramId,char Delete)
+        public void UpdatePrograms(int? OrganizationId,string Description, string Name, int? ProgramId,int Created_By,int Edited_By, int? StatusId, char Delete)
         {
             //ReturnValidationError = "99999";
 
@@ -877,12 +877,17 @@ namespace NotifyHealth.Data_Access_Layer
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = OrganizationId;
                     command.Parameters.Add("@ProgramId", SqlDbType.BigInt, 4).Value = ProgramId;
                     command.Parameters.Add("@Description", SqlDbType.VarChar, 200).Value = Description;
                     command.Parameters.Add("@Name", SqlDbType.VarChar, 200).Value = Name;
-                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = 1;
+                    command.Parameters.Add("@StatusId", SqlDbType.BigInt, 4).Value = StatusId;
                     command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
+                    command.Parameters.Add("@Created_By", SqlDbType.BigInt, 4).Value = Created_By;
+                    command.Parameters.Add("@Edited_By", SqlDbType.BigInt, 4).Value = Edited_By;
+                    command.Parameters.Add("@Created_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
+                    command.Parameters.Add("@Edited_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
+
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
