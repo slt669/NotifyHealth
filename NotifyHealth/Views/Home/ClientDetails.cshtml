@@ -42,6 +42,13 @@
             @Html.DisplayFor(model => model.LastName)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.ClientStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientStatus)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </dt>
 
@@ -60,7 +67,7 @@
 </div>
 
 
-<button type="button" data-dismiss="modal" data-url="@Url.Action("Back to List","Home",null)" class="btn btn-secondary">Back to List</button>
+<button type="button" data-dismiss="modal" data-url="@Url.Action("Clients","Home",null)" class="btn btn-secondary">Back to List</button>
 <div class="panel pagination-inverse m-b-0 clearfix">
 
     <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
@@ -120,8 +127,8 @@
                         "fnServerParams": function (aoData) {
 
 
-                            aoData['organizationID'] = 1;
-
+                            aoData['organizationID'] = @ViewBag.organizationID;
+                            aoData['clientID'] = @ViewBag.clientID;
 
                         },
                         "paging": true,
@@ -183,7 +190,9 @@
                         "fnServerParams": function (aoData) {
 
 
-                            aoData['organizationID'] = 1;
+                       
+                            aoData['organizationID'] = @ViewBag.organizationID;
+                            aoData['clientID'] = @ViewBag.clientID;
 
 
                         },

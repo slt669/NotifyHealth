@@ -518,7 +518,7 @@ namespace NotifyHealth.Data_Access_Layer
                         PD.ProgramId = reader["Program_ID"] as int? ?? default(int);
                         PD.StatusId = reader["Status_ID"] as int? ?? default(int);
                         PD.Status = reader["Value"] as string;
-                        //PD.RelatedCampaigns = reader["Program_ID"] as int? ?? default(int);
+                        PD.RelatedCampaigns = reader["RelatedCampaigns"] as int? ?? default(int);
                         PL.Add(PD);
                     }
 
@@ -579,7 +579,8 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.Name = reader["Campaign"] as string;
                         CD.ProgramId = reader["Program_ID"] as int? ?? default(int);
                         CD.Status = reader["Value"] as string;
-                        CD.Program = reader["Program"] as string;
+                        CD.Program = reader["Program"] as string; 
+                        CD.RelatedNotifications = reader["RelatedNotifications"] as int? ?? default(int);
                         CL.Add(CD);
                     }
 
@@ -755,7 +756,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
-                    command.Parameters.Add("@Client_ID", SqlDbType.BigInt, 4).Value = 10001;
+                    command.Parameters.Add("@Client_ID", SqlDbType.BigInt, 4).Value = ClientID;
                     //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
 
                     //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
@@ -819,7 +820,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
-                    command.Parameters.Add("@Client_ID", SqlDbType.BigInt, 4).Value = 10001;
+                    command.Parameters.Add("@Client_ID", SqlDbType.BigInt, 4).Value = ClientID;
                     //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
 
                     //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;

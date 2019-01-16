@@ -27,6 +27,8 @@ namespace NotifyHealth.Models
         public string Status { get; set; }
 
         public int? OrganizationID { get; set; }
+        public int RelatedNotifications { get; set; }
+
         //public ICollection<ClientMemberships> ClientMemberships { get; set; }
     }
 }

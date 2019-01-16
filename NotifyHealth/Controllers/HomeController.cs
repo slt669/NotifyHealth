@@ -715,12 +715,12 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
-        public JsonResult GetClientMemberships(DTParameters param, int? organizationID)
+        public JsonResult GetClientMemberships(DTParameters param, int? organizationID, int? clientID )
         {
             List<ClientMemberships> dtsource = new List<ClientMemberships>();
 
 
-            dtsource = db.GetClientMemberships(1, 10001);
+            dtsource = db.GetClientMemberships(organizationID, clientID);
 
             TempData["dtsource"] = dtsource;
             TempData["organizationID"] = organizationID;
@@ -749,12 +749,12 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
-        public JsonResult GetTransactions(DTParameters param, int? organizationID)
+        public JsonResult GetTransactions(DTParameters param, int? organizationID, int? clientID)
         {
             List<Transactions> dtsource = new List<Transactions>();
 
 
-            dtsource = db.GetTransactions(1, 10001);
+            dtsource = db.GetTransactions(organizationID, clientID);
 
             TempData["dtsource"] = dtsource;
             TempData["organizationID"] = organizationID;
@@ -828,7 +828,8 @@ namespace NotifyHealth.Controllers
             edit.AccountTypes = db.GetAccountTypes();
             edit.ParticipationReasons = db.GetParticipationReasons();
             edit.PhoneStatuses = db.GetPhoneStatus();
-
+            ViewBag.organizationID = Session["organizationID"];
+            ViewBag.clientID = id;
             return View("ClientDetails", edit);
         }
       
