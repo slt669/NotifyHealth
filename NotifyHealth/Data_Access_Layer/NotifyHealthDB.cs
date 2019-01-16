@@ -1537,6 +1537,68 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return CL;
         }
+        public List<Notifications> GetNotificationsbyCampaigns(int? Organization_ID, int? CampaignID)
+        {
+
+            List<Notifications> CL = new List<Notifications>();
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp121GetNotificationsbyCampaigns";
+
+
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.CommandTimeout = 6000;
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = Organization_ID;
+                    command.Parameters.Add("@Campaign_ID", SqlDbType.BigInt, 4).Value = CampaignID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Notifications CD = new Notifications();
+                        CD.CampaignId = reader["Campaign_ID"] as int? ?? default(int);
+                        CD.Text = reader["Text"] as string;
+                        CD.Period = reader["Period"] as int? ?? default(int);
+                        CD.Status = reader["Status"] as string;
+                        CD.NTypeId = reader["N_Type_ID"] as int? ?? default(int);
+                        CD.NotificationType = reader["NotificationType"] as string;
+                        CL.Add(CD);
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+            return CL;
+        }
         public string QueueOnBoardingNotification(int OrganizationId,int ClientId,int NotificationType)
         {
             try

@@ -283,6 +283,40 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
+        public JsonResult GetNotificationsbyCampaigns(DTParameters param, int? organizationID, int? CampaignID)
+        {
+            List<Notifications> dtsource = new List<Notifications>();
+
+
+            dtsource = db.GetNotificationsbyCampaigns(Convert.ToInt32(Session["organizationID"]), CampaignID);
+
+            TempData["NotificationsbyCampaignsdtsource"] = dtsource;
+            TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
+
+
+            List<String> columnSearch = new List<string>();
+
+            foreach (var col in param.Columns)
+            {
+                columnSearch.Add(col.Search.Value);
+            }
+
+            if (param.Length == -1)
+            {
+                param.Length = dtsource.Count();
+            }
+            List<Notifications> data = new ResultSet().GetResult(param.Search.Value, param.SortOrder, param.Start, param.Length, dtsource, columnSearch);
+            int count = new ResultSet().Count(param.Search.Value, dtsource, columnSearch);
+            DTResult<Notifications> result = new DTResult<Notifications>
+            {
+                draw = param.Draw,
+                data = data,
+                recordsFiltered = count,
+                recordsTotal = count
+            };
+
+            return Json(result);
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -391,7 +425,8 @@ namespace NotifyHealth.Controllers
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
             edit.Statuses = GetStatusList();
-
+            ViewBag.organizationID = Session["organizationID"];
+            ViewBag.CampaignId = id;
 
             return View("CampaignDetails", edit);
         }
