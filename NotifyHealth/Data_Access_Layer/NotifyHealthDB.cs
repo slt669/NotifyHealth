@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using NotifyHealth.Models;
 using NotifyHealth.Models.ViewModels;
 using System.Text;
-using System.Web.Mvc;
 namespace NotifyHealth.Data_Access_Layer
 {
     public class NotifyHealthDB
@@ -1044,6 +1043,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("@Edited_By", SqlDbType.BigInt, 4).Value = Edited_By;
                     command.Parameters.Add("@Created_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
                     command.Parameters.Add("@Edited_When", SqlDbType.DateTime, 4).Value = DateTime.Now;
+                    command.Parameters.Add("@IDENTITY", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -1054,8 +1054,20 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+                    ClientId = Convert.ToInt32(command.Parameters["@IDENTITY"].Value);
 
+                    if (ParticipationID == 11 || ParticipationID == 8)
+                    {
+                    // Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.
 
+                    //  Submit button creates client account or updates user record but DO NOT INSERT into queue table
+                    }
+                    else if(ParticipationID == 12)
+                    {
+                        //Phone.Warning = "Submit button inserts new record into Queue table and adds record to clients table";
+                        string Success = QueueOnBoardingNotification(OrganizationId, ClientId, 1);
+                    }
+               
                     //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
                     //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
 
@@ -1599,7 +1611,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return CL;
         }
-        public string QueueOnBoardingNotification(int OrganizationId,int ClientId,int NotificationType)
+        public string QueueOnBoardingNotification(int? OrganizationId,int ClientId,int NotificationType)
         {
             try
             {

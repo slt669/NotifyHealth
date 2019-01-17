@@ -61,7 +61,7 @@ namespace NotifyHealth.Controllers
                 Session["UserSessionId"] = usermanager.SessionId;
                 Session["UserSessionGUID"] = usermanager.SessionGUID;
                 //Session["UserTenantList"] = usermanager.ltn;
-                //Session["UserTenant"] = usermanager.TenantId;
+                Session["UserTenant"] = usermanager.TenantId;
                 //Session["UserLogonId"] = usermanager.accset.UserLogonID;
                 //Session["UserRoleId"] = usermanager.accset.UserRole;
                 //Session["UserList"] = usermanager.usr;

@@ -19,10 +19,12 @@ namespace NotifyHealth.Models
         public string Status { get; set; }
         public int ParticipationId { get; set; }
 
-                //$("#PhoneCarrier").val(data["CarrierName"]);
-                //        $("#MessageAddress").val(data["Address"]);
-                //        $("#ParticipationId").val(data["ParticipationId"]);
-                //        $("#PStatusId").val(data["ParsedStatus"]);
+        public string Warning { get; set; }
+
+        //$("#PhoneCarrier").val(data["CarrierName"]);
+        //        $("#MessageAddress").val(data["Address"]);
+        //        $("#ParticipationId").val(data["ParticipationId"]);
+        //        $("#PStatusId").val(data["ParsedStatus"]);
 
     }
 

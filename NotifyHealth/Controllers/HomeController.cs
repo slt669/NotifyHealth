@@ -480,7 +480,6 @@ namespace NotifyHealth.Controllers
         [SessionFilterAttribute]
         public ActionResult DeleteCampaign(int? id)
         {
-            var testID = 4;
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
             Campaigns delete = dtsource.FirstOrDefault(x => x.CampaignId == id);
@@ -505,7 +504,7 @@ namespace NotifyHealth.Controllers
                 ViewBag.Message = ex.Message;
             }
 
-            return RedirectToAction("Campaigns", new { campaignId = model.CampaignId });
+            return RedirectToAction("Campaigns");
 
         }
         /// <summary>
@@ -609,7 +608,7 @@ namespace NotifyHealth.Controllers
 
 
 
-            return RedirectToAction("Notifications", new { controller = "Home", NotificationId = model.NotificationId });
+            return RedirectToAction("Notifications");
 
         }
 
@@ -742,7 +741,7 @@ namespace NotifyHealth.Controllers
                 ViewBag.Message = ex.Message;
             }
 
-            return RedirectToAction("Notifications", new { notificationId = model.NotificationId });
+            return RedirectToAction("Notifications");
 
         }
         public List<Clients> MyGlobalClientsInitializer()
@@ -992,7 +991,7 @@ namespace NotifyHealth.Controllers
                 ViewBag.Message = ex.Message;
             }
 
-            return RedirectToAction("Clients", new { clientId = model.ClientId });
+            return RedirectToAction("Clients");
 
         }
 
@@ -1021,8 +1020,12 @@ namespace NotifyHealth.Controllers
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Take from Organisation Table 
+            ClientPhone Phone = null;
+            if (apiPhoneNumber.Length != 10)
+            {
+                return Json(Phone, JsonRequestBehavior.AllowGet);
 
-
+            }
 
             HttpClient apiReq = new HttpClient();
             XmlDocument apiResponseXML = new XmlDocument();
@@ -1045,8 +1048,8 @@ namespace NotifyHealth.Controllers
 
             XmlElement root = apiResponseXML.DocumentElement;
             XmlNodeList nodes = root.SelectNodes("/response/results/result");
-
-            ClientPhone Phone = null;
+            
+            //D247_INVALID_PHONE1234567891
 
             foreach (XmlNode node in nodes)
             {
@@ -1073,14 +1076,18 @@ namespace NotifyHealth.Controllers
             if (Phone.Wireless == "y")
             {
                 if (string.IsNullOrEmpty(Phone.MessageAddress))
-                { Phone.ParticipationId = 11; }
-                // Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.
-
+                { Phone.ParticipationId = 11;
+                    TempData["alertMessage"] = "Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.";
+                    Phone.Warning = "Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.";
+               }
                //  Submit button creates client account or updates user record but DO NOT INSERT into queue table
 
                 else
-                { Phone.ParticipationId = 12; }
-                //  Submit button inserts new record into Queue table and adds record to clients table
+                { Phone.ParticipationId = 12;
+                    TempData["alertMessage"] = "Submit button inserts new record into Queue table and adds record to clients table";
+                    Phone.Warning = "Submit button inserts new record into Queue table and adds record to clients table";
+                }
+                //  
                 
                 // ASK FOR TEST DATA API TEST
             }
@@ -1088,7 +1095,8 @@ namespace NotifyHealth.Controllers
             else
             {
                 Phone.ParticipationId = 8;
-                 // Popup warning that given phone number is NOT A WIRELESS PHONE NUMBER AND CANNOT BE USED to send messages but client will be saved
+                TempData["alertMessage"] = "Popup warning that given phone number is NOT A WIRELESS PHONE NUMBER AND CANNOT BE USED to send messages but client will be saved";
+                Phone.Warning = "Popup warning that given phone number is NOT A WIRELESS PHONE NUMBER AND CANNOT BE USED to send messages but client will be saved";
 
                 //Submit button creates client account or updates user record but DO NOT INSERT into queue table
             }

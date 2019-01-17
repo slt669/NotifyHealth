@@ -82,7 +82,7 @@
 <!-- begin row -->
 <div class="row">
     <!-- begin col-6 -->
-    <div class="col-lg-6">
+    <div class="col-lg-5">
         <!-- begin panel -->
         <div class="widget">
             <div class="widget-header bg-inverse-dark">
@@ -102,7 +102,7 @@
     </div>
     <!-- end col-6 -->
     <!-- begin col-6 -->
-    <div class="col-lg-6">
+    <div class="col-lg-7">
         <!-- begin widget -->
         <div class="widget">
             <div class="widget-header bg-inverse-dark">
@@ -189,6 +189,15 @@
                         { "title": "Client Status", "data": "ClientStatus", "searchable": true, },
                         { "title": "Phone Status", "data": "PhoneStatus", "searchable": true, },
                         { "title": "Participation Reason", "data": "ParticipationReason", "searchable": true },
+                          {
+                                "title": "Actions",
+                                   "data": "ClientId",
+                                "searchable": false,
+                                "sortable": false,
+                                "render": function (data, type, full, meta) {
+                                    return '<a href="@Url.Action("ClientDetails", "Home")?id=' + data + '"class="details">View</a>';
+                                }
+                            }
                     ],
                     "order": [0, "Asc"],
                     });
