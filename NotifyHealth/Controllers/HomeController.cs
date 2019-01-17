@@ -1,4 +1,5 @@
-﻿using NotifyHealth.Data_Access_Layer;
+﻿using NotifyHealth.CustomFilters;
+using NotifyHealth.Data_Access_Layer;
 using NotifyHealth.Models;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace NotifyHealth.Controllers
         /// </summary>
         /// <param name="organizationID"></param>
         /// <returns></returns>
-        //[SessionFilterAttribute]
+        [SessionFilterAttribute]
         public ActionResult Programs(int? organizationID)
         {
 
@@ -50,7 +51,7 @@ namespace NotifyHealth.Controllers
         }
 
 
-        //[SessionFilterAttribute]
+        [SessionFilterAttribute]
         public JsonResult GetPrograms(DTParameters param, int? organizationID)
         {
             List<Programs> dtsource = new List<Programs>();
@@ -86,8 +87,8 @@ namespace NotifyHealth.Controllers
             return Json(result);
         }
 
-        // GET: Asset/Create
-        //[SessionFilterAttribute]
+
+        [SessionFilterAttribute]
         public ActionResult CreateProgram(int? organizationID)
         {
             var model = new Programs();
@@ -98,8 +99,8 @@ namespace NotifyHealth.Controllers
             return View("_CreateProgramsPartial", model);
         }
 
-        // POST: Asset/Create
-        //[SessionFilterAttribute]
+
+        [SessionFilterAttribute]
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult CreatePrograms(Programs model)
@@ -126,7 +127,7 @@ namespace NotifyHealth.Controllers
 
         }
         // GET: Asset/Edit/5
-        //[SessionFilterAttribute]
+        [SessionFilterAttribute]
         public ActionResult EditProgram(int? id)
         {
 
@@ -141,6 +142,7 @@ namespace NotifyHealth.Controllers
                 return PartialView("_EditProgramsPartial", edit);
             return View(edit);
         }
+        [SessionFilterAttribute]
         public ActionResult ProgramDetails(int? id)
         {
 
@@ -155,7 +157,7 @@ namespace NotifyHealth.Controllers
         }
 
         // POST: Asset/Edit/5
-        //[SessionFilterAttribute]
+        [SessionFilterAttribute]
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult EditPrograms(Programs model)
@@ -196,7 +198,7 @@ namespace NotifyHealth.Controllers
             //return RedirectToAction("SpeedDial", new { userID = model.VoiceUserID });
 
         }
-        //    [SessionFilterAttribute]
+        [SessionFilterAttribute]
         public ActionResult DeleteProgram(int? id)
         {
             var testID = 4;
@@ -213,8 +215,8 @@ namespace NotifyHealth.Controllers
 
         }
 
-        // POST: Asset/Delete/5
-        //[SessionFilterAttribute]
+     
+        [SessionFilterAttribute]
         [HttpPost]
         public ActionResult DeletePrograms(Programs model)
         {
@@ -334,7 +336,7 @@ namespace NotifyHealth.Controllers
         /// </summary>
         /// <param name="organizationID"></param>
         /// <returns></returns>
-        //[SessionFilterAttribute]
+        [SessionFilterAttribute]
         public ActionResult Campaigns(int? organizationID)
         {
 
@@ -385,7 +387,7 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
-
+        [SessionFilterAttribute]
         public ActionResult CreateCampaign(int? organizationID)
         {
             var model = new Campaigns();
@@ -396,6 +398,7 @@ namespace NotifyHealth.Controllers
             model.OrganizationID = organizationID;
             return View("_CreateCampaignsPartial", model);
         }
+
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
@@ -418,6 +421,7 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Campaigns", new { controller = "Home", campaignId = model.CampaignId });
 
         }
+        [SessionFilterAttribute]
         public ActionResult CampaignDetails(int? id)
         {
 
@@ -431,7 +435,7 @@ namespace NotifyHealth.Controllers
             return View("CampaignDetails", edit);
         }
         // GET: Asset/Edit/5
-        //[SessionFilterAttribute]
+        [SessionFilterAttribute]
         public ActionResult EditCampaign(int? id)
         {
             var testID = 1;
@@ -473,7 +477,7 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Campaigns", new { controller = "Home", campaignId = model.CampaignId });
 
         }
-
+        [SessionFilterAttribute]
         public ActionResult DeleteCampaign(int? id)
         {
             var testID = 4;
@@ -520,6 +524,7 @@ namespace NotifyHealth.Controllers
             TempData["Notificationsdtsource"] = dtsource;
             return dtsource;
         }
+        [SessionFilterAttribute]
         public ActionResult Notifications(int? organizationID)
         {
 
@@ -570,7 +575,7 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
-   
+        [SessionFilterAttribute]
         public ActionResult NotificationWizard(int? organizationID)
         {    var model = new Notifications();
             try
@@ -622,7 +627,7 @@ namespace NotifyHealth.Controllers
             }
             return Json(model.Campaigns, JsonRequestBehavior.AllowGet);
         }
-
+        [SessionFilterAttribute]
         public ActionResult CreateNotification(int? organizationID)
         {
             var model = new Notifications();
@@ -635,7 +640,7 @@ namespace NotifyHealth.Controllers
             model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
             return View("_CreateNotificationsPartial", model);
         }
-
+        [SessionFilterAttribute]
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult CreateNotifications(Notifications model)
@@ -652,6 +657,7 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Notifications", new { controller = "Home", campaignId = model.CampaignId });
 
         }
+        [SessionFilterAttribute]
         public ActionResult NotificationDetails(int? id)
         {
 
@@ -664,7 +670,7 @@ namespace NotifyHealth.Controllers
             return View("NotificationDetails", edit);
         }
         // GET: Asset/Edit/5
-        //[SessionFilterAttribute]
+        [SessionFilterAttribute]
         public ActionResult EditNotification(int? id)
         {
 
@@ -704,7 +710,7 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Notifications", new { controller = "Home", NotificationId = model.NotificationId });
 
         }
-
+        [SessionFilterAttribute]
         public ActionResult DeleteNotification(int id)
         {
 
@@ -747,6 +753,7 @@ namespace NotifyHealth.Controllers
             TempData["Clientsdtsource"] = dtsource;
             return dtsource;
         }
+        [SessionFilterAttribute]
         public ActionResult Clients(int? organizationID)
         {
 
@@ -865,6 +872,7 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
+        [SessionFilterAttribute]
         public ActionResult CreateClient(int? organizationID)
         {
             var model = new Clients();
@@ -895,7 +903,7 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Clients", new { controller = "Home", clientId = model.ClientId });
 
         }
-
+        [SessionFilterAttribute]
         public ActionResult ClientDetails(int? id)
         {
           
@@ -912,7 +920,7 @@ namespace NotifyHealth.Controllers
         }
       
         // GET: Asset/Edit/5
-        //[SessionFilterAttribute]
+        [SessionFilterAttribute]
         public ActionResult EditClient(int? id)
         {
             //var testID = 1;
@@ -952,7 +960,7 @@ namespace NotifyHealth.Controllers
 
             return RedirectToAction("Clients", new { controller = "Home", ClientId = model.ClientId });
         }
-
+        [SessionFilterAttribute]
         public ActionResult DeleteClient(int? id)
         {
 
