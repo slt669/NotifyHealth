@@ -22,7 +22,8 @@ namespace NotifyHealth.Data_Access_Layer
         public String SessionStatus;
         public String SessionId;
         public String SessionGUID;
-        public String TenantId;
+        public String OrganizationID;
+        public String Organization;
         public int CompanyID;
         public String PageName;
         public String Password;
@@ -57,8 +58,8 @@ namespace NotifyHealth.Data_Access_Layer
         {
             try
             {
-                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
-                StoredProcedure = "usp100CheckLogon";
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp200CheckLogon";
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -102,7 +103,7 @@ namespace NotifyHealth.Data_Access_Layer
         {
             try
             {
-                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp100CreateSession";
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
@@ -160,7 +161,7 @@ namespace NotifyHealth.Data_Access_Layer
 
             try
             {
-                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp101CheckSession";
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
@@ -184,8 +185,9 @@ namespace NotifyHealth.Data_Access_Layer
                         SessionStatus = reader["SessionStatus"].ToString();
                         EndUserName = reader["EndUserName"].ToString();
                         MustChangePwd = reader["MustChangePwd"].ToString();
-                        TenantId = reader["TenantID"] != null ? reader["TenantID"].ToString() : "";
-                        CompanyID = reader["CompanyID"] as int? ?? default(int);
+                        OrganizationID = reader["OrganizationID"] != null ? reader["OrganizationID"].ToString() : "";
+                        Organization = reader["Organization"].ToString();
+
                     }
 
                     reader.Close();
@@ -226,7 +228,7 @@ namespace NotifyHealth.Data_Access_Layer
             try
             {
 
-                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp103GetAccountDetails";
 
                 AccountSettingsViewModel asvm = new AccountSettingsViewModel();
@@ -263,11 +265,11 @@ namespace NotifyHealth.Data_Access_Layer
                         asvm.MustChangePwd = reader["MustChangePwd"].ToString();
                         asvm.UserID = Convert.ToInt32(reader["UserID"]);
                         asvm.UserLogonID = Convert.ToInt32(reader["UserLogonID"]);
-                        asvm.UserRole = Convert.ToInt32(reader["UserRoleID"]);
-                        asvm.CompanyName = reader["CompanyName"].ToString();
-                        asvm.CompanyId = reader["CompanyId"] as int? ?? default(int);
-                        int y = reader.GetOrdinal("CustomerType");
-                        if (!reader.IsDBNull(y)) asvm.CustomerType = Convert.ToChar(reader["CustomerType"]) as char? ?? default(char);
+                        asvm.UserRole = reader["UserRoleID"] as int? ?? default(int);
+                        //asvm.CompanyName = reader["CompanyName"].ToString();
+                        //asvm.CompanyId = reader["CompanyId"] as int? ?? default(int);
+                        //int y = reader.GetOrdinal("CustomerType");
+                        //if (!reader.IsDBNull(y)) asvm.CustomerType = Convert.ToChar(reader["CustomerType"]) as char? ?? default(char);
                     }
                     //SecurityQuestionId = Convert.ToInt32(StringId);
 
@@ -306,7 +308,7 @@ namespace NotifyHealth.Data_Access_Layer
         {
             try
             {
-                var strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                var strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 var StoredProcedure = "usp107ListSecurityQuestion";
 
                 List<SelectListItem> sqs = new List<SelectListItem>();
@@ -366,7 +368,7 @@ namespace NotifyHealth.Data_Access_Layer
 
             try
             {
-                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp102ManageAccount";
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
@@ -433,7 +435,7 @@ namespace NotifyHealth.Data_Access_Layer
 
             try
             {
-                strConnection = ConfigurationManager.ConnectionStrings["CustomerWebControlDB"].ConnectionString;
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp109LogoutSession";
 
                 using (SqlConnection connection = new SqlConnection(strConnection))

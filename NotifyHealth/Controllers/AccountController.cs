@@ -57,12 +57,12 @@ namespace NotifyHealth.Controllers
                 //Session["menu"] = usermanager.ar;
                 //Session["DataAccessRights"] = usermanager.dar;
                 //Session["UserName"] = model.Email;
-                //Session["UserFullName"] = usermanager.accset.Forename + " " + usermanager.accset.Surname;
+                Session["UserFullName"] = usermanager.accset.Forename + " " + usermanager.accset.Surname;
                 Session["UserSessionId"] = usermanager.SessionId;
                 Session["UserSessionGUID"] = usermanager.SessionGUID;
                 //Session["UserTenantList"] = usermanager.ltn;
-                Session["UserTenant"] = usermanager.TenantId;
-                //Session["UserLogonId"] = usermanager.accset.UserLogonID;
+                Session["organizationID"] = usermanager.OrganizationID;
+                Session["UserLogonId"] = usermanager.accset.UserLogonID;
                 //Session["UserRoleId"] = usermanager.accset.UserRole;
                 //Session["UserList"] = usermanager.usr;
                 //Session["CompanyName"] = usermanager.accset.CompanyName;
@@ -71,8 +71,7 @@ namespace NotifyHealth.Controllers
                 //Session["CustomerType"] = usermanager.accset.CustomerType;
                 //Session["AdminFlag"] = false;
                 //if (returnUrl == "/") returnUrl = "/Home/Index";
-                Session["organizationID"] = 1;
-                Session["organization"] = "Pregnancy Health";
+                Session["organization"] = usermanager.Organization;
                 Session["User"] = "Paul Lizer";
                 Session["UserLogon"] = 1;
                 return RedirectToAction("Index", "Home"); // auth succeed 

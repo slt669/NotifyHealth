@@ -1,4 +1,5 @@
 ﻿using NotifyHealth.Data_Access_Layer;
+using NotifyHealth.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,13 @@ namespace NotifyHealth.Utils
 
         public string SessionId;
         public string SessionGUID;
-        public string TenantId;
-        public int CompanyID;
+        public string OrganizationID;
+        public string Organization;
         public string adminLogonId;
         public string strReturnValidationError;
         public string strReturnValidationMessage;
         //public List<AccessRights> ar = new List<AccessRights>();
-        //public AccountSettingsViewModel accset = new AccountSettingsViewModel();
+        public AccountSettingsViewModel accset = new AccountSettingsViewModel();
         //public DataAccessRights dar = new DataAccessRights();
         //public List<Tenant> ltn = new List<Tenant>();
         //public List<Users> usr = new List<Users>();
@@ -51,14 +52,14 @@ namespace NotifyHealth.Utils
                 var LoginError = ex.Message;
             }
 
-            TenantId = dbc.TenantId;
-            CompanyID = dbc.CompanyID;
+            OrganizationID = dbc.OrganizationID;
+            Organization = dbc.Organization;
 
             if (strReturnValidationError == "0")
             {
                 //load pages for menu
 
-                //accset = dbc.GetAccountDetails(Convert.ToInt32(dbc.SessionId), SessionGUID);
+                accset = dbc.GetAccountDetails(Convert.ToInt32(dbc.SessionId), SessionGUID);
                 //ar = dbc.GetContentAccessRights(Convert.ToInt32(dbc.SessionId), accset.UserLogonID.ToString());
                 //dar = dbc.GetDataAccessRights(Convert.ToInt32(SessionId));
                 //ltn = dbc.GetTenant(Convert.ToInt32(SessionId));
