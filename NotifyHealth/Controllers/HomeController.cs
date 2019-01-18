@@ -1,6 +1,7 @@
 ﻿using NotifyHealth.CustomFilters;
 using NotifyHealth.Data_Access_Layer;
 using NotifyHealth.Models;
+using NotifyHealth.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,9 @@ namespace NotifyHealth.Controllers
         private NotifyHealthDB db = new NotifyHealthDB();
         public ActionResult Index(int? organizationID)
         {
+            DashboardViewModel model = db.GetDashboardDetails(Convert.ToInt32(Session["organizationID"]));
             ViewBag.organizationID = Session["organizationID"];
-            return View();
+            return View(model);
         }
         /// <summary>
         /// Programs

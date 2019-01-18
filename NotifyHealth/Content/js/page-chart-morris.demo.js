@@ -57,32 +57,32 @@ var primary		= '#2184DA',
 //    });
 //};
 
-var handleMorrisBarChart = function () {
-    "use strict";
+//var handleMorrisBarChart = function () {
+//    "use strict";
     
-    Morris.Bar({
-        element: 'bar-chart',
-        data: [
-            { month: 'January', notifications : 136},
-            { month: 'February', notifications : 137},
-            { month: 'March', notifications : 275},
-            { month: 'April', notifications : 380},
-            { month: 'May', notifications : 655},
-            { month: 'June', notifications : 1571}
-        ],
-        xkey: 'month',
-        ykeys: ['notifications'],
-        labels: ['Notifications'],
-        barRatio: 0.4,
-        xLabelAngle: 35,
-        resize: true,
-        gridTextFamily: "'Nunito', sans-serif",
-        gridTextWeight: '300',
-        gridTextSize: 11,
-        gridTextColor: '#30373e',
-        barColors: [inverse]
-    });
-};
+//    Morris.Bar({
+//        element: 'bar-chart',
+//        data: [
+//            { month: 'January', notifications : 136},
+//            { month: 'February', notifications : 137},
+//            { month: 'March', notifications : 275},
+//            { month: 'April', notifications : 380},
+//            { month: 'May', notifications : 655},
+//            { month: 'June', notifications : 1571}
+//        ],
+//        xkey: 'month',
+//        ykeys: ['notifications'],
+//        labels: ['Notifications'],
+//        barRatio: 0.4,
+//        xLabelAngle: 35,
+//        resize: true,
+//        gridTextFamily: "'Nunito', sans-serif",
+//        gridTextWeight: '300',
+//        gridTextSize: 11,
+//        gridTextColor: '#30373e',
+//        barColors: [inverse]
+//    });
+//};
 
 //var handleMorrisAreaChart = function() {
 //    "use strict";

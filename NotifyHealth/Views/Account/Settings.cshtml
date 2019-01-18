@@ -40,34 +40,23 @@
                     @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-            <div class="form-group row">
-                @Html.LabelFor(model => model.Surname, new { @class = "col-sm-2 form-control-label" })
-                <div class="col-sm-10">
-
-                </div>
-            </div>
-
-            <div class="form-group row">
-                @Html.LabelFor(model => model.HintQuestion, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
-                <div class="col-sm-10">
-                    @Html.DropDownListFor(model => model.HintQuestionID, Model.HintQuestion, new { @class = "col-sm-8 form-control" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.HintQuestion, new { @class = "col-sm-3 form-control-label" })
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(model => model.HintQuestionID, new { @class = "col-sm-8 form-control" })
                     @Html.ValidationMessageFor(model => model.HintQuestionID, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-            <div class="form-group row">
-                @Html.LabelFor(model => model.HintAnswer, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
-                <div class="col-sm-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.HintAnswer, new { @class = "col-sm-3 form-control-label" })
+                <div class="col-sm-6">
                     @Html.TextBoxFor(model => model.HintAnswer, new { @class = "col-sm-8 form-control" })
-
                     @Html.ValidationMessageFor(model => model.HintAnswer, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-            <div class="form-group row">
-                @Html.LabelFor(model => model.OldPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
-                <div class="col-sm-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OldPassword, new { @class = "col-sm-3 form-control-label" })
+                <div class="col-sm-6">
                     <div class="input-group">
                         @Html.TextBoxFor(model => model.OldPassword, new { @name = "OldPassword", @type = "password", @class = "col-sm-8 form-control", @disabled = "" })
                         @*<input id="OldPassword" type="password" class="col-sm-8 form-control" value="@Html.DisplayTextFor(model => model.OldPassword)">*@
@@ -78,14 +67,14 @@
                             </i>
                         </div>
                     </div>
-
-
                 </div>
             </div>
+
+     
             <div class="pwd-container">
-                <div class="form-group row">
+                <div class="form-group">
                     @Html.LabelFor(model => model.NewPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <div class="input-group">
                             <input id="NewPassword" type="password" class="col-sm-8 form-control" name="NewPassword" value="@Html.DisplayTextFor(model => model.NewPassword)">
 
@@ -100,11 +89,9 @@
                     </div>
                 </div>
 
-
-
-                <div class="form-group row">
+                <div class="form-group">
                     @Html.LabelFor(model => model.CheckPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <div class="input-group">
 
                             <input id="CheckPassword" type="password" class="col-sm-8 form-control" name="CheckPassword" value="@Html.DisplayTextFor(m => m.CheckPassword)">
@@ -114,10 +101,13 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div>   
                 </div>
-                <div class="form-group row">
-                    <div class="col-sm-10">
+
+
+              
+                <div class="form-group">
+                    <div class="col-sm-6">
                         @Html.TextBoxFor(m => m.PhotoFile, new { type = "file" })
                         @*<img src="@Url.Content(Model.PhotoFile.ToString())" alt="Image" />*@
                     </div>

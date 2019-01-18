@@ -1,4 +1,5 @@
-﻿<head>
+﻿@model NotifyHealth.Models.ViewModels.DashboardViewModel
+<head>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
@@ -13,7 +14,7 @@
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 
 </head>
-<h1 class="page-header">Dashboard <small>Welcome back, John Smith</small></h1>
+<h1 class="page-header">Dashboard <small>Welcome back, @Session["UserFullName"].ToString()</small></h1>
 <div class="section-container section-with-top-border">
 
 </div>
@@ -28,7 +29,7 @@
             <div class="widget-stat-icon"><i class="fa fa-users"></i></div>
             <div class="widget-stat-info">
                 <div class="widget-stat-title">New Clients</div>
-                <div class="widget-stat-number">839</div>
+                <div class="widget-stat-number">@Html.DisplayFor(model => model.NewClientsLast30)</div>
                 <div class="widget-stat-text">(Last 30 Days)</div>
             </div>
         </div>
@@ -42,7 +43,7 @@
             <div class="widget-stat-icon"><i class="fa fa-handshake"></i></div>
             <div class="widget-stat-info">
                 <div class="widget-stat-title">Clients</div>
-                <div class="widget-stat-number">2,291</div>
+                <div class="widget-stat-number">@Html.DisplayFor(model => model.NoOfClients)</div>
                 <div class="widget-stat-text">(Since @DateTime.Now.ToShortDateString())</div>
             </div>
         </div>
@@ -56,7 +57,7 @@
             <div class="widget-stat-icon"><i class="fa fa-bell"></i></div>
             <div class="widget-stat-info">
                 <div class="widget-stat-title">Total Notifications Sent</div>
-                <div class="widget-stat-number">515</div>
+                <div class="widget-stat-number">@Html.DisplayFor(model => model.NotificationsSentLast30)</div>
                 <div class="widget-stat-text">(Last 30 Days)</div>
             </div>
         </div>
@@ -70,7 +71,7 @@
             <div class="widget-stat-icon"><i class="fa fa-exchange-alt"></i></div>
             <div class="widget-stat-info">
                 <div class="widget-stat-title">Transactions</div>
-                <div class="widget-stat-number">29</div>
+                <div class="widget-stat-number">@Html.DisplayFor(model => model.Notifications)</div>
                 <div class="widget-stat-text">(3 New Transactions Today)</div>
             </div>
         </div>
@@ -154,7 +155,8 @@
                     "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
                     responsive: true,
                     dom: 'lf<"col-button"B>rtip',
-                    searching: false,
+                            searching: false,
+                            info: false,
                     scrollX: true,
                     scrollCollapse: true,
                     buttons: ['colvis'],
@@ -209,7 +211,34 @@
             }
             assetListVM.init();
         });
-            handleMorrisBarChart();
+
+        var handleMorrisBarChart = function () {
+            "use strict";
+
+            Morris.Bar({
+                element: 'bar-chart',
+                data: [
+                    { month: '@Model.ReportingMonth.ToString("MMM")', notifications: @Model.Notifications },
+                    { month: 'February', notifications: 137 },
+                    { month: 'March', notifications: 275 },
+                    { month: 'April', notifications: 380 },
+                    { month: 'May', notifications: 655 },
+                    { month: 'June', notifications: 1571 }
+                ],
+                xkey: 'month',
+                ykeys: ['notifications'],
+                labels: ['Notifications'],
+                barRatio: 0.4,
+                xLabelAngle: 35,
+                resize: true,
+                gridTextFamily: "'Nunito', sans-serif",
+                gridTextWeight: '300',
+                gridTextSize: 11,
+                gridTextColor: '#30373e',
+                barColors: [inverse]
+            });
+        };
+        handleMorrisBarChart();
 
         });
 </script>

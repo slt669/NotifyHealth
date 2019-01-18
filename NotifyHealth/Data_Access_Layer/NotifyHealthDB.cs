@@ -1709,6 +1709,66 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+        public DashboardViewModel GetDashboardDetails(int? organizationID)
+        {
+            DashboardViewModel DVM = new DashboardViewModel();
+
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp003GetDashboardDetails";
+
+
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+
+                    command.CommandTimeout = 6000;
+
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    command.Parameters.Add("@OrganizationID", SqlDbType.BigInt, 4).Value = organizationID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                   
+                        DVM.NewClientsLast30 = reader["NewClientsLastThirty"] as int? ?? default(int);
+                        DVM.NoOfClients = reader["NoOfClients"] as int? ?? default(int);
+                        DVM.NotificationsSentLast30 = reader["NotificationsSentLastThirty"] as int? ?? default(int);
+                        DVM.Notifications = reader["Notifications"] as int? ?? default(int);
+                        DVM.ReportingMonth = reader["ReportingMonth"] as int? ?? default(int);
+                  
+                    }
+
+                    reader.Close();
+                    connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+            return DVM;
+        }
         public byte[] AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
         {
             byte[] encryptedBytes = null;

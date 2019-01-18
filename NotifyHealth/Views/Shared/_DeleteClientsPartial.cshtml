@@ -46,16 +46,46 @@
                 <dd>
                     @Html.DisplayFor(model => model.PhoneCarrier)
                 </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MessageAddress)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MessageAddress)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccountType)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ClientStatus)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ClientStatus)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneStatus)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneStatus)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ParticipationReason)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ParticipationReason)
+                </dd>
 
             </dl>
             @using (Html.BeginForm("DeleteClients", "Home", null))
             {
-                @*@using (Ajax.BeginForm("DeleteSpeedDial", "Services", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "DeleteAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
-            {*@
-
-
-                @*@Html.ActionLink("Back to List", "SpeedDial", null, new { data_dismiss = "modal" })*@
-
+ 
             <div class="modal-footer">
                 @Html.HiddenFor(x => x.FirstName)
                 @Html.HiddenFor(x => x.LastName)
