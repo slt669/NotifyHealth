@@ -60,9 +60,23 @@ namespace NotifyHealth.Models
 
         [Display(Name = "Account Type")]
         public string AccountType { get; set; }
+  
+        [Display(Name = "CampaignId")]
+        public virtual int CampaignId { get; set; }
 
-        //public ICollection<ClientMemberships> ClientMemberships { get; set; }
-        //public ICollection<Queue> Queue { get; set; }
-        //public ICollection<Transactions> Transactions { get; set; }
+        [Display(Name = "Account Types")]
+        public virtual IEnumerable<SelectListItem> Campaigns { get; set; }
+
+        [Display(Name = "Campaign")]
+        public string Campaign { get; set; }
+        [Display(Name = "CampaignId")]
+        public virtual int CampaignIdDDL { get; set; }
+
+        [Display(Name = "CampaignsDDL")]
+        public virtual IEnumerable<SelectListItem> CampaignsDDL { get; set; }
+
+        [Display(Name = "CampaignDDL")]
+        public string CampaignDDL { get; set; }
+
     }
 }

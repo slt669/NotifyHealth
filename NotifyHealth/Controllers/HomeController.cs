@@ -215,7 +215,7 @@ namespace NotifyHealth.Controllers
 
         }
 
-     
+
         [SessionFilterAttribute]
         [HttpPost]
         public ActionResult DeletePrograms(Programs model)
@@ -414,7 +414,7 @@ namespace NotifyHealth.Controllers
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
             char delete = 'N';
-            db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name,model.CampaignId, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]),model.StatusId,delete);
+            db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.CampaignId, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
 
 
 
@@ -458,13 +458,13 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-            //    if (!ModelState.IsValid)
-            //    {
+                //    if (!ModelState.IsValid)
+                //    {
 
-            //        return View("_EditCampaignsPartial", model);
-            //    }
-            //    ViewBag.Message = "Sucess or Failure Message";
-            //    ModelState.Clear();
+                //        return View("_EditCampaignsPartial", model);
+                //    }
+                //    ViewBag.Message = "Sucess or Failure Message";
+                //    ModelState.Clear();
                 List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
                 char delete = 'N';
                 db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.CampaignId, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
@@ -576,24 +576,25 @@ namespace NotifyHealth.Controllers
         }
         [SessionFilterAttribute]
         public ActionResult NotificationWizard(int? organizationID)
-        {    var model = new Notifications();
+        {
+            var model = new Notifications();
             try
             {
                 model.Statuses = GetStatusList();
                 model.Programs = db.GetProgramDDL();
                 //model.Campaigns = db.GetCampaignDDL(Convert.ToInt32(Session["organizationID"]));
-              
+
                 model.NotificationTypes = db.GetNotificationTypes();
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
                 model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
-            }      
-     
+            }
+
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
             }
-           return View(model);
+            return View(model);
         }
         [HttpPost]
         //[ValidateAntiForgeryToken]
@@ -633,7 +634,7 @@ namespace NotifyHealth.Controllers
             model.Statuses = GetStatusList();
             model.NotificationTypes = db.GetNotificationTypes();
             model.Programs = db.GetProgramDDL();
-       
+
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
             model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
@@ -649,7 +650,7 @@ namespace NotifyHealth.Controllers
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
             char delete = 'N';
-            db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]),  model.Text, model.Period,model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
+            db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]), model.Text, model.Period, model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
 
 
 
@@ -778,7 +779,7 @@ namespace NotifyHealth.Controllers
 
             TempData["Clientsdtsource"] = dtsource;
             TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
-
+            TempData["ClientId"] = dtsource.First().ClientId;
 
             List<String> columnSearch = new List<string>();
 
@@ -803,7 +804,7 @@ namespace NotifyHealth.Controllers
 
             return Json(result);
         }
-        public JsonResult GetClientMemberships(DTParameters param, int? organizationID, int? clientID )
+        public JsonResult GetClientMemberships(DTParameters param, int? organizationID, int? clientID)
         {
             List<ClientMemberships> dtsource = new List<ClientMemberships>();
 
@@ -881,7 +882,7 @@ namespace NotifyHealth.Controllers
             model.AccountTypes = db.GetAccountTypes();
             model.ParticipationReasons = db.GetParticipationReasons();
             model.PhoneStatuses = db.GetPhoneStatus();
-            
+
             return View("_CreateClientsPartial", model);
         }
 
@@ -889,13 +890,13 @@ namespace NotifyHealth.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreateClients(Clients model)
         {
- 
-       
+
+
             ModelState.Clear();
             List<Clients> dtsource = MyGlobalClientsInitializer();
 
             char delete = 'N';
-            db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId,model.ATypeId,model.PhoneNumber,model.MessageAddress,model.ParticipationId,model.PhoneCarrier,model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
+            db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId, model.ATypeId, model.PhoneNumber, model.MessageAddress, model.ParticipationId, model.PhoneCarrier, model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
 
 
 
@@ -905,7 +906,7 @@ namespace NotifyHealth.Controllers
         [SessionFilterAttribute]
         public ActionResult ClientDetails(int? id)
         {
-          
+
 
             List<Clients> dtsource = MyGlobalClientsInitializer();
             Clients edit = dtsource.FirstOrDefault(x => x.ClientId == id);
@@ -917,12 +918,87 @@ namespace NotifyHealth.Controllers
             ViewBag.clientID = id;
             return View("ClientDetails", edit);
         }
-      
+        [HttpPost]
+        public JsonResult ValuesAdded(string[][] Memberships)
+        {
+            int Clientid = Convert.ToInt32(TempData["ClientId"]);
+            if (Memberships == null)
+            {
+                List<Campaigns> Camp = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
+                int count = Camp.Count();
+                foreach (Campaigns C in Camp)
+                {
+
+                    db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(C.CampaignId), Clientid, 'Y');
+
+                }
+            }
+            else
+            {
+
+                List<string[]> d = Memberships.Cast<string[]>().ToList();
+
+                foreach (string[] value in d)
+                {
+
+
+                    foreach (string valueinner in value)
+                    {
+                        db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(valueinner), Clientid, 'N');
+
+
+                    }
+                }
+            }
+            return Json(new { Memberships }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ValuesDeleted(string[][] Memberships)
+        {
+            int Clientid = Convert.ToInt32(TempData["ClientId"]);
+            if (Memberships == null)
+            {
+                //List<Campaigns> Camp = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
+                //int count = Camp.Count();
+                //foreach (Campaigns C in Camp)
+                //{
+
+                //    //db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(C.CampaignId), 10001, 'Y');
+
+                //}
+
+            }
+            else
+            {
+
+                List<string[]> d = Memberships.Cast<string[]>().ToList();
+
+                foreach (string[] value in d)
+                {
+
+
+
+
+                    foreach (string valueinner in value)
+                    {
+                        db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(valueinner), Clientid, 'Y');
+
+
+                    }
+                }
+
+            }
+
+            return Json(new { Memberships }, JsonRequestBehavior.AllowGet);
+        }
+
+
         // GET: Asset/Edit/5
         [SessionFilterAttribute]
+
         public ActionResult EditClient(int? id)
         {
-            //var testID = 1;
+
 
             List<Clients> dtsource = MyGlobalClientsInitializer();
             Clients edit = dtsource.FirstOrDefault(x => x.ClientId == id);
@@ -931,10 +1007,43 @@ namespace NotifyHealth.Controllers
             edit.ParticipationReasons = db.GetParticipationReasons();
             edit.PhoneStatuses = db.GetPhoneStatus();
 
+            List<ClientMemberships> cl = db.GetClientMemberships(Convert.ToInt32(Session["organizationID"]), edit.ClientId);
+            List<Campaigns> Camp = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
+       
+            TempData["ClientId"] = id;
+            int count = cl.Count();
+
+            for (int i = 0; i < count; i++)
+            {
+                ClientMemberships num = cl.ElementAt(i);
+
+                Camp.RemoveAll(remov => remov.CampaignId == num.CampaignId);
+            }
 
 
-            if (Request.IsAjaxRequest())
-                return PartialView("_EditClientsPartial", edit);
+            ViewBag.ClientMembershipsSelected = cl.Select(x =>
+
+
+                                  new SelectListItem()
+                                  {
+                                      Text = x.Campaign,
+                                      Value = x.CampaignId.ToString()
+                                  });
+
+            ViewBag.Unselected = Camp.Select(x =>
+
+
+                              new SelectListItem()
+                              {
+                                  Text = x.Name,
+                                  Value = x.CampaignId.ToString()
+                              });
+
+            //edit.Campaigns = db.GetCampaignDDL(2);
+
+
+            //if (Request.IsAjaxRequest())
+            //    return PartialView("_EditClientsPartial", edit);
             return View(edit);
         }
 
@@ -944,7 +1053,7 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-      
+
                 ModelState.Clear();
                 List<Clients> dtsource = MyGlobalClientsInitializer();
                 char delete = 'N';
@@ -1048,7 +1157,7 @@ namespace NotifyHealth.Controllers
 
             XmlElement root = apiResponseXML.DocumentElement;
             XmlNodeList nodes = root.SelectNodes("/response/results/result");
-            
+
             //D247_INVALID_PHONE1234567891
 
             foreach (XmlNode node in nodes)
@@ -1076,19 +1185,21 @@ namespace NotifyHealth.Controllers
             if (Phone.Wireless == "y")
             {
                 if (string.IsNullOrEmpty(Phone.MessageAddress))
-                { Phone.ParticipationId = 11;
+                {
+                    Phone.ParticipationId = 11;
                     TempData["alertMessage"] = "Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.";
                     Phone.Warning = "Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.";
-               }
-               //  Submit button creates client account or updates user record but DO NOT INSERT into queue table
+                }
+                //  Submit button creates client account or updates user record but DO NOT INSERT into queue table
 
                 else
-                { Phone.ParticipationId = 12;
+                {
+                    Phone.ParticipationId = 12;
                     TempData["alertMessage"] = "Submit button inserts new record into Queue table and adds record to clients table";
                     Phone.Warning = "Submit button inserts new record into Queue table and adds record to clients table";
                 }
                 //  
-                
+
                 // ASK FOR TEST DATA API TEST
             }
 

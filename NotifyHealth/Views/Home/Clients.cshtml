@@ -28,7 +28,10 @@
     <!-- begin panel -->
     <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateClient","Home", new { @organizationID = Session["organizationID"] })" id="btnCreateAsset">
         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Clients
-    </button>  
+    </button>
+    <p class="m-b-20">
+
+    </p>
     <div class="panel pagination-inverse m-b-0 clearfix">
 
         <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
@@ -121,7 +124,7 @@
                                 "searchable": false,
                                 "sortable": false,
                                 "render": function (data, type, full, meta) {
-                                    return '<a href="@Url.Action("EditClient", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("ClientDetails", "Home")?id=' + data + '"class="details">Details</a> |  <a href="@Url.Action("DeleteClient", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                    return '<a href="@Url.Action("EditClient", "Home")?id=' + data + '" class="edit">Edit</a> |  <a href="@Url.Action("ClientDetails", "Home")?id=' + data + '"class="details">Details</a> |  <a href="@Url.Action("DeleteClient", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
                                 }
                             }
                     ],

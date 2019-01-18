@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace NotifyHealth.Models
 {
@@ -18,5 +19,7 @@ namespace NotifyHealth.Models
         public string Clients { get; set; }
         public string Campaign { get; set; }
         public string Program { get; set; }
+
+      
     }
 }

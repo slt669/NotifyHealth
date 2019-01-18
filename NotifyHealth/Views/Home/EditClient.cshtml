@@ -1,0 +1,131 @@
+﻿@model NotifyHealth.Models.Clients
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<h1 class="page-header">Edit Client Details</h1>
+<div class="section-container section-with-top-border">
+    <p class="m-b-20">
+
+    </p>
+
+</div>
+@using (Ajax.BeginForm("EditClients", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "UpdateAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
+{
+
+    <input type='button' id='btnRight_code' value='  >  ' />
+
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+        <div class="col-sm-12">
+            @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "canselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+        <div class="col-sm-12">
+            @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.Unselected, new { @id = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
+        </div>
+    </div>
+    <input type='button' id='btnLeft_code' value='  <  ' />
+    <input type='button' id='btnSubmit' value='Submit' />
+    @Html.HiddenFor(x => x.CampaignId)
+    <span id="values"></span>
+}
+
+<script>
+    $(document).ready(function () {
+        $('[id^=\"btnRight\"]').click(function (e) {
+
+            $("#canselect_code > option:selected").each(function () {
+                $(this).remove().appendTo("#isselect_code");
+            });
+
+
+        });
+
+        $('[id^=\"btnLeft\"]').click(function (e) {
+
+
+            $("#isselect_code > option:selected").each(function () {
+                $(this).remove().appendTo("#canselect_code");
+            });
+
+        });
+
+        $('[id^=\"btnSubmit\"]').click(function (e) {
+
+
+            var ValuesAdded = $.map($('#isselect_code option'), function (e) { return e.value; });
+            var ValuesDeleted = $.map($('#canselect_code option'), function (e) { return e.value; });
+            // as a comma separated string
+            $('#values').text(ValuesAdded.join(','));
+
+            'use strict';
+            var to = $('#values').text();
+
+
+            let emailList = to.split(',').map(values => {
+                return {
+                    CampaignId: values.trim(),
+                }
+            });
+
+            var mergedAdded = [].concat.apply([], ValuesAdded);
+            var mergedDeleted = [].concat.apply([], ValuesDeleted);
+  
+
+            $.ajax({
+                url: "/Home/ValuesAdded",
+                type: "POST",
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                data: JSON.stringify(
+                    [
+                        mergedAdded
+                    ]),
+
+                success: function (data) {
+
+                }
+            });
+            $.ajax({
+                url: "/Home/ValuesDeleted",
+                type: "POST",
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                data: JSON.stringify(
+                    [
+                        mergedDeleted
+                    ]),
+
+                success: function (data) {
+                }
+            });
+
+
+        });
+
+    });
+
+
+
+
+
+
+</script>
+
+<style>
+    select {
+        width: 200px;
+        height: 200px;
+    }
+
+    .fr {
+        float: right;
+    }
+
+    .fl {
+        float: left;
+    }
+</style>

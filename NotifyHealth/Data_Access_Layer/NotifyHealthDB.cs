@@ -580,7 +580,7 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.Name = reader["Campaign"] as string;
                         CD.ProgramId = reader["Program_ID"] as int? ?? default(int);
                         CD.Status = reader["Value"] as string;
-                        CD.Program = reader["Program"] as string; 
+                        CD.Program = reader["Program"] as string;
                         CD.RelatedNotifications = reader["RelatedNotifications"] as int? ?? default(int);
                         CL.Add(CD);
                     }
@@ -736,7 +736,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return CL;
         }
-        public List<ClientMemberships> GetClientMemberships(int? organizationID,int? ClientID)
+        public List<ClientMemberships> GetClientMemberships(int? organizationID, int? ClientID)
         {
 
             List<ClientMemberships> CM = new List<ClientMemberships>();
@@ -863,7 +863,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return T;
         }
-        public void UpdatePrograms(int? OrganizationId,string Description, string Name, int? ProgramId,int Created_By,int Edited_By, int? StatusId, char Delete)
+        public void UpdatePrograms(int? OrganizationId, string Description, string Name, int? ProgramId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
             //ReturnValidationError = "99999";
 
@@ -963,7 +963,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
-        public void UpdateNotifications(int? OrganizationId, string Text, int Period,int NTypeId,int? NotificationId, int? CampaignId, int Created_By, int Edited_By, int? StatusId, char Delete)
+        public void UpdateNotifications(int? OrganizationId, string Text, int Period, int NTypeId, int? NotificationId, int? CampaignId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
             //ReturnValidationError = "99999";
 
@@ -1014,7 +1014,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
-        public void UpdateClients(int? OrganizationId, string FirstName, string LastName,int CStatusId, int PStatusId, int ATypeID,string PhoneNumber, string MessageAddress, int ParticipationID , string PhoneCarrier, int ClientId, int Created_By, int Edited_By, char Delete)
+        public void UpdateClients(int? OrganizationId, string FirstName, string LastName, int CStatusId, int PStatusId, int ATypeID, string PhoneNumber, string MessageAddress, int ParticipationID, string PhoneCarrier, int ClientId, int Created_By, int Edited_By, char Delete)
         {
             //ReturnValidationError = "99999";
 
@@ -1033,7 +1033,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("@ClientId", SqlDbType.BigInt, 4).Value = ClientId;
                     command.Parameters.Add("@FirstName", SqlDbType.VarChar, 200).Value = FirstName;
                     command.Parameters.Add("@LastName", SqlDbType.VarChar, 200).Value = LastName;
-                    command.Parameters.Add("@CStatusID", SqlDbType.BigInt, 4).Value = CStatusId; 
+                    command.Parameters.Add("@CStatusID", SqlDbType.BigInt, 4).Value = CStatusId;
                     command.Parameters.Add("@PStatusID", SqlDbType.BigInt, 4).Value = PStatusId;
                     command.Parameters.Add("@ATypeID", SqlDbType.BigInt, 4).Value = ATypeID;
                     command.Parameters.Add("@PhoneNumber", SqlDbType.VarChar, 12).Value = PhoneNumber;
@@ -1060,16 +1060,59 @@ namespace NotifyHealth.Data_Access_Layer
 
                     if (ParticipationID == 11 || ParticipationID == 8)
                     {
-                    // Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.
+                        // Popup warning that given phone number CANNOT BE USED to send messages but client will be saved.
 
-                    //  Submit button creates client account or updates user record but DO NOT INSERT into queue table
+                        //  Submit button creates client account or updates user record but DO NOT INSERT into queue table
                     }
-                    else if(ParticipationID == 12)
+                    else if (ParticipationID == 12)
                     {
                         //Phone.Warning = "Submit button inserts new record into Queue table and adds record to clients table";
                         string Success = QueueOnBoardingNotification(OrganizationId, ClientId, 1);
                     }
-               
+
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
+                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
+            }
+        }
+        public void UpdateClientMembership(int? OrganizationId, int CampaignId, int ClientID, char Delete)
+        //ReturnValidationError = "99999";
+        {
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
+                StoredProcedure = "usp122UpdateClientMembership";
+
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+
+                    SqlCommand command = new SqlCommand(StoredProcedure);
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = OrganizationId;
+                    command.Parameters.Add("@ClientId", SqlDbType.BigInt, 4).Value = ClientID;
+                    command.Parameters.Add("@CampaignId", SqlDbType.BigInt, 4).Value = CampaignId;
+                    command.Parameters.Add("@Start", SqlDbType.DateTime).Value = DateTime.Now.ToShortDateString();
+                    command.Parameters.Add("@Appointment", SqlDbType.VarChar, 12).Value = "";
+                    command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader[0].ToString());
+                    }
+
+                    reader.Close();
+                    connection.Close();
+  
                     //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
                     //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
 

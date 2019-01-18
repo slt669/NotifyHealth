@@ -5418,6 +5418,7 @@
     <Content Include="Content\plugins\summernote\summernote-lite.js.map" />
     <Content Include="Content\plugins\summernote\summernote.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -5474,6 +5475,7 @@
     <Content Include="Views\Home\ProgramDetails.cshtml" />
     <Content Include="Views\Home\CampaignDetails.cshtml" />
     <Content Include="Views\Home\NotificationDetails.cshtml" />
+    <Content Include="Views\Home\EditClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
