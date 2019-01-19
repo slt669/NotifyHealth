@@ -28,7 +28,11 @@ namespace NotifyHealth.Controllers
             ViewBag.organizationID = Session["organizationID"];
             return View(model);
         }
-
+        /// <summary>
+        /// Programs
+        /// </summary>
+        /// <param name="organizationID"></param>
+        /// <returns></returns>
         [SessionFilterAttribute]
         public ActionResult Programs(int? organizationID)
         {
@@ -110,6 +114,11 @@ namespace NotifyHealth.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreatePrograms(Programs model)
         {
+            //if (!ModelState.IsValid)
+            //{
+
+            //    return View("_CreateProgramsPartial", model);
+            //}
             ViewBag.Message = "Sucess or Failure Message";
             ModelState.Clear();
             List<Programs> dtsource = MyGlobalProgramsInitializer();
@@ -117,6 +126,11 @@ namespace NotifyHealth.Controllers
             char delete = 'N';
             db.UpdatePrograms(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
 
+            //if (task.Exception != null)
+            //{
+            //    ModelState.AddModelError("", "Unable to add the Asset");
+            //    return View("_CreatePartial", model);
+            //}
 
             return RedirectToAction("Programs", new { controller = "Home", organizationID = model.OrganizationID });
 
@@ -151,6 +165,7 @@ namespace NotifyHealth.Controllers
             return View("ProgramDetails", edit);
         }
 
+        // POST: Asset/Edit/5
         [SessionFilterAttribute]
         [HttpPost]
         //[ValidateAntiForgeryToken]
@@ -158,7 +173,13 @@ namespace NotifyHealth.Controllers
         {
             try
             {
- 
+                //if (!ModelState.IsValid)
+                //{
+                //    ViewBag.Message = "Failure";
+                //   return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
+
+                //}
+
                 ModelState.Clear();
                 List<Programs> dtsource = MyGlobalProgramsInitializer();
                 char delete = 'N';
@@ -170,13 +191,26 @@ namespace NotifyHealth.Controllers
 
             }
 
+
+            //if (task.Exception != null)
+            //{
+            //    ModelState.AddModelError("", "Unable to update the Asset");
+            //    Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            //    return View(Request.IsAjaxRequest() ? "_EditPartial" : "Edit", assetVM);
+            //}
+
+            //if (Request.IsAjaxRequest())
+            //{
+            //    return Content("success");
+            //}
             return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
+            //return RedirectToAction("SpeedDial", new { userID = model.VoiceUserID });
 
         }
         [SessionFilterAttribute]
         public ActionResult DeleteProgram(int? id)
         {
-
+            var testID = 4;
             List<Programs> dtsource = MyGlobalProgramsInitializer();
 
             Programs delete = dtsource.FirstOrDefault(x => x.ProgramId == id);
@@ -206,6 +240,22 @@ namespace NotifyHealth.Controllers
             {
                 ViewBag.Message = ex.Message;
             }
+
+            //var task = DbContext.SaveChangesAsync();
+            //await task;
+
+            //if (task.Exception != null)
+            //{
+            //    ModelState.AddModelError("", "Unable to Delete the Asset");
+            //    Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            //    AssetViewModel assetVM = MapToViewModel(asset);
+            //    return View(Request.IsAjaxRequest() ? "_DeletePartial" : "Delete", assetVM);
+            //}
+
+            //if (Request.IsAjaxRequest())
+            //{
+            //    return Content("success");
+            //}
 
             return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
 
@@ -290,7 +340,11 @@ namespace NotifyHealth.Controllers
             TempData["Campaignsdtsource"] = dtsource;
             return dtsource;
         }
-
+        /// <summary>
+        /// Campaigns
+        /// </summary>
+        /// <param name="organizationID"></param>
+        /// <returns></returns>
         [SessionFilterAttribute]
         public ActionResult Campaigns(int? organizationID)
         {
@@ -359,7 +413,12 @@ namespace NotifyHealth.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreateCampaigns(Campaigns model)
         {
-          
+            //if (!ModelState.IsValid)
+            //{
+
+            //    return View("_CampaignsModal", model);
+            //}
+            //ViewBag.Message = "Sucess or Failure Message";
             ModelState.Clear();
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
 
@@ -384,7 +443,7 @@ namespace NotifyHealth.Controllers
 
             return View("CampaignDetails", edit);
         }
-      
+        // GET: Asset/Edit/5
         [SessionFilterAttribute]
         public ActionResult EditCampaign(int? id)
         {
@@ -408,6 +467,13 @@ namespace NotifyHealth.Controllers
         {
             try
             {
+                //    if (!ModelState.IsValid)
+                //    {
+
+                //        return View("_EditCampaignsPartial", model);
+                //    }
+                //    ViewBag.Message = "Sucess or Failure Message";
+                //    ModelState.Clear();
                 List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
                 char delete = 'N';
                 db.UpdateCampaigns(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.CampaignId, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
@@ -450,7 +516,14 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Campaigns");
 
         }
-
+        /// <summary>
+        /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// //////////////////////////////////////////////////////////////
+        /// 
+        /// //////////////////////////////////////////////////////////////
+        /// 
+        /// 
+        /// <returns></returns>
         public List<Notifications> MyGlobalNotificationsInitializer()
         {
             List<Notifications> dtsource = new List<Notifications>();
@@ -518,20 +591,9 @@ namespace NotifyHealth.Controllers
             {
                 model.Statuses = GetStatusList();
                 model.Programs = db.GetProgramDDL();
+                //model.Campaigns = db.GetCampaignDDL(Convert.ToInt32(Session["organizationID"]));
 
                 model.NotificationTypes = db.GetNotificationTypes();
-
-              var  types = model.NotificationTypes.ToList(); // Get IEnumerable as List
-
-                types.Remove(types.First(x => x.Value == "1"));
-                types.Remove(types.First(x => x.Value == "2"));
-                types.Remove(types.First(x => x.Value == "3"));
-                types.Remove(types.First(x => x.Value == "4"));
-                types.Remove(types.First(x => x.Value == "5"));
-                types.Remove(types.First(x => x.Value == "6"));
-                types.Remove(types.First(x => x.Value == "7"));
-
-                model.NotificationTypes = types;
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
                 model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
@@ -616,6 +678,7 @@ namespace NotifyHealth.Controllers
 
             return View("NotificationDetails", edit);
         }
+        // GET: Asset/Edit/5
         [SessionFilterAttribute]
         public ActionResult EditNotification(int? id)
         {
@@ -637,7 +700,11 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-             
+                //if (!ModelState.IsValid)
+                //{
+
+                //    return View("_EditNotificationsPartial", model);
+                //}
 
                 ModelState.Clear();
                 List<Notifications> dtsource = MyGlobalNotificationsInitializer();
@@ -904,6 +971,14 @@ namespace NotifyHealth.Controllers
             int Clientid = Convert.ToInt32(TempData["ClientId"]);
             if (Memberships == null)
             {
+                //List<Campaigns> Camp = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
+                //int count = Camp.Count();
+                //foreach (Campaigns C in Camp)
+                //{
+
+                //    //db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(C.CampaignId), 10001, 'Y');
+
+                //}
 
             }
             else
@@ -930,6 +1005,8 @@ namespace NotifyHealth.Controllers
             return Json(new { Memberships }, JsonRequestBehavior.AllowGet);
         }
 
+
+        // GET: Asset/Edit/5
         [SessionFilterAttribute]
 
         public ActionResult EditClient(int? id)
@@ -975,7 +1052,11 @@ namespace NotifyHealth.Controllers
                                   Value = x.CampaignId.ToString()
                               });
 
+            //edit.Campaigns = db.GetCampaignDDL(2);
 
+
+            //if (Request.IsAjaxRequest())
+            //    return PartialView("_EditClientsPartial", edit);
             return View(edit);
         }
 
@@ -1058,7 +1139,9 @@ namespace NotifyHealth.Controllers
             string apiUsername = "notifyhealth_cpc001";
             string apiPassword = "6U7gQ458wGUNKm2tS6";
 
-            SMSAccount sms = db.GetSMSAccount(Convert.ToInt32(Session["organizationID"]));
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //Take from Organisation Table 
             ClientPhone Phone = null;
             if (apiPhoneNumber.Length != 10)
             {
@@ -1071,7 +1154,9 @@ namespace NotifyHealth.Controllers
 
             string apiURL = "https://api.data24-7.com/v/2.0";
 
-            apiURL += "?compcode=" + apiCompany + "&user=" + sms.API_Username + "&pass=" + sms.API_Password + "&api=T&p1=" + apiPhoneNumber;
+            //eventLog1.WriteEntry("Calling Carrier Lookup API with: " + apiPhoneNumber, EventLogEntryType.Information, 8100);
+
+            apiURL += "?compcode=" + apiCompany + "&user=" + apiUsername + "&pass=" + apiPassword + "&api=T&p1=" + apiPhoneNumber;
 
             //https://api.data24-7.com/v/2.0?compcode=notify&user=notifyhealth_cpc001&pass=6U7gQ458wGUNKm2tS6&api=T&p1=7194257147
             try
@@ -1149,3 +1234,64 @@ namespace NotifyHealth.Controllers
 
     }
 }
+//private void QueueOnBoardingNotification()
+//{
+//    // These values dont reside in the function in the service but are here to support the example
+//    int noticeNT = 1;
+
+//    try
+//    {
+//        SqlCommand sqlCommand = new SqlCommand();
+
+//        sqlConnection.Open();
+//        sqlCommand.Connection = sqlConnection;
+
+//        String query = @"IF NOT EXISTS (SELECT * 
+//                           FROM queue 
+//                           WHERE Client_ID = @c_id 
+//                           AND Notification_ID = (SELECT Notification_ID 
+//	                                FROM notifications
+//	                                WHERE notifications.N_Type_ID = @n_t
+//                                                            AND notifications.Organization_ID = @o_id))
+
+//                        BEGIN
+//                        INSERT INTO dbo.queue
+//                        VALUES (@c_id,
+//                             (SELECT Notification_ID 
+//                              FROM notifications
+//                              WHERE notifications.N_Type_ID = @n_t)
+//                                    AND notifications.Organization_ID = @o_id),
+//                             @t)
+//                        END";
+
+//        sqlCommand.CommandText = query;
+
+//        sqlCommand.Parameters.AddWithValue("@c_id", Convert.ToInt32(currentPerson.Client_ID));
+//        sqlCommand.Parameters.AddWithValue("@n_t", noticeNT);
+//        sqlCommand.Parameters.AddWithValue("@o_id", $global: org_id);
+//        sqlCommand.Parameters.AddWithValue("@t", DateTime.Now);
+
+//        int output = sqlCommand.ExecuteNonQuery();
+
+//        sqlConnection.Close();
+
+//        if (output < 0)
+//        {
+//            eventLog1.WriteEntry("SQL activity failed while adding notification to queue.", EventLogEntryType.Error, 3120);
+//        }
+//        else if (output < 0)
+//        {
+//            eventLog1.WriteEntry("No action taken, notification type (" + noticeNT + ") already queued to client " + currentPerson.Client_ID, EventLogEntryType.Error, 3120);
+//        }
+//        else if (output == 1)
+//        {
+//            eventLog1.WriteEntry("Queued notification type (" + noticeNT + ") to client " + currentPerson.Client_ID, EventLogEntryType.Information, 2010);
+//        }
+
+//    }
+//    catch (Exception e)
+//    {
+//        eventLog1.WriteEntry("SQL activity failed while adding transaction date with error. " + e.ToString(), EventLogEntryType.Error, 3121);
+//    }
+//}
+

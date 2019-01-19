@@ -10,31 +10,23 @@
 @using (Ajax.BeginForm("EditClients", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "UpdateAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
 {
 
+    <input type='button' id='btnRight_code' value='  >  ' />
 
 
-
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label class="col-sm-12 form-control-label">Client Memberships Selected</label>
-            <div class="col-sm-12">
-                @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "canselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
-            </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+        <div class="col-sm-12">
+            @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "canselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
         </div>
     </div>
-
-
-
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label class="col-sm-12 form-control-label">Unselected</label>
-            <div class="col-sm-12">
-                @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.Unselected, new { @id = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
-            </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+        <div class="col-sm-12">
+            @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.Unselected, new { @id = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
         </div>
     </div>
-
-
-    <input type='button' id='btnRight_code' value='  >  ' /> <input type='button' id='btnSubmit' value='Submit' /> <input type='button' id='btnLeft_code' value='  <  ' />
+    <input type='button' id='btnLeft_code' value='  <  ' />
+    <input type='button' id='btnSubmit' value='Submit' />
     @Html.HiddenFor(x => x.CampaignId)
     <span id="values"></span>
 }
@@ -79,7 +71,7 @@
 
             var mergedAdded = [].concat.apply([], ValuesAdded);
             var mergedDeleted = [].concat.apply([], ValuesDeleted);
-
+  
 
             $.ajax({
                 url: "/Home/ValuesAdded",

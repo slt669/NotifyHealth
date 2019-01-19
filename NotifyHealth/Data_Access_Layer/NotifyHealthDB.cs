@@ -41,10 +41,16 @@ namespace NotifyHealth.Data_Access_Layer
         public String DataViewSystem;
         public String DataViewId;
         public String DataViewQueryId;
+        //public SqlDataSource OutputDataSet;
+        //private String StringId;
         private String strConnection;
         public DataSet ds;
         public DataSet ds1;
         public String MustChangePwd;
+        //private SqlCommand sqlComm;
+        //private SqlConnection sqlConn;
+        //private SqlDataAdapter da;
+        //private SqlConnection sqlcon;
         private String StoredProcedure;
 
 
@@ -63,6 +69,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@Username", SqlDbType.NVarChar, 50).Value = UserName;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -84,6 +92,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -112,11 +121,14 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
+                    // Open the connection and execute the insert command. 
+
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
+                        //Console.WriteLine(reader[0].ToString());
                         SessionId = reader["UserSessionId"].ToString();
                         SessionGUID = reader["UserSessionGUID"].ToString();
 
@@ -137,6 +149,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -168,6 +181,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     while (reader.Read())
                     {
+                        //Console.WriteLine(reader[0].ToString());
                         SessionStatus = reader["SessionStatus"].ToString();
                         EndUserName = reader["EndUserName"].ToString();
                         MustChangePwd = reader["MustChangePwd"].ToString();
@@ -191,12 +205,18 @@ namespace NotifyHealth.Data_Access_Layer
 
                     if (ReturnValidationError != "0")
                     {
-                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                        //Global.gStatusMessage = ReturnValidationMessage;
+                    }
+                    else
+                    {
+                        //Global.gStatusMessage = SessionStatus;
+                        //Global.gUserLogonName = EndUserName;
                     }
                 }
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -234,7 +254,10 @@ namespace NotifyHealth.Data_Access_Layer
                         asvm.Forename = reader["Forename"].ToString();
                         asvm.Surname = reader["Surname"].ToString();
                         asvm.LogonName = reader["Username"].ToString();
+                        //MobileTelephoneNo = reader["MobileTelephoneNo"].ToString();
                         asvm.WorkTelephoneNo = reader["WorkTelephoneNo"].ToString();
+                        //HomeTelephoneNo = reader["HomeTelephoneNo"].ToString();
+                        //FaxTelephoneNo = reader["FaxTelephoneNo"].ToString();
                         asvm.JobTitle = reader["JobTitle"].ToString();
                         int x = reader.GetOrdinal("SecurityQuestionId");
                         if (!reader.IsDBNull(x)) asvm.HintQuestionID = Convert.ToInt16(reader["SecurityQuestionId"]);
@@ -243,8 +266,12 @@ namespace NotifyHealth.Data_Access_Layer
                         asvm.UserID = Convert.ToInt32(reader["UserID"]);
                         asvm.UserLogonID = Convert.ToInt32(reader["UserLogonID"]);
                         asvm.UserRole = reader["UserRoleID"] as int? ?? default(int);
+                        //asvm.CompanyName = reader["CompanyName"].ToString();
+                        //asvm.CompanyId = reader["CompanyId"] as int? ?? default(int);
+                        //int y = reader.GetOrdinal("CustomerType");
+                        //if (!reader.IsDBNull(y)) asvm.CustomerType = Convert.ToChar(reader["CustomerType"]) as char? ?? default(char);
                     }
-
+                    //SecurityQuestionId = Convert.ToInt32(StringId);
 
                     reader.Close();
                     connection.Close();
@@ -261,14 +288,18 @@ namespace NotifyHealth.Data_Access_Layer
 
                     if (ReturnValidationError != "0")
                     {
-                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                        //Global.gStatusMessage = ReturnValidationMessage;
                     }
-  
+                    else
+                    {
+                        //Global.gStatusMessage = ReturnValidationMessage;
+                    }
                 }
                 return asvm;
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -289,6 +320,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -325,6 +358,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -347,6 +381,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("UpdateType", SqlDbType.NVarChar, 20).Value = "EndUserUpdate";
                     command.Parameters.Add("@Password", SqlDbType.NVarChar, 50).Value = asvm.NewPassword;
                     command.Parameters.Add("@PasswordRepeat", SqlDbType.NVarChar, 50).Value = asvm.CheckPassword;
+                    //command.Parameters.Add("@Title", SqlDbType.NVarChar, 50).Value = asvm.Title;
                     command.Parameters.Add("@Forename", SqlDbType.NVarChar, 50).Value = asvm.Forename;
                     command.Parameters.Add("@Surname", SqlDbType.NVarChar, 50).Value = asvm.Surname;
                     command.Parameters.Add("@WorkTelephoneNo", SqlDbType.NVarChar, 50).Value = asvm.WorkTelephoneNo;
@@ -389,6 +424,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -433,6 +469,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -464,6 +501,12 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -482,6 +525,11 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
 
 
                 }
@@ -514,6 +562,12 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = @Organization_ID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -533,6 +587,11 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
 
 
                 }
@@ -565,6 +624,12 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -586,6 +651,11 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
 
 
                 }
@@ -618,6 +688,12 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -644,6 +720,11 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
 
 
                 }
@@ -677,6 +758,12 @@ namespace NotifyHealth.Data_Access_Layer
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
                     command.Parameters.Add("@Client_ID", SqlDbType.BigInt, 4).Value = ClientID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -697,7 +784,11 @@ namespace NotifyHealth.Data_Access_Layer
                     reader.Close();
                     connection.Close();
 
-  
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
+
 
                 }
 
@@ -731,6 +822,12 @@ namespace NotifyHealth.Data_Access_Layer
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = organizationID;
                     command.Parameters.Add("@Client_ID", SqlDbType.BigInt, 4).Value = ClientID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -751,6 +848,12 @@ namespace NotifyHealth.Data_Access_Layer
                     reader.Close();
                     connection.Close();
 
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
+
+
                 }
 
             }
@@ -762,7 +865,7 @@ namespace NotifyHealth.Data_Access_Layer
         }
         public void UpdatePrograms(int? OrganizationId, string Description, string Name, int? ProgramId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
- 
+            //ReturnValidationError = "99999";
 
             try
             {
@@ -798,17 +901,21 @@ namespace NotifyHealth.Data_Access_Layer
                     connection.Close();
 
 
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
 
                 }
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
         public void UpdateCampaigns(int? OrganizationId, string Description, string Name, int? CampaignId, int? ProgramId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
-   
+            //ReturnValidationError = "99999";
 
             try
             {
@@ -842,15 +949,24 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+
+
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+
                 }
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
         public void UpdateNotifications(int? OrganizationId, string Text, int Period, int NTypeId, int? NotificationId, int? CampaignId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
+            //ReturnValidationError = "99999";
+
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
@@ -886,15 +1002,22 @@ namespace NotifyHealth.Data_Access_Layer
                     connection.Close();
 
 
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+
                 }
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
         public void UpdateClients(int? OrganizationId, string FirstName, string LastName, int CStatusId, int PStatusId, int ATypeID, string PhoneNumber, string MessageAddress, int ParticipationID, string PhoneCarrier, int ClientId, int Created_By, int Edited_By, char Delete)
         {
+            //ReturnValidationError = "99999";
+
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
@@ -947,17 +1070,20 @@ namespace NotifyHealth.Data_Access_Layer
                         string Success = QueueOnBoardingNotification(OrganizationId, ClientId, 1);
                     }
 
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
 
                 }
             }
             catch (Exception ex)
             {
- 
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
         public void UpdateClientMembership(int? OrganizationId, int CampaignId, int ClientID, char Delete)
- 
+        //ReturnValidationError = "99999";
         {
             try
             {
@@ -987,10 +1113,15 @@ namespace NotifyHealth.Data_Access_Layer
                     reader.Close();
                     connection.Close();
   
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+
+
                 }
             }
             catch (Exception ex)
-            { 
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1011,7 +1142,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
-           
+                    // Open the connection and execute the insert command. 
+
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -1047,6 +1179,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1067,7 +1200,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
-              
+                    // Open the connection and execute the insert command. 
+
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -1103,6 +1237,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1123,7 +1258,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
-         
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -1159,7 +1294,8 @@ namespace NotifyHealth.Data_Access_Layer
                 return sqs;
             }
             catch (Exception ex)
-            {     
+            {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1180,7 +1316,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
-                
+                    // Open the connection and execute the insert command. 
+
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -1216,6 +1353,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1235,6 +1373,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -1271,6 +1411,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1290,6 +1431,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -1326,6 +1469,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1346,6 +1490,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@Program_ID", SqlDbType.BigInt, 4).Value = Program_ID;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -1382,6 +1528,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1407,6 +1554,12 @@ namespace NotifyHealth.Data_Access_Layer
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = Organization_ID;
                     command.Parameters.Add("@ProgramId", SqlDbType.BigInt, 4).Value = ProgramId;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -1425,6 +1578,12 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
+
 
                 }
 
@@ -1457,6 +1616,12 @@ namespace NotifyHealth.Data_Access_Layer
 
                     command.Parameters.Add("@Organization_ID", SqlDbType.BigInt, 4).Value = Organization_ID;
                     command.Parameters.Add("@Campaign_ID", SqlDbType.BigInt, 4).Value = CampaignID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -1475,6 +1640,11 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
 
 
                 }
@@ -1506,6 +1676,9 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("@ClientId", SqlDbType.Int, 4).Value = ClientId;
                     command.Parameters.Add("@NotificationType", SqlDbType.Int, 4).Value = NotificationType;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
+
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -1532,6 +1705,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             catch (Exception ex)
             {
+                //Global.gExceptionMessage = "DataControl.cs - " + ex.Message;
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
@@ -1556,6 +1730,12 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     command.Parameters.Add("@OrganizationID", SqlDbType.BigInt, 4).Value = organizationID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -1571,6 +1751,11 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
+
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
 
 
                 }
@@ -1603,6 +1788,12 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
                     command.Parameters.Add("@OrganizationID", SqlDbType.BigInt, 4).Value = organizationID;
+                    //command.Parameters.Add("@SpeedDial", SqlDbType.BigInt,4).Value = SpeedDial;
+
+                    //command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
+                    //command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+
+                    // Open the connection and execute the insert command. 
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -1619,6 +1810,12 @@ namespace NotifyHealth.Data_Access_Layer
                     reader.Close();
                     connection.Close();
 
+                    //ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
+                    //ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    //ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+
+
+
                 }
 
             }
@@ -1627,52 +1824,6 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
             return BAR;
-        }
-        public SMSAccount GetSMSAccount(int? organizationID)
-        {
-            SMSAccount SMS = new SMSAccount();
-
-            try
-            {
-                strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
-                StoredProcedure = "usp124GetSMSAccount";
-
-
-
-                using (SqlConnection connection = new SqlConnection(strConnection))
-                {
-                    SqlCommand command = new SqlCommand(StoredProcedure);
-
-                    command.CommandTimeout = 6000;
-
-                    command.Connection = connection;
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    command.Parameters.Add("@OrganizationID", SqlDbType.BigInt, 4).Value = organizationID;
-
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-
-                
-                        SMS.API_Username = reader["API_Username"] as string;
-                        SMS.API_Password = reader["API_Password"] as string;
-
-                    }
-
-                    reader.Close();
-                    connection.Close();
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
-            }
-            return SMS;
         }
         public byte[] AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
         {
