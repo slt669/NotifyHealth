@@ -162,6 +162,7 @@
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\Programs.cs" />
     <Compile Include="Models\ResultSet.cs" />
+    <Compile Include="Models\SMSAccount.cs" />
     <Compile Include="Models\Transactions.cs" />
     <Compile Include="Models\ViewModels\AccountSettingsViewModel.cs" />
     <Compile Include="Models\ViewModels\DashboardViewModel.cs" />
