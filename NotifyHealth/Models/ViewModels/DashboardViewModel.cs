@@ -14,10 +14,7 @@ namespace NotifyHealth.Models.ViewModels
 
         public int NoOfClients { get; set; }
 
-
-        public int ReportingMonth { get; set; }
-
-        public int Notifications { get; set; }
+        public int NotificationsSentToday { get; set; }
 
     }
 }

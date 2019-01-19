@@ -71,8 +71,8 @@
             <div class="widget-stat-icon"><i class="fa fa-exchange-alt"></i></div>
             <div class="widget-stat-info">
                 <div class="widget-stat-title">Transactions</div>
-                <div class="widget-stat-number">@Html.DisplayFor(model => model.Notifications)</div>
-                <div class="widget-stat-text">(3 New Transactions Today)</div>
+                <div class="widget-stat-number">@Html.DisplayFor(model => model.NotificationsSentToday)</div>
+                <div class="widget-stat-text">(New Transactions Today)</div>
             </div>
         </div>
         <!-- end widget -->
@@ -88,9 +88,9 @@
         <div class="widget">
             <div class="widget-header bg-inverse-dark">
 
-                <ul class="widget-header-btn">
+                @*<ul class="widget-header-btn">
                     <li><a href="#" class="btn btn-white">1 Jan 2019 - 31 Jan 2019 <i class="fa fa-cog"></i></a></li>
-                </ul>
+                </ul>*@
 
                 <h4 class="text-white">Notifications Bar Chart </h4>
             </div>
@@ -211,23 +211,15 @@
             }
             assetListVM.init();
         });
-
-        var handleMorrisBarChart = function () {
-            "use strict";
+        var data = JSON.parse('@Html.Raw(ViewBag.BarData)');
 
             Morris.Bar({
                 element: 'bar-chart',
-                data: [
-                    { month: '@Model.ReportingMonth.ToString("MMM")', notifications: @Model.Notifications },
-                    { month: 'February', notifications: 137 },
-                    { month: 'March', notifications: 275 },
-                    { month: 'April', notifications: 380 },
-                    { month: 'May', notifications: 655 },
-                    { month: 'June', notifications: 1571 }
-                ],
-                xkey: 'month',
-                ykeys: ['notifications'],
+                data: data,
+                xkey: ['ReportingMonth'],
+                ykeys: ['Notifications'],
                 labels: ['Notifications'],
+                hideHover: 'auto',
                 barRatio: 0.4,
                 xLabelAngle: 35,
                 resize: true,
@@ -236,9 +228,6 @@
                 gridTextSize: 11,
                 gridTextColor: '#30373e',
                 barColors: [inverse]
-            });
-        };
-        handleMorrisBarChart();
-
+            });                     
         });
 </script>

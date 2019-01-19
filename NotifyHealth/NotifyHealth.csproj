@@ -152,6 +152,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BarChart.cs" />
     <Compile Include="Models\Campaigns.cs" />
     <Compile Include="Models\ClientMemberships.cs" />
     <Compile Include="Models\ClientPhone.cs" />
@@ -5477,6 +5478,7 @@
     <Content Include="Views\Home\CampaignDetails.cshtml" />
     <Content Include="Views\Home\NotificationDetails.cshtml" />
     <Content Include="Views\Home\EditClient.cshtml" />
+    <Content Include="Views\Shared\_BarChartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

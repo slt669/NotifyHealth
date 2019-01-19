@@ -1,4 +1,5 @@
-﻿using NotifyHealth.CustomFilters;
+﻿using Newtonsoft.Json;
+using NotifyHealth.CustomFilters;
 using NotifyHealth.Data_Access_Layer;
 using NotifyHealth.Models;
 using NotifyHealth.Models.ViewModels;
@@ -15,9 +16,15 @@ namespace NotifyHealth.Controllers
     public class HomeController : Controller
     {
         private NotifyHealthDB db = new NotifyHealthDB();
-        public ActionResult Index(int? organizationID)
+        public ActionResult Index()
         {
             DashboardViewModel model = db.GetDashboardDetails(Convert.ToInt32(Session["organizationID"]));
+            List<BarChart> Bar = db.GetBarChartDetails(Convert.ToInt32(Session["organizationID"]));
+
+            var json = JsonConvert.SerializeObject(Bar);
+
+            ViewBag.BarData = json;
+
             ViewBag.organizationID = Session["organizationID"];
             return View(model);
         }
