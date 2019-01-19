@@ -16,7 +16,6 @@ namespace NotifyHealth.Controllers
     public class HomeController : Controller
     {
         private NotifyHealthDB db = new NotifyHealthDB();
-        [SessionFilterAttribute]
         public ActionResult Index()
         {
             DashboardViewModel model = db.GetDashboardDetails(Convert.ToInt32(Session["organizationID"]));

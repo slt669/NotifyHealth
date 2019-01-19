@@ -175,6 +175,7 @@ namespace NotifyHealth.Data_Access_Layer
                         Organization = reader["Organization"].ToString();
 
                     }
+
                     reader.Close();
                     connection.Close();
 
@@ -190,12 +191,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     if (ReturnValidationError != "0")
                     {
-                        //Global.gStatusMessage = ReturnValidationMessage;
-                    }
-                    else
-                    {
-                        //Global.gStatusMessage = SessionStatus;
-                        //Global.gUserLogonName = EndUserName;
+                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
                 }
             }
