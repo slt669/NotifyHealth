@@ -5039,7 +5039,6 @@
     <Content Include="Content\plugins\chart-js-angular\LICENSE.md" />
     <Content Include="Content\plugins\chart-js-angular\package.json" />
     <Content Include="Content\plugins\chart-js-angular\README.md" />
-    <Content Include="Content\plugins\chart-js\.DS_Store" />
     <Content Include="Content\plugins\chart-js\.gitignore" />
     <Content Include="Content\plugins\chart-js\.travis.yml" />
     <Content Include="Content\plugins\ckeditor\plugins\scayt\LICENSE.md" />
@@ -5409,7 +5408,6 @@
     <Content Include="Content\plugins\slimscroll\bower.json" />
     <Content Include="Content\plugins\slimscroll\package.json" />
     <Content Include="Content\plugins\slimscroll\README.md" />
-    <Content Include="Content\plugins\summernote\.DS_Store" />
     <Content Include="Content\plugins\summernote\.gitignore" />
     <Content Include="Content\plugins\summernote\.jshintignore" />
     <Content Include="Content\plugins\summernote\.jshintrc" />
@@ -5420,6 +5418,7 @@
     <Content Include="Content\plugins\summernote\summernote-bs4.js.map" />
     <Content Include="Content\plugins\summernote\summernote-lite.js.map" />
     <Content Include="Content\plugins\summernote\summernote.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -5479,7 +5478,6 @@
     <Content Include="Views\Home\CampaignDetails.cshtml" />
     <Content Include="Views\Home\NotificationDetails.cshtml" />
     <Content Include="Views\Home\EditClient.cshtml" />
-    <Content Include="Views\Shared\_BarChartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -5517,7 +5515,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62023</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:62023/</IISUrl>
+          <IISUrl>http://localhost:9999/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

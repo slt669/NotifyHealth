@@ -191,7 +191,12 @@ namespace NotifyHealth.Data_Access_Layer
 
                     if (ReturnValidationError != "0")
                     {
-                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                        //Global.gStatusMessage = ReturnValidationMessage;
+                    }
+                    else
+                    {
+                        //Global.gStatusMessage = SessionStatus;
+                        //Global.gUserLogonName = EndUserName;
                     }
                 }
             }
