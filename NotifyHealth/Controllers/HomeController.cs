@@ -899,13 +899,17 @@ namespace NotifyHealth.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreateClients(Clients model)
         {
+            var PhoneCarrierBindingBroke = Request.Form["PhoneCarrier"];
+            var MessageAddressBindingBroke = Request.Form["MessageAddress"];
 
+            PhoneCarrierBindingBroke  = PhoneCarrierBindingBroke.Replace(",", "");
+            MessageAddressBindingBroke = PhoneCarrierBindingBroke.Replace(",", "");
 
             ModelState.Clear();
             List<Clients> dtsource = MyGlobalClientsInitializer();
 
             char delete = 'N';
-            db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId, model.ATypeId, model.PhoneNumber, model.MessageAddress, model.ParticipationId, model.PhoneCarrier, model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
+            db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId, model.ATypeId, model.PhoneNumber, MessageAddressBindingBroke, model.ParticipationId, PhoneCarrierBindingBroke, model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
 
 
 

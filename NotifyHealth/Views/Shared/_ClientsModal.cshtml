@@ -40,19 +40,22 @@
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.PhoneNumber, new { @id = "PhoneNumber", @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @id = "PhoneNumber", @name = "PhoneNumber", @class = "col-sm-12 form-control" })
+            <input type="hidden" name="PhoneNumber" id="PhoneNumber" />
         </div>
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneCarrier, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @name = "PhoneCarrier", @class = "col-sm-12 form-control" })
+            <input type="hidden" name="PhoneCarrier" id="PhoneCarrier" />
         </div>
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.MessageAddress, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.MessageAddress, new { @id = "MessageAddress", @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.MessageAddress, new { @id = "MessageAddress", @name = "MessageAddress", @class = "col-sm-12 form-control" })
+            <input type="hidden" name="MessageAddress" id="MessageAddress" />
         </div>
     </div>
     <div class="form-group row">
@@ -91,11 +94,10 @@
                     data: { PhoneNumber},
                     dataType: "json",
                     success: function (data) {
-                        $("#PhoneCarrier").val(data["PhoneCarrier"]);
-                        $("#MessageAddress").val(data["MessageAddress"]);
                         $("#ParticipationId").val(data["ParticipationId"]);
                         $("#PStatusId").val(data["PStatusId"]);
-                        $("#Warning").val(data["Warning"]);
+                        $("#PhoneCarrier").val(data["PhoneCarrier"]);
+                        $("#MessageAddress").val(data["MessageAddress"]);
                        alert(data["Warning"]);
                     },
                     error: function (jqXHR, exception) {
