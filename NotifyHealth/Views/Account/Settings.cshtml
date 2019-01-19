@@ -41,9 +41,9 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.HintQuestion, new { @class = "col-sm-3 form-control-label" })
+                @Html.LabelFor(model => model.HintQuestion, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
                 <div class="col-sm-6">
-                    @Html.TextBoxFor(model => model.HintQuestionID, new { @class = "col-sm-8 form-control" })
+                    @Html.DropDownListFor(model => model.HintQuestionID, Model.HintQuestion, new { @class = "col-sm-8 form-control" })
                     @Html.ValidationMessageFor(model => model.HintQuestionID, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-     
+
             <div class="pwd-container">
                 <div class="form-group">
                     @Html.LabelFor(model => model.NewPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
@@ -101,11 +101,11 @@
                             </div>
                         </div>
 
-                    </div>   
+                    </div>
                 </div>
 
 
-              
+
                 <div class="form-group">
                     <div class="col-sm-6">
                         @Html.TextBoxFor(m => m.PhotoFile, new { type = "file" })
