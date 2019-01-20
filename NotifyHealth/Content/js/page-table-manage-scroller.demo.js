@@ -10,7 +10,7 @@ var handleDataTableScroller = function() {
 
     if ($('#data-table').length !== 0) {
         $('#data-table').DataTable({
-            ajax:           "../Content/plugins/DataTables/json/scroller-demo.json",
+            ajax:           "~/Content/plugins/DataTables/json/scroller-demo.json",
             deferRender:    true,
             scrollY:        300,
             scrollCollapse: true,

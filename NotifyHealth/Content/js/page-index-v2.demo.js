@@ -122,7 +122,7 @@ var handleDashboardGritterNotification = function() {
         $.gritter.add({
             title: 'Welcome back, Admin!',
             text: 'You have 5 new notifications. Please check your inbox.',
-            image: '../Content/img/user_profile.jpg',
+            image: '.."~/Content/img/user_profile.jpg',
             sticky: true,
             time: '',
             class_name: 'my-sticky-class'

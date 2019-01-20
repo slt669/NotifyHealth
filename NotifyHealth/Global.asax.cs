@@ -17,5 +17,18 @@ namespace NotifyHealth
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            log.Debug("++++++++++++++++++++++++++++");
+            log.Error("Exception - \n" + ex);
+            log.Debug("++++++++++++++++++++++++++++");
+            Session["Error"] = ex.Message;
+            Server.ClearError();
+
+            Response.Redirect("/Error/Index");
+
+
+        }
     }
 }

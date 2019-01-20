@@ -958,7 +958,7 @@ NOTE: use percentage font sizes or else old IE chokes
 --------------------------------------------------------------------------------------------------*/
 .fc-time-grid-container,
 .fc-time-grid {
-  /* so slats/bg/content/etc positions get scoped within here */
+  /* so slats/bg"~/Content/etc positions get scoped within here */
   position: relative;
   z-index: 1; }
 
@@ -967,7 +967,7 @@ NOTE: use percentage font sizes or else old IE chokes
   /* so if height setting is 'auto', .fc-bg stretches to fill height */ }
 
 .fc-time-grid table {
-  /* don't put outer borders on slats/bg/content/etc */
+  /* don't put outer borders on slats/bg"~/Content/etc */
   border: 0 hidden transparent; }
 
 .fc-time-grid > .fc-bg {

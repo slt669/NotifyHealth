@@ -141,37 +141,37 @@ namespace NotifyHealth.Controllers
             {
                 var path = "";
 
-                if (data.PhotoFile != null)
+                //if (data.PhotoFile != null)
 
-                {
+                //{
 
-                    if (data.PhotoFile.ContentLength > 0)
+                //    if (data.PhotoFile.ContentLength > 0)
 
-                    {
+                //    {
 
-                        //for checking uploaded file is image or not
+                //        //for checking uploaded file is image or not
 
-                        if (Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpg"
+                //        if (Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpg"
 
-                            || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".png"
+                //            || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".png"
 
-                          || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".gif"
+                //          || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".gif"
 
-                            || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpeg")
+                //            || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpeg")
 
-                        {
+                //        {
 
-                            Directory.CreateDirectory("~/Content/img/" + data.Forename+data.Surname+ "/");
+                //            Directory.CreateDirectory("~"~/Content/img/" + data.Forename+data.Surname+ "/");
                     
-                            path = Path.Combine(Server.MapPath("~/Content/img" + data.Forename + data.Surname + "/"), data.PhotoFile.FileName);
+                //            path = Path.Combine(Server.MapPath("~"~/Content/img" + data.Forename + data.Surname + "/"), data.PhotoFile.FileName);
 
-                            data.PhotoFile.SaveAs(path);
+                //            data.PhotoFile.SaveAs(path);
 
-                        }
+                //        }
 
-                    }
+                //    }
 
-                }
+                //}
 
                 string UpdateMessage = dbc.ManageAccount(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString(), data);
 

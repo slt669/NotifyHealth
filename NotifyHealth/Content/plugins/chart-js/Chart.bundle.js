@@ -15510,7 +15510,7 @@ var implementation = dom._enabled ? dom : basic;
 
 /**
  * @namespace Chart.platform
- * @see https://chartjs.gitbooks.io/proposals/content/Platform.html
+ * @see https://chartjs.gitbooks.io/proposals"~/Content/Platform.html
  * @since 2.4.0
  */
 module.exports = helpers.extend({

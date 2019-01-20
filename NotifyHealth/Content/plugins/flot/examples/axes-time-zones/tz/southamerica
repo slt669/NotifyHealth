@@ -1356,7 +1356,7 @@ Link	America/Curacao	America/Kralendijk # Bonaire, Sint Estatius and Saba
 #
 # From Paul Eggert (2007-03-04):
 # Apparently Ecuador had a failed experiment with DST in 1992.
-# <http://midena.gov.ec/content/view/1261/208/> (2007-02-27) and
+# <http://midena.gov.ec"~/Content/view/1261/208/> (2007-02-27) and
 # <http://www.hoy.com.ec/NoticiaNue.asp?row_id=249856> (2006-11-06) both
 # talk about "hora Sixto".  Leave this alone for now, as we have no data.
 #
