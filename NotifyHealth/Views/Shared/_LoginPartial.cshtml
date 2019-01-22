@@ -7,7 +7,7 @@
         @*@if (Request.IsAuthenticated)
         {*@
             <div class="navbar-header">
-                <a href="index.html" class="navbar-brand"><img src="~/Content/img/logo.png" class="logo" alt="" /> Notify Health</a>
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand"><img src="~/Content/img/logo.png" class="logo" alt="" /> Notify Health</a>
                 <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -19,25 +19,30 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (@Session["timestamp"] != null)
                 {
-       
-                }
+
+
                 <li class="dropdown navbar-user">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                        <span style="color:black; padding-right:1px;">Last refreshed: @Session["timestamp"]</span>
+                        <span style="color:black; padding-right:1px;">Last refreshed: @Session["timestamp"].ToString()</span>
                     </a>
                  
                 </li>
+                }
                 <li class="dropdown navbar-user">
-                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="image"><img src="~/Content/img/user_profile.jpg" alt="" /></span>
-                        <span class="hidden-xs">@Session["UserFullName"].ToString()</span> <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu pull-right">
-                        <li><a href="@Url.Action("Settings", "Account")">Settings</a></li>
-                        <li class="divider"></li>
-                        <li><a href="@Url.Action("Logoff", "Account")">Log out</a></li>
-                    </ul>
-                </li>
+                    @if (@Session["timestamp"] != null)
+                    {
+
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="image"><img src="@Session["Photo"].ToString()" alt="@Session["UserFullName"].ToString()" /></span>
+                            <span class="hidden-xs">@Session["UserFullName"].ToString()</span> <b class="caret"></b>
+                        </a>
+                    }
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="@Url.Action("Settings", "Account")">Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Logoff", "Account")">Log out</a></li>
+                        </ul>
+                    </li>
             </ul>
             <!-- end navbar-right -->
         @*}*@

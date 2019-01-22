@@ -60,7 +60,7 @@ namespace NotifyHealth.Controllers
                 Session["UserFullName"] = usermanager.accset.Forename + " " + usermanager.accset.Surname;
                 Session["UserSessionId"] = usermanager.SessionId;
                 Session["UserSessionGUID"] = usermanager.SessionGUID;
-                //Session["UserTenantList"] = usermanager.ltn;
+                Session["Photo"] = usermanager.accset.PhotoPath ?? "";
                 Session["organizationID"] = usermanager.OrganizationID;
                 Session["UserLogonId"] = usermanager.accset.UserLogonID;
                 //Session["UserRoleId"] = usermanager.accset.UserRole;
@@ -72,7 +72,6 @@ namespace NotifyHealth.Controllers
                 //Session["AdminFlag"] = false;
                 //if (returnUrl == "/") returnUrl = "/Home/Index";
                 Session["organization"] = usermanager.Organization;
-                Session["User"] = "Paul Lizer";
                 Session["UserLogon"] = 1;
                 return RedirectToAction("Index", "Home"); // auth succeed 
             }
@@ -109,6 +108,11 @@ namespace NotifyHealth.Controllers
             return RedirectToAction("Login", "Account", new { error = errormessage });
 
         }
+        public ActionResult Error(string message)
+        {
+            ViewBag.ErrorMessage = Session["Error"];
+            return View();
+        }
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
 
@@ -141,37 +145,37 @@ namespace NotifyHealth.Controllers
             {
                 var path = "";
 
-                //if (data.PhotoFile != null)
+                if (data.PhotoFile != null)
 
-                //{
+                {
 
-                //    if (data.PhotoFile.ContentLength > 0)
+                    if (data.PhotoFile.ContentLength > 0)
 
-                //    {
+                    {
 
-                //        //for checking uploaded file is image or not
+                        //for checking uploaded file is image or not
 
-                //        if (Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpg"
+                        if (Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpg"
 
-                //            || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".png"
+                            || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".png"
 
-                //          || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".gif"
+                          || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".gif"
 
-                //            || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpeg")
+                            || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpeg")
 
-                //        {
+                        {
 
-                //            Directory.CreateDirectory("~"~/Content/img/" + data.Forename+data.Surname+ "/");
-                    
-                //            path = Path.Combine(Server.MapPath("~"~/Content/img" + data.Forename + data.Surname + "/"), data.PhotoFile.FileName);
+                         
 
-                //            data.PhotoFile.SaveAs(path);
 
-                //        }
+                            path = "C:/Development/NotifyHealth/NotifyHealth/NotifyHealth/Content/img/";
+                            data.PhotoFile.SaveAs(path + data.PhotoFile.FileName);
+                            data.PhotoPath = "../Content/img/" + data.PhotoFile.FileName;
+                        }
 
-                //    }
+                    }
 
-                //}
+                }
 
                 string UpdateMessage = dbc.ManageAccount(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString(), data);
 
