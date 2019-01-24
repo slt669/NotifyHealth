@@ -32,8 +32,11 @@
                     @if (@Session["timestamp"] != null)
                     {
 
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                        @if (@Session["Photo"] != null)
+                        {
                             <span class="image"><img src="@Session["Photo"].ToString()" alt="@Session["UserFullName"].ToString()" /></span>
+                        }
                             <span class="hidden-xs">@Session["UserFullName"].ToString()</span> <b class="caret"></b>
                         </a>
                     }

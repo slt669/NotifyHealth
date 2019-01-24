@@ -27,7 +27,7 @@ namespace NotifyHealth.Models
         [Display(Name = "NotificationTypes")]
         public virtual IEnumerable<SelectListItem> NotificationTypes { get; set; }
 
-        [Display(Name = "NotificationType")]
+        [Display(Name = "Notification Type")]
         public string NotificationType { get; set; }
 
         [Display(Name = "CampaignId")]

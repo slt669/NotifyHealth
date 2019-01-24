@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-
+    <title>Notify Health | Programs Details</title>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 
@@ -19,12 +19,16 @@
 </head>
 <h1 class="page-header">Program Details</h1>
 <div class="section-container section-with-top-border">
-    <p class="m-b-20">
-
-    </p>
 
 </div>
+<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Programs", "Home")'" id="btnProgram">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
+</button>
 
+
+<p class="m-b-20">
+
+</p>
 <dl class="m-b-20">
     <div class="well well-sm">
         <dt>
@@ -64,7 +68,9 @@
     </div>
 </dl>
 
-
+<p class="m-b-20">
+    <h1 class="page-header">Related Campaigns</h1>
+</p>
 <div class="panel pagination-inverse m-b-0 clearfix">
 
     <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>

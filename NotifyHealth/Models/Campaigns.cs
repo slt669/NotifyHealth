@@ -22,6 +22,7 @@ namespace NotifyHealth.Models
         public string Status { get; set; }
 
         public int? OrganizationID { get; set; }
+        [Display(Name = "Related Notifications")]
         public int RelatedNotifications { get; set; }
 
         [Display(Name = "Program Id")]
@@ -33,6 +34,5 @@ namespace NotifyHealth.Models
         [Display(Name = "Program")]
         public string Program { get; set; }
 
-        //public ICollection<ClientMemberships> ClientMemberships { get; set; }
     }
 }

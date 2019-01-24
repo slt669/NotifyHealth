@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-
+    <title>Notify Health | Client Details</title>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 
@@ -19,98 +19,119 @@
 </head>
 <h1 class="page-header">Client Details</h1>
 <div class="section-container section-with-top-border">
-    <p class="m-b-20">
+</div>
+<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Clients", "Home")'" id="btnClients">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
+</button>
 
-    </p>
+<p class="m-b-20">
 
+</p>
+<div class="row">
+    <div class="col-lg-5">
+
+
+
+        <dl class="m-b-20">
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+            </div>
+
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+            </div>
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ClientStatus)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ClientStatus)
+                </dd>
+            </div>
+
+
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+            </div>
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.MessageAddress)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MessageAddress)
+                </dd>
+        </dl>
+
+    </div>
+
+
+    <div class="col-lg-5">
+
+
+        <dl class="m-b-20">
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneCarrier)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneCarrier)
+                </dd>
+            </div>
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneStatus)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneStatus)
+                </dd>
+            </div>
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ParticipationReason)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ParticipationReason)
+                </dd>
+            </div>
+            <div class="well well-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccountType)
+                </dd>
+            </div>
+        </dl>
+    </div>
 </div>
 
-<dl class="m-b-20">
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-    </div>
-
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-    </div>
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.ClientStatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClientStatus)
-        </dd>
-    </div>
-
-
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-    </div>
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.MessageAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MessageAddress)
-        </dd>
-    </div>
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneCarrier)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneCarrier)
-        </dd>
-    </div>
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneStatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneStatus)
-        </dd>
-    </div>
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.ParticipationReason)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ParticipationReason)
-        </dd>
-    </div>
-    <div class="well well-sm">
-        <dt>
-            @Html.DisplayNameFor(model => model.AccountType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccountType)
-        </dd>
-    </div>
-</dl>
+<p class="m-b-20">
+    <h1 class="page-header">Campaign Memberships</h1>
+</p>
 <div class="row">
     <div class="col-lg-12">
 
@@ -120,6 +141,10 @@
         </div>
     </div>
 </div>
+
+<p class="m-b-20">
+    <h1 class="page-header">Delivered Messages</h1>
+</p>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel pagination-inverse m-b-0 clearfix">
@@ -264,7 +289,7 @@
                                 "title": "When", "data": "Timestamp", "searchable": true,
                             },
                         ],
-                        "order": [0, "Asc"],
+                        "order": [2, "Asc"],
                     });
             },
 
