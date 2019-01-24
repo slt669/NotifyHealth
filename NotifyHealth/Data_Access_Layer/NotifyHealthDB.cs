@@ -1574,6 +1574,11 @@ namespace NotifyHealth.Data_Access_Layer
                         DVM.NoOfClients = reader["NoOfClients"] as int? ?? default(int);
                         DVM.NotificationsSentLast30 = reader["NotificationsSentLastThirty"] as int? ?? default(int);
                         DVM.NotificationsSentToday = reader["NotificationsSentToday"] as int? ?? default(int);
+                        if (Convert.ToDateTime(reader["NoOfClientDate"]) != null)
+                        {
+                            DVM.NoOfClientDate = Convert.ToDateTime(reader["NoOfClientDate"]).ToShortDateString(); 
+                        }
+             
                     }
 
                     reader.Close();

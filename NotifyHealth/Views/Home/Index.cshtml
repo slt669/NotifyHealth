@@ -44,7 +44,7 @@
             <div class="widget-stat-info">
                 <div class="widget-stat-title">Clients</div>
                 <div class="widget-stat-number">@Html.DisplayFor(model => model.NoOfClients)</div>
-                <div class="widget-stat-text">(Since @DateTime.Now.ToShortDateString())</div>
+                <div class="widget-stat-text">(Since @Html.DisplayFor(model => model.NoOfClientDate))</div>
             </div>
         </div>
         <!-- end widget -->
