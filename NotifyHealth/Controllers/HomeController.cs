@@ -388,8 +388,7 @@ namespace NotifyHealth.Controllers
         [SessionFilterAttribute]
         public ActionResult EditCampaign(int? id)
         {
-            var testID = 1;
-
+   
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
             edit.Programs = db.GetProgramDDL();
@@ -836,7 +835,7 @@ namespace NotifyHealth.Controllers
             var MessageAddressBindingBroke = Request.Form["MessageAddress"];
 
             PhoneCarrierBindingBroke  = PhoneCarrierBindingBroke.Replace(",", "");
-            MessageAddressBindingBroke = PhoneCarrierBindingBroke.Replace(",", "");
+            MessageAddressBindingBroke = MessageAddressBindingBroke.Replace(",", "");
 
             ModelState.Clear();
             List<Clients> dtsource = MyGlobalClientsInitializer();

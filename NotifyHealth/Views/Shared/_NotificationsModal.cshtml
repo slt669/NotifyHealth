@@ -44,10 +44,22 @@
             @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
         </div>
     </div>
+
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Program, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+        <div class="col-sm-12">
+            @Html.DropDownListFor(model => model.ProgramID, Model.Programs, "---Select A Program ---", new { @id = "Program-DropDownID", @class = "col-sm-12 form-control" })
+            @Html.ValidationMessageFor(model => model.ProgramID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
     <div class="form-group row">
         @Html.LabelFor(model => model.Campaign, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.CampaignId, Model.Campaigns, new { @class = "col-sm-12 form-control" })
+            <select class="col-sm-12 form-control" id="CampaignId" name="CampaignId">
+                <option value="" selected disabled hidden>Select a Program 1st</option>
+            </select>
             @Html.ValidationMessageFor(model => model.CampaignId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -55,3 +67,27 @@
 </div>
 
 
+
+
+<script>
+        $(document).ready(function () {
+
+          $('#Program-DropDownID').change(function () {
+              $("#CampaignId").empty();
+                var ProgramID = $('#Program-DropDownID').find('option:selected').val();
+
+                 $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCampaignDDL", "Home")?programID=' + ProgramID,
+                    dataType: "json",
+                    success: function (data) {
+                        $.each(data, function (index, value) {
+                            $("#CampaignId").append("<option value=" + value.Value + ">" + value.Text + "</option>");
+                        });
+
+                    }
+                 });
+            });
+
+        });
+</script>

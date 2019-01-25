@@ -165,10 +165,9 @@ namespace NotifyHealth.Controllers
 
                         {
 
-                         
 
 
-                            path = "C:/Development/NotifyHealth/NotifyHealth/NotifyHealth/Content/img/";
+                            path = "C:/inetpub/wwwroot/NotifyHealth/Content/img/";
                             data.PhotoFile.SaveAs(path + data.PhotoFile.FileName);
                             data.PhotoPath = "../Content/img/" + data.PhotoFile.FileName;
                         }
