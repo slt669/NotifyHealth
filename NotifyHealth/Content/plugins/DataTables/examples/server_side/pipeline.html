@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
 	<style type="text/css" class="init">
-	
 	</style>
 	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js">
 	</script>
@@ -20,7 +19,6 @@
 	<script type="text/javascript" language="javascript" src="../resources/demo.js">
 	</script>
 	<script type="text/javascript" language="javascript" class="init">
-	
 
 //
 // Pipelining function for DataTables. To be used to the `ajax` option of DataTables
@@ -47,7 +45,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 		var drawStart     = request.start;
 		var requestLength = request.length;
 		var requestEnd    = requestStart + requestLength;
-		
+
 		if ( settings.clearCache ) {
 			// API requested that the cache be cleared
 			ajax = true;
@@ -64,7 +62,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 			// properties changed (ordering, columns, searching)
 			ajax = true;
 		}
-		
+
 		// Store the request for checking next time around
 		cacheLastRequest = $.extend( true, {}, request );
 
@@ -77,7 +75,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 					requestStart = 0;
 				}
 			}
-			
+
 			cacheLower = requestStart;
 			cacheUpper = requestStart + (requestLength * conf.pages);
 
@@ -112,7 +110,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 						json.data.splice( 0, drawStart-cacheLower );
 					}
 					json.data.splice( requestLength, json.data.length );
-					
+
 					drawCallback( json );
 				}
 			} );
@@ -136,7 +134,6 @@ $.fn.dataTable.Api.register( 'clearPipeline()', function () {
 	} );
 } );
 
-
 //
 // DataTables initialisation
 //
@@ -150,8 +147,6 @@ $(document).ready(function() {
 		} )
 	} );
 } );
-
-
 	</script>
 </head>
 <body class="dt-example">
@@ -225,7 +220,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 		var drawStart     = request.start;
 		var requestLength = request.length;
 		var requestEnd    = requestStart + requestLength;
-		
+
 		if ( settings.clearCache ) {
 			// API requested that the cache be cleared
 			ajax = true;
@@ -242,7 +237,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 			// properties changed (ordering, columns, searching)
 			ajax = true;
 		}
-		
+
 		// Store the request for checking next time around
 		cacheLastRequest = $.extend( true, {}, request );
 
@@ -255,7 +250,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 					requestStart = 0;
 				}
 			}
-			
+
 			cacheLower = requestStart;
 			cacheUpper = requestStart + (requestLength * conf.pages);
 
@@ -290,7 +285,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 						json.data.splice( 0, drawStart-cacheLower );
 					}
 					json.data.splice( requestLength, json.data.length );
-					
+
 					drawCallback( json );
 				}
 			} );
@@ -313,7 +308,6 @@ $.fn.dataTable.Api.register( 'clearPipeline()', function () {
 		settings.clearCache = true;
 	} );
 } );
-
 
 //
 // DataTables initialisation

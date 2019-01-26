@@ -12,7 +12,6 @@ namespace NotifyHealth
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-
             var cao = new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
@@ -21,14 +20,13 @@ namespace NotifyHealth
             };
             app.UseCookieAuthentication(cao);
         }
+
         private static void ApplyRedirect(CookieApplyRedirectContext context)
         {
-
             UrlHelper _url = new UrlHelper(HttpContext.Current.Request.RequestContext);
             string actionUri = _url.Action("Login", "Account", new { });
             context.Response.Redirect(actionUri);
         }
-
 
         //// Enable the application to use a cookie to store information for the signed in user
         //app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -54,6 +52,5 @@ namespace NotifyHealth
         //   appSecret: "");
 
         //app.UseGoogleAuthentication();
-
     }
 }

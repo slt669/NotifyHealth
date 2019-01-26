@@ -30,7 +30,6 @@ var diffResults = function (newResult, oldResult, deep) {
 };
 
 UI.Form = {
-
   _actualizeTriggers: function () {
     this.$element.on('submit.Parsley', evt => { this.onSubmitValidate(evt); });
     this.$element.on('click.Parsley', Utils._SubmitSelector, evt => { this.onSubmitButton(evt); });
@@ -67,11 +66,9 @@ UI.Form = {
     // Reset all event listeners
     this.$element.off('.Parsley');
   }
-
 };
 
 UI.Field = {
-
   _reflowUI: function () {
     this._buildUI();
 
@@ -192,7 +189,6 @@ UI.Field = {
     for (i = 0; i < diff.kept.length; i++)
       this._updateError(diff.kept[i].assert.name, {message: diff.kept[i].errorMessage, assert: diff.kept[i].assert});
   },
-
 
   _addError: function (name, {message, assert}) {
     this._insertErrorWrapper();

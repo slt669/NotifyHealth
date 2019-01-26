@@ -1,14 +1,15 @@
-﻿using System;
+﻿using NotifyHealth.Models;
+using NotifyHealth.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 using System.IO;
-using System.Web.Mvc;
-using NotifyHealth.Models;
-using NotifyHealth.Models.ViewModels;
+using System.Security.Cryptography;
 using System.Text;
+using System.Web.Mvc;
+
 namespace NotifyHealth.Data_Access_Layer
 {
     public class NotifyHealthDB
@@ -46,7 +47,6 @@ namespace NotifyHealth.Data_Access_Layer
         public DataSet ds1;
         public String MustChangePwd;
         private String StoredProcedure;
-
 
         public string CheckLogon(String UserName)
         {
@@ -88,8 +88,6 @@ namespace NotifyHealth.Data_Access_Layer
             }
         }
 
-
-
         public void GetSession(String UserName, String Password, String PageName)
         {
             try
@@ -119,7 +117,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         SessionId = reader["UserSessionId"].ToString();
                         SessionGUID = reader["UserSessionGUID"].ToString();
-
                     }
 
                     reader.Close();
@@ -140,7 +137,6 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
-
 
         public void CheckSession(Int32 SessionId, String SessionGUID, String PageName)
         {
@@ -173,7 +169,6 @@ namespace NotifyHealth.Data_Access_Layer
                         MustChangePwd = reader["MustChangePwd"].ToString();
                         OrganizationID = reader["OrganizationID"] != null ? reader["OrganizationID"].ToString() : "";
                         Organization = reader["Organization"].ToString();
-
                     }
 
                     reader.Close();
@@ -212,7 +207,6 @@ namespace NotifyHealth.Data_Access_Layer
 
             try
             {
-
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp103GetAccountDetails";
 
@@ -248,9 +242,8 @@ namespace NotifyHealth.Data_Access_Layer
                         asvm.UserID = Convert.ToInt32(reader["UserID"]);
                         asvm.UserLogonID = Convert.ToInt32(reader["UserLogonID"]);
                         asvm.UserRole = reader["UserRoleID"] as int? ?? default(int);
-                        asvm.PhotoPath = reader["Photo"] as string; 
+                        asvm.PhotoPath = reader["Photo"] as string;
                     }
-
 
                     reader.Close();
                     connection.Close();
@@ -269,7 +262,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-  
                 }
                 return asvm;
             }
@@ -299,7 +291,6 @@ namespace NotifyHealth.Data_Access_Layer
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
-
                     while (reader.Read())
                     {
                         SelectListItem sq = new SelectListItem();
@@ -310,14 +301,11 @@ namespace NotifyHealth.Data_Access_Layer
                             sq.Selected = true;
                         }
 
-
                         sqs.Add(sq);
-
                     }
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -325,7 +313,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return sqs;
             }
@@ -334,6 +321,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public string ManageAccount(Int32 SessionId, String SessionGUID, AccountSettingsViewModel asvm)
         {
             string ReturnValidationError;
@@ -431,11 +419,8 @@ namespace NotifyHealth.Data_Access_Layer
                     reader.Close();
                     connection.Close();
 
-
                     ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
                     ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
-
-
                 }
             }
             catch (Exception ex)
@@ -452,14 +437,11 @@ namespace NotifyHealth.Data_Access_Layer
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         public List<Programs> GetPrograms(int? organizationID)
         {
-
             List<Programs> PL = new List<Programs>();
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp001GetPrograms";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -489,10 +471,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -500,16 +479,14 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return PL;
         }
+
         public List<Campaigns> GetCampaigns(int? Organization_ID)
         {
-
             List<Campaigns> CL = new List<Campaigns>();
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp005GetCampaigns";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -540,10 +517,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -551,16 +525,14 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return CL;
         }
+
         public List<Notifications> GetNotifications(int? organizationID)
         {
-
             List<Notifications> NL = new List<Notifications>();
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp006GetNotifications";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -593,10 +565,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -604,16 +573,14 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return NL;
         }
+
         public List<Clients> GetClients(int? organizationID)
         {
-
             List<Clients> CL = new List<Clients>();
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp004GetClients";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -651,10 +618,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -662,16 +626,14 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return CL;
         }
+
         public List<ClientMemberships> GetClientMemberships(int? organizationID, int? ClientID)
         {
-
             List<ClientMemberships> CM = new List<ClientMemberships>();
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp0116GetClientMemberships";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -703,11 +665,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
-  
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -718,14 +676,11 @@ namespace NotifyHealth.Data_Access_Layer
 
         public List<Transactions> GetTransactions(int? organizationID, int? ClientID)
         {
-
             List<Transactions> T = new List<Transactions>();
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp117GetGetTransactions";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -757,9 +712,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -767,10 +720,9 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return T;
         }
+
         public void UpdatePrograms(int? OrganizationId, string Description, string Name, int? ProgramId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
- 
-
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
@@ -778,7 +730,6 @@ namespace NotifyHealth.Data_Access_Layer
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
-
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -803,9 +754,6 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
-
-
                 }
             }
             catch (Exception ex)
@@ -813,10 +761,9 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public void UpdateCampaigns(int? OrganizationId, string Description, string Name, int? CampaignId, int? ProgramId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
-   
-
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
@@ -824,7 +771,6 @@ namespace NotifyHealth.Data_Access_Layer
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
-
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -856,6 +802,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public void UpdateNotifications(int? OrganizationId, string Text, int Period, int NTypeId, int? NotificationId, int? CampaignId, int Created_By, int Edited_By, int? StatusId, char Delete)
         {
             try
@@ -865,7 +812,6 @@ namespace NotifyHealth.Data_Access_Layer
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
-
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -891,8 +837,6 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
-
                 }
             }
             catch (Exception ex)
@@ -900,6 +844,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public void UpdateClients(int? OrganizationId, string FirstName, string LastName, int CStatusId, int PStatusId, int ATypeID, string PhoneNumber, string MessageAddress, int ParticipationID, string PhoneCarrier, int ClientId, int Created_By, int Edited_By, char Delete)
         {
             try
@@ -909,7 +854,6 @@ namespace NotifyHealth.Data_Access_Layer
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
-
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -953,18 +897,16 @@ namespace NotifyHealth.Data_Access_Layer
                         //Phone.Warning = "Submit button inserts new record into Queue table and adds record to clients table";
                         string Success = QueueOnBoardingNotification(OrganizationId, ClientId, 1);
                     }
-
-
                 }
             }
             catch (Exception ex)
             {
- 
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public void UpdateClientMembership(int? OrganizationId, int CampaignId, int ClientID, char Delete)
- 
+
         {
             try
             {
@@ -973,7 +915,6 @@ namespace NotifyHealth.Data_Access_Layer
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
-
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -993,14 +934,14 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-  
                 }
             }
             catch (Exception ex)
-            { 
+            {
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public List<SelectListItem> GetClientStatus(string selected = "")
         {
             try
@@ -1018,10 +959,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
-           
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-
 
                     while (reader.Read())
                     {
@@ -1033,14 +972,11 @@ namespace NotifyHealth.Data_Access_Layer
                             sq.Selected = true;
                         }
 
-
                         sqs.Add(sq);
-
                     }
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -1048,7 +984,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return sqs;
             }
@@ -1057,6 +992,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public List<SelectListItem> GetAccountTypes(string selected = "")
         {
             try
@@ -1074,10 +1010,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
-              
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-
 
                     while (reader.Read())
                     {
@@ -1089,14 +1023,11 @@ namespace NotifyHealth.Data_Access_Layer
                             sq.Selected = true;
                         }
 
-
                         sqs.Add(sq);
-
                     }
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -1104,7 +1035,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return sqs;
             }
@@ -1113,6 +1043,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public List<SelectListItem> GetNotificationTypes(string selected = "")
         {
             try
@@ -1130,11 +1061,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
-         
-
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-
 
                     while (reader.Read())
                     {
@@ -1146,14 +1074,11 @@ namespace NotifyHealth.Data_Access_Layer
                             sq.Selected = true;
                         }
 
-
                         sqs.Add(sq);
-
                     }
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -1161,15 +1086,15 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return sqs;
             }
             catch (Exception ex)
-            {     
+            {
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public List<SelectListItem> GetParticipationReasons(string selected = "")
         {
             try
@@ -1187,10 +1112,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
-                
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-
 
                     while (reader.Read())
                     {
@@ -1202,14 +1125,11 @@ namespace NotifyHealth.Data_Access_Layer
                             sq.Selected = true;
                         }
 
-
                         sqs.Add(sq);
-
                     }
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -1217,7 +1137,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return sqs;
             }
@@ -1226,6 +1145,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public List<SelectListItem> GetPhoneStatus(string selected = "")
         {
             try
@@ -1246,7 +1166,6 @@ namespace NotifyHealth.Data_Access_Layer
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
-
                     while (reader.Read())
                     {
                         SelectListItem sq = new SelectListItem();
@@ -1257,14 +1176,11 @@ namespace NotifyHealth.Data_Access_Layer
                             sq.Selected = true;
                         }
 
-
                         sqs.Add(sq);
-
                     }
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -1272,7 +1188,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return sqs;
             }
@@ -1281,6 +1196,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public List<SelectListItem> GetProgramDDL(string selected = "")
         {
             try
@@ -1301,7 +1217,6 @@ namespace NotifyHealth.Data_Access_Layer
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
-
                     while (reader.Read())
                     {
                         SelectListItem sq = new SelectListItem();
@@ -1312,14 +1227,11 @@ namespace NotifyHealth.Data_Access_Layer
                             sq.Selected = true;
                         }
 
-
                         sqs.Add(sq);
-
                     }
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -1327,7 +1239,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return sqs;
             }
@@ -1336,6 +1247,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public List<SelectListItem> GetCampaignDDL(int? Program_ID, string selected = "")
         {
             try
@@ -1357,7 +1269,6 @@ namespace NotifyHealth.Data_Access_Layer
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
-
                     while (reader.Read())
                     {
                         SelectListItem sq = new SelectListItem();
@@ -1368,14 +1279,11 @@ namespace NotifyHealth.Data_Access_Layer
                             sq.Selected = true;
                         }
 
-
                         sqs.Add(sq);
-
                     }
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -1383,7 +1291,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return sqs;
             }
@@ -1392,16 +1299,14 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
-        public List<Campaigns> GetCampaignsbyProgram(int? Organization_ID,int? ProgramId)
-        {
 
+        public List<Campaigns> GetCampaignsbyProgram(int? Organization_ID, int? ProgramId)
+        {
             List<Campaigns> CL = new List<Campaigns>();
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp120GetCampaignsbyProgram";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -1426,15 +1331,13 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.ProgramId = reader["Program_ID"] as int? ?? default(int);
                         CD.Name = reader["Name"] as string;
                         CD.Status = reader["Value"] as string;
-             
+
                         CL.Add(CD);
                     }
 
                     reader.Close();
                     connection.Close();
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -1442,16 +1345,14 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return CL;
         }
+
         public List<Notifications> GetNotificationsbyCampaigns(int? Organization_ID, int? CampaignID)
         {
-
             List<Notifications> CL = new List<Notifications>();
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp121GetNotificationsbyCampaigns";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -1482,10 +1383,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -1493,7 +1391,8 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return CL;
         }
-        public string QueueOnBoardingNotification(int? OrganizationId,int ClientId,int NotificationType)
+
+        public string QueueOnBoardingNotification(int? OrganizationId, int ClientId, int NotificationType)
         {
             try
             {
@@ -1519,13 +1418,10 @@ namespace NotifyHealth.Data_Access_Layer
                     while (reader.Read())
                     {
                         Console.WriteLine(reader[0].ToString());
-
                     }
-
 
                     reader.Close();
                     connection.Close();
-
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
@@ -1533,7 +1429,6 @@ namespace NotifyHealth.Data_Access_Layer
                     {
                         throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
                     }
-
                 }
                 return "Notification Inserted";
             }
@@ -1542,6 +1437,7 @@ namespace NotifyHealth.Data_Access_Layer
                 throw new ApplicationException(ex.Message + "<br /><br />Error Returned To Caller<br /><br />");
             }
         }
+
         public DashboardViewModel GetDashboardDetails(int? organizationID)
         {
             DashboardViewModel DVM = new DashboardViewModel();
@@ -1551,8 +1447,6 @@ namespace NotifyHealth.Data_Access_Layer
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp003GetDashboardDetails";
 
-
-
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
                     SqlCommand command = new SqlCommand(StoredProcedure);
@@ -1569,24 +1463,19 @@ namespace NotifyHealth.Data_Access_Layer
 
                     while (reader.Read())
                     {
-                   
                         DVM.NewClientsLast30 = reader["NewClientsLastThirty"] as int? ?? default(int);
                         DVM.NoOfClients = reader["NoOfClients"] as int? ?? default(int);
                         DVM.NotificationsSentLast30 = reader["NotificationsSentLastThirty"] as int? ?? default(int);
                         DVM.NotificationsSentToday = reader["NotificationsSentToday"] as int? ?? default(int);
                         if (Convert.ToDateTime(reader["NoOfClientDate"]) != null)
                         {
-                            DVM.NoOfClientDate = Convert.ToDateTime(reader["NoOfClientDate"]).ToShortDateString(); 
+                            DVM.NoOfClientDate = Convert.ToDateTime(reader["NoOfClientDate"]).ToShortDateString();
                         }
-             
                     }
 
                     reader.Close();
                     connection.Close();
-
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -1594,16 +1483,15 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return DVM;
         }
+
         public List<BarChart> GetBarChartDetails(int? organizationID)
         {
-            List<BarChart>  BAR = new List<BarChart>();
+            List<BarChart> BAR = new List<BarChart>();
 
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp123GetBarChartDetails";
-
-
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
@@ -1621,7 +1509,6 @@ namespace NotifyHealth.Data_Access_Layer
 
                     while (reader.Read())
                     {
-
                         BarChart B = new BarChart();
                         B.Notifications = reader["Notifications"] as int? ?? default(int);
                         B.ReportingMonth = reader["ReportingMonth"] as string;
@@ -1630,9 +1517,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -1640,6 +1525,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return BAR;
         }
+
         public SMSAccount GetSMSAccount(int? organizationID)
         {
             SMSAccount SMS = new SMSAccount();
@@ -1649,8 +1535,6 @@ namespace NotifyHealth.Data_Access_Layer
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp124GetSMSAccount";
 
-
-
                 using (SqlConnection connection = new SqlConnection(strConnection))
                 {
                     SqlCommand command = new SqlCommand(StoredProcedure);
@@ -1667,18 +1551,13 @@ namespace NotifyHealth.Data_Access_Layer
 
                     while (reader.Read())
                     {
-
-                
                         SMS.API_Username = reader["API_Username"] as string;
                         SMS.API_Password = reader["API_Password"] as string;
-
                     }
 
                     reader.Close();
                     connection.Close();
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -1686,6 +1565,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
             return SMS;
         }
+
         public byte[] AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
         {
             byte[] encryptedBytes = null;
@@ -1718,6 +1598,7 @@ namespace NotifyHealth.Data_Access_Layer
 
             return encryptedBytes;
         }
+
         public byte[] AES_Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
         {
             byte[] decryptedBytes = null;
@@ -1750,6 +1631,7 @@ namespace NotifyHealth.Data_Access_Layer
 
             return decryptedBytes;
         }
+
         public string Encrypt(string text, string pwd)
         {
             byte[] originalBytes = Encoding.UTF8.GetBytes(text);
@@ -1800,6 +1682,7 @@ namespace NotifyHealth.Data_Access_Layer
 
             return Encoding.UTF8.GetString(originalBytes);
         }
+
         public byte[] GetRandomBytes()
         {
             int _saltSize = 4;

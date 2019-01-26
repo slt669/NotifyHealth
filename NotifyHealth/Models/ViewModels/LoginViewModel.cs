@@ -1,13 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-
 namespace NotifyHealth.Models.ViewModels
 {
     public class LoginViewModel
     {
         [Required]
         [Display(Name = "Email")]
-
         public string Email { get; set; }
 
         [Required]

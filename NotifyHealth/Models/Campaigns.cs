@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NotifyHealth.Models
@@ -12,6 +9,7 @@ namespace NotifyHealth.Models
         public int CampaignId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
         [Display(Name = "Status Id")]
         public virtual int StatusId { get; set; }
 
@@ -22,6 +20,7 @@ namespace NotifyHealth.Models
         public string Status { get; set; }
 
         public int? OrganizationID { get; set; }
+
         [Display(Name = "Related Notifications")]
         public int RelatedNotifications { get; set; }
 
@@ -33,6 +32,5 @@ namespace NotifyHealth.Models
 
         [Display(Name = "Program")]
         public string Program { get; set; }
-
     }
 }

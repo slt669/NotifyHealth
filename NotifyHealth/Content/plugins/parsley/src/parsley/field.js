@@ -225,7 +225,6 @@ Field.prototype = {
   * @param {Boolean}  isDomConstraint   optional
   */
   addConstraint: function (name, requirements, priority, isDomConstraint) {
-
     if (window.Parsley._validatorRegistry.validators[name]) {
       var constraint = new Constraint(this, name, requirements, priority, isDomConstraint);
 
@@ -308,7 +307,6 @@ Field.prototype = {
     else if (null !== max)
       this.addConstraint('max', max, undefined, true);
 
-
     // length
     if (null !== this.element.getAttribute('minlength') && null !== this.element.getAttribute('maxlength'))
       this.addConstraint('length', [this.element.getAttribute('minlength'), this.element.getAttribute('maxlength')], undefined, true);
@@ -320,7 +318,6 @@ Field.prototype = {
     // HTML5 maxlength
     else if (null !== this.element.getAttribute('maxlength'))
       this.addConstraint('maxlength', this.element.getAttribute('maxlength'), undefined, true);
-
 
     // html5 types
     var type = Utils.getType(this.element);
@@ -397,7 +394,6 @@ Field.prototype = {
 
     return groupedConstraints;
   }
-
 };
 
 export default Field;

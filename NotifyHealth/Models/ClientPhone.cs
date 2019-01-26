@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace NotifyHealth.Models
+﻿namespace NotifyHealth.Models
 {
     public class ClientPhone
     {
-      
-
         public string Number { get; set; }
         public string PhoneCarrier { get; set; }
         public string MessageAddress { get; set; }
@@ -25,7 +18,5 @@ namespace NotifyHealth.Models
         //        $("#MessageAddress").val(data["Address"]);
         //        $("#ParticipationId").val(data["ParticipationId"]);
         //        $("#PStatusId").val(data["ParsedStatus"]);
-
     }
-
 }

@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         }
 
         grunt.config('string-replace.bootstrap-datetimepicker-js', {
-            files: {'src/js/bootstrap-datetimepicker.js': 'src/js/bootstrap-datetimepicker.js'},
+            files: { 'src/js/bootstrap-datetimepicker.js': 'src/js/bootstrap-datetimepicker.js' },
             options: {
                 replacements: [
                     {
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
             options: {
                 replacements: [
                     {
-                        pattern:     / * version : .*/,
+                        pattern: / * version : .*/,
                         replacement: ' version : ' + version
                     }
                 ]
@@ -29,11 +29,11 @@ module.exports = function (grunt) {
         });
 
         grunt.config('string-replace.package-json', {
-            files: {'package.json': 'package.json'},
+            files: { 'package.json': 'package.json' },
             options: {
                 replacements: [
                     {
-                        pattern:     /"version": .*/,
+                        pattern: /"version": .*/,
                         replacement: '"version": "' + version + '"'
                     }
                 ]
@@ -41,11 +41,11 @@ module.exports = function (grunt) {
         });
 
         grunt.config('string-replace.bower-json', {
-            files: {'bower.json': 'bower.json'},
+            files: { 'bower.json': 'bower.json' },
             options: {
                 replacements: [
                     {
-                        pattern:     /"version": .*/,
+                        pattern: /"version": .*/,
                         replacement: '"version": "' + version + '",'
                     }
                 ]
@@ -53,11 +53,11 @@ module.exports = function (grunt) {
         });
 
         grunt.config('string-replace.component-json', {
-            files: {'component.json': 'component.json'},
+            files: { 'component.json': 'component.json' },
             options: {
                 replacements: [
                     {
-                        pattern:     /"version": .*/,
+                        pattern: /"version": .*/,
                         replacement: '"version": "' + version + '",'
                     }
                 ]
@@ -65,11 +65,11 @@ module.exports = function (grunt) {
         });
 
         grunt.config('string-replace.composer-json', {
-            files: {'composer.json': 'composer.json'},
+            files: { 'composer.json': 'composer.json' },
             options: {
                 replacements: [
                     {
-                        pattern:     /"version": .*/,
+                        pattern: /"version": .*/,
                         replacement: '"version": "' + version + '",'
                     }
                 ]

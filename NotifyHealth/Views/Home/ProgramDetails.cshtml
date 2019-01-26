@@ -15,19 +15,15 @@
     <link href="~/Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
-
 </head>
 <h1 class="page-header">Program Details</h1>
 <div class="section-container section-with-top-border">
-
 </div>
 <button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Programs", "Home")'" id="btnProgram">
     <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
 </button>
 
-
 <p class="m-b-20">
-
 </p>
 <dl class="m-b-20">
     <div class="well well-sm">
@@ -92,7 +88,6 @@
 
 <!-- ================== END PAGE LEVEL JS ================== -->
 
-
 <script type="text/javascript">
 
         var assetListVM;
@@ -126,7 +121,6 @@
                         },
                         "fnServerParams": function (aoData) {
 
-
                             aoData['organizationID'] = @ViewBag.organizationID;
 
                             aoData['ProgramId'] = @ViewBag.ProgramId;
@@ -154,12 +148,8 @@
                 dt.ajax.reload();
             }
 
-
-
         }
         // initialize the datatables
         assetListVM.init();
     });
-
-
 </script>

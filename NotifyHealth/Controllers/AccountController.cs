@@ -1,17 +1,14 @@
-﻿using NotifyHealth.Data_Access_Layer;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using NotifyHealth.Data_Access_Layer;
 using NotifyHealth.Models.ViewModels;
 using NotifyHealth.Utils;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.IO;
-using System.Security.AccessControl;
 
 namespace NotifyHealth.Controllers
 {
@@ -19,6 +16,7 @@ namespace NotifyHealth.Controllers
     {
         // GET: Account
         private NotifyHealthDB dbc = new NotifyHealthDB();
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -62,15 +60,12 @@ namespace NotifyHealth.Controllers
                 Session["UserLogonId"] = usermanager.accset.UserLogonID;
                 Session["organization"] = usermanager.Organization;
                 Session["UserLogon"] = 1;
-                return RedirectToAction("Index", "Home"); // auth succeed 
+                return RedirectToAction("Index", "Home"); // auth succeed
             }
             // invalid username or password
             ModelState.AddModelError("", usermanager.strReturnValidationMessage);
             return View();
-
-
         }
-
 
         public ActionResult Logoff(string errormessage)
         {
@@ -80,13 +75,11 @@ namespace NotifyHealth.Controllers
             {
                 dbc.LogoutSession(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString());
                 TempData["UpdateMessage"] = errormessage;
-
             }
             catch (Exception ex)
             {
                 var LoginError = ex.Message;
             }
-
 
             FormsAuthentication.SignOut();
             Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
@@ -95,16 +88,16 @@ namespace NotifyHealth.Controllers
             Session.Clear();
             Session.Abandon();
             return RedirectToAction("Login", "Account", new { error = errormessage });
-
         }
+
         public ActionResult Error(string message)
         {
             ViewBag.ErrorMessage = Session["Error"];
             return View();
         }
+
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-
         public ActionResult Settings(string req)
         {
             Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -117,7 +110,6 @@ namespace NotifyHealth.Controllers
             if (AccountSettings.MustChangePwd == "1") ViewBag.Message = "Please set a new password";
 
             return View(AccountSettings);
-
         }
 
         [Authorize]
@@ -129,7 +121,6 @@ namespace NotifyHealth.Controllers
             Response.AppendHeader("Expires", "0"); // Proxies.
             data.HintQuestion = dbc.GetSecurityQuestions();
 
-
             if (ModelState.IsValid)
             {
                 var path = "";
@@ -137,11 +128,9 @@ namespace NotifyHealth.Controllers
                 if (data.PhotoFile != null)
 
                 {
-
                     if (data.PhotoFile.ContentLength > 0)
 
                     {
-
                         //for checking uploaded file is image or not
 
                         if (Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpg"
@@ -153,16 +142,11 @@ namespace NotifyHealth.Controllers
                             || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpeg")
 
                         {
-
-
-
                             path = "C:/inetpub/wwwroot/NotifyHealth/Content/img/Users/";
                             data.PhotoFile.SaveAs(path + data.PhotoFile.FileName);
                             data.PhotoPath = "../Content/img/Users/" + data.PhotoFile.FileName;
                         }
-
                     }
-
                 }
 
                 string UpdateMessage = dbc.ManageAccount(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString(), data);
@@ -179,11 +163,7 @@ namespace NotifyHealth.Controllers
                 }
             }
 
-
             return View(data);
         }
- 
     }
-
 }
-

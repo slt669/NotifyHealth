@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8' />
@@ -35,7 +35,7 @@
         // render the timezone offset below the event title
         if (event.start.hasZone()) {
           el.find('.fc-title').after(
-            $('<div class="tzo"/>').text(event.start.format('Z'))
+            $('<div class="tzo" />').text(event.start.format('Z'))
           );
         }
       },
@@ -52,7 +52,7 @@
       $.each(timezones, function(i, timezone) {
         if (timezone != 'UTC') { // UTC is already in the list
           $('#timezone-selector').append(
-            $("<option/>").text(timezone).attr('value', timezone)
+            $("<option />").text(timezone).attr('value', timezone)
           );
         }
       });
@@ -63,7 +63,6 @@
       $('#calendar').fullCalendar('option', 'timezone', this.value || false);
     });
   });
-
 </script>
 <style>
 
@@ -97,7 +96,6 @@
   .tzo {
     color: #000;
   }
-
 </style>
 </head>
 <body>
@@ -119,10 +117,8 @@
     </div>
 
     <div class='clear'></div>
-
   </div>
 
   <div id='calendar'></div>
-
 </body>
 </html>

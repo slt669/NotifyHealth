@@ -2,15 +2,12 @@
 using NotifyHealth.Models.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace NotifyHealth.Utils
 {
     public class UserManager
     {
         private NotifyHealthDB dbc = new NotifyHealthDB();
-
 
         public string SessionId;
         public string SessionGUID;
@@ -19,8 +16,10 @@ namespace NotifyHealth.Utils
         public string adminLogonId;
         public string strReturnValidationError;
         public string strReturnValidationMessage;
+
         //public List<AccessRights> ar = new List<AccessRights>();
         public AccountSettingsViewModel accset = new AccountSettingsViewModel();
+
         //public DataAccessRights dar = new DataAccessRights();
         //public List<Tenant> ltn = new List<Tenant>();
         //public List<Users> usr = new List<Users>();
@@ -76,8 +75,6 @@ namespace NotifyHealth.Utils
             return retval;
         }
 
-
-
         //    public List<Users> GetUserDropdown(int SessionId, int TenantID, int CompanyId, int UserLogonID)
         //    {
         //        try
@@ -89,16 +86,12 @@ namespace NotifyHealth.Utils
         //            var LoginError = ex.Message;
         //        }
 
-
         //        //return usr;
         //    }
-
 
         //    public bool ChangeSesssion(string user, string session, string sessionGUID, int? adminUser, string tenantID)
         //    {
         //    //    bool retval = false;
-
-
 
         //    //    try
         //    //    {
@@ -129,8 +122,6 @@ namespace NotifyHealth.Utils
         //    //        if (ltn.Count() == 1) { TenantId = ltn.FirstOrDefault().TenantID; }
         //    //        usr = dbc.GetUserDropdown(Convert.ToInt32(SessionId), Convert.ToInt32(tenantID), accset.CompanyId, Convert.ToInt32(user));
 
-
-
         //    //        retval = true;
         //    //    }
 
@@ -138,7 +129,6 @@ namespace NotifyHealth.Utils
         //    //}
 
         //}
-
 
         public class AccessRights
         {
@@ -152,12 +142,14 @@ namespace NotifyHealth.Utils
         public class MenuModel
         {
             public List<AccessRights> menu { get; set; }
+
             //public List<Tenant> tenants { get; set; }
             public DataAccessRights dataAccessRights { get; set; }
+
             public List<Users> user { get; set; }
+
             //public Tenant defaultTenant { get; set; }
             public string tenantId { get; set; }
-
         }
 
         public class DataAccessRights
@@ -173,15 +165,14 @@ namespace NotifyHealth.Utils
             public string Payback { get; set; }
         }
 
-
         public class UserUnapprovedQuotes
         {
             public string Unapproved { get; set; }
             public string Approver { get; set; }
         }
+
         public class Users
         {
-
             public int UserId { get; set; }
             public string Forename { get; set; }
             public string Surname { get; set; }
@@ -194,12 +185,10 @@ namespace NotifyHealth.Utils
             public string CustomerType { get; set; }
         }
     }
+
     public class Companies
     {
-
         public int CompanyId { get; set; }
         public string CompanyName { get; set; }
-
-
     }
 }

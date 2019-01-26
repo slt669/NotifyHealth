@@ -54,13 +54,10 @@
         z-index: 1;
     }
         .irs-slider.single {
-
         }
         .irs-slider.from {
-
         }
         .irs-slider.to {
-
         }
         .irs-slider.type_last {
             z-index: 2;
@@ -128,7 +125,6 @@
 .irs-disabled {
     opacity: 0.4;
 }
-
 
 .irs-hidden-input {
     position: absolute !important;

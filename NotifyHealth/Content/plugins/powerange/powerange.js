@@ -1,5 +1,4 @@
 ;(function(){
-
 /**
  * Require the given path.
  *
@@ -259,7 +258,6 @@ exports.engine = function(obj){
   exports.all = obj.all;
   return exports;
 };
-
 });
 require.register("component-matches-selector/index.js", function(exports, require, module){
 /**
@@ -307,7 +305,6 @@ function match(el, selector) {
   }
   return false;
 }
-
 });
 require.register("discore-closest/index.js", function(exports, require, module){
 var matches = require('matches-selector')
@@ -326,7 +323,7 @@ module.exports = function (element, selector, checkYoSelf, root) {
     // the selector matches the root
     // (when the root is not the document)
     if (element === root)
-      return  
+      return
   }
 }
 });
@@ -373,10 +370,8 @@ exports.bind = function(el, selector, type, fn, capture){
 exports.unbind = function(el, type, fn, capture){
   event.unbind(el, type, fn, capture);
 };
-
 });
 require.register("component-events/index.js", function(exports, require, module){
-
 /**
  * Module dependencies.
  */
@@ -552,7 +547,6 @@ function parse(event) {
     selector: parts.join(' ')
   }
 }
-
 });
 require.register("component-indexof/index.js", function(exports, require, module){
 module.exports = function(arr, obj){
@@ -562,7 +556,6 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-
 });
 require.register("component-classes/index.js", function(exports, require, module){
 /**
@@ -749,10 +742,8 @@ ClassList.prototype.contains = function(name){
     ? this.list.contains(name)
     : !! ~index(this.array(), name);
 };
-
 });
 require.register("component-emitter/index.js", function(exports, require, module){
-
 /**
  * Expose `Emitter`.
  */
@@ -916,10 +907,8 @@ Emitter.prototype.listeners = function(event){
 Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
-
 });
 require.register("ui-component-mouse/index.js", function(exports, require, module){
-
 /**
  * dependencies.
  */
@@ -937,7 +926,7 @@ module.exports = function(el, obj){
 
 /**
  * initialize new `Mouse`.
- * 
+ *
  * @param {Element} el
  * @param {Object} obj
  */
@@ -955,7 +944,7 @@ emitter(Mouse.prototype);
 
 /**
  * bind mouse.
- * 
+ *
  * @return {Mouse}
  */
 
@@ -993,7 +982,7 @@ Mouse.prototype.bind = function(){
 
 /**
  * unbind mouse.
- * 
+ *
  * @return {Mouse}
  */
 
@@ -1001,10 +990,8 @@ Mouse.prototype.unbind = function(){
   event.unbind(this.el, 'mousedown', this.down);
   this.down = null;
 };
-
 });
 require.register("abpetkov-percentage-calc/percentage-calc.js", function(exports, require, module){
-
 /**
  * Percentage-Calc 0.0.1
  * https://github.com/abpetkov/percentage-calc
@@ -1218,7 +1205,6 @@ exports.merge = function (arr) {
 
   return main;
 };
-
 });
 require.register("powerange/lib/powerange.js", function(exports, require, module){
 /**
@@ -1811,19 +1797,6 @@ Vertical.prototype.onmouseup = function(e) {
   this.unselectable(this.slider, false);
 };
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 require.alias("component-events/index.js", "powerange/deps/events/index.js");
 require.alias("component-events/index.js", "events/index.js");

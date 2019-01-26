@@ -15,7 +15,6 @@
     <link href="~/Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
-
 </head>
 <h1 class="page-header">Client Details</h1>
 <div class="section-container section-with-top-border">
@@ -25,12 +24,9 @@
 </button>
 
 <p class="m-b-20">
-
 </p>
 <div class="row">
     <div class="col-lg-5">
-
-
 
         <dl class="m-b-20">
             <div class="well well-sm">
@@ -62,7 +58,6 @@
                 </dd>
             </div>
 
-
             <div class="well well-sm">
                 <dt>
                     @Html.DisplayNameFor(model => model.PhoneNumber)
@@ -81,12 +76,9 @@
                     @Html.DisplayFor(model => model.MessageAddress)
                 </dd>
         </dl>
-
     </div>
 
-
     <div class="col-lg-5">
-
 
         <dl class="m-b-20">
             <div class="well well-sm">
@@ -170,7 +162,6 @@
 
 <!-- ================== END PAGE LEVEL JS ================== -->
 
-
 <script type="text/javascript">
 
     var assetListVM;
@@ -204,7 +195,6 @@
                         },
                         "fnServerParams": function (aoData) {
 
-
                             aoData['organizationID'] = @ViewBag.organizationID;
                             aoData['clientID'] = @ViewBag.clientID;
 
@@ -231,8 +221,6 @@
             refresh: function () {
                 dt.ajax.reload();
             }
-
-
 
         }
         // initialize the datatables
@@ -267,11 +255,8 @@
                         },
                         "fnServerParams": function (aoData) {
 
-
-
                             aoData['organizationID'] = @ViewBag.organizationID;
                             aoData['clientID'] = @ViewBag.clientID;
-
 
                         },
                         "paging": true,
@@ -296,8 +281,6 @@
             refresh: function () {
                 dt.ajax.reload();
             }
-
-
 
         }
         // initialize the datatables

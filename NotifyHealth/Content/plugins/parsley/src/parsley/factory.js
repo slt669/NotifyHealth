@@ -12,7 +12,6 @@ var Factory = function (element, options, parsleyFormInstance) {
   // If the element has already been bound, returns its saved Parsley instance
   var savedparsleyFormInstance = this.$element.data('Parsley');
   if (savedparsleyFormInstance) {
-
     // If the saved instance has been bound without a Form parent and there is one given in this call, add it
     if ('undefined' !== typeof parsleyFormInstance && savedparsleyFormInstance.parent === window.Parsley) {
       savedparsleyFormInstance.parent = parsleyFormInstance;
@@ -100,7 +99,6 @@ Factory.prototype = {
     for (var i = 0; i < $previouslyRelated.length; i++) {
       parsleyMultipleInstance = $($previouslyRelated.get(i)).data('Parsley');
       if ('undefined' !== typeof parsleyMultipleInstance) {
-
         if (!this.$element.data('FieldMultiple')) {
           parsleyMultipleInstance.addElement(this.$element);
         }

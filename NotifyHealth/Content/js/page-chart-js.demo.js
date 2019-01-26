@@ -1,48 +1,48 @@
-/*   
+/*
 Template Name: Source Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7 & Bootstrap 4
 Version: 1.5.0
 Author: Sean Ngu
 Website: http://www.seantheme.com/source-admin-v1.5/admin/
 */
 
-var primary		        = '#2184DA',
-    primaryTransparent  = 'rgba(33,132,218,0.15)',
-    primaryLight	    = '#60A1DA',
-    primaryDark	        = '#1e77c5',
-    info		        = '#38AFD3',
-    infoLight	        = '#6FBDD5',
-    infoDark	        = '#2d8ca9',
-    success		        = '#17B6A4',
-    successTransparent	= 'rgba(23,182,264,0.15)',
-    successLight	    = '#59C2B7',
-    successDark	        = '#129283',
-    warning		        = '#fcaf41',
-    warningLight	    = '#EEBD77',
-    warningDark	        = '#ca8c34',
-    inverse		        = '#3C454D',
-    inverseTransparent	= 'rgba(60,69,77,0.15)',
-    grey		        = '#aab3ba',
-    purple		        = '#5f50c5',
-    purpleTransparent	= 'rgba(155,89,182,0.15)',
-    purpleLight	        = '#7f73d1',
-    purpleDark	        = '#4c409e',
-    danger              = '#F04B46',
-    white               = '#fff';
+var primary = '#2184DA',
+    primaryTransparent = 'rgba(33,132,218,0.15)',
+    primaryLight = '#60A1DA',
+    primaryDark = '#1e77c5',
+    info = '#38AFD3',
+    infoLight = '#6FBDD5',
+    infoDark = '#2d8ca9',
+    success = '#17B6A4',
+    successTransparent = 'rgba(23,182,264,0.15)',
+    successLight = '#59C2B7',
+    successDark = '#129283',
+    warning = '#fcaf41',
+    warningLight = '#EEBD77',
+    warningDark = '#ca8c34',
+    inverse = '#3C454D',
+    inverseTransparent = 'rgba(60,69,77,0.15)',
+    grey = '#aab3ba',
+    purple = '#5f50c5',
+    purpleTransparent = 'rgba(155,89,182,0.15)',
+    purpleLight = '#7f73d1',
+    purpleDark = '#4c409e',
+    danger = '#F04B46',
+    white = '#fff';
 
-var randomScalingFactor = function() { 
-    return Math.round(Math.random()*100)
+var randomScalingFactor = function () {
+    return Math.round(Math.random() * 100)
 };
 
 var barChartData = {
-    labels : ['January','February','March','April','May','June','July'],
-    datasets : [
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [
         {
             borderWidth: 2,
             borderColor: inverse,
             pointBackgroundColor: inverse,
             pointRadius: 2,
             backgroundColor: inverse,
-            data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
         },
         {
             borderWidth: 2,
@@ -50,7 +50,7 @@ var barChartData = {
             pointBackgroundColor: purple,
             pointRadius: 2,
             backgroundColor: purple,
-            data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
         }
     ]
 };
@@ -67,8 +67,8 @@ var doughnutChartData = {
 };
 
 var lineChartData = {
-    labels : ['January','February','March','April','May','June','July'],
-    datasets : [{
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [{
         label: 'My First dataset',
         borderColor: inverse,
         borderWidth: 2,
@@ -79,7 +79,7 @@ var lineChartData = {
         pointBorderColor: white,
         pointBorderWidth: 1,
         pointRadius: 5,
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
     }, {
         label: 'My Second dataset',
         borderColor: success,
@@ -91,7 +91,7 @@ var lineChartData = {
         pointBorderColor: white,
         pointBorderWidth: 1,
         pointRadius: 5,
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
     }]
 };
 
@@ -130,7 +130,7 @@ var radarChartData = {
         pointBorderWidth: 1,
         pointRadius: 5,
         backgroundColor: inverseTransparent,
-        data: [65,59,90,81,56,55,40]
+        data: [65, 59, 90, 81, 56, 55, 40]
     }, {
         label: 'My Second dataset',
         borderWidth: 2,
@@ -142,7 +142,7 @@ var radarChartData = {
         pointBorderWidth: 1,
         pointRadius: 5,
         backgroundColor: primaryTransparent,
-        data: [28,48,40,19,96,27,100]
+        data: [28, 48, 40, 19, 96, 27, 100]
     }]
 };
 
@@ -151,38 +151,37 @@ Chart.defaults.global.defaultFontFamily = '"Nunito", sans-serif';
 Chart.defaults.global.defaultFontStyle = 'normal';
 Chart.defaults.global.defaultFontColor = inverse;
 
-var handleGenerateGraph = function() {
-
+var handleGenerateGraph = function () {
     var ctx = document.getElementById('line-chart').getContext('2d');
     var lineChart = new Chart(ctx, {
         type: 'line',
         data: lineChartData
     });
-    
+
     var ctx2 = document.getElementById('bar-chart').getContext('2d');
     var barChart = new Chart(ctx2, {
         type: 'bar',
         data: barChartData
     });
-    
+
     var ctx3 = document.getElementById('radar-chart').getContext('2d');
     var radarChart = new Chart(ctx3, {
         type: 'radar',
         data: radarChartData
     });
-    
+
     var ctx4 = document.getElementById('polar-area-chart').getContext('2d');
     var polarAreaChart = new Chart(ctx4, {
         type: 'polarArea',
         data: polarChartData
     });
-    
+
     var ctx5 = document.getElementById('pie-chart').getContext('2d');
     window.myPie = new Chart(ctx5, {
         type: 'pie',
         data: pieChartData
     });
-    
+
     var ctx6 = document.getElementById('doughnut-chart').getContext('2d');
     window.myDoughnut = new Chart(ctx6, {
         type: 'doughnut',
@@ -190,16 +189,15 @@ var handleGenerateGraph = function() {
     });
 };
 
-
 /* Application Controller
 ------------------------------------------------ */
 var PageDemo = function () {
-	"use strict";
-	
-	return {
-		//main function
-		init: function () {
+    "use strict";
+
+    return {
+        //main function
+        init: function () {
             handleGenerateGraph();
-		}
+        }
     };
 }();

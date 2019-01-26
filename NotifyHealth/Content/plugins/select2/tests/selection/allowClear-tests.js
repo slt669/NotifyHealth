@@ -58,7 +58,6 @@ test('clear is not displayed for multiple placeholder', function (assert) {
   );
 });
 
-
 test('clear is displayed for placeholder', function (assert) {
   var selection = new AllowClearPlaceholder(
     $('#qunit-fixture .single-with-placeholder'),
@@ -150,8 +149,6 @@ test('clicking clear will trigger the unselect event', function (assert) {
   var $remove = $selection.find('.select2-selection__clear');
   $remove.trigger('mousedown');
 });
-
-
 
 test('preventing the unselect event cancels the clearing', function (assert) {
   var $element = $('#qunit-fixture .single-with-placeholder');

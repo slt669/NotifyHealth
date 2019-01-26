@@ -1,5 +1,4 @@
 $(function(){
-
 	$(function(){
 		$(".container1").mapael({
 			map : {
@@ -12,7 +11,7 @@ $(function(){
 	$(".container2").mapael({
 		map : {
 			name : "france_departments"
-			
+
 			// Set default plots and areas style
 			, defaultPlot : {
 				attrs : {
@@ -49,11 +48,11 @@ $(function(){
 				}
 			}
 		},
-		
+
 		// Customize some areas of the map
 		areas: {
 			"department-56" : {
-				text : {content : "Morbihan", attrs : {"font-size" : 10}}, 
+				text : {content : "Morbihan", attrs : {"font-size" : 10}},
 				tooltip: {content : "<b>Morbihan</b> <br /> Bretagne"}
 			},
 			"department-21" : {
@@ -65,7 +64,7 @@ $(function(){
 				}
 			}
 		},
-		
+
 		// Add some plots on the map
 		plots : {
 			// Image plot
@@ -74,7 +73,7 @@ $(function(){
 				url: "http://www.vincentbroute.fr/mapael/marker.png",
 				width: 12,
 				height: 40,
-				latitude : 48.86, 
+				latitude : 48.86,
 				longitude: 2.3444,
 				attrs : {
 					opacity : 1
@@ -87,8 +86,8 @@ $(function(){
 			'lyon' : {
 				type: "circle",
 				size:50,
-				latitude :45.758888888889, 
-				longitude: 4.8413888888889, 
+				latitude :45.758888888889,
+				longitude: 4.8413888888889,
 				tooltip: {content : "<span style=\"font-weight:bold;\">City :</span> Lyon <br /> Rhône-Alpes"},
 				text : {content : "Lyon"}
 			},
@@ -96,14 +95,14 @@ $(function(){
 			'rennes' : {
 				type :"square",
 				size :20,
-				latitude : 48.114166666667, 
-				longitude: -1.6808333333333, 
+				latitude : 48.114166666667,
+				longitude: -1.6808333333333,
 				tooltip: {content : "<span style=\"font-weight:bold;\">City :</span> Rennes <br /> Bretagne"},
 				text : {content : "Rennes"}
 			},
 			// Plot positioned by x and y instead of latitude, longitude
 			'myplot' : {
-				x : 300, 
+				x : 300,
 				y: 200,
 				text : {
 					content : "My plot"
@@ -115,19 +114,19 @@ $(function(){
 			'Bordeaux' : {
 				type: "circle",
 				size:30,
-				latitude :44.834763, 
+				latitude :44.834763,
 				longitude: -0.580991,
                 attrs : {
                     opacity : 1
                 },
 				text : {
                     content : "33",
-                    position : "inner", 
+                    position : "inner",
                     attrs : {
 						"font-size" : 16
                         , "font-weight" : "bold"
 						, fill : "#fff"
-					}, 
+					},
                     attrsHover : {
 						"font-size" : 16
                         , "font-weight" : "bold"
@@ -137,7 +136,7 @@ $(function(){
 			}
 		}
 	});
-	
+
 	$(".container3").mapael({
 		map : {
 			name : "world_countries",
@@ -158,7 +157,7 @@ $(function(){
                 text : {
                     attrs : {
                         fill:"#000"
-                    }, 
+                    },
                     attrsHover : {
                         fill:"#000"
                     }
@@ -167,13 +166,13 @@ $(function(){
 		},
 		plots : {
 			'paris' : {
-				latitude :48.86, 
-				longitude :2.3444, 
+				latitude :48.86,
+				longitude :2.3444,
 				tooltip: {content : "Paris<br />Population: 500000000"}
 			},
 			'newyork' : {
-				latitude :40.667, 
-				longitude :-73.833, 
+				latitude :40.667,
+				longitude :-73.833,
 				tooltip: {content : "New york<br />Population: 200001"}
 			},
             'sanfrancisco' : {
@@ -182,13 +181,13 @@ $(function(){
 				tooltip: {content : "San Francisco"}
 			},
 			'brasilia' : {
-				latitude :-15.781682, 
-				longitude :-47.924195, 
+				latitude :-15.781682,
+				longitude :-47.924195,
 				tooltip: {content : "Brasilia<br />Population: 200000001"}
 			},
 			'roma': {
-				latitude :41.827637, 
-				longitude :12.462732, 
+				latitude :41.827637,
+				longitude :12.462732,
 				tooltip: {content : "Roma"}
 			},
             'miami' : {
@@ -196,35 +195,35 @@ $(function(){
 				longitude:  -80.205674,
 				tooltip: {content : "Miami"}
 			},
-            
+
             // Size=0 in order to make plots invisible
 			'tokyo': {
-				latitude :35.687418, 
-				longitude :139.692306, 
+				latitude :35.687418,
+				longitude :139.692306,
 				size:0,
                 text : {content : 'Tokyo'}
 			},
 			'sydney' : {
-				latitude :-33.917, 
+				latitude :-33.917,
 				longitude :151.167,
                 size:0,
                 text : {content : 'Sydney'}
 			},
 			'plot1': {
-                latitude :22.906561, 
-				longitude :86.840170, 
+                latitude :22.906561,
+				longitude :86.840170,
                 size:0,
                 text : {content : 'Plot1', position : 'left', margin:5}
 			},
 			'plot2': {
-                latitude :-0.390553, 
-				longitude :115.586762, 
+                latitude :-0.390553,
+				longitude :115.586762,
                 size:0,
                 text : {content : 'Plot2'}
 			},
 			'plot3': {
-                latitude :44.065626, 
-				longitude :94.576079, 
+                latitude :44.065626,
+				longitude :94.576079,
                 size:0,
                 text : {content : 'Plot3'}
 			}
@@ -310,7 +309,7 @@ $(function(){
             }
         }
 	});
-	
+
 	$(".container4").mapael({
 		map : {
 			name : "france_departments"
@@ -354,11 +353,11 @@ $(function(){
 				}
 			}
 		},
-		
+
 		// Customize some areas of the map
 		areas: {
 			"department-56" : {
-				text : {content : "Morbihan", attrs : {"font-size" : 10}}, 
+				text : {content : "Morbihan", attrs : {"font-size" : 10}},
 				tooltip: {content : "Morbihan (56)"}
 			},
 			"department-21" : {
@@ -370,7 +369,7 @@ $(function(){
 				}
 			}
 		},
-		
+
 		// Add some plots on the map
 		plots : {
 			// Image plot
@@ -379,7 +378,7 @@ $(function(){
 				url: "http://www.vincentbroute.fr/mapael/marker.png",
 				width: 12,
 				height: 40,
-				latitude : 48.86, 
+				latitude : 48.86,
 				longitude: 2.3444,
 				attrs : {
 					opacity : 1
@@ -392,9 +391,9 @@ $(function(){
 			'lyon' : {
 				type: "circle",
 				size:50,
-				latitude :45.758888888889, 
-				longitude: 4.8413888888889, 
-				value : 700000, 
+				latitude :45.758888888889,
+				longitude: 4.8413888888889,
+				value : 700000,
 				tooltip: {content : "<span style=\"font-weight:bold;\">City :</span> Lyon"},
 				text : {content : "Lyon"}
 			},
@@ -402,14 +401,14 @@ $(function(){
 			'rennes' : {
 				type :"square",
 				size :20,
-				latitude : 48.114166666667, 
-				longitude: -1.6808333333333, 
+				latitude : 48.114166666667,
+				longitude: -1.6808333333333,
 				tooltip: {content : "<span style=\"font-weight:bold;\">City :</span> Rennes"},
 				text : {content : "Rennes"}
 			},
 			// Plot positioned by x and y instead of latitude, longitude
 			'myplot' : {
-				x : 300, 
+				x : 300,
 				y: 200,
 				text : {
 					content : "My plot"
@@ -420,13 +419,13 @@ $(function(){
 			}
 		}
 	});
-	
+
 	$(".container5").mapael({
 		map : {
 			name : "france_departments",
 			defaultArea: {
 				attrs : {
-					stroke : "#fff", 
+					stroke : "#fff",
 					"stroke-width" : 1
 				},
 				attrsHover : {
@@ -436,33 +435,33 @@ $(function(){
 		},
 		legend : {
 			area : {
-				title :"Population of France by department", 
+				title :"Population of France by department",
 				slices : [
 					{
-						max :300000, 
+						max :300000,
 						attrs : {
 							fill : "#97e766"
 						},
 						label :"Less than de 300 000 inhabitants"
 					},
 					{
-						min :300000, 
-						max :500000, 
+						min :300000,
+						max :500000,
 						attrs : {
 							fill : "#7fd34d"
 						},
 						label :"Between 100 000 and 500 000 inhabitants"
 					},
 					{
-						min :500000, 
-						max :1000000, 
+						min :500000,
+						max :1000000,
 						attrs : {
 							fill : "#5faa32"
 						},
 						label :"Between 500 000 and 1 000 000 inhabitants"
 					},
 					{
-						min :1000000, 
+						min :1000000,
 						attrs : {
 							fill : "#3f7d1a"
 						},
@@ -974,5 +973,4 @@ $(function(){
 			}
 		}
 	});
-	
 });

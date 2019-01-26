@@ -15,7 +15,6 @@
     <link href="~/Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
-
 </head>
 <h1 class="page-header">Campaigns Details</h1>
 <div class="section-container section-with-top-border">
@@ -25,7 +24,6 @@
     </button>
 
 <p class="m-b-20">
-
 </p>
 <dl class="m-b-20">
     <div class="well well-sm">
@@ -99,7 +97,6 @@
 
 <!-- ================== END PAGE LEVEL JS ================== -->
 
-
 <script type="text/javascript">
 
         var assetListVM;
@@ -133,7 +130,6 @@
                         },
                         "fnServerParams": function (aoData) {
 
-
                             aoData['organizationID'] = @ViewBag.organizationID;
 
                             aoData['CampaignID'] = @ViewBag.CampaignID;
@@ -162,12 +158,8 @@
                 dt.ajax.reload();
             }
 
-
-
         }
         // initialize the datatables
         assetListVM.init();
     });
-
-
 </script>

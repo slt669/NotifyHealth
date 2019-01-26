@@ -85,7 +85,6 @@ module.exports = function(grunt) {
         singleRun: false
       },
       watch: {
-
       },
       unit: {
         autoWatch: false,
@@ -113,7 +112,6 @@ module.exports = function(grunt) {
   // Test scenarios
   grunt.registerTask('test:scenarios',
                      'Test multiple scenarios', function() {
-
     var scenariosConf = require('./test/scenarios.json'),
       scenarios = Object.keys(scenariosConf),
       scenariosTasks = [],

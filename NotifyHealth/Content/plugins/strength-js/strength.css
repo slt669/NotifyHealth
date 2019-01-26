@@ -1,11 +1,10 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 .strength_meter{
 	height:23px;
 width: 154px;
 	background:silver;
-	
 }
 .strength_meter div{
 	height:23px;

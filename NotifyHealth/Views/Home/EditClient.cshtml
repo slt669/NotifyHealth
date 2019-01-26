@@ -3,15 +3,10 @@
 <h1 class="page-header">Edit Client Details</h1>
 <div class="section-container section-with-top-border">
     <p class="m-b-20">
-
     </p>
-
 </div>
 @using (Ajax.BeginForm("EditClients", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "UpdateAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
 {
-
-
-
 
 <div class="col-sm-4">
     <label class="col-sm-6 form-control-label">Client Memberships Active</label>
@@ -22,8 +17,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="col-sm-4">
     <label class="col-sm-8 form-control-label">Campaigns</label>
@@ -50,11 +43,9 @@
                 $(this).remove().appendTo("#isselect_code");
             });
 
-
         });
 
         $('[id^=\"btnLeft\"]').click(function (e) {
-
 
             $("#isselect_code > option:selected").each(function () {
                 $(this).remove().appendTo("#canselect_code");
@@ -74,7 +65,6 @@
             'use strict';
             var to = $('#values').text();
 
-
             let emailList = to.split(',').map(values => {
                 return {
                     CampaignId: values.trim(),
@@ -83,7 +73,6 @@
 
             var mergedAdded = [].concat.apply([], ValuesAdded);
             var mergedDeleted = [].concat.apply([], ValuesDeleted);
-
 
             $.ajax({
                 url: "/Home/ValuesAdded",
@@ -120,4 +109,3 @@
 
     });
     </script>
-

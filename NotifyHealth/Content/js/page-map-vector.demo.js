@@ -1,11 +1,11 @@
-/*   
+/*
 Template Name: Source Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7 & Bootstrap 4
 Version: 1.5.0
 Author: Sean Ngu
 Website: http://www.seantheme.com/source-admin-v1.5/admin/
 */
 
-var handleVectorMap = function() {
+var handleVectorMap = function () {
     "use strict";
 
     if ($('#vector-map').length !== 0) {
@@ -19,13 +19,13 @@ var handleVectorMap = function() {
         var greyLighter = '#aab3ba';
         var danger = '#F04B46';
         var transparent = 'transparent';
-        
+
         $("#vector-map").mapael({
-            map : {
+            map: {
                 name: 'world_countries',
                 defaultArea: {
                     attrs: {
-                        stroke: '#d5d8da', 
+                        stroke: '#d5d8da',
                         'stroke-width': 1.5
                     },
                     attrsHover: {
@@ -51,33 +51,33 @@ var handleVectorMap = function() {
                     },
                     slices: [
                         {
-                            max: 5000000, 
+                            max: 5000000,
                             attrs: {
                                 fill: inverse,
                                 stroke: transparent
                             },
                             label: 'Less than 5 millions inhabitants'
-                        }, 
+                        },
                         {
-                            min: 5000000, 
-                            max: 10000000, 
+                            min: 5000000,
+                            max: 10000000,
                             attrs: {
                                 fill: inverseLighter,
                                 stroke: transparent
                             },
                             label: 'Between 5 millions and 10 millions inhabitants'
-                        }, 
+                        },
                         {
-                            min: 10000000, 
-                            max: 50000000, 
+                            min: 10000000,
+                            max: 50000000,
                             attrs: {
                                 fill: grey,
                                 stroke: transparent
                             },
                             label: 'Between 10 millions and 50 millions inhabitants'
-                        }, 
+                        },
                         {
-                            min: 50000000, 
+                            min: 50000000,
                             attrs: {
                                 fill: greyLighter,
                                 stroke: transparent
@@ -98,7 +98,7 @@ var handleVectorMap = function() {
                     },
                     slices: [
                         {
-                            max: 500000, 
+                            max: 500000,
                             attrs: {
                                 fill: danger
                             },
@@ -106,13 +106,13 @@ var handleVectorMap = function() {
                                 transform: 's1.5',
                                 'stroke-width': 0,
                                 stroke: transparent
-                            }, 
-                            label: 'less than 500 000 inhabitants', 
+                            },
+                            label: 'less than 500 000 inhabitants',
                             size: 10
                         },
                         {
-                            min: 500000, 
-                            max: 1000000, 
+                            min: 500000,
+                            max: 1000000,
                             attrs: {
                                 fill: danger
                             },
@@ -120,12 +120,12 @@ var handleVectorMap = function() {
                                 transform: 's1.5',
                                 'stroke-width': 0,
                                 stroke: transparent
-                            }, 
-                            label: 'Between 500 000 and 1 million inhabitants', 
+                            },
+                            label: 'Between 500 000 and 1 million inhabitants',
                             size: 20
                         },
                         {
-                            min: 1000000, 
+                            min: 1000000,
                             attrs: {
                                 fill: danger
                             },
@@ -133,8 +133,8 @@ var handleVectorMap = function() {
                                 transform: 's1.5',
                                 'stroke-width': 0,
                                 stroke: transparent
-                            }, 
-                            label: 'More than 1 million inhabitants', 
+                            },
+                            label: 'More than 1 million inhabitants',
                             size: 30
                         }
                     ]
@@ -142,33 +142,33 @@ var handleVectorMap = function() {
             },
             plots: {
                 'paris': {
-                    latitude: 48.86, 
-                    longitude: 2.3444, 
-                    value: 500000000, 
+                    latitude: 48.86,
+                    longitude: 2.3444,
+                    value: 500000000,
                     tooltip: { content: 'Paris<br />Population: 500000000' }
                 },
                 'newyork': {
-                    latitude: 40.667, 
-                    longitude: -73.833, 
-                    value: 200001, 
+                    latitude: 40.667,
+                    longitude: -73.833,
+                    value: 200001,
                     tooltip: { content: 'New york<br />Population: 200001' }
                 },
                 'sydney': {
-                    latitude: -33.917, 
-                    longitude: 151.167, 
-                    value: 600000, 
+                    latitude: -33.917,
+                    longitude: 151.167,
+                    value: 600000,
                     tooltip: { content: 'Sydney<br />Population: 600000' }
                 },
                 'brasilia': {
-                    latitude: -15.781682, 
-                    longitude: -47.924195, 
-                    value: 200000001, 
-                    tooltip: { content : 'Brasilia<br />Population: 200000001' }
+                    latitude: -15.781682,
+                    longitude: -47.924195,
+                    value: 200000001,
+                    tooltip: { content: 'Brasilia<br />Population: 200000001' }
                 },
                 'tokyo': {
-                    latitude: 35.687418, 
-                    longitude: 139.692306, 
-                    value: 200001, 
+                    latitude: 35.687418,
+                    longitude: 139.692306,
+                    value: 200001,
                     tooltip: { content: 'Tokyo<br />Population: 200001' }
                 }
             },
@@ -1531,16 +1531,15 @@ var handleVectorMap = function() {
     }
 };
 
-
 /* Application Controller
 ------------------------------------------------ */
 var PageDemo = function () {
-	"use strict";
-	
-	return {
-		//main function
-		init: function () {
+    "use strict";
+
+    return {
+        //main function
+        init: function () {
             handleVectorMap();
-		}
-  };
+        }
+    };
 }();

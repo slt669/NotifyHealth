@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
@@ -13,7 +12,6 @@
 </head>
 
 <body>
-
 
     <!-- end breadcrumb -->
     <!-- begin page-header -->
@@ -51,7 +49,6 @@
                         <div class="col-lg-6 offset-lg-3">
                             <h3 class="form-header form-header-lg m-b-10"><span class="icon text-purple"><i class="fab fa-dropbox"></i></span> Select Program</h3>
                             <p class="m-b-20">
-
                             </p>
                             <div class="form-group m-b-20">
                                 @Html.DropDownListFor(model => model.ProgramID, Model.Programs, new { @id = "Program-DropDownID", @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-1", required = String.Empty })
@@ -89,7 +86,6 @@
                                 @*   @Html.DropDownListFor(model => model.CampaignId, Model.Campaigns, new { @id = "CampaignDDL", @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-2", required = String.Empty })*@
 
                                 @* @Html.DropDownListFor(x => x.CampaignId, new SelectList(Enumerable.Empty<SelectListItem>(), new { @id = "CampaignDDL", @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-2", required = String.Empty }))*@
-
                             </div>
                             <div class="f-s-11 text-muted">
                                 <span class="text-danger">*</span> Notifications are grouped into Campaigns. This simple grouping allows you to send targeted messages to your clients.
@@ -110,7 +106,6 @@
                         <div class="col-lg-6 offset-lg-3">
                             <h3 class="form-header form-header-lg m-b-10"><span class="icon text-success"><i class="fab fa-dropbox"></i></span> Notification Details</h3>
                             <p class="m-b-20">
-
                             </p>
 
                             <div class="row">
@@ -118,9 +113,6 @@
                                     <div class="form-group">
                                         <label>Type</label>
                                         @Html.DropDownListFor(model => model.NTypeId, Model.NotificationTypes, new { @class = "form-control form-control-lg", @data_parsley_group = "wizard-step-3", required = String.Empty })
-
-
-
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -171,9 +163,7 @@
                         <div class="col-lg-6 offset-lg-3">
                             <h3 class="form-header form-header-lg m-b-10"><span class="icon text-success"><i class="fab fa-dropbox"></i></span> Confirm Notification Details</h3>
                             <p class="m-b-20">
-
                             </p>
-
 
                             <p class="m-b-20">      <input type="submit" class="btn btn-success btn-lg" name="Save" value="Save"> </p>
                             <div class="f-s-11 text-muted">
@@ -190,9 +180,7 @@
                             <div class="col-lg-6 offset-lg-3">
                                 <h3 class="form-header form-header-lg m-b-10"><span class="icon text-success"><i class="fab fa-dropbox"></i></span> Success or Failure</h3>
                                 <p class="m-b-20">
-
                                 </p>
-
 
                                 <p class="m-b-20">Notification Successfully Added or Failed to Add to [CAMPAIGN NAME]</p>
                                 <p><a href="javascript:;" class="btn btn-success btn-lg">Create Another or Contact Support?</a></p>
@@ -204,7 +192,6 @@
                 </div>*@
 
             <!-- end wizard step-5 -->
-
         </div>
         <!-- end #wizard -->
 
@@ -255,6 +242,5 @@
 
         });
     </script>
-
 </body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
 	<style type="text/css" class="init">
-	
 	</style>
 	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js">
 	</script>
@@ -20,7 +19,6 @@
 	<script type="text/javascript" language="javascript" src="../resources/demo.js">
 	</script>
 	<script type="text/javascript" language="javascript" class="init">
-	
 
 $.fn.dataTable.Api.register( 'column().data().sum()', function () {
 	return this.reduce( function (a, b) {
@@ -33,7 +31,7 @@ $.fn.dataTable.Api.register( 'column().data().sum()', function () {
 /* Init the table and fire off a call to get the hidden nodes. */
 $(document).ready(function() {
 	var table = $('#example').DataTable();
-	
+
 	$('<button>Click to sum age in all rows</button>')
 		.prependTo( '#demo' )
 		.on( 'click', function () {
@@ -46,8 +44,6 @@ $(document).ready(function() {
 			alert( 'Column sum is: '+ table.column( 3, {page:'current'} ).data().sum() );
 		} );
 } );
-
-
 	</script>
 </head>
 <body class="dt-example">
@@ -564,7 +560,7 @@ $(document).ready(function() {
 /* Init the table and fire off a call to get the hidden nodes. */
 $(document).ready(function() {
 	var table = $('#example').DataTable();
-	
+
 	$('&lt;button&gt;Click to sum age in all rows&lt;/button&gt;')
 		.prependTo( '#demo' )
 		.on( 'click', function () {

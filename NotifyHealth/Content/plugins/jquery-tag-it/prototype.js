@@ -1,5 +1,4 @@
 $("#myTags").tagit({
-
     // Options
     fieldName: "skills",
     availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
@@ -36,5 +35,4 @@ $("#myTags").tagit({
     onTagLimitExceeded: function(event, ui) {
         console.log(ui.tag);
     }
-
 });

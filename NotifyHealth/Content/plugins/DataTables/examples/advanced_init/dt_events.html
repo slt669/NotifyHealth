@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
 	<style type="text/css" class="init">
-	
 	</style>
 	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js">
 	</script>
@@ -20,13 +19,12 @@
 	<script type="text/javascript" language="javascript" src="../resources/demo.js">
 	</script>
 	<script type="text/javascript" language="javascript" class="init">
-	
 
 $(document).ready(function() {
 	var eventFired = function ( type ) {
 		var n = $('#demo_info')[0];
 		n.innerHTML += '<div>'+type+' event - '+new Date().getTime()+'</div>';
-		n.scrollTop = n.scrollHeight;		
+		n.scrollTop = n.scrollHeight;
 	}
 
 	$('#example')
@@ -35,8 +33,6 @@ $(document).ready(function() {
 		.on( 'page.dt',   function () { eventFired( 'Page' ); } )
 		.DataTable();
 } );
-
-
 	</script>
 </head>
 <body class="dt-example">
@@ -548,7 +544,7 @@ $(document).ready(function() {
 	var eventFired = function ( type ) {
 		var n = $('#demo_info')[0];
 		n.innerHTML += '&lt;div&gt;'+type+' event - '+new Date().getTime()+'&lt;/div&gt;';
-		n.scrollTop = n.scrollHeight;		
+		n.scrollTop = n.scrollHeight;
 	}
 
 	$('#example')

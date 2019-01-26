@@ -17,18 +17,17 @@
 		<div id="parameters" style="width: 800"></div>
 
 		<script id="source" language="javascript" type="text/javascript">
-		
-		
+
 $(function() {
 	//data
     var d1 = [];
     for (var i = 0; i <= 10; i += 1) {
         d1.push([i, parseInt(Math.random() * 30)]);}
-    
+
     var d2 = [];
     for (var i = 0; i <= 10; i += 1) {
         d2.push([i, parseInt(Math.random() * 30)]);}
-    
+
     var d3 = [];
     for (var i = 0; i <= 10; i += 1) {
         d3.push([i, parseInt(Math.random() * 30)]);}
@@ -38,14 +37,14 @@ $(function() {
 		apply : true,
 		legacyOverride : {fit: true}
 	}
-    
+
     //plot function
     $.plot("#placeholder", [ d1, d2, d3 ], {
         series: { stack: true,
                  lines: {show: true, fill: true, },
                 }
     });
-    
+
     function replot(parameters) {
 		$.plot($("#placeholder2"),
            [
@@ -61,13 +60,11 @@ $(function() {
                }
            });
 	}
-    
+
 	//combine everything
 	TestSetup($("#parameters"), defaultParameters, [replot])
-    
-});
 
+});
 		</script>
 	</body>
-
 </hmtl>

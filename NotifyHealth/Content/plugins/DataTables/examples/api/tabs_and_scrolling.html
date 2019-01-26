@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -10,7 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
 	<style type="text/css" class="init">
-	
 	</style>
 	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js">
 	</script>
@@ -25,13 +24,12 @@
 	<script type="text/javascript" language="javascript" src="../resources/demo.js">
 	</script>
 	<script type="text/javascript" language="javascript" class="init">
-	
 
 $(document).ready(function() {
 	$('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
 		$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
 	} );
-	
+
 	$('table.table').DataTable( {
 		ajax:           '../ajax/data/arrays.txt',
 		scrollY:        200,
@@ -42,8 +40,6 @@ $(document).ready(function() {
 	// Apply a search to the second table for the demo
 	$('#myTable2').DataTable().search( 'New York' ).draw();
 } );
-
-
 	</script>
 </head>
 <body class="dt-example dt-example-bootstrap">
@@ -115,7 +111,7 @@ $(document).ready(function() {
 	$('a[data-toggle=&quot;tab&quot;]').on( 'shown.bs.tab', function (e) {
 		$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
 	} );
-	
+
 	$('table.table').DataTable( {
 		ajax:           '../ajax/data/arrays.txt',
 		scrollY:        200,

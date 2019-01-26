@@ -1,4 +1,3 @@
-
 function initThemeChooser(settings) {
   var isInitialized = false;
   var $currentStylesheet = $();
@@ -9,7 +8,6 @@ function initThemeChooser(settings) {
     });
 
   setThemeSystem($systemSelect.val());
-
 
   function setThemeSystem(themeSystem) {
     var $allSelectWraps = $('.selector[data-theme-system]').hide();
@@ -22,7 +20,6 @@ function initThemeChooser(settings) {
 
     setTheme(themeSystem, $select.val());
   }
-
 
   function setTheme(themeSystem, themeName) {
     var stylesheetUrl = generateStylesheetUrl(themeSystem, themeName);
@@ -57,7 +54,6 @@ function initThemeChooser(settings) {
     }
   }
 
-
   function generateStylesheetUrl(themeSystem, themeName) {
     if (themeSystem === 'jquery-ui') {
       return 'https://code.jquery.com/ui/1.12.1/themes/' + themeName + '/jquery-ui.css';
@@ -80,7 +76,6 @@ function initThemeChooser(settings) {
     }
   }
 
-
   function showCredits(themeSystem, themeName) {
     var creditId;
 
@@ -99,7 +94,6 @@ function initThemeChooser(settings) {
     $('.credits').hide()
       .filter('[data-credit-id="' + creditId + '"]').show();
   }
-
 
   function whenStylesheetLoaded(linkNode, callback) {
     var isReady = false;

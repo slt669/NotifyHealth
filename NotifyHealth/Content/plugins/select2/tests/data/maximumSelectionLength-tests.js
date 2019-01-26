@@ -151,7 +151,6 @@ test('triggers when >= 1 selection' , function (assert) {
   });
 
   assert.ok(!data.called);
-
 });
 
 test('triggers when >= 2 selections' , function (assert) {
@@ -198,5 +197,4 @@ test('triggers when >= 2 selections' , function (assert) {
   });
 
   assert.ok(!data.called);
-
 });

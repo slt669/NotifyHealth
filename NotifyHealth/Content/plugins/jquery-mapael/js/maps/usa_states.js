@@ -4,11 +4,11 @@
 * Requires jQuery and raphael.js
 *
 * Map of USA by state
-* 
+*
 * @source http://the55.net/_11/sketch/us_map
 */
 (function($) {
-	$.extend(true, $.fn.mapael, 
+	$.extend(true, $.fn.mapael,
 		{
 			maps :{
 				usa_states : {
@@ -26,13 +26,12 @@
 						p = scale * Math.pow(tmp1 - 2 * n * Math.sin(lat / 180 * pi),0.5) / n;
 						x = p * Math.sin(tmp3 / 180 * pi);
 						y = tmp2 - p * Math.cos(tmp3 / 180 * pi);
-						
+
 						return([x,y]);
 					},
 					getCoords : function (lat, lon) {
 						var coords = {};
 						if(lat > 51) { // alaska
-
 							// these are guesses
 							var phi1= 15; // standard parallels
 							var phi2= 105;
@@ -43,7 +42,6 @@
 							yOffset = 543;
 							scaleX= 1;
 							scaleY= -1;
-
 						} else if (lon < -140) { // hawaii
 							// Lat: 18°?55' N to 28°?27' N, Lng:154°?48' W to 178°?22' W
 							// (225, 504) to (356, 588) on map

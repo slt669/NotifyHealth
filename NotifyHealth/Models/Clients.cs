@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NotifyHealth.Models
@@ -11,20 +8,25 @@ namespace NotifyHealth.Models
     public class Clients
     {
         public int ClientId { get; set; }
+
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+
         [Display(Name = "Phone Carrier")]
         [ReadOnly(true)]
         public string PhoneCarrier { get; set; }
+
         [Display(Name = "SMS Address")]
         [ReadOnly(true)]
         public string MessageAddress { get; set; }
-        [ReadOnly(true)]
 
+        [ReadOnly(true)]
         public int? OrganizationID { get; set; }
 
         [Display(Name = "CStatusId")]
@@ -35,6 +37,7 @@ namespace NotifyHealth.Models
 
         [Display(Name = "Client Status")]
         public string ClientStatus { get; set; }
+
         [Display(Name = "PStatusId")]
         public virtual int PStatusId { get; set; }
 
@@ -52,6 +55,7 @@ namespace NotifyHealth.Models
 
         [Display(Name = "Participation Reason")]
         public string ParticipationReason { get; set; }
+
         [Display(Name = "ATypeId")]
         public virtual int ATypeId { get; set; }
 
@@ -60,7 +64,7 @@ namespace NotifyHealth.Models
 
         [Display(Name = "Account Type")]
         public string AccountType { get; set; }
-  
+
         [Display(Name = "CampaignId")]
         public virtual int CampaignId { get; set; }
 
@@ -69,6 +73,7 @@ namespace NotifyHealth.Models
 
         [Display(Name = "Campaign")]
         public string Campaign { get; set; }
+
         [Display(Name = "CampaignId")]
         public virtual int CampaignIdDDL { get; set; }
 
@@ -77,6 +82,5 @@ namespace NotifyHealth.Models
 
         [Display(Name = "CampaignDDL")]
         public string CampaignDDL { get; set; }
-
     }
 }

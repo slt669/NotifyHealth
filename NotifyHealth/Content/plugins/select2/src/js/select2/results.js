@@ -142,7 +142,6 @@ define([
           $option.attr('aria-selected', 'false');
         }
       });
-
     });
   };
 

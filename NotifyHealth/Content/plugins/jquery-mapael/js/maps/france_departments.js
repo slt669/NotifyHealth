@@ -10,11 +10,11 @@
 * @source http://fr.m.wikipedia.org/wiki/Fichier:France_location_map-Departements.svg
 */
 (function($) {
-	$.extend(true, $.fn.mapael, 
+	$.extend(true, $.fn.mapael,
 		{
 			maps : {
 				france_departments : {
-					width : 600.08728, 
+					width : 600.08728,
 					height : 626.26221,
 					getCoords : function (lat, lon) {
 						// Corse
@@ -22,7 +22,7 @@
 							var xfactor = 43.64246;
 							var xoffset = 181.34520;
 							var x = (lon * xfactor) + xoffset;
-							
+
 							var yfactor = -65.77758;
 							var yoffset = 3346.37839;
 							var y = (lat * yfactor) + yoffset;
@@ -30,7 +30,7 @@
 							var xfactor = 45.48385;
 							var xoffset = 220.22005;
 							var x = (lon * xfactor) + xoffset;
-							
+
 							var yfactor = -65.97284;
 							var yoffset = 3371.10748;
 							var y = (lat * yfactor) + yoffset;

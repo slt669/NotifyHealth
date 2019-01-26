@@ -1,33 +1,32 @@
-/*   
+/*
 Template Name: Source Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7 & Bootstrap 4
 Version: 1.5.0
 Author: Sean Ngu
 Website: http://www.seantheme.com/source-admin-v1.5/admin/
 */
 
-var primary		= '#2184DA',
-    primaryLight= '#60A1DA',
-    primaryDark	= '#1e77c5',
-    info		= '#38AFD3',
-    infoLight	= '#6FBDD5',
-    infoDark	= '#2d8ca9',
-    success		= '#17B6A4',
-    successLight= '#59C2B7',
-    successDark	= '#129283',
-    warning		= '#fcaf41',
-    warningLight= '#EEBD77',
-    warningDark	= '#ca8c34',
-    inverse		= '#3C454D',
-    grey		= '#aab3ba',
-    purple		= '#5f50c5',
-    purpleLight	= '#7f73d1',
-    purpleDark	= '#4c409e',
-    danger      = '#F04B46';
-    
+var primary = '#2184DA',
+    primaryLight = '#60A1DA',
+    primaryDark = '#1e77c5',
+    info = '#38AFD3',
+    infoLight = '#6FBDD5',
+    infoDark = '#2d8ca9',
+    success = '#17B6A4',
+    successLight = '#59C2B7',
+    successDark = '#129283',
+    warning = '#fcaf41',
+    warningLight = '#EEBD77',
+    warningDark = '#ca8c34',
+    inverse = '#3C454D',
+    grey = '#aab3ba',
+    purple = '#5f50c5',
+    purpleLight = '#7f73d1',
+    purpleDark = '#4c409e',
+    danger = '#F04B46';
 
 //var handleMorrisLineChart = function () {
 //    "use strict";
-    
+
 //    var tax_data = [
 //        {"period": "2011 Q3", "licensed": 3407, "sorned": 660},
 //        {"period": "2011 Q2", "licensed": 3351, "sorned": 629},
@@ -59,7 +58,7 @@ var primary		= '#2184DA',
 
 //var handleMorrisBarChart = function () {
 //    "use strict";
-    
+
 //    Morris.Bar({
 //        element: 'bar-chart',
 //        data: [
@@ -86,7 +85,7 @@ var primary		= '#2184DA',
 
 //var handleMorrisAreaChart = function() {
 //    "use strict";
-    
+
 //    Morris.Area({
 //        element: 'area-chart',
 //        data: [
@@ -116,7 +115,7 @@ var primary		= '#2184DA',
 
 //var handleMorrisDonusChart = function() {
 //    "use strict";
-    
+
 //    Morris.Donut({
 //        element: 'donut-chart',
 //        data: [
@@ -131,19 +130,18 @@ var primary		= '#2184DA',
 //    });
 //};
 
-
 /* Application Controller
 ------------------------------------------------ */
 var PageDemo = function () {
-	"use strict";
-	
-	return {
-		//main function
-		init: function () {
+    "use strict";
+
+    return {
+        //main function
+        init: function () {
             //handleMorrisLineChart();
             handleMorrisBarChart();
             //handleMorrisAreaChart();
             //handleMorrisDonusChart();
-		}
+        }
     };
 }();

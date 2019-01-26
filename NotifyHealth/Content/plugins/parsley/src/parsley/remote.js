@@ -34,7 +34,6 @@ $.extend(true, Parsley, {
 
     return this;
   }
-
 });
 
 Parsley.addValidator('remote', {

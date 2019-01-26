@@ -221,7 +221,6 @@ Form.prototype = {
   _trigger: function (eventName) {
     return this.trigger('form:' + eventName);
   }
-
 };
 
 export default Form;

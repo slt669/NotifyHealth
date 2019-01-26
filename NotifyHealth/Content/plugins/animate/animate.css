@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 /*!
 Animate.css - http://daneden.me/animate
@@ -531,7 +531,6 @@ Copyright (c) 2015 Daniel Eden
   }
 
   22.2% {
-
     -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
             transform: skewX(-12.5deg) skewY(-12.5deg)
   }
@@ -564,8 +563,6 @@ Copyright (c) 2015 Daniel Eden
             transform: none
   }
 }
-
-
 
 .jello{
     -webkit-animation-name:jello;

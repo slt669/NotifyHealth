@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
 	<style type="text/css" class="init">
-	
 	</style>
 	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js">
 	</script>
@@ -20,7 +19,6 @@
 	<script type="text/javascript" language="javascript" src="../resources/demo.js">
 	</script>
 	<script type="text/javascript" language="javascript" class="init">
-	
 
 /* Custom filtering function which will search data in column four between two values */
 $.fn.dataTable.ext.search.push(
@@ -42,14 +40,12 @@ $.fn.dataTable.ext.search.push(
 
 $(document).ready(function() {
 	var table = $('#example').DataTable();
-	
+
 	// Event listener to the two range filtering inputs to redraw on input
 	$('#min, #max').keyup( function() {
 		table.draw();
 	} );
 } );
-
-
 	</script>
 </head>
 <body class="dt-example">
@@ -581,7 +577,7 @@ $.fn.dataTable.ext.search.push(
 
 $(document).ready(function() {
 	var table = $('#example').DataTable();
-	
+
 	// Event listener to the two range filtering inputs to redraw on input
 	$('#min, #max').keyup( function() {
 		table.draw();

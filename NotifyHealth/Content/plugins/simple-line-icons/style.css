@@ -5,14 +5,11 @@
 
 /*
 
-
-       PLEASE NOTE: 
+       PLEASE NOTE:
        ============
 
-       THIS FILE IS NOT PART OF THE *REQUIRED FONT ICON FILES* 
+       THIS FILE IS NOT PART OF THE *REQUIRED FONT ICON FILES*
        THIS FILE IS USED TO STYLE THE ICON DEMO TEMPLATE FOUND AT DEMO.HTML
-
-
 
 */
 
@@ -45,8 +42,8 @@
 	background-color: rgba(0, 0, 0, 0.6);
 }
 
-section, 
-header, 
+section,
+header,
 footer {
 	display: block;
 	position: relative;
@@ -59,7 +56,6 @@ body {
 	line-height: 1.5;
 	font-size: 1em;
 }
-
 
 section:after,
 .masthead:after {
@@ -138,7 +134,7 @@ section header:after {
 	text-transform: uppercase;
 }
 
-.glyphs, 
+.glyphs,
 .classes {
 	margin-left: -1.5em;
 	padding: 4.5em 3em;
@@ -170,7 +166,6 @@ section header:after {
 h2 code {
 	text-transform: lowercase;
 }
-
 
 .glyphs {
 	background-color: #74f3c8;
@@ -204,19 +199,19 @@ h2 code {
 .glyph:hover .glyph-item {
 	background-color: #0e8a65;
 	color: #fff;
-} 
+}
 
 .mega {
 	font-size: 3em;
 }
 
-a, 
+a,
 a:visited {
 	color: #74f3c8;
 	text-decoration: none;
 }
 
-a:hover, 
+a:hover,
 a:focus {
 		color: #0e8a65;
 }
@@ -228,7 +223,6 @@ a:focus {
 	margin: 0 -0.22em 1em 0;
 	padding-left: 1em;
 	width: 100%;
-
 }
 
 .item {
@@ -240,7 +234,6 @@ a:focus {
 	width: 100%;
 }
 
-
 .colophon .group {
 	font-size: 1.5em;
 	text-transform: uppercase;
@@ -251,7 +244,6 @@ a:focus {
 	font-style: normal;
 }
 
-
 #wH {
 	width: 0;
 	position: absolute;
@@ -259,8 +251,6 @@ a:focus {
 	bottom: 0;
 	left: 0;
 }
-
-
 
 @media only screen and (min-width: 768px) {
 	section:after,
@@ -286,7 +276,7 @@ a:focus {
 		font-size: 4.5em;
 	}
 
-	.glyphs, 
+	.glyphs,
 	.classes {
 		padding: 9em 6em;
 	}
@@ -302,12 +292,10 @@ a:focus {
 		font-size: 4.5em;
 	}
 
-
 	.mega {
 		font-size: 6em;
 	}
 
-    
     .glyph {
 		width: 16.66666666666667%;
     }
@@ -315,9 +303,8 @@ a:focus {
     .item-box {
 		width: 33.333%;
     }
-    
+
     .colophon .group {
     	padding: 6em;
     }
 }
-

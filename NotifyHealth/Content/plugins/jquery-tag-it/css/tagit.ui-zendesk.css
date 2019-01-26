@@ -1,6 +1,4 @@
-
 /* Optional scoped theme for tag-it which mimics the zendesk widget. */
-
 
 ul.tagit {
     border-style: solid;
@@ -94,5 +92,3 @@ ul.tagit input[type="text"] {
 
 .tagit-autocomplete .ui-widget-content { border: 1px solid #aaaaaa; }
 .tagit .ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px,1px,1px,1px); }
-
-

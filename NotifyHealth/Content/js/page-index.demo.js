@@ -1,10 +1,10 @@
-/*   
+/*
 Template Name: Source Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7 & Bootstrap 4
 Version: 1.5.0
 Author: Sean Ngu
 Website: http://www.seantheme.com/source-admin-v1.5/admin/
 */
-    
+
 var purple = '#9b59b6';
 var purpleLight = '#BE93D0';
 var purpleDark = '#7c4792';
@@ -25,23 +25,21 @@ var fontFamily = 'inherit';
 var fontWeight = 'normal';
 var fontStyle = 'normal';
 
-
-
 /* Application Controller
 ------------------------------------------------ */
 var PageDemo = function () {
-	"use strict";
-	
-	return {
-		//main function
-		init: function () {
-		    handleVisitorAnalyticsChart();
-		    handleVisitorsVectorMap();
-		    handleServerChart();
-		    handleWidgetChat();
-		    handleWidgetReload();
-		    handleWidgetTodolist();
-		    handleDashboardGritterNotification();
-		}
+    "use strict";
+
+    return {
+        //main function
+        init: function () {
+            handleVisitorAnalyticsChart();
+            handleVisitorsVectorMap();
+            handleServerChart();
+            handleWidgetChat();
+            handleWidgetReload();
+            handleWidgetTodolist();
+            handleDashboardGritterNotification();
+        }
     };
 }();

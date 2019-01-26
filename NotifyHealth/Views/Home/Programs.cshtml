@@ -18,28 +18,22 @@
     <link href="~/Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
-
 </head>
 <h1 class="page-header">Programs</h1>
 <div class="section-container section-with-top-border">
     <p class="m-b-20">
-
     </p>
     <!-- begin panel -->
     <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateProgram","Home", new { @organizationID = Session["organizationID"]})" id="btnCreateAsset">
         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Programs
     </button>
     <p class="m-b-20">
-
     </p>
     <div class="panel pagination-inverse m-b-0 clearfix">
 
         <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
     </div>
 </div>
-
-
-
 
 <div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModal" aria-hidden="true" data-backdrop="static">
     <div id="createAssetContainer">
@@ -54,7 +48,6 @@
     <div id="deleteAssetContainer">
     </div>
 </div>
-
 
 <!-- ================== BEGIN BASE JS ================== -->
 <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
@@ -71,9 +64,6 @@
 <script src="~/Content/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 
 <!-- ================== END PAGE LEVEL JS ================== -->
-
-
-
 
 <script type="text/javascript">
 
@@ -108,9 +98,7 @@
                     },
                     "fnServerParams": function (aoData) {
 
-
                         aoData['organizationID'] = @ViewBag.organizationID;
-
 
                             },
                             "paging": true,
@@ -222,7 +210,6 @@
 
             });
 
-
             /**** Delet Asset Ajax Form CallBack ********/
 
             function DeleteAssetSuccess(data) {
@@ -252,7 +239,4 @@
             });
 
         });
-
-
 </script>
-

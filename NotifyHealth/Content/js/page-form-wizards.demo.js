@@ -1,15 +1,15 @@
-/*   
+/*
 Template Name: Source Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7 & Bootstrap 4
 Version: 1.5.0
 Author: Sean Ngu
 Website: http://www.seantheme.com/source-admin-v1.5/admin/
 */
 
-var handleBootstrapWizardsValidation = function() {
+var handleBootstrapWizardsValidation = function () {
     "use strict";
-    
-    $("#wizard").bwizard({ 
-        validating: function (e, ui) { 
+
+    $("#wizard").bwizard({
+        validating: function (e, ui) {
             if ((ui.index == 0 && ui.nextIndex >= 0) || ui.nextIndex > 0) {
                 // step-1 validation
                 if (false === $('form[name="form-wizard"]').parsley().validate('wizard-step-1')) {
@@ -34,20 +34,19 @@ var handleBootstrapWizardsValidation = function() {
                     return false;
                 }
             }
-        } 
+        }
     });
 };
-
 
 /* Application Controller
 ------------------------------------------------ */
 var PageDemo = function () {
-	"use strict";
-	
-	return {
-		//main function
-		init: function () {
-		    handleBootstrapWizardsValidation();
-		}
+    "use strict";
+
+    return {
+        //main function
+        init: function () {
+            handleBootstrapWizardsValidation();
+        }
     };
 }();

@@ -6,7 +6,6 @@
 (function( jQuery, window, undefined ) {
 "use strict";
 
-
 var warnedAbout = {};
 
 // List of warnings already given; public read only
@@ -76,7 +75,6 @@ if ( document.compatMode === "BackCompat" ) {
 	// jQuery has never supported or tested Quirks Mode
 	migrateWarn( "jQuery is not compatible with Quirks Mode" );
 }
-
 
 var attrFn = {},
 	oldAttr = jQuery.attr,
@@ -181,7 +179,6 @@ jQuery.attrHooks.value = {
 	}
 };
 
-
 var matched, browser,
 	oldInit = jQuery.fn.init,
 	oldParseJSON = jQuery.parseJSON,
@@ -279,7 +276,6 @@ jQuery.sub = function() {
 	return jQuerySub;
 };
 
-
 var oldFnData = jQuery.fn.data;
 
 jQuery.fn.data = function( name ) {
@@ -297,7 +293,6 @@ jQuery.fn.data = function( name ) {
 	}
 	return oldFnData.apply( this, arguments );
 };
-
 
 var rscriptType = /\/(java|ecma)script/i,
 	oldSelf = jQuery.fn.andSelf || jQuery.fn.addBack;
@@ -410,7 +405,6 @@ jQuery.fn.error = function() {
 };
 
 jQuery.fn.toggle = function( fn, fn2 ) {
-
 	// Don't mess with animation or css toggles
 	if ( !jQuery.isFunction( fn ) || !jQuery.isFunction( fn2 ) ) {
 		return oldToggle.apply( this, arguments );
@@ -491,6 +485,4 @@ jQuery.each( ajaxEvents.split("|"),
 		};
 	}
 );
-
-
 })( jQuery, window );

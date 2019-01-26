@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 html, body {
     color:#333;
@@ -190,4 +190,3 @@ ul.tagit {
     font-size: 1em;
     font-family: inherit;
 }
-

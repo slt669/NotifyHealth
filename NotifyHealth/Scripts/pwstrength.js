@@ -9,9 +9,6 @@
 (function (jQuery) {
 // Source: src/rules.js
 
-
-
-
 var rulesEngine = {};
 
 try {
@@ -168,9 +165,6 @@ try {
 
 // Source: src/options.js
 
-
-
-
 var defaultOptions = {};
 
 defaultOptions.common = {};
@@ -271,9 +265,6 @@ defaultOptions.ui.viewports = {
 defaultOptions.ui.scores = [14, 26, 38, 50];
 
 // Source: src/ui.js
-
-
-
 
 var ui = {};
 
@@ -568,9 +559,6 @@ var ui = {};
 }(jQuery, ui));
 
 // Source: src/methods.js
-
-
-
 
 var methods = {};
 

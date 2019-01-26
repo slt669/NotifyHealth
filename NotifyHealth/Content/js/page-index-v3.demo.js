@@ -1,32 +1,31 @@
-/*   
+/*
 Template Name: Source Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7 & Bootstrap 4
 Version: 1.5.0
 Author: Sean Ngu
 Website: http://www.seantheme.com/source-admin-v1.5/admin/
 */
 
-
 Chart.defaults.global.defaultFontColor = '#899096';
 
-var randomScalingFactor = function() { 
-    return Math.round(Math.random()*100)
+var randomScalingFactor = function () {
+    return Math.round(Math.random() * 100)
 };
 
-var renderBarChart = function() {
+var renderBarChart = function () {
     var barChartData = {
-        labels : ['January','February','March','April','May','June','July','August','September','October','November','December'],
-        datasets : [
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        datasets: [
             {
                 borderWidth: 2,
                 borderColor: '#30373e',
                 backgroundColor: '#30373e',
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()],
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
                 label: 'Total Item Sold'
-            },{
+            }, {
                 borderWidth: 2,
                 borderColor: '#17B6A4',
                 backgroundColor: '#17B6A4',
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()],
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
                 label: 'Total Sales'
             }
         ]
@@ -51,10 +50,10 @@ var renderBarChart = function() {
     });
 };
 
-var renderDataTableSparkline = function() {
-    $('[data-render="sparkline"]').each(function() {
-        var randomScalingFactor = function() { 
-            return Math.round(Math.random()*100)
+var renderDataTableSparkline = function () {
+    $('[data-render="sparkline"]').each(function () {
+        var randomScalingFactor = function () {
+            return Math.round(Math.random() * 100)
         };
         var dataValue = [
             randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
@@ -64,11 +63,11 @@ var renderDataTableSparkline = function() {
             randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()
         ];
         $(this).sparkline(dataValue, {
-            type: 'line', 
-            width: '100%', 
+            type: 'line',
+            width: '100%',
             height: '28px',
-            fillColor: 'transparent', 
-            spotColor: '#F04B46', 
+            fillColor: 'transparent',
+            spotColor: '#F04B46',
             lineColor: '#8a8f94',
             minSpotColor: '#F04B46',
             maxSpotColor: '#F04B46',
@@ -78,7 +77,7 @@ var renderDataTableSparkline = function() {
     });
 };
 
-var handleDataTableDefault = function() {
+var handleDataTableDefault = function () {
     "use strict";
 
     if ($('#data-table').length !== 0) {
@@ -86,18 +85,18 @@ var handleDataTableDefault = function() {
             responsive: true,
             "pageLength": 10,
             "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
-            "initComplete": function() {
+            "initComplete": function () {
                 renderDataTableSparkline();
             }
         });
-        $('#data-table').on( 'draw.dt', function () {
+        $('#data-table').on('draw.dt', function () {
             renderDataTableSparkline();
         });
     }
 };
 
-var handleDashboardGritterNotification = function() {
-    setTimeout(function() {
+var handleDashboardGritterNotification = function () {
+    setTimeout(function () {
         $.gritter.add({
             title: 'Welcome back, Admin!',
             text: 'You have 5 new notifications. Please check your inbox.',
@@ -109,18 +108,17 @@ var handleDashboardGritterNotification = function() {
     }, 1000);
 };
 
-
 /* Application Controller
 ------------------------------------------------ */
 var PageDemo = function () {
-	"use strict";
-	
-	return {
-		//main function
-		init: function () {
+    "use strict";
+
+    return {
+        //main function
+        init: function () {
             renderBarChart();
-		    handleDataTableDefault();
-		    handleDashboardGritterNotification();
-		}
+            handleDataTableDefault();
+            handleDashboardGritterNotification();
+        }
     };
 }();

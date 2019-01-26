@@ -16,9 +16,8 @@
 	</head>
 	<body>
 		<div id="canvas-holder">
-			<canvas id="chart-area" width="500" height="500"/>
+			<canvas id="chart-area" width="500" height="500" />
 		</div>
-
 
 	<script>
 
@@ -50,9 +49,6 @@
 				var ctx = document.getElementById("chart-area").getContext("2d");
 				window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive : true});
 			};
-
-
-
 	</script>
 	</body>
 </html>

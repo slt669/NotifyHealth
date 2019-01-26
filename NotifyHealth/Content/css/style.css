@@ -1,4 +1,4 @@
-/* 
+/*
 Template Name: Source Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7 & Bootstrap 4
 Version: 1.5.0
 Author: Sean Ngu
@@ -9,7 +9,7 @@ Website: http://www.seantheme.com/source-admin-v1.5/admin/
     1.1  Reset and overrides
     1.2  Pace Loader
     1.3  Boxed Layout Setting
-    
+
 ::  2.0  Header
 -------------------------------------------
     2.1  Navbar Element
@@ -27,7 +27,7 @@ Website: http://www.seantheme.com/source-admin-v1.5/admin/
     2.13 Navbar Theme - Danger
     2.14 Navbar Theme - Grey
 	2.15 Navbar Collapse
-    
+
 ::  3.0  Sidebar
 -------------------------------------------
     3.1  Sidebar Element
@@ -52,7 +52,7 @@ Website: http://www.seantheme.com/source-admin-v1.5/admin/
     3.20 Sidebar Theme - Grey
     3.21 Sidebar Theme - Purple
 	3.22 Page Sidebar - Floating Sub Menu
-    
+
 ::  4.0  Content Setting
 -------------------------------------------
     4.1  Content Element
@@ -62,22 +62,22 @@ Website: http://www.seantheme.com/source-admin-v1.5/admin/
     4.3  Content Setting - Page with Right Sidebar
     4.4  Content Setting - Page with Footer
     4.5  Content Setting - Page without Sidebar
-    
+
 ::  5.0  Footer Setting
 -------------------------------------------
     5.1  Footer Element
     5.2  Footer Setting - Page with Fixed Footer
-    
+
 ::  6.0  Top Menu Setting
 -------------------------------------------
     6.1  Top Menu Element
     6.2  Top Menu Sub Menu Setting
     6.3  Top Menu Left & Right Control Setting
-    
+
 ::  7.0 Predefined CSS Setting
 -------------------------------------------
     7.1  Predefined Classes
-    
+
 ::  8.0 UI Elements Setting
 -------------------------------------------
     8.1  Progress Bar Setting
@@ -126,7 +126,7 @@ Website: http://www.seantheme.com/source-admin-v1.5/admin/
 	8.33 Media Setting
 	8.34 Nav Setting
 	8.35 Tooltip Setting
-    
+
 ::  9.0 Plugins
 -------------------------------------------
     9.1  Plugin - Gritter Notification Setting
@@ -165,7 +165,7 @@ Website: http://www.seantheme.com/source-admin-v1.5/admin/
     9.24 Plugin - jQuery Vector Map Setting
 	9.26 Plugin - Bootstrap Select Setting
 	9.25 Plugin - Combobox Setting
-    
+
 ::  10.0  Pages
 -------------------------------------------
     10.1  Page - 404 Error Setting
@@ -178,7 +178,7 @@ Website: http://www.seantheme.com/source-admin-v1.5/admin/
     10.8  Page - Email Inbox Setting
     10.9  Page - Email Detail Setting
     10.10 Page - Email Compose Setting
-    
+
 ::  11.0 Widgets
 -------------------------------------------
     11.1  Widget - Basic Element Setting
@@ -211,19 +211,18 @@ Website: http://www.seantheme.com/source-admin-v1.5/admin/
     12.14 Sidebar Highlight Theme - Grey
     12.15 Sidebar Highlight Theme - Light
     12.16 Sidebar Highlight Theme - Inverse
-    
+
 ::  13.0 Update - v1.2
 -------------------------------------------
     13.1 Font Family - Open Sans
     13.2 Font Family - Roboto
     13.3 Font Family - Lato
     13.4 Font Family - Helvetica, Arial
-    
+
 ::  14.0 Update - v1.4
 -------------------------------------------
 	14.1 Bootstrap 4 - Card Component
 */
-
 
 /* -------------------------------
    1.0 General reset & setup
@@ -273,9 +272,9 @@ body {
 	margin-left: auto;
 }
 @media (min-width: 768px) {
-	.container-fluid > .navbar-collapse, 
-	.container-fluid > .navbar-header, 
-	.container > .navbar-collapse, 
+	.container-fluid > .navbar-collapse,
+	.container-fluid > .navbar-header,
+	.container > .navbar-collapse,
 	.container > .navbar-header {
 		margin-right: 0;
 		margin-left: 0;
@@ -291,35 +290,35 @@ body {
 		padding-right: 15px;
 	}
 }
-.btn-group-vertical>.btn-group:after, 
-.btn-group-vertical>.btn-group:before, 
-.btn-toolbar:after, 
-.btn-toolbar:before, 
-.clearfix:after, 
-.clearfix:before, 
+.btn-group-vertical>.btn-group:after,
+.btn-group-vertical>.btn-group:before,
+.btn-toolbar:after,
+.btn-toolbar:before,
+.clearfix:after,
+.clearfix:before,
 .container-fluid:after,
-.container-fluid:before, 
-.container:after, 
-.container:before, 
-.form-horizontal .form-group:after, 
-.form-horizontal .form-group:before, 
-.modal-footer:after, 
-.modal-footer:before, 
-.modal-header:after, 
-.modal-header:before, 
-.nav:after, 
-.nav:before, 
-.navbar-collapse:after, 
-.navbar-collapse:before, 
-.navbar-header:after, 
-.navbar-header:before, 
-.navbar:after, 
-.navbar:before, 
-.pager:after, 
-.pager:before, 
-.panel-body:after, 
-.panel-body:before, 
-.row:after, 
+.container-fluid:before,
+.container:after,
+.container:before,
+.form-horizontal .form-group:after,
+.form-horizontal .form-group:before,
+.modal-footer:after,
+.modal-footer:before,
+.modal-header:after,
+.modal-header:before,
+.nav:after,
+.nav:before,
+.navbar-collapse:after,
+.navbar-collapse:before,
+.navbar-header:after,
+.navbar-header:before,
+.navbar:after,
+.navbar:before,
+.pager:after,
+.pager:before,
+.panel-body:after,
+.panel-body:before,
+.row:after,
 .row:before {
 	display: table;
 	content: '';
@@ -397,7 +396,6 @@ button, input, select, textarea {
     text-rendering: auto;
 }
 
-
 .fc button .fc-icon,
 .datepicker th.prev,
 .datepicker th.next,
@@ -416,10 +414,10 @@ button, input, select, textarea {
 .combobox-container .glyphicon-remove,
 .combobox-container .icon-remove:before,
 .bootstrap-timepicker-widget .glyphicon,
-table.dataTable thead .sorting:after, 
-table.dataTable thead .sorting_asc:after, 
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
 table.dataTable thead .sorting_desc:after,
-table.dataTable thead .sorting_asc_disabled:after, 
+table.dataTable thead .sorting_asc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:after,
 .bootstrap-datetimepicker-widget .glyphicon,
 .bootstrap-calendar .calendar .icon-arrow-right,
@@ -436,7 +434,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     font-variant: normal;
     text-rendering: auto;
 }
-
 
 /* 1.2 Pace Loader */
 
@@ -596,7 +593,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     100% { transform: rotate(360deg); transform: rotate(360deg); }
 }
 
-
 /* 1.3 Boxed Layout Setting */
 
 @media (min-width: 768px) {
@@ -660,8 +656,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
-
 /* -------------------------------
    2.0 Header
 ------------------------------- */
@@ -698,7 +692,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-form .btn-search {
 	color: #707478;
 }
-.navbar > .container, 
+.navbar > .container,
 .navbar > .container-fluid {
 	display: block;
 }
@@ -718,8 +712,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .navbar-nav > li > a:hover,
 .navbar-nav > li > a:focus,
-.navbar .navbar-nav > .open > a, 
-.navbar .navbar-nav > .open > a:focus, 
+.navbar .navbar-nav > .open > a,
+.navbar .navbar-nav > .open > a:focus,
 .navbar .navbar-nav > .open > a:hover {
     background: none;
     color: #333;
@@ -799,7 +793,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 2.2 Navbar Header */
 
 .navbar-header {
@@ -812,9 +805,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 2.3 Navbar Brand */
-        
+
 .navbar-brand {
     font-weight: bold;
     height: 56px;
@@ -866,9 +858,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 	}
 }
 @media (min-width: 768px) {
-	.container-fluid > .navbar-collapse, 
-	.container-fluid > .navbar-header, 
-	.container > .navbar-collapse, 
+	.container-fluid > .navbar-collapse,
+	.container-fluid > .navbar-header,
+	.container > .navbar-collapse,
 	.container > .navbar-header {
 		margin-right: 0;
 		margin-left: 0;
@@ -882,15 +874,13 @@ table.dataTable thead .sorting_desc_disabled:after,
 		overflow: visible!important;
 	}
 }
-.container-fluid > .navbar-collapse, 
-.container-fluid > .navbar-header, 
-.container > .navbar-collapse, 
+.container-fluid > .navbar-collapse,
+.container-fluid > .navbar-header,
+.container > .navbar-collapse,
 .container > .navbar-header {
     margin-right: -15px;
     margin-left: -15px;
 }
-
-
 
 /* 2.4 Navbar Form */
 
@@ -965,9 +955,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 2.5 Navbar User */
-        
+
 .navbar-user > a .image {
     float: left;
     width: 40px;
@@ -993,7 +982,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 2.6 Navbar Theme - Default */
 
 .navbar-default {
@@ -1016,7 +1004,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 2.7 Navbar Theme - Inverse */
 
 .navbar-inverse {
@@ -1037,8 +1024,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-inverse .navbar-brand,
 .navbar.navbar-inverse .navbar-nav > li > a:hover,
 .navbar.navbar-inverse .navbar-nav > li > a:focus,
-.navbar.navbar-inverse .navbar-nav > .open > a, 
-.navbar.navbar-inverse .navbar-nav > .open > a:focus, 
+.navbar.navbar-inverse .navbar-nav > .open > a,
+.navbar.navbar-inverse .navbar-nav > .open > a:focus,
 .navbar.navbar-inverse .navbar-nav > .open > a:hover {
     color: #fff;
 }
@@ -1059,7 +1046,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-inverse .navbar-form .form-control::-moz-placeholder {
     color: #d4d5d6;
 }
-.navbar-inverse .navbar-form .form-control:-ms-input-placeholder {  
+.navbar-inverse .navbar-form .form-control:-ms-input-placeholder {
     color: #d4d5d6;
 }
 @media (max-width: 767px) {
@@ -1067,7 +1054,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         border-bottom-color: #52565a;
     }
 }
-
 
 /* 2.8 Navbar Theme - Purple */
 
@@ -1085,8 +1071,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-purple .navbar-brand,
 .navbar.navbar-purple .navbar-nav > li > a:hover,
 .navbar.navbar-purple .navbar-nav > li > a:focus,
-.navbar.navbar-purple .navbar-nav > .open > a, 
-.navbar.navbar-purple .navbar-nav > .open > a:focus, 
+.navbar.navbar-purple .navbar-nav > .open > a,
+.navbar.navbar-purple .navbar-nav > .open > a:focus,
 .navbar.navbar-purple .navbar-nav > .open > a:hover {
     color: #fff;
 }
@@ -1107,7 +1093,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-purple .navbar-form .form-control::-moz-placeholder {
     color: #dcd8fb;
 }
-.navbar-purple .navbar-form .form-control:-ms-input-placeholder {  
+.navbar-purple .navbar-form .form-control:-ms-input-placeholder {
     color: #dcd8fb;
 }
 .navbar-purple .navbar-nav > li > a.has-notify:before {
@@ -1119,7 +1105,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         border-bottom-color: #4c409e;
     }
 }
-
 
 /* 2.9 Navbar Theme - Primary */
 
@@ -1137,8 +1122,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-primary .navbar-brand,
 .navbar.navbar-primary .navbar-nav > li > a:hover,
 .navbar.navbar-primary .navbar-nav > li > a:focus,
-.navbar.navbar-primary .navbar-nav > .open > a, 
-.navbar.navbar-primary .navbar-nav > .open > a:focus, 
+.navbar.navbar-primary .navbar-nav > .open > a,
+.navbar.navbar-primary .navbar-nav > .open > a:focus,
 .navbar.navbar-primary .navbar-nav > .open > a:hover {
     color: #fff;
 }
@@ -1159,7 +1144,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-primary .navbar-form .form-control::-moz-placeholder {
     color: #d3e6f8;
 }
-.navbar-primary .navbar-form .form-control:-ms-input-placeholder {  
+.navbar-primary .navbar-form .form-control:-ms-input-placeholder {
     color: #d3e6f8;
 }
 .navbar-primary .navbar-nav > li > a.has-notify:before {
@@ -1171,7 +1156,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         border-bottom-color: #1a6aae;
     }
 }
-
 
 /* 2.10 Navbar Theme - Success */
 
@@ -1189,8 +1173,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-success .navbar-brand,
 .navbar.navbar-success .navbar-nav > li > a:hover,
 .navbar.navbar-success .navbar-nav > li > a:focus,
-.navbar.navbar-success .navbar-nav > .open > a, 
-.navbar.navbar-success .navbar-nav > .open > a:focus, 
+.navbar.navbar-success .navbar-nav > .open > a,
+.navbar.navbar-success .navbar-nav > .open > a:focus,
 .navbar.navbar-success .navbar-nav > .open > a:hover {
     color: #fff;
 }
@@ -1211,7 +1195,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-success .navbar-form .form-control::-moz-placeholder {
     color: #d1f0ed;
 }
-.navbar-success .navbar-form .form-control:-ms-input-placeholder {  
+.navbar-success .navbar-form .form-control:-ms-input-placeholder {
     color: #d1f0ed;
 }
 .navbar-success .navbar-nav > li > a.has-notify:before {
@@ -1223,7 +1207,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         border-bottom-color: #129283;
     }
 }
-
 
 /* 2.11 Navbar Theme - Lime */
 
@@ -1241,8 +1224,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-lime .navbar-brand,
 .navbar.navbar-lime .navbar-nav > li > a:hover,
 .navbar.navbar-lime .navbar-nav > li > a:focus,
-.navbar.navbar-lime .navbar-nav > .open > a, 
-.navbar.navbar-lime .navbar-nav > .open > a:focus, 
+.navbar.navbar-lime .navbar-nav > .open > a,
+.navbar.navbar-lime .navbar-nav > .open > a:focus,
 .navbar.navbar-lime .navbar-nav > .open > a:hover {
     color: #fff;
 }
@@ -1263,7 +1246,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-lime .navbar-form .form-control::-moz-placeholder {
     color: #e0f3e2;
 }
-.navbar-lime .navbar-form .form-control:-ms-input-placeholder {  
+.navbar-lime .navbar-form .form-control:-ms-input-placeholder {
     color: #e0f3e2;
 }
 .navbar-lime .navbar-nav > li > a.has-notify:before {
@@ -1276,9 +1259,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 2.12 Navbar Theme - Warning */
-        
+
 .navbar-warning {
     background: #fcaf41;
 }
@@ -1293,8 +1275,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-warning .navbar-brand,
 .navbar.navbar-warning .navbar-nav > li > a:hover,
 .navbar.navbar-warning .navbar-nav > li > a:focus,
-.navbar.navbar-warning .navbar-nav > .open > a, 
-.navbar.navbar-warning .navbar-nav > .open > a:focus, 
+.navbar.navbar-warning .navbar-nav > .open > a,
+.navbar.navbar-warning .navbar-nav > .open > a:focus,
 .navbar.navbar-warning .navbar-nav > .open > a:hover {
     color: #fff;
 }
@@ -1315,7 +1297,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-warning .navbar-form .form-control::-moz-placeholder {
     color: #feefd9;
 }
-.navbar-warning .navbar-form .form-control:-ms-input-placeholder {  
+.navbar-warning .navbar-form .form-control:-ms-input-placeholder {
     color: #feefd9;
 }
 .navbar-warning .navbar-nav > li > a.has-notify:before {
@@ -1327,7 +1309,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         border-bottom-color: #ca8c34;
     }
 }
-
 
 /* 2.13 Navbar Theme - Danger */
 
@@ -1345,8 +1326,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-danger .navbar-brand,
 .navbar.navbar-danger .navbar-nav > li > a:hover,
 .navbar.navbar-danger .navbar-nav > li > a:focus,
-.navbar.navbar-danger .navbar-nav > .open > a, 
-.navbar.navbar-danger .navbar-nav > .open > a:focus, 
+.navbar.navbar-danger .navbar-nav > .open > a,
+.navbar.navbar-danger .navbar-nav > .open > a:focus,
 .navbar.navbar-danger .navbar-nav > .open > a:hover {
     color: #fff;
 }
@@ -1367,7 +1348,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-danger .navbar-form .form-control::-moz-placeholder {
     color: #fcdbda;
 }
-.navbar-danger .navbar-form .form-control:-ms-input-placeholder {  
+.navbar-danger .navbar-form .form-control:-ms-input-placeholder {
     color: #fcdbda;
 }
 .navbar-danger .navbar-nav > li > a.has-notify:before {
@@ -1379,7 +1360,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         border-bottom-color: #c03c38;
     }
 }
-
 
 /* 2.14 Navbar Theme - Grey */
 
@@ -1397,8 +1377,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-grey .navbar-brand,
 .navbar.navbar-grey .navbar-nav > li > a:hover,
 .navbar.navbar-grey .navbar-nav > li > a:focus,
-.navbar.navbar-grey .navbar-nav > .open > a, 
-.navbar.navbar-grey .navbar-nav > .open > a:focus, 
+.navbar.navbar-grey .navbar-nav > .open > a,
+.navbar.navbar-grey .navbar-nav > .open > a:focus,
 .navbar.navbar-grey .navbar-nav > .open > a:hover {
     color: #fff;
 }
@@ -1419,7 +1399,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .navbar-grey .navbar-form .form-control::-moz-placeholder {
     color: #eef0f1;
 }
-.navbar-grey .navbar-form .form-control:-ms-input-placeholder {  
+.navbar-grey .navbar-form .form-control:-ms-input-placeholder {
     color: #eef0f1;
 }
 .navbar-grey .navbar-nav > li > a.has-notify:before {
@@ -1431,7 +1411,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         border-bottom-color: #888f95;
     }
 }
-
 
 /* 2.15 Navbar Collapse */
 
@@ -1479,7 +1458,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 		padding-top: 20px;
 		padding-left: 0;
 	}
-	.navbar-fixed-bottom .navbar-collapse, 
+	.navbar-fixed-bottom .navbar-collapse,
 	.navbar-fixed-top .navbar-collapse {
 		max-height: 340px;
 	}
@@ -1496,8 +1475,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 		background: #f4f6f7;
 		width: 100%;
 	}
-	.navbar-nav > .show > a, 
-	.navbar-nav > .show >  a:focus, 
+	.navbar-nav > .show > a,
+	.navbar-nav > .show >  a:focus,
 	.navbar-nav > .show > a:hover {
 		background: 0 0!important;
 		color: #333;
@@ -1505,8 +1484,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 		filter: alpha(opacity=100);
 	}
 }
-
-
 
 /* -------------------------------
    3.0 Sidebar
@@ -1550,7 +1527,7 @@ table.dataTable thead .sorting_desc_disabled:after,
         from { left: -250px; }
         to { left: 0; }
     }
-    
+
     .page-sidebar-toggled .sidebar {
         left: 0;
         animation: sidebarSlideInLeft .2s;
@@ -1705,7 +1682,7 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #17B6A4;
 }
 .sidebar .nav .sub-menu > li > a .caret {
-    float: right; 
+    float: right;
     margin-top: 7px;
 }
 .sidebar .label.label-theme {
@@ -1714,7 +1691,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar .text-theme {
     color: #17B6A4;
 }
-
 
 /* 3.2 Sidebar - Minified Version Setting */
 
@@ -1827,7 +1803,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     display: none !important;
 }
 
-
 /* 3.3 Sidebar - Right Sidebar Setting */
 
 .page-with-right-sidebar .sidebar,
@@ -1844,7 +1819,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .page-with-right-sidebar.page-sidebar-minified .sidebar-minify-btn .fa:before {
     content: '\f104';
 }
-.page-with-right-sidebar.page-sidebar-minified .sidebar .nav > li > a .caret, 
+.page-with-right-sidebar.page-sidebar-minified .sidebar .nav > li > a .caret,
 .page-with-right-sidebar.page-sidebar-minified .sidebar .nav > li > .sub-menu .caret {
     left: 0;
     right: auto;
@@ -1891,7 +1866,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         -webkit-animation: sidebarSlideInRight .2s;
     }
 }
-
 
 /* 3.4 Sidebar - Page with Two Sidebar Setting */
 
@@ -1941,7 +1915,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     right: 0;
 }
 
-
 /* 3.5 Sidebar - Page with Top Menu Setting */
 
 .page-with-top-menu .sidebar,
@@ -1954,7 +1927,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         top: 0;
     }
 }
-
 
 /* 3.6 Sidebar - Badge & Label Setting */
 
@@ -1973,7 +1945,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     padding-top: 4px;
     padding-bottom: 3px;
 }
-
 
 /* 3.7 Sidebar Widget - User Profile */
 
@@ -2010,7 +1981,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #b1b5b8;
     font-size: 12px;
 }
-
 
 /* 3.8 Sidebar Widget - Project */
 
@@ -2063,7 +2033,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: #30373e;
 }
 
-
 /* 3.9 Sidebar Widget - Tabs */
 
 .sidebar .nav.nav-tabs {
@@ -2098,14 +2067,14 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar .nav.nav-tabs > li:after,
 .sidebar .nav.nav-tabs > li:hover:after,
 .sidebar .nav.nav-tabs > li:focus:after,
-.sidebar .nav.nav-tabs > li.active:after, 
-.sidebar .nav.nav-tabs > li.active:hover:after, 
+.sidebar .nav.nav-tabs > li.active:after,
+.sidebar .nav.nav-tabs > li.active:hover:after,
 .sidebar .nav.nav-tabs > li.active:focus:after,
 .sidebar .nav.nav-tabs > li a:after,
 .sidebar .nav.nav-tabs > li:hover a:after,
 .sidebar .nav.nav-tabs > li:focus a:after,
-.sidebar .nav.nav-tabs > li.active a:after, 
-.sidebar .nav.nav-tabs > li.active a:hover:after, 
+.sidebar .nav.nav-tabs > li.active a:after,
+.sidebar .nav.nav-tabs > li.active a:hover:after,
 .sidebar .nav.nav-tabs > li.active a:focus:after {
     background: none;
 }
@@ -2114,7 +2083,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none !important;
     color: #fff !important;
 }
-
 
 /* 3.10 Sidebar Widget - Calendar */
 
@@ -2127,7 +2095,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar .calendar .table {
     background: none !important;
 }
-.sidebar .calendar .table > thead > tr > th, 
+.sidebar .calendar .table > thead > tr > th,
 .sidebar .calendar .table > tbody > tr > td {
     border: none !important;
 }
@@ -2198,7 +2166,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     margin-top: 0;
 }
 
-
 /* 3.11 Sidebar Widget - Notification List */
 
 .sidebar .notification-list {
@@ -2262,7 +2229,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #b1b5b8;
 }
 
-
 /* 3.12 Sidebar Widget - Stock List */
 
 .sidebar .stock-list {
@@ -2312,7 +2278,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     margin: -3px 0;
     line-height: 15px;
 }
-
 
 /* 3.13 Sidebar Widget - Latest Post */
 
@@ -2369,7 +2334,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     overflow: hidden;
 }
 
-
 /* 3.14 Sidebar Theme - Light */
 
 .sidebar.sidebar-light,
@@ -2378,18 +2342,18 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .sidebar.sidebar-light .nav-user,
 .sidebar.sidebar-light .sub-menu,
-.page-sidebar-minified .sidebar.sidebar-light li.has-sub:hover > .sub-menu, 
+.page-sidebar-minified .sidebar.sidebar-light li.has-sub:hover > .sub-menu,
 .page-sidebar-minified .sidebar.sidebar-light li.has-sub:focus > .sub-menu,
 .sidebar.sidebar-light .nav > li.divider,
-.sidebar.sidebar-light .sidebar-minify-btn, 
-.sidebar.sidebar-light .sidebar-minify-btn:hover, 
+.sidebar.sidebar-light .sidebar-minify-btn,
+.sidebar.sidebar-light .sidebar-minify-btn:hover,
 .sidebar.sidebar-light .sidebar-minify-btn:focus,
 .sidebar.sidebar-light .nav-project .project-list > li .progress {
     background: #eff0f1;
 }
-.sidebar.sidebar-light .nav-user .info .name, 
-.sidebar.sidebar-light .nav-user .info .name > a, 
-.sidebar.sidebar-light .nav-user .info .name > a:hover, 
+.sidebar.sidebar-light .nav-user .info .name,
+.sidebar.sidebar-light .nav-user .info .name > a,
+.sidebar.sidebar-light .nav-user .info .name > a:hover,
 .sidebar.sidebar-light .nav-user .info .name > a:focus {
     color: #323539;
 }
@@ -2405,9 +2369,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-light .sub-menu > li > a:focus,
 .sidebar.sidebar-light .sub-menu > li > a:hover:before,
 .sidebar.sidebar-light .sub-menu > li > a:focus:before,
-.sidebar.sidebar-light .nav-project .project-list > li .title, 
-.sidebar.sidebar-light .nav-project .project-list > li .title a, 
-.sidebar.sidebar-light .nav-project .project-list > li .title a:hover, 
+.sidebar.sidebar-light .nav-project .project-list > li .title,
+.sidebar.sidebar-light .nav-project .project-list > li .title a,
+.sidebar.sidebar-light .nav-project .project-list > li .title a:hover,
 .sidebar.sidebar-light .nav-project .project-list > li .title a:focus {
     color: #3C454D;
 }
@@ -2419,10 +2383,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: url(Content/img/transparent/black-0.2.png);
     background: rgba(0, 0, 0, 0.15);
 }
-.sidebar.sidebar-light .nav > li.expand > a, 
+.sidebar.sidebar-light .nav > li.expand > a,
 .sidebar.sidebar-light .nav > li > a:hover,
 .sidebar.sidebar-light .nav > li > a:focus,
-.page-sidebar-minified .sidebar.sidebar-light .nav > li.has-sub:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-light .nav > li.has-sub:hover > a,
 .page-sidebar-minified .sidebar.sidebar-light .nav > li.has-sub:focus > a {
     background: #d8dadb;
 }
@@ -2430,10 +2394,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #0F6655;
     background: #1abc9c;
 }
-.sidebar.sidebar-light .nav > li.active > a, 
-.sidebar.sidebar-light .nav > li.active > a:hover, 
+.sidebar.sidebar-light .nav > li.active > a,
+.sidebar.sidebar-light .nav > li.active > a:hover,
 .sidebar.sidebar-light .nav > li.active > a:focus,
-.page-sidebar-minified .sidebar.sidebar-light .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-light .nav > li.has-sub.active:hover > a,
 .page-sidebar-minified .sidebar.sidebar-light .nav > li.has-sub.active:focus > a {
     background: #464e56;
     color: #fff;
@@ -2465,8 +2429,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none;
 }
 .sidebar.sidebar-light .stock-list > li .value,
-.sidebar.sidebar-light .calendar .week_days td, 
-.sidebar.sidebar-light .calendar .visualmonthyear, 
+.sidebar.sidebar-light .calendar .week_days td,
+.sidebar.sidebar-light .calendar .visualmonthyear,
 .sidebar.sidebar-light .calendar a,
 .sidebar.sidebar-light .calendar .table {
     color: #3C454D;
@@ -2484,9 +2448,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-light .notification-list > li + li {
     border-top-color: #eff0f1;
 }
-.sidebar.sidebar-light .nav-post > li .info .time, 
+.sidebar.sidebar-light .nav-post > li .info .time,
 .sidebar.sidebar-light .nav-post > li .info .desc,
-.sidebar.sidebar-light .notification-list > li .info .time, 
+.sidebar.sidebar-light .notification-list > li .info .time,
 .sidebar.sidebar-light .notification-list > li .info .desc {
     color: #000;
     color: rgba(0,0,0,0.5);
@@ -2495,12 +2459,11 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-light .nav > li.nav-date,
 .sidebar.sidebar-light .nav-post > li .info .title,
 .sidebar.sidebar-light .stock-list > li .name,
-.sidebar.sidebar-light .notification-list > li .info .title, 
+.sidebar.sidebar-light .notification-list > li .info .title,
 .sidebar.sidebar-light .notification-list > li .info .title a,
 .sidebar.sidebar-light .notification-list > li .media {
     color: #3C454D;
 }
-
 
 /* 3.15 Sidebar Theme - Success */
 
@@ -2510,18 +2473,18 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .sidebar.sidebar-success .nav-user,
 .sidebar.sidebar-success .sub-menu,
-.page-sidebar-minified .sidebar.sidebar-success li.has-sub:hover > .sub-menu, 
+.page-sidebar-minified .sidebar.sidebar-success li.has-sub:hover > .sub-menu,
 .page-sidebar-minified .sidebar.sidebar-success li.has-sub:focus > .sub-menu,
 .sidebar.sidebar-success .nav > li.divider,
-.sidebar.sidebar-success .sidebar-minify-btn, 
-.sidebar.sidebar-success .sidebar-minify-btn:hover, 
+.sidebar.sidebar-success .sidebar-minify-btn,
+.sidebar.sidebar-success .sidebar-minify-btn:hover,
 .sidebar.sidebar-success .sidebar-minify-btn:focus,
 .sidebar.sidebar-success .nav-project .project-list > li .progress {
     background: #129283;
 }
-.sidebar.sidebar-success .nav-user .info .name, 
-.sidebar.sidebar-success .nav-user .info .name > a, 
-.sidebar.sidebar-success .nav-user .info .name > a:hover, 
+.sidebar.sidebar-success .nav-user .info .name,
+.sidebar.sidebar-success .nav-user .info .name > a,
+.sidebar.sidebar-success .nav-user .info .name > a:hover,
 .sidebar.sidebar-success .nav-user .info .name > a:focus,
 .sidebar.sidebar-success .nav > li > a > .caret.pull-right {
     color: #fff;
@@ -2531,9 +2494,9 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #b9e9e4;
 }
 .sidebar.sidebar-success .nav > li > a,
-.sidebar.sidebar-success .nav-project .project-list > li .title, 
-.sidebar.sidebar-success .nav-project .project-list > li .title a, 
-.sidebar.sidebar-success .nav-project .project-list > li .title a:hover, 
+.sidebar.sidebar-success .nav-project .project-list > li .title,
+.sidebar.sidebar-success .nav-project .project-list > li .title a,
+.sidebar.sidebar-success .nav-project .project-list > li .title a:hover,
 .sidebar.sidebar-success .nav-project .project-list > li .title a:focus,
 .sidebar.sidebar-success .nav > li > a > i,
 .sidebar.sidebar-success .sub-menu > li.active > a,
@@ -2548,19 +2511,19 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-success .nav-project .project-list > li .icon i {
     color: #fff !important;
 }
-.sidebar.sidebar-success .nav > li.expand > a, 
+.sidebar.sidebar-success .nav > li.expand > a,
 .sidebar.sidebar-success .nav > li > a:hover,
 .sidebar.sidebar-success .nav > li > a:focus,
-.page-sidebar-minified .sidebar.sidebar-success .nav > li.has-sub:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-success .nav > li.has-sub:hover > a,
 .page-sidebar-minified .sidebar.sidebar-success .nav > li.has-sub:focus > a {
     background: #45c5b6;
 }
 .sidebar.sidebar-success .nav > li.active > a i,
 .sidebar.sidebar-success .badge,
-.sidebar.sidebar-success a:hover .badge, 
+.sidebar.sidebar-success a:hover .badge,
 .sidebar.sidebar-success a:focus .badge,
 .sidebar.sidebar-success .label,
-.sidebar.sidebar-success a:hover .label, 
+.sidebar.sidebar-success a:hover .label,
 .sidebar.sidebar-success a:focus .label {
     background: url(Content/img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -2569,10 +2532,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #000;
     color: rgba(0,0,0,0.4);
 }
-.sidebar.sidebar-success .nav > li.active > a, 
-.sidebar.sidebar-success .nav > li.active > a:hover, 
+.sidebar.sidebar-success .nav > li.active > a,
+.sidebar.sidebar-success .nav > li.active > a:hover,
 .sidebar.sidebar-success .nav > li.active > a:focus,
-.page-sidebar-minified .sidebar.sidebar-success .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-success .nav > li.has-sub.active:hover > a,
 .page-sidebar-minified .sidebar.sidebar-success .nav > li.has-sub.active:focus > a {
     background: url(Content/img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -2600,8 +2563,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none;
 }
 .sidebar.sidebar-success .stock-list > li .value,
-.sidebar.sidebar-success .calendar .week_days td, 
-.sidebar.sidebar-success .calendar .visualmonthyear, 
+.sidebar.sidebar-success .calendar .week_days td,
+.sidebar.sidebar-success .calendar .visualmonthyear,
 .sidebar.sidebar-success .calendar a,
 .sidebar.sidebar-success .calendar .table {
     color: #fff;
@@ -2620,9 +2583,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-success .notification-list > li + li {
     border-top-color: rgba(255,255,255,0.3);
 }
-.sidebar.sidebar-success .nav-post > li .info .time, 
+.sidebar.sidebar-success .nav-post > li .info .time,
 .sidebar.sidebar-success .nav-post > li .info .desc,
-.sidebar.sidebar-success .notification-list > li .info .time, 
+.sidebar.sidebar-success .notification-list > li .info .time,
 .sidebar.sidebar-success .notification-list > li .info .desc {
     color: #fff;
     color: rgba(255,255,255,0.6);
@@ -2630,7 +2593,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-success .notification-list > li .media {
     color: #fff;
 }
-
 
 /* 3.16 Sidebar Theme - Lime */
 
@@ -2640,18 +2602,18 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .sidebar.sidebar-lime .nav-user,
 .sidebar.sidebar-lime .sub-menu,
-.page-sidebar-minified .sidebar.sidebar-lime li.has-sub:hover > .sub-menu, 
+.page-sidebar-minified .sidebar.sidebar-lime li.has-sub:hover > .sub-menu,
 .page-sidebar-minified .sidebar.sidebar-lime li.has-sub:focus > .sub-menu,
 .sidebar.sidebar-lime .nav > li.divider,
-.sidebar.sidebar-lime .sidebar-minify-btn, 
-.sidebar.sidebar-lime .sidebar-minify-btn:hover, 
+.sidebar.sidebar-lime .sidebar-minify-btn,
+.sidebar.sidebar-lime .sidebar-minify-btn:hover,
 .sidebar.sidebar-lime .sidebar-minify-btn:focus,
 .sidebar.sidebar-lime .nav-project .project-list > li .progress {
     background: #519e59;
 }
-.sidebar.sidebar-lime .nav-user .info .name, 
-.sidebar.sidebar-lime .nav-user .info .name > a, 
-.sidebar.sidebar-lime .nav-user .info .name > a:hover, 
+.sidebar.sidebar-lime .nav-user .info .name,
+.sidebar.sidebar-lime .nav-user .info .name > a,
+.sidebar.sidebar-lime .nav-user .info .name > a:hover,
 .sidebar.sidebar-lime .nav-user .info .name > a:focus,
 .sidebar.sidebar-lime .nav > li > a > .caret.pull-right {
     color: #fff;
@@ -2661,9 +2623,9 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #d0edd4;
 }
 .sidebar.sidebar-lime .nav > li > a,
-.sidebar.sidebar-lime .nav-project .project-list > li .title, 
-.sidebar.sidebar-lime .nav-project .project-list > li .title a, 
-.sidebar.sidebar-lime .nav-project .project-list > li .title a:hover, 
+.sidebar.sidebar-lime .nav-project .project-list > li .title,
+.sidebar.sidebar-lime .nav-project .project-list > li .title a,
+.sidebar.sidebar-lime .nav-project .project-list > li .title a:hover,
 .sidebar.sidebar-lime .nav-project .project-list > li .title a:focus,
 .sidebar.sidebar-lime .nav > li > a > i,
 .sidebar.sidebar-lime .sub-menu > li.active > a,
@@ -2678,19 +2640,19 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-lime .nav-project .project-list > li .icon i {
     color: #fff !important;
 }
-.sidebar.sidebar-lime .nav > li.expand > a, 
+.sidebar.sidebar-lime .nav > li.expand > a,
 .sidebar.sidebar-lime .nav > li > a:hover,
 .sidebar.sidebar-lime .nav > li > a:focus,
-.page-sidebar-minified .sidebar.sidebar-lime .nav > li.has-sub:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-lime .nav > li.has-sub:hover > a,
 .page-sidebar-minified .sidebar.sidebar-lime .nav > li.has-sub:focus > a {
     background: #84d18c;
 }
 .sidebar.sidebar-lime .nav > li.active > a i,
 .sidebar.sidebar-lime .badge,
-.sidebar.sidebar-lime a:hover .badge, 
+.sidebar.sidebar-lime a:hover .badge,
 .sidebar.sidebar-lime a:focus .badge,
 .sidebar.sidebar-lime .label,
-.sidebar.sidebar-lime a:hover .label, 
+.sidebar.sidebar-lime a:hover .label,
 .sidebar.sidebar-lime a:focus .label {
     background: url(Content/img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -2699,10 +2661,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #000;
     color: rgba(0,0,0,0.4);
 }
-.sidebar.sidebar-lime .nav > li.active > a, 
-.sidebar.sidebar-lime .nav > li.active > a:hover, 
+.sidebar.sidebar-lime .nav > li.active > a,
+.sidebar.sidebar-lime .nav > li.active > a:hover,
 .sidebar.sidebar-lime .nav > li.active > a:focus,
-.page-sidebar-minified .sidebar.sidebar-lime .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-lime .nav > li.has-sub.active:hover > a,
 .page-sidebar-minified .sidebar.sidebar-lime .nav > li.has-sub.active:focus > a {
     background: url(Content/img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -2730,8 +2692,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none;
 }
 .sidebar.sidebar-lime .stock-list > li .value,
-.sidebar.sidebar-lime .calendar .week_days td, 
-.sidebar.sidebar-lime .calendar .visualmonthyear, 
+.sidebar.sidebar-lime .calendar .week_days td,
+.sidebar.sidebar-lime .calendar .visualmonthyear,
 .sidebar.sidebar-lime .calendar a,
 .sidebar.sidebar-lime .calendar .table {
     color: #fff;
@@ -2751,9 +2713,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-lime .notification-list > li + li {
     border-top-color: rgba(255,255,255,0.3);
 }
-.sidebar.sidebar-lime .nav-post > li .info .time, 
+.sidebar.sidebar-lime .nav-post > li .info .time,
 .sidebar.sidebar-lime .nav-post > li .info .desc,
-.sidebar.sidebar-lime .notification-list > li .info .time, 
+.sidebar.sidebar-lime .notification-list > li .info .time,
 .sidebar.sidebar-lime .notification-list > li .info .desc {
     color: #fff;
     color: rgba(255,255,255,0.6);
@@ -2761,7 +2723,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-lime .notification-list > li .media {
     color: #fff;
 }
-
 
 /* 3.17 Sidebar Theme - Warning */
 
@@ -2771,18 +2732,18 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .sidebar.sidebar-warning .nav-user,
 .sidebar.sidebar-warning .sub-menu,
-.page-sidebar-minified .sidebar.sidebar-warning li.has-sub:hover > .sub-menu, 
+.page-sidebar-minified .sidebar.sidebar-warning li.has-sub:hover > .sub-menu,
 .page-sidebar-minified .sidebar.sidebar-warning li.has-sub:focus > .sub-menu,
 .sidebar.sidebar-warning .nav > li.divider,
-.sidebar.sidebar-warning .sidebar-minify-btn, 
-.sidebar.sidebar-warning .sidebar-minify-btn:hover, 
+.sidebar.sidebar-warning .sidebar-minify-btn,
+.sidebar.sidebar-warning .sidebar-minify-btn:hover,
 .sidebar.sidebar-warning .sidebar-minify-btn:focus,
 .sidebar.sidebar-warning .nav-project .project-list > li .progress {
     background: #ca8c34;
 }
-.sidebar.sidebar-warning .nav-user .info .name, 
-.sidebar.sidebar-warning .nav-user .info .name > a, 
-.sidebar.sidebar-warning .nav-user .info .name > a:hover, 
+.sidebar.sidebar-warning .nav-user .info .name,
+.sidebar.sidebar-warning .nav-user .info .name > a,
+.sidebar.sidebar-warning .nav-user .info .name > a:hover,
 .sidebar.sidebar-warning .nav-user .info .name > a:focus,
 .sidebar.sidebar-warning .nav > li > a > .caret.pull-right {
     color: #fff;
@@ -2792,9 +2753,9 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #fee7c6;
 }
 .sidebar.sidebar-warning .nav > li > a,
-.sidebar.sidebar-warning .nav-project .project-list > li .title, 
-.sidebar.sidebar-warning .nav-project .project-list > li .title a, 
-.sidebar.sidebar-warning .nav-project .project-list > li .title a:hover, 
+.sidebar.sidebar-warning .nav-project .project-list > li .title,
+.sidebar.sidebar-warning .nav-project .project-list > li .title a,
+.sidebar.sidebar-warning .nav-project .project-list > li .title a:hover,
 .sidebar.sidebar-warning .nav-project .project-list > li .title a:focus,
 .sidebar.sidebar-warning .nav > li > a > i,
 .sidebar.sidebar-warning .sub-menu > li.active > a,
@@ -2809,19 +2770,19 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-warning .nav-project .project-list > li .icon i {
     color: #fff !important;
 }
-.sidebar.sidebar-warning .nav > li.expand > a, 
+.sidebar.sidebar-warning .nav > li.expand > a,
 .sidebar.sidebar-warning .nav > li > a:hover,
 .sidebar.sidebar-warning .nav > li > a:focus,
-.page-sidebar-minified .sidebar.sidebar-warning .nav > li.has-sub:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-warning .nav > li.has-sub:hover > a,
 .page-sidebar-minified .sidebar.sidebar-warning .nav > li.has-sub:focus > a {
     background: #fdbf67;
 }
 .sidebar.sidebar-warning .nav > li.active > a i,
 .sidebar.sidebar-warning .badge,
-.sidebar.sidebar-warning a:hover .badge, 
+.sidebar.sidebar-warning a:hover .badge,
 .sidebar.sidebar-warning a:focus .badge,
 .sidebar.sidebar-warning .label,
-.sidebar.sidebar-warning a:hover .label, 
+.sidebar.sidebar-warning a:hover .label,
 .sidebar.sidebar-warning a:focus .label {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -2830,10 +2791,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #000;
     color: rgba(0,0,0,0.4);
 }
-.sidebar.sidebar-warning .nav > li.active > a, 
-.sidebar.sidebar-warning .nav > li.active > a:hover, 
+.sidebar.sidebar-warning .nav > li.active > a,
+.sidebar.sidebar-warning .nav > li.active > a:hover,
 .sidebar.sidebar-warning .nav > li.active > a:focus,
-.page-sidebar-minified .sidebar.sidebar-warning .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-warning .nav > li.has-sub.active:hover > a,
 .page-sidebar-minified .sidebar.sidebar-warning .nav > li.has-sub.active:focus > a {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -2861,8 +2822,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none;
 }
 .sidebar.sidebar-warning .stock-list > li .value,
-.sidebar.sidebar-warning .calendar .week_days td, 
-.sidebar.sidebar-warning .calendar .visualmonthyear, 
+.sidebar.sidebar-warning .calendar .week_days td,
+.sidebar.sidebar-warning .calendar .visualmonthyear,
 .sidebar.sidebar-warning .calendar a,
 .sidebar.sidebar-warning .calendar .table {
     color: #fff;
@@ -2882,9 +2843,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-warning .notification-list > li + li {
     border-top-color: rgba(255,255,255,0.3);
 }
-.sidebar.sidebar-warning .nav-post > li .info .time, 
+.sidebar.sidebar-warning .nav-post > li .info .time,
 .sidebar.sidebar-warning .nav-post > li .info .desc,
-.sidebar.sidebar-warning .notification-list > li .info .time, 
+.sidebar.sidebar-warning .notification-list > li .info .time,
 .sidebar.sidebar-warning .notification-list > li .info .desc {
     color: #fff;
     color: rgba(255,255,255,0.6);
@@ -2892,7 +2853,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-warning .notification-list > li .media {
     color: #fff;
 }
-
 
 /* 3.18 Sidebar Theme - Danger */
 
@@ -2902,18 +2862,18 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .sidebar.sidebar-danger .nav-user,
 .sidebar.sidebar-danger .sub-menu,
-.page-sidebar-minified .sidebar.sidebar-danger li.has-sub:hover > .sub-menu, 
+.page-sidebar-minified .sidebar.sidebar-danger li.has-sub:hover > .sub-menu,
 .page-sidebar-minified .sidebar.sidebar-danger li.has-sub:focus > .sub-menu,
 .sidebar.sidebar-danger .nav > li.divider,
-.sidebar.sidebar-danger .sidebar-minify-btn, 
-.sidebar.sidebar-danger .sidebar-minify-btn:hover, 
+.sidebar.sidebar-danger .sidebar-minify-btn,
+.sidebar.sidebar-danger .sidebar-minify-btn:hover,
 .sidebar.sidebar-danger .sidebar-minify-btn:focus,
 .sidebar.sidebar-danger .nav-project .project-list > li .progress {
     background: #c03c38;
 }
-.sidebar.sidebar-danger .nav-user .info .name, 
-.sidebar.sidebar-danger .nav-user .info .name > a, 
-.sidebar.sidebar-danger .nav-user .info .name > a:hover, 
+.sidebar.sidebar-danger .nav-user .info .name,
+.sidebar.sidebar-danger .nav-user .info .name > a,
+.sidebar.sidebar-danger .nav-user .info .name > a:hover,
 .sidebar.sidebar-danger .nav-user .info .name > a:focus,
 .sidebar.sidebar-danger .nav > li > a > .caret.pull-right {
     color: #fff;
@@ -2923,9 +2883,9 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #fac9c7;
 }
 .sidebar.sidebar-danger .nav > li > a,
-.sidebar.sidebar-danger .nav-project .project-list > li .title, 
-.sidebar.sidebar-danger .nav-project .project-list > li .title a, 
-.sidebar.sidebar-danger .nav-project .project-list > li .title a:hover, 
+.sidebar.sidebar-danger .nav-project .project-list > li .title,
+.sidebar.sidebar-danger .nav-project .project-list > li .title a,
+.sidebar.sidebar-danger .nav-project .project-list > li .title a:hover,
 .sidebar.sidebar-danger .nav-project .project-list > li .title a:focus,
 .sidebar.sidebar-danger .nav > li > a > i,
 .sidebar.sidebar-danger .sub-menu > li.active > a,
@@ -2940,19 +2900,19 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-danger .nav-project .project-list > li .icon i {
     color: #fff !important;
 }
-.sidebar.sidebar-danger .nav > li.expand > a, 
+.sidebar.sidebar-danger .nav > li.expand > a,
 .sidebar.sidebar-danger .nav > li > a:hover,
 .sidebar.sidebar-danger .nav > li > a:focus,
-.page-sidebar-minified .sidebar.sidebar-danger .nav > li.has-sub:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-danger .nav > li.has-sub:hover > a,
 .page-sidebar-minified .sidebar.sidebar-danger .nav > li.has-sub:focus > a {
     background: #f36f6b;
 }
 .sidebar.sidebar-danger .nav > li.active > a i,
 .sidebar.sidebar-danger .badge,
-.sidebar.sidebar-danger a:hover .badge, 
+.sidebar.sidebar-danger a:hover .badge,
 .sidebar.sidebar-danger a:focus .badge,
 .sidebar.sidebar-danger .label,
-.sidebar.sidebar-danger a:hover .label, 
+.sidebar.sidebar-danger a:hover .label,
 .sidebar.sidebar-danger a:focus .label {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -2961,10 +2921,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #000;
     color: rgba(0,0,0,0.4);
 }
-.sidebar.sidebar-danger .nav > li.active > a, 
-.sidebar.sidebar-danger .nav > li.active > a:hover, 
+.sidebar.sidebar-danger .nav > li.active > a,
+.sidebar.sidebar-danger .nav > li.active > a:hover,
 .sidebar.sidebar-danger .nav > li.active > a:focus,
-.page-sidebar-minified .sidebar.sidebar-danger .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-danger .nav > li.has-sub.active:hover > a,
 .page-sidebar-minified .sidebar.sidebar-danger .nav > li.has-sub.active:focus > a {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -2992,8 +2952,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none;
 }
 .sidebar.sidebar-danger .stock-list > li .value,
-.sidebar.sidebar-danger .calendar .week_days td, 
-.sidebar.sidebar-danger .calendar .visualmonthyear, 
+.sidebar.sidebar-danger .calendar .week_days td,
+.sidebar.sidebar-danger .calendar .visualmonthyear,
 .sidebar.sidebar-danger .calendar a,
 .sidebar.sidebar-danger .calendar .table {
     color: #fff;
@@ -3013,9 +2973,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-danger .notification-list > li + li {
     border-top-color: rgba(255,255,255,0.3);
 }
-.sidebar.sidebar-danger .nav-post > li .info .time, 
+.sidebar.sidebar-danger .nav-post > li .info .time,
 .sidebar.sidebar-danger .nav-post > li .info .desc,
-.sidebar.sidebar-danger .notification-list > li .info .time, 
+.sidebar.sidebar-danger .notification-list > li .info .time,
 .sidebar.sidebar-danger .notification-list > li .info .desc {
     color: #fff;
     color: rgba(255,255,255,0.6);
@@ -3023,7 +2983,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-danger .notification-list > li .media {
     color: #fff;
 }
-
 
 /* 3.19 Sidebar Theme - Primary */
 
@@ -3033,18 +2992,18 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .sidebar.sidebar-primary .nav-user,
 .sidebar.sidebar-primary .sub-menu,
-.page-sidebar-minified .sidebar.sidebar-primary li.has-sub:hover > .sub-menu, 
+.page-sidebar-minified .sidebar.sidebar-primary li.has-sub:hover > .sub-menu,
 .page-sidebar-minified .sidebar.sidebar-primary li.has-sub:focus > .sub-menu,
 .sidebar.sidebar-primary .nav > li.divider,
-.sidebar.sidebar-primary .sidebar-minify-btn, 
-.sidebar.sidebar-primary .sidebar-minify-btn:hover, 
+.sidebar.sidebar-primary .sidebar-minify-btn,
+.sidebar.sidebar-primary .sidebar-minify-btn:hover,
 .sidebar.sidebar-primary .sidebar-minify-btn:focus,
 .sidebar.sidebar-primary .nav-project .project-list > li .progress {
     background: #1a6aae;
 }
-.sidebar.sidebar-primary .nav-user .info .name, 
-.sidebar.sidebar-primary .nav-user .info .name > a, 
-.sidebar.sidebar-primary .nav-user .info .name > a:hover, 
+.sidebar.sidebar-primary .nav-user .info .name,
+.sidebar.sidebar-primary .nav-user .info .name > a,
+.sidebar.sidebar-primary .nav-user .info .name > a:hover,
 .sidebar.sidebar-primary .nav-user .info .name > a:focus,
 .sidebar.sidebar-primary .nav > li > a > .caret.pull-right {
     color: #fff;
@@ -3054,9 +3013,9 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #d3e6f8;
 }
 .sidebar.sidebar-primary .nav > li > a,
-.sidebar.sidebar-primary .nav-project .project-list > li .title, 
-.sidebar.sidebar-primary .nav-project .project-list > li .title a, 
-.sidebar.sidebar-primary .nav-project .project-list > li .title a:hover, 
+.sidebar.sidebar-primary .nav-project .project-list > li .title,
+.sidebar.sidebar-primary .nav-project .project-list > li .title a,
+.sidebar.sidebar-primary .nav-project .project-list > li .title a:hover,
 .sidebar.sidebar-primary .nav-project .project-list > li .title a:focus,
 .sidebar.sidebar-primary .nav > li > a > i,
 .sidebar.sidebar-primary .sub-menu > li.active > a,
@@ -3071,19 +3030,19 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-primary .nav-project .project-list > li .icon i {
     color: #fff !important;
 }
-.sidebar.sidebar-primary .nav > li.expand > a, 
+.sidebar.sidebar-primary .nav > li.expand > a,
 .sidebar.sidebar-primary .nav > li > a:hover,
 .sidebar.sidebar-primary .nav > li > a:focus,
-.page-sidebar-minified .sidebar.sidebar-primary .nav > li.has-sub:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-primary .nav > li.has-sub:hover > a,
 .page-sidebar-minified .sidebar.sidebar-primary .nav > li.has-sub:focus > a {
     background: #4d9de1;
 }
 .sidebar.sidebar-primary .nav > li.active > a i,
 .sidebar.sidebar-primary .badge,
-.sidebar.sidebar-primary a:hover .badge, 
+.sidebar.sidebar-primary a:hover .badge,
 .sidebar.sidebar-primary a:focus .badge,
 .sidebar.sidebar-primary .label,
-.sidebar.sidebar-primary a:hover .label, 
+.sidebar.sidebar-primary a:hover .label,
 .sidebar.sidebar-primary a:focus .label {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -3092,10 +3051,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #000;
     color: rgba(0,0,0,0.4);
 }
-.sidebar.sidebar-primary .nav > li.active > a, 
-.sidebar.sidebar-primary .nav > li.active > a:hover, 
+.sidebar.sidebar-primary .nav > li.active > a,
+.sidebar.sidebar-primary .nav > li.active > a:hover,
 .sidebar.sidebar-primary .nav > li.active > a:focus,
-.page-sidebar-minified .sidebar.sidebar-primary .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-primary .nav > li.has-sub.active:hover > a,
 .page-sidebar-minified .sidebar.sidebar-primary .nav > li.has-sub.active:focus > a {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -3123,8 +3082,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none;
 }
 .sidebar.sidebar-primary .stock-list > li .value,
-.sidebar.sidebar-primary .calendar .week_days td, 
-.sidebar.sidebar-primary .calendar .visualmonthyear, 
+.sidebar.sidebar-primary .calendar .week_days td,
+.sidebar.sidebar-primary .calendar .visualmonthyear,
 .sidebar.sidebar-primary .calendar a,
 .sidebar.sidebar-primary .calendar .table {
     color: #fff;
@@ -3144,9 +3103,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-primary .notification-list > li + li {
     border-top-color: rgba(255,255,255,0.3);
 }
-.sidebar.sidebar-primary .nav-post > li .info .time, 
+.sidebar.sidebar-primary .nav-post > li .info .time,
 .sidebar.sidebar-primary .nav-post > li .info .desc,
-.sidebar.sidebar-primary .notification-list > li .info .time, 
+.sidebar.sidebar-primary .notification-list > li .info .time,
 .sidebar.sidebar-primary .notification-list > li .info .desc {
     color: #fff;
     color: rgba(255,255,255,0.6);
@@ -3154,7 +3113,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-primary .notification-list > li .media {
     color: #fff;
 }
-
 
 /* 3.20 Sidebar Theme - Grey */
 
@@ -3164,18 +3122,18 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .sidebar.sidebar-grey .nav-user,
 .sidebar.sidebar-grey .sub-menu,
-.page-sidebar-minified .sidebar.sidebar-grey li.has-sub:hover > .sub-menu, 
+.page-sidebar-minified .sidebar.sidebar-grey li.has-sub:hover > .sub-menu,
 .page-sidebar-minified .sidebar.sidebar-grey li.has-sub:focus > .sub-menu,
 .sidebar.sidebar-grey .nav > li.divider,
-.sidebar.sidebar-grey .sidebar-minify-btn, 
-.sidebar.sidebar-grey .sidebar-minify-btn:hover, 
+.sidebar.sidebar-grey .sidebar-minify-btn,
+.sidebar.sidebar-grey .sidebar-minify-btn:hover,
 .sidebar.sidebar-grey .sidebar-minify-btn:focus,
 .sidebar.sidebar-grey .nav-project .project-list > li .progress {
     background: #888f95;
 }
-.sidebar.sidebar-grey .nav-user .info .name, 
-.sidebar.sidebar-grey .nav-user .info .name > a, 
-.sidebar.sidebar-grey .nav-user .info .name > a:hover, 
+.sidebar.sidebar-grey .nav-user .info .name,
+.sidebar.sidebar-grey .nav-user .info .name > a,
+.sidebar.sidebar-grey .nav-user .info .name > a:hover,
 .sidebar.sidebar-grey .nav-user .info .name > a:focus,
 .sidebar.sidebar-grey .nav > li > a > .caret.pull-right {
     color: #fff;
@@ -3185,9 +3143,9 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #e5e8ea;
 }
 .sidebar.sidebar-grey .nav > li > a,
-.sidebar.sidebar-grey .nav-project .project-list > li .title, 
-.sidebar.sidebar-grey .nav-project .project-list > li .title a, 
-.sidebar.sidebar-grey .nav-project .project-list > li .title a:hover, 
+.sidebar.sidebar-grey .nav-project .project-list > li .title,
+.sidebar.sidebar-grey .nav-project .project-list > li .title a,
+.sidebar.sidebar-grey .nav-project .project-list > li .title a:hover,
 .sidebar.sidebar-grey .nav-project .project-list > li .title a:focus,
 .sidebar.sidebar-grey .nav > li > a > i,
 .sidebar.sidebar-grey .sub-menu > li.active > a,
@@ -3202,19 +3160,19 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-grey .nav-project .project-list > li .icon i {
     color: #fff !important;
 }
-.sidebar.sidebar-grey .nav > li.expand > a, 
+.sidebar.sidebar-grey .nav > li.expand > a,
 .sidebar.sidebar-grey .nav > li > a:hover,
 .sidebar.sidebar-grey .nav > li > a:focus,
-.page-sidebar-minified .sidebar.sidebar-grey .nav > li.has-sub:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-grey .nav > li.has-sub:hover > a,
 .page-sidebar-minified .sidebar.sidebar-grey .nav > li.has-sub:focus > a {
     background: #bbc2c8;
 }
 .sidebar.sidebar-grey .nav > li.active > a i,
 .sidebar.sidebar-grey .badge,
-.sidebar.sidebar-grey a:hover .badge, 
+.sidebar.sidebar-grey a:hover .badge,
 .sidebar.sidebar-grey a:focus .badge,
 .sidebar.sidebar-grey .label,
-.sidebar.sidebar-grey a:hover .label, 
+.sidebar.sidebar-grey a:hover .label,
 .sidebar.sidebar-grey a:focus .label {
     background: url(../img/transparent/black-0.3.png);
     background: rgba(0,0,0,0.4);
@@ -3223,10 +3181,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #000;
     color: rgba(0,0,0,0.4);
 }
-.sidebar.sidebar-grey .nav > li.active > a, 
-.sidebar.sidebar-grey .nav > li.active > a:hover, 
+.sidebar.sidebar-grey .nav > li.active > a,
+.sidebar.sidebar-grey .nav > li.active > a:hover,
 .sidebar.sidebar-grey .nav > li.active > a:focus,
-.page-sidebar-minified .sidebar.sidebar-grey .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-grey .nav > li.has-sub.active:hover > a,
 .page-sidebar-minified .sidebar.sidebar-grey .nav > li.has-sub.active:focus > a {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -3252,8 +3210,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none;
 }
 .sidebar.sidebar-grey .stock-list > li .value,
-.sidebar.sidebar-grey .calendar .week_days td, 
-.sidebar.sidebar-grey .calendar .visualmonthyear, 
+.sidebar.sidebar-grey .calendar .week_days td,
+.sidebar.sidebar-grey .calendar .visualmonthyear,
 .sidebar.sidebar-grey .calendar a,
 .sidebar.sidebar-grey .calendar .table {
     color: #fff;
@@ -3273,9 +3231,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-grey .notification-list > li + li {
     border-top-color: rgba(255,255,255,0.3);
 }
-.sidebar.sidebar-grey .nav-post > li .info .time, 
+.sidebar.sidebar-grey .nav-post > li .info .time,
 .sidebar.sidebar-grey .nav-post > li .info .desc,
-.sidebar.sidebar-grey .notification-list > li .info .time, 
+.sidebar.sidebar-grey .notification-list > li .info .time,
 .sidebar.sidebar-grey .notification-list > li .info .desc {
     color: #fff;
     color: rgba(255,255,255,0.6);
@@ -3283,7 +3241,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-grey .notification-list > li .media {
     color: #fff;
 }
-
 
 /* 3.21 Sidebar Theme - Purple */
 
@@ -3293,18 +3250,18 @@ table.dataTable thead .sorting_desc_disabled:after,
 }
 .sidebar.sidebar-purple .nav-user,
 .sidebar.sidebar-purple .sub-menu,
-.page-sidebar-minified .sidebar.sidebar-purple li.has-sub:hover > .sub-menu, 
+.page-sidebar-minified .sidebar.sidebar-purple li.has-sub:hover > .sub-menu,
 .page-sidebar-minified .sidebar.sidebar-purple li.has-sub:focus > .sub-menu,
 .sidebar.sidebar-purple .nav > li.divider,
-.sidebar.sidebar-purple .sidebar-minify-btn, 
-.sidebar.sidebar-purple .sidebar-minify-btn:hover, 
+.sidebar.sidebar-purple .sidebar-minify-btn,
+.sidebar.sidebar-purple .sidebar-minify-btn:hover,
 .sidebar.sidebar-purple .sidebar-minify-btn:focus,
 .sidebar.sidebar-purple .nav-project .project-list > li .progress {
     background: #4c409e;
 }
-.sidebar.sidebar-purple .nav-user .info .name, 
-.sidebar.sidebar-purple .nav-user .info .name > a, 
-.sidebar.sidebar-purple .nav-user .info .name > a:hover, 
+.sidebar.sidebar-purple .nav-user .info .name,
+.sidebar.sidebar-purple .nav-user .info .name > a,
+.sidebar.sidebar-purple .nav-user .info .name > a:hover,
 .sidebar.sidebar-purple .nav-user .info .name > a:focus,
 .sidebar.sidebar-purple .nav > li > a > .caret.pull-right {
     color: #fff;
@@ -3314,9 +3271,9 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #e1cde9;
 }
 .sidebar.sidebar-purple .nav > li > a,
-.sidebar.sidebar-purple .nav-project .project-list > li .title, 
-.sidebar.sidebar-purple .nav-project .project-list > li .title a, 
-.sidebar.sidebar-purple .nav-project .project-list > li .title a:hover, 
+.sidebar.sidebar-purple .nav-project .project-list > li .title,
+.sidebar.sidebar-purple .nav-project .project-list > li .title a,
+.sidebar.sidebar-purple .nav-project .project-list > li .title a:hover,
 .sidebar.sidebar-purple .nav-project .project-list > li .title a:focus,
 .sidebar.sidebar-purple .nav > li > a > i,
 .sidebar.sidebar-purple .sub-menu > li.active > a,
@@ -3331,19 +3288,19 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-purple .nav-project .project-list > li .icon i {
     color: #fff !important;
 }
-.sidebar.sidebar-purple .nav > li.expand > a, 
+.sidebar.sidebar-purple .nav > li.expand > a,
 .sidebar.sidebar-purple .nav > li > a:hover,
 .sidebar.sidebar-purple .nav > li > a:focus,
-.page-sidebar-minified .sidebar.sidebar-purple .nav > li.has-sub:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-purple .nav > li.has-sub:hover > a,
 .page-sidebar-minified .sidebar.sidebar-purple .nav > li.has-sub:focus > a {
     background: #7f73d1;
 }
 .sidebar.sidebar-purple .nav > li.active > a i,
 .sidebar.sidebar-purple .badge,
-.sidebar.sidebar-purple a:hover .badge, 
+.sidebar.sidebar-purple a:hover .badge,
 .sidebar.sidebar-purple a:focus .badge,
 .sidebar.sidebar-purple .label,
-.sidebar.sidebar-purple a:hover .label, 
+.sidebar.sidebar-purple a:hover .label,
 .sidebar.sidebar-purple a:focus .label {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -3352,10 +3309,10 @@ table.dataTable thead .sorting_desc_disabled:after,
     color: #000;
     color: rgba(0,0,0,0.4);
 }
-.sidebar.sidebar-purple .nav > li.active > a, 
-.sidebar.sidebar-purple .nav > li.active > a:hover, 
+.sidebar.sidebar-purple .nav > li.active > a,
+.sidebar.sidebar-purple .nav > li.active > a:hover,
 .sidebar.sidebar-purple .nav > li.active > a:focus,
-.page-sidebar-minified .sidebar.sidebar-purple .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar.sidebar-purple .nav > li.has-sub.active:hover > a,
 .page-sidebar-minified .sidebar.sidebar-purple .nav > li.has-sub.active:focus > a {
     background: url(../img/transparent/black-0.4.png);
     background: rgba(0,0,0,0.4);
@@ -3382,8 +3339,8 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: none;
 }
 .sidebar.sidebar-purple .stock-list > li .value,
-.sidebar.sidebar-purple .calendar .week_days td, 
-.sidebar.sidebar-purple .calendar .visualmonthyear, 
+.sidebar.sidebar-purple .calendar .week_days td,
+.sidebar.sidebar-purple .calendar .visualmonthyear,
 .sidebar.sidebar-purple .calendar a,
 .sidebar.sidebar-purple .calendar .table {
     color: #fff;
@@ -3403,9 +3360,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-purple .notification-list > li + li {
     border-top-color: rgba(255,255,255,0.3);
 }
-.sidebar.sidebar-purple .nav-post > li .info .time, 
+.sidebar.sidebar-purple .nav-post > li .info .time,
 .sidebar.sidebar-purple .nav-post > li .info .desc,
-.sidebar.sidebar-purple .notification-list > li .info .time, 
+.sidebar.sidebar-purple .notification-list > li .info .time,
 .sidebar.sidebar-purple .notification-list > li .info .desc {
     color: #fff;
     color: rgba(255,255,255,0.6);
@@ -3413,8 +3370,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .sidebar.sidebar-purple .notification-list > li .media {
     color: #fff;
 }
-
-
 
 /* 3.22 Page Sidebar - Floating Sub Menu */
 
@@ -3511,8 +3466,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 	color: #b1b5b8;
 }
 
-
-
 /* -------------------------------
    4.0 Content Setting
 ------------------------------- */
@@ -3532,7 +3485,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         padding: 20px;
     }
 }
-
 
 /* 4.1.1 Content Element - Breadcrumb */
 
@@ -3573,7 +3525,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 4.1.2 Content Element - Page Header */
 
 .page-header {
@@ -3587,7 +3538,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     z-index: 1000;
 }
 
-
 /* 4.2 Content Setting - Page Sidebar Minified */
 
 .page-sidebar-minified .content {
@@ -3598,7 +3548,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         margin-left: 0;
     }
 }
-
 
 /* 4.3 Content Setting - Page with Right Sidebar */
 
@@ -3619,7 +3568,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 4.4 Content Setting - Page with Footer */
 
 .page-with-footer .content,
@@ -3627,14 +3575,11 @@ table.dataTable thead .sorting_desc_disabled:after,
     padding-bottom: 50px;
 }
 
-
 /* 4.5 Content Setting - Page without Sidebar */
 
 .page-without-sidebar .content {
     margin-left: 0;
 }
-
-
 
 /* -------------------------------
    5.0 Footer Setting
@@ -3674,7 +3619,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     }
 }
 
-
 /* 5.2 Footer Setting - Page with Fixed Footer */
 
 .page-footer-fixed .footer {
@@ -3688,7 +3632,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .page-footer-fixed.page-sidebar-minified .footer {
     left: 70px;
 }
-.page-footer-fixed.page-with-right-sidebar.page-sidebar-minified .footer { 
+.page-footer-fixed.page-with-right-sidebar.page-sidebar-minified .footer {
     right: 70px;
     left: 0;
 }
@@ -3710,8 +3654,6 @@ table.dataTable thead .sorting_desc_disabled:after,
         left: 0 !important;
     }
 }
-
-
 
 /* -------------------------------
    6.0 Top Menu Setting
@@ -3794,7 +3736,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     background: #636a71;
 }
 
-
 /* 6.2 Top Menu Sub Menu Setting */
 
 .top-menu .nav .sub-menu {
@@ -3860,7 +3801,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 .top-menu .nav > li.active > a i {
     color: #1abc9c;
 }
-
 
 /* 6.3 Top Menu Left & Right Control Setting */
 
@@ -3930,8 +3870,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     -webkit-box-shadow: -5px 0 8px -3px rgba(0,0,0,0.5);
     box-shadow: -5px 0 8px -3px rgba(0,0,0,0.5);
 }
-
-
 
 /* -------------------------------
    7.0 Predefined CSS Setting
@@ -4216,28 +4154,28 @@ table.dataTable thead .sorting_desc_disabled:after,
 .f-w-600 { font-weight: 600 !important; }
 .f-w-700 { font-weight: 700 !important; }
 
-.table-valign-middle th, 
-.table-valign-middle td { 
+.table-valign-middle th,
+.table-valign-middle td {
     vertical-align: middle !important;
 }
 .table-th-valign-middle th,
-.table-td-valign-middle td { 
+.table-td-valign-middle td {
     vertical-align: middle !important;
 }
-.table-valign-top th, 
-.table-valign-top td { 
+.table-valign-top th,
+.table-valign-top td {
     vertical-align: top !important;
 }
 .table-th-valign-top th,
-.table-td-valign-top td { 
+.table-td-valign-top td {
     vertical-align: top !important;
 }
-.table-valign-bottom th, 
-.table-valign-bottom td { 
+.table-valign-bottom th,
+.table-valign-bottom td {
     vertical-align: bottom !important;
 }
 .table-th-valign-bottom th,
-.table-td-valign-bottom td { 
+.table-td-valign-bottom td {
     vertical-align: bottom !important;
 }
 .table-last-row-no-border-bottom tr:last-child td {
@@ -4252,9 +4190,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 	height: 100%;
 }
 .vertical-box {
-    display: table; 
-    table-layout: fixed; 
-    border-spacing: 0; 
+    display: table;
+    table-layout: fixed;
+    border-spacing: 0;
     height: 100%;
     width: 100%;
 }
@@ -4293,7 +4231,7 @@ table.dataTable thead .sorting_desc_disabled:after,
     -webkit-transform: translateZ(0);
     min-height: auto;
 }
-.no-rounded-corner { 
+.no-rounded-corner {
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
     border-radius: 0 !important;
@@ -4440,8 +4378,6 @@ table.dataTable thead .sorting_desc_disabled:after,
 	}
 }
 
-
-
 /* -------------------------------
    8.0 UI Elements Setting
 ------------------------------- */
@@ -4527,7 +4463,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 .progress .progress-bar.progress-bar-lime {
     background: #65C56F;
 }
-.progress-bar-striped, 
+.progress-bar-striped,
 .progress-striped .progress-bar,
 .progress-striped .progress-bar.progress-bar-success,
 .progress-striped .progress-bar.progress-bar-info,
@@ -4543,7 +4479,6 @@ table.dataTable thead .sorting_desc_disabled:after,
     -webkit-background-size: 40px 40px;
     background-size: 40px 40px;
 }
-
 
 /* 8.2 Label & Badge Setting */
 
@@ -4640,7 +4575,6 @@ h6 .label, h6 .badge { top: -1px; }
     padding: 6px 8px 4px;
 }
 
-
 /* 8.3 Form Element Setting */
 
 .form-control,
@@ -4674,13 +4608,13 @@ select.form-control:not([size]):not([multiple]) {
     color: #8d9aa5;
 }
 .form-control:-moz-placeholder {
-    color: #8d9aa5;  
+    color: #8d9aa5;
 }
 .form-control::-moz-placeholder {
-    color: #8d9aa5;  
+    color: #8d9aa5;
 }
-.form-control:-ms-input-placeholder {  
-    color: #8d9aa5;  
+.form-control:-ms-input-placeholder {
+    color: #8d9aa5;
 }
 .form-input-flat .form-control {
     background: #ebeced;
@@ -4708,16 +4642,16 @@ legend {
     border-color: #bec3c6;
     border-width: 2px;
 }
-.input-group-lg > .form-control, 
-.input-group-lg > .input-group-addon, 
+.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn>.btn,
 .form-control.form-control-lg,
 select.form-control.form-control-lg:not([size]):not([multiple]) {
     padding: 9px 16px;
     height: 48px;
 }
-.input-group-sm > .form-control, 
-.input-group-sm > .input-group-addon, 
+.input-group-sm > .form-control,
+.input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn>.btn,
 select.form-control.form-control-sm:not([size]):not([multiple]) {
     padding: 4px 10px;
@@ -4750,15 +4684,15 @@ select.form-control.form-control-sm:not([size]):not([multiple]) {
 .has-success .input-group-text {
     background: #d1f0ed;
 }
-.has-success .checkbox, 
-.has-success .checkbox-inline, 
-.has-success .control-label, 
-.has-success .help-block, 
-.has-success .radio, 
-.has-success .radio-inline, 
-.has-success.checkbox label, 
-.has-success.checkbox-inline label, 
-.has-success.radio label, 
+.has-success .checkbox,
+.has-success .checkbox-inline,
+.has-success .control-label,
+.has-success .help-block,
+.has-success .radio,
+.has-success .radio-inline,
+.has-success.checkbox label,
+.has-success.checkbox-inline label,
+.has-success.radio label,
 .has-success.radio-inline label,
 .has-success .form-control-feedback,
 .has-success .input-group-addon,
@@ -4776,15 +4710,15 @@ select.form-control.form-control-sm:not([size]):not([multiple]) {
 .has-warning .input-group-text {
     background: #feefd9;
 }
-.has-warning .checkbox, 
-.has-warning .checkbox-inline, 
-.has-warning .control-label, 
-.has-warning .help-block, 
-.has-warning .radio, 
-.has-warning .radio-inline, 
-.has-warning.checkbox label, 
-.has-warning.checkbox-inline label, 
-.has-warning.radio label, 
+.has-warning .checkbox,
+.has-warning .checkbox-inline,
+.has-warning .control-label,
+.has-warning .help-block,
+.has-warning .radio,
+.has-warning .radio-inline,
+.has-warning.checkbox label,
+.has-warning.checkbox-inline label,
+.has-warning.radio label,
 .has-warning.radio-inline label,
 .has-warning .form-control-feedback,
 .has-warning .input-group-addon,
@@ -4803,15 +4737,15 @@ select.form-control.form-control-sm:not([size]):not([multiple]) {
 .has-error .input-group-text {
     background: #fcdbda;
 }
-.has-error .checkbox, 
-.has-error .checkbox-inline, 
-.has-error .control-label, 
-.has-error .help-block, 
-.has-error .radio, 
-.has-error .radio-inline, 
-.has-error.checkbox label, 
-.has-error.checkbox-inline label, 
-.has-error.radio label, 
+.has-error .checkbox,
+.has-error .checkbox-inline,
+.has-error .control-label,
+.has-error .help-block,
+.has-error .radio,
+.has-error .radio-inline,
+.has-error.checkbox label,
+.has-error.checkbox-inline label,
+.has-error.radio label,
 .has-error.radio-inline label,
 .has-error .form-control-feedback,
 .has-error .input-group-addon,
@@ -4833,7 +4767,7 @@ label {
     padding-top: 7px;
     padding-bottom: 7px;
 }
-.input-group-btn:last-child > .btn, 
+.input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .btn-group {
     margin-left: 0;
 }
@@ -4918,8 +4852,8 @@ textarea.form-control {
 	position: relative;
 	line-height: 16px;
 }
-.input-group-lg > .form-control, 
-.input-group-lg > .input-group-addon, 
+.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn,
 .input-group-lg .input-group-text {
     height: 46px;
@@ -4928,22 +4862,22 @@ textarea.form-control {
     line-height: 1.3333333;
     border-radius: 6px;
 }
-.input-group .form-control:first-child, 
-.input-group-addon:first-child, 
-.input-group-btn:first-child > .btn, 
-.input-group-btn:first-child > .btn-group > .btn, 
-.input-group-btn:first-child > .dropdown-toggle, 
-.input-group-btn:last-child > .btn-group:not(:last-child) > .btn, 
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .btn-group > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.input-group .form-control:last-child, 
-.input-group-addon:last-child, 
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn, 
-.input-group-btn:first-child > .btn:not(:first-child), 
-.input-group-btn:last-child > .btn, 
-.input-group-btn:last-child > .btn-group>.btn, 
+.input-group .form-control:last-child,
+.input-group-addon:last-child,
+.input-group-btn:first-child > .btn-group:not(:first-child) > .btn,
+.input-group-btn:first-child > .btn:not(:first-child),
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .btn-group>.btn,
 .input-group-btn:last-child > .dropdown-toggle {
 	border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -4979,9 +4913,9 @@ code {
     font-weight: 400;
     cursor: pointer;
 }
-.checkbox input[type=checkbox], 
-.checkbox-inline input[type=checkbox], 
-.radio input[type=radio], 
+.checkbox input[type=checkbox],
+.checkbox-inline input[type=checkbox],
+.radio input[type=radio],
 .radio-inline input[type=radio] {
     position: absolute;
     margin-top: 4px\9;
@@ -5001,13 +4935,11 @@ input[type=checkbox], input[type=radio] {
     vertical-align: middle;
     cursor: pointer;
 }
-.checkbox-inline + .checkbox-inline, 
+.checkbox-inline + .checkbox-inline,
 .radio-inline + .radio-inline {
     margin-top: 0;
     margin-left: 10px;
 }
-
-
 
 /* 8.4 Carousel Setting */
 
@@ -5016,7 +4948,6 @@ input[type=checkbox], input[type=radio] {
     top: 50%;
     margin-top: -10px;
 }
-
 
 /* 8.5 Dropdown Setting */
 
@@ -5104,8 +5035,8 @@ input[type=checkbox], input[type=radio] {
 .dropdown-menu > li > a .badge.pull-right {
 	margin-top: 2px;
 }
-.dropdown-menu > .active > a, 
-.dropdown-menu > .active > a:focus, 
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:focus,
 .dropdown-menu > .active > a:hover {
     background: #2184DA;
     color: #fff;
@@ -5132,7 +5063,7 @@ input[type=checkbox], input[type=radio] {
     color: #333;
     white-space: nowrap;
 }
-.dropdown-menu > li > a:focus, 
+.dropdown-menu > li > a:focus,
 .dropdown-menu > li > a:hover {
     color: #262626;
     text-decoration: none;
@@ -5144,7 +5075,6 @@ input[type=checkbox], input[type=radio] {
 		left: auto;
 	}
 }
-
 
 /* 8.6 Dropdown Notification Setting */
 
@@ -5238,14 +5168,12 @@ input[type=checkbox], input[type=radio] {
     }
 }
 
-
 /* 8.7 Typography Setting */
 
 h1, h2, h3, h4, h5, h6 {
     color: #30373e;
     font-weight: bold
 }
-
 
 /* 8.8 Description List Setting */
 
@@ -5274,9 +5202,7 @@ dd + dt {
 	}
 }
 
-
 /* 8.9 Blockquote Setting */
-
 
 blockquote {
     padding: 10px 20px;
@@ -5300,23 +5226,22 @@ blockquote .small:before, blockquote footer:before, blockquote small:before {
     border-right: 5px solid #eee;
     border-left: 0;
 }
-.blockquote-reverse .small:before, 
-.blockquote-reverse footer:before, 
+.blockquote-reverse .small:before,
+.blockquote-reverse footer:before,
 .blockquote-reverse small:before,
-blockquote.pull-right .small:before, 
-blockquote.pull-right footer:before, 
+blockquote.pull-right .small:before,
+blockquote.pull-right footer:before,
 blockquote.pull-right small:before {
     content: '';
 }
-.blockquote-reverse .small:after, 
-.blockquote-reverse footer:after, 
-.blockquote-reverse small:after, 
-blockquote.pull-right .small:after, 
-blockquote.pull-right footer:after, 
+.blockquote-reverse .small:after,
+.blockquote-reverse footer:after,
+.blockquote-reverse small:after,
+blockquote.pull-right .small:after,
+blockquote.pull-right footer:after,
 blockquote.pull-right small:after {
     content: '\00A0 \2014';
 }
-
 
 /* 8.10 Panel Setting */
 
@@ -5336,10 +5261,10 @@ blockquote.pull-right small:after {
 	font-size: 16px;
 	color: inherit;
 }
-.panel-title > .small, 
-.panel-title > .small > a, 
-.panel-title > a, 
-.panel-title > small, 
+.panel-title > .small,
+.panel-title > .small > a,
+.panel-title > a,
+.panel-title > small,
 .panel-title > small > a {
     color: inherit;
 }
@@ -5532,8 +5457,6 @@ blockquote.pull-right small:after {
     }
 }
 
-
-
 /* 8.11 Panel Loading Element Setting */
 
 .panel.panel-loading .panel-body {
@@ -5563,7 +5486,6 @@ blockquote.pull-right small:after {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
 
 /* 8.12 Spinner Small Setting */
 
@@ -5597,7 +5519,6 @@ blockquote.pull-right small:after {
     animation: spinner .6s linear infinite;
     -webkit-animation: spinner .6s linear infinite;
 }
-
 
 /* 8.13 Button Element Setting */
 
@@ -5660,18 +5581,18 @@ blockquote.pull-right small:after {
 .btn-group > .btn.active {
     top: 0;
 }
-.btn-group-vertical > .btn + .btn, 
-.btn-group-vertical > .btn + .btn-group, 
-.btn-group-vertical > .btn-group + .btn, 
+.btn-group-vertical > .btn + .btn,
+.btn-group-vertical > .btn + .btn-group,
+.btn-group-vertical > .btn-group + .btn,
 .btn-group-vertical > .btn-group + .btn-group {
     margin-top: 0;
 }
 .btn-group-vertical > .btn + .btn {
     border-top: 1px solid rgba(0,0,0,0.3);
 }
-.btn-group .btn + .btn, 
-.btn-group .btn + .btn-group, 
-.btn-group .btn-group + .btn, 
+.btn-group .btn + .btn,
+.btn-group .btn + .btn-group,
+.btn-group .btn-group + .btn,
 .btn-group .btn-group + .btn-group {
     margin-left: 0;
 }
@@ -5694,15 +5615,13 @@ blockquote.pull-right small:after {
     border-radius: 3px;
 }
 
-
 /* 8.15 Button Theme Setting */
-
 
 /* 8.15.1 Button Default */
 
 .btn.btn-default,
-.btn.btn-default:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-default:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-default:not(:disabled):not(.disabled).active:focus,
+.btn.btn-default:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-default.dropdown-toggle:focus {
     color: #333;
     background: #ebeced;
@@ -5718,10 +5637,10 @@ blockquote.pull-right small:after {
 .btn.btn-default.active,
 .btn.btn-default:hover,
 .btn.btn-default:focus,
-.btn.btn-default:active, 
+.btn.btn-default:active,
 .open > .dropdown-toggle.btn-default,
-.btn-default:not(:disabled):not(.disabled).active, 
-.btn-default:not(:disabled):not(.disabled):active, 
+.btn-default:not(:disabled):not(.disabled).active,
+.btn-default:not(:disabled):not(.disabled):active,
 .show > .btn-default.dropdown-toggle {
     color: #333;
     background: #bcbdbe;
@@ -5730,12 +5649,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #5e5e5f;
 }
 
-
 /* 8.15.2 Button Danger */
 
 .btn.btn-danger,
-.btn.btn-danger:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-danger:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-danger:not(:disabled):not(.disabled).active:focus,
+.btn.btn-danger:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-danger.dropdown-toggle:focus  {
 	color: #fff;
     background: #F04B46;
@@ -5751,10 +5669,10 @@ blockquote.pull-right small:after {
 .btn.btn-danger.active,
 .btn.btn-danger:hover,
 .btn.btn-danger:focus,
-.btn.btn-danger:active, 
+.btn.btn-danger:active,
 .open > .dropdown-toggle.btn-danger,
-.btn-danger:not(:disabled):not(.disabled).active, 
-.btn-danger:not(:disabled):not(.disabled):active, 
+.btn-danger:not(:disabled):not(.disabled).active,
+.btn-danger:not(:disabled):not(.disabled):active,
 .show > .btn-danger.dropdown-toggle {
     background: #c03c38;
     outline: none;
@@ -5762,12 +5680,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #601e1c;
 }
 
-
 /* 8.15.3 Button Warning */
 
 .btn.btn-warning,
-.btn.btn-warning:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-warning:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-warning:not(:disabled):not(.disabled).active:focus,
+.btn.btn-warning:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-warning.dropdown-toggle:focus  {
 	color: #fff;
     background: #fcaf41;
@@ -5783,10 +5700,10 @@ blockquote.pull-right small:after {
 .btn.btn-warning.active,
 .btn.btn-warning:hover,
 .btn.btn-warning:focus,
-.btn.btn-warning:active, 
+.btn.btn-warning:active,
 .open > .dropdown-toggle.btn-warning,
-.btn-warning:not(:disabled):not(.disabled).active, 
-.btn-warning:not(:disabled):not(.disabled):active, 
+.btn-warning:not(:disabled):not(.disabled).active,
+.btn-warning:not(:disabled):not(.disabled):active,
 .show > .btn-warning.dropdown-toggle {
     background: #ca8c34;
     outline: none;
@@ -5794,12 +5711,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #65461a;
 }
 
-
 /* 8.15.4 Button Lime */
 
 .btn.btn-lime,
-.btn.btn-lime:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-lime:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-lime:not(:disabled):not(.disabled).active:focus,
+.btn.btn-lime:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-lime.dropdown-toggle:focus  {
     color: #fff;
     background: #65C56F;
@@ -5815,10 +5731,10 @@ blockquote.pull-right small:after {
 .btn.btn-lime.active,
 .btn.btn-lime:hover,
 .btn.btn-lime:focus,
-.btn.btn-lime:active, 
+.btn.btn-lime:active,
 .open > .dropdown-toggle.btn-lime,
-.btn-lime:not(:disabled):not(.disabled).active, 
-.btn-lime:not(:disabled):not(.disabled):active, 
+.btn-lime:not(:disabled):not(.disabled).active,
+.btn-lime:not(:disabled):not(.disabled):active,
 .show > .btn-lime.dropdown-toggle {
     color: #fff;
     background: #519e59;
@@ -5827,12 +5743,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #284f2c;
 }
 
-
 /* 8.15.5 Button Success */
 
 .btn.btn-success,
-.btn.btn-success:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-success:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-success:not(:disabled):not(.disabled).active:focus,
+.btn.btn-success:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-success.dropdown-toggle:focus  {
 	color: #fff;
     background: #17B6A4;
@@ -5848,10 +5763,10 @@ blockquote.pull-right small:after {
 .btn.btn-success.active,
 .btn.btn-success:hover,
 .btn.btn-success:focus,
-.btn.btn-success:active, 
+.btn.btn-success:active,
 .open > .dropdown-toggle.btn-success,
-.btn-success:not(:disabled):not(.disabled).active, 
-.btn-success:not(:disabled):not(.disabled):active, 
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
 .show > .btn-success.dropdown-toggle {
     background: #129283;
     outline: none;
@@ -5859,12 +5774,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #094942;
 }
 
-
 /* 8.15.6 Button Info */
 
 .btn.btn-info,
-.btn.btn-info:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-info:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-info:not(:disabled):not(.disabled).active:focus,
+.btn.btn-info:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-info.dropdown-toggle:focus  {
 	color: #fff;
     background: #38AFD3;
@@ -5880,7 +5794,7 @@ blockquote.pull-right small:after {
 .btn.btn-info.active,
 .btn.btn-info:hover,
 .btn.btn-info:focus,
-.btn.btn-info:active, 
+.btn.btn-info:active,
 .open > .dropdown-toggle.btn-info {
     background: #2d8ca9;
     outline: none;
@@ -5888,12 +5802,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #164654;
 }
 
-
 /* 8.15.7 Button Primary */
 
 .btn.btn-primary,
-.btn.btn-primary:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-primary:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn.btn-primary:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-primary.dropdown-toggle:focus  {
 	color: #fff;
     background: #2184DA;
@@ -5909,10 +5822,10 @@ blockquote.pull-right small:after {
 .btn.btn-primary.active,
 .btn.btn-primary:hover,
 .btn.btn-primary:focus,
-.btn.btn-primary:active, 
+.btn.btn-primary:active,
 .open > .dropdown-toggle.btn-primary,
-.btn-primary:not(:disabled):not(.disabled).active, 
-.btn-primary:not(:disabled):not(.disabled):active, 
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
 .show > .btn-primary.dropdown-toggle {
     background: #1e77c5;
     outline: none;
@@ -5920,12 +5833,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #0d3557;
 }
 
-
 /* 8.15.8 Button Purple */
 
 .btn.btn-purple,
-.btn.btn-purple:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-purple:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-purple:not(:disabled):not(.disabled).active:focus,
+.btn.btn-purple:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-purple.dropdown-toggle:focus  {
     color: #fff;
     background: #5f50c5;
@@ -5941,10 +5853,10 @@ blockquote.pull-right small:after {
 .btn.btn-purple.active,
 .btn.btn-purple:hover,
 .btn.btn-purple:focus,
-.btn.btn-purple:active, 
+.btn.btn-purple:active,
 .open > .dropdown-toggle.btn-purple,
-.btn-purple:not(:disabled):not(.disabled).active, 
-.btn-purple:not(:disabled):not(.disabled):active, 
+.btn-purple:not(:disabled):not(.disabled).active,
+.btn-purple:not(:disabled):not(.disabled):active,
 .show > .btn-purple.dropdown-toggle {
     color: #fff;
     background: #4c409e;
@@ -5953,12 +5865,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #3e2449;
 }
 
-
 /* 8.15.9 Button Inverse */
 
 .btn.btn-inverse,
-.btn.btn-inverse:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-inverse:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-inverse:not(:disabled):not(.disabled).active:focus,
+.btn.btn-inverse:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-inverse.dropdown-toggle:focus  {
     color: #fff;
     background: #3C454D;
@@ -5974,10 +5885,10 @@ blockquote.pull-right small:after {
 .btn.btn-inverse.active,
 .btn.btn-inverse:hover,
 .btn.btn-inverse:focus,
-.btn.btn-inverse:active, 
+.btn.btn-inverse:active,
 .open > .dropdown-toggle.btn-inverse,
-.btn-inverse:not(:disabled):not(.disabled).active, 
-.btn-inverse:not(:disabled):not(.disabled):active, 
+.btn-inverse:not(:disabled):not(.disabled).active,
+.btn-inverse:not(:disabled):not(.disabled):active,
 .show > .btn-inverse.dropdown-toggle {
     color: #fff;
     background: #30373e;
@@ -5986,12 +5897,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #181c1f;
 }
 
-
 /* 8.15.10 Button Grey */
 
 .btn.btn-grey,
-.btn.btn-grey:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-grey:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-grey:not(:disabled):not(.disabled).active:focus,
+.btn.btn-grey:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-grey.dropdown-toggle:focus  {
     color: #fff;
     background: #8a8f94;
@@ -6007,10 +5917,10 @@ blockquote.pull-right small:after {
 .btn.btn-grey.active,
 .btn.btn-grey:hover,
 .btn.btn-grey:focus,
-.btn.btn-grey:active, 
+.btn.btn-grey:active,
 .open > .dropdown-toggle.btn-grey,
-.btn-grey:not(:disabled):not(.disabled).active, 
-.btn-grey:not(:disabled):not(.disabled):active, 
+.btn-grey:not(:disabled):not(.disabled).active,
+.btn-grey:not(:disabled):not(.disabled):active,
 .show > .btn-grey.dropdown-toggle {
     color: #fff;
     background: #888f95;
@@ -6019,12 +5929,11 @@ blockquote.pull-right small:after {
     box-shadow: 0 1px #44484a;
 }
 
-
 /* 8.15.11 Button White */
 
 .btn.btn-white,
-.btn.btn-white:not(:disabled):not(.disabled).active:focus, 
-.btn.btn-white:not(:disabled):not(.disabled):active:focus, 
+.btn.btn-white:not(:disabled):not(.disabled).active:focus,
+.btn.btn-white:not(:disabled):not(.disabled):active:focus,
 .show > .btn.btn-white.dropdown-toggle:focus  {
     color: #30373e;
     background: #fff;
@@ -6040,17 +5949,16 @@ blockquote.pull-right small:after {
 .btn.btn-white.active,
 .btn.btn-white:hover,
 .btn.btn-white:focus,
-.btn.btn-white:active, 
+.btn.btn-white:active,
 .open > .dropdown-toggle.btn-white,
-.btn-white:not(:disabled):not(.disabled).active, 
-.btn-white:not(:disabled):not(.disabled):active, 
+.btn-white:not(:disabled):not(.disabled).active,
+.btn-white:not(:disabled):not(.disabled):active,
 .show > .btn-white.dropdown-toggle {
     background: #ecedee;
     outline: none;
     -webkit-box-shadow: 0 1px #8a8f94;
     box-shadow: 0 1px #8a8f94;
 }
-
 
 /* 8.16 Alert Setting */
 
@@ -6098,9 +6006,7 @@ blockquote.pull-right small:after {
     border: 1px solid #e39e3b;
 }
 
-
 /* 8.17 Thumbnail Setting */
-
 
 .thumbnail {
 	display: block;
@@ -6162,7 +6068,6 @@ a.thumbnail.active {
   	border-color: #337ab7;
 }
 
-
 /* 8.18 Default Link Setting */
 
 a {
@@ -6176,7 +6081,6 @@ a:focus {
     color: #1e77c5;
 }
 
-
 /* 8.19 Pagination Setting */
 
 .pagination {
@@ -6185,11 +6089,11 @@ a:focus {
     margin: 20px 0;
     border-radius: 4px;
 }
-.pagination > .active > a, 
-.pagination > .active > a:focus, 
-.pagination > .active > a:hover, 
-.pagination > .active > span, 
-.pagination > .active > span:focus, 
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
 .pagination > .active > span:hover {
     z-index: 3;
     color: #fff;
@@ -6200,7 +6104,7 @@ a:focus {
 .pagination > li {
     display: inline;
 }
-.pagination > li > a, 
+.pagination > li > a,
 .pagination > li > span {
     position: relative;
     float: left;
@@ -6212,23 +6116,23 @@ a:focus {
     background-color: #fff;
     border: 1px solid #ddd;
 }
-.pagination-lg > li > a, 
+.pagination-lg > li > a,
 .pagination-lg > li > span {
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.3333333;
 }
-.pagination-sm > li > a, 
+.pagination-sm > li > a,
 .pagination-sm > li > span {
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
 }
-.pagination > .disabled > a, 
-.pagination > .disabled > a:focus, 
-.pagination > .disabled > a:hover, 
-.pagination > .disabled > span, 
-.pagination > .disabled > span:focus, 
+.pagination > .disabled > a,
+.pagination > .disabled > a:focus,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span,
+.pagination > .disabled > span:focus,
 .pagination > .disabled > span:hover {
     color: #777;
     cursor: not-allowed;
@@ -6244,7 +6148,7 @@ a:focus {
 .pager li {
     display: inline;
 }
-.pager li > a, 
+.pager li > a,
 .pager li > span {
     display: inline-block;
     padding: 5px 14px;
@@ -6252,23 +6156,23 @@ a:focus {
     border: 1px solid #ddd;
     border-radius: 15px;
 }
-.pager .previous > a, 
+.pager .previous > a,
 .pager .previous > span {
     float: left;
 }
-.pager .next > a, 
+.pager .next > a,
 .pager .next > span {
     float: right;
 }
-.pager .disabled > a, 
-.pager .disabled > a:focus, 
-.pager .disabled > a:hover, 
+.pager .disabled > a,
+.pager .disabled > a:focus,
+.pager .disabled > a:hover,
 .pager .disabled > span {
     color: #777;
     cursor: not-allowed;
     background-color: #fff;
 }
-.pager li > a:focus, 
+.pager li > a:focus,
 .pager li > a:hover {
     text-decoration: none;
     background-color: #eee;
@@ -6276,186 +6180,184 @@ a:focus {
 .pagination > li + li a {
     margin-left: -2px;
 }
-.pagination > li > a, 
+.pagination > li > a,
 .pagination > li > span{
     border: 2px solid #BCBCBD;
     color: #30373e;
 }
-.pagination >li > a:focus, 
-.pagination >li > a:hover, 
-.pagination >li > span:focus, 
+.pagination >li > a:focus,
+.pagination >li > a:hover,
+.pagination >li > span:focus,
 .pagination >li > span:hover {
     background: #ebeced;
     color: #30373e;
     border-color: #BCBCBD;
 }
-.pagination > .active > a, 
-.pagination > .active > a:focus, 
-.pagination > .active > a:hover, 
-.pagination > .active>span, 
-.pagination > .active>span:focus, 
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active>span,
+.pagination > .active>span:focus,
 .pagination > .active>span:hover {
     background: #2184DA;
     position: relative;
     border-color: #1e77c5;
     z-index: 1020;
 }
-.pagination>.disabled > a, 
-.pagination>.disabled > a:focus, 
-.pagination>.disabled > a:hover, 
-.pagination>.disabled > span, 
-.pagination>.disabled > span:focus, 
+.pagination>.disabled > a,
+.pagination>.disabled > a:focus,
+.pagination>.disabled > a:hover,
+.pagination>.disabled > span,
+.pagination>.disabled > span:focus,
 .pagination>.disabled > span:hover {
     color: #8a8f94;
     border-color: #c3c3c3;
 }
-.pagination-lg > li > a, 
+.pagination-lg > li > a,
 .pagination-lg > li > span {
     padding: 9px 15px;
     font-size: 18px;
 }
-.pagination-inverse.pagination > .active > a, 
-.pagination-inverse.pagination > .active > a:focus, 
-.pagination-inverse.pagination > .active > a:hover, 
-.pagination-inverse.pagination > .active > span, 
-.pagination-inverse.pagination > .active > span:focus, 
+.pagination-inverse.pagination > .active > a,
+.pagination-inverse.pagination > .active > a:focus,
+.pagination-inverse.pagination > .active > a:hover,
+.pagination-inverse.pagination > .active > span,
+.pagination-inverse.pagination > .active > span:focus,
 .pagination-inverse.pagination > .active > span:hover,
-.pagination-inverse .pagination > .active > a, 
-.pagination-inverse .pagination > .active > a:focus, 
-.pagination-inverse .pagination > .active > a:hover, 
-.pagination-inverse .pagination > .active > span, 
-.pagination-inverse .pagination > .active > span:focus, 
+.pagination-inverse .pagination > .active > a,
+.pagination-inverse .pagination > .active > a:focus,
+.pagination-inverse .pagination > .active > a:hover,
+.pagination-inverse .pagination > .active > span,
+.pagination-inverse .pagination > .active > span:focus,
 .pagination-inverse .pagination > .active > span:hover {
     background: #3C454D;
     border-color: #30373e;
 }
-.pagination-info.pagination > .active > a, 
-.pagination-info.pagination > .active > a:focus, 
-.pagination-info.pagination > .active > a:hover, 
-.pagination-info.pagination > .active > span, 
-.pagination-info.pagination > .active > span:focus, 
+.pagination-info.pagination > .active > a,
+.pagination-info.pagination > .active > a:focus,
+.pagination-info.pagination > .active > a:hover,
+.pagination-info.pagination > .active > span,
+.pagination-info.pagination > .active > span:focus,
 .pagination-info.pagination > .active > span:hover,
-.pagination-info .pagination > .active > a, 
-.pagination-info .pagination > .active > a:focus, 
-.pagination-info .pagination > .active > a:hover, 
-.pagination-info .pagination > .active > span, 
-.pagination-info .pagination > .active > span:focus, 
+.pagination-info .pagination > .active > a,
+.pagination-info .pagination > .active > a:focus,
+.pagination-info .pagination > .active > a:hover,
+.pagination-info .pagination > .active > span,
+.pagination-info .pagination > .active > span:focus,
 .pagination-info .pagination > .active > span:hover {
     background: #38AFD3;
     border-color: #2d8ca9;
 }
-.pagination-purple.pagination > .active > a, 
-.pagination-purple.pagination > .active > a:focus, 
-.pagination-purple.pagination > .active > a:hover, 
-.pagination-purple.pagination > .active > span, 
-.pagination-purple.pagination > .active > span:focus, 
+.pagination-purple.pagination > .active > a,
+.pagination-purple.pagination > .active > a:focus,
+.pagination-purple.pagination > .active > a:hover,
+.pagination-purple.pagination > .active > span,
+.pagination-purple.pagination > .active > span:focus,
 .pagination-purple.pagination > .active > span:hover,
-.pagination-purple .pagination > .active > a, 
-.pagination-purple .pagination > .active > a:focus, 
-.pagination-purple .pagination > .active > a:hover, 
-.pagination-purple .pagination > .active > span, 
-.pagination-purple .pagination > .active > span:focus, 
+.pagination-purple .pagination > .active > a,
+.pagination-purple .pagination > .active > a:focus,
+.pagination-purple .pagination > .active > a:hover,
+.pagination-purple .pagination > .active > span,
+.pagination-purple .pagination > .active > span:focus,
 .pagination-purple .pagination > .active > span:hover {
     background: #5f50c5;
     border-color: #4c409e;
 }
-.pagination-success.pagination > .active > a, 
-.pagination-success.pagination > .active > a:focus, 
-.pagination-success.pagination > .active > a:hover, 
-.pagination-success.pagination > .active > span, 
-.pagination-success.pagination > .active > span:focus, 
+.pagination-success.pagination > .active > a,
+.pagination-success.pagination > .active > a:focus,
+.pagination-success.pagination > .active > a:hover,
+.pagination-success.pagination > .active > span,
+.pagination-success.pagination > .active > span:focus,
 .pagination-success.pagination > .active > span:hover,
-.pagination-success .pagination > .active > a, 
-.pagination-success .pagination > .active > a:focus, 
-.pagination-success .pagination > .active > a:hover, 
-.pagination-success .pagination > .active > span, 
-.pagination-success .pagination > .active > span:focus, 
+.pagination-success .pagination > .active > a,
+.pagination-success .pagination > .active > a:focus,
+.pagination-success .pagination > .active > a:hover,
+.pagination-success .pagination > .active > span,
+.pagination-success .pagination > .active > span:focus,
 .pagination-success .pagination > .active > span:hover {
     background: #17B6A4;
     border-color: #129283;
 }
-.pagination-lime.pagination > .active > a, 
-.pagination-lime.pagination > .active > a:focus, 
-.pagination-lime.pagination > .active > a:hover, 
-.pagination-lime.pagination > .active > span, 
-.pagination-lime.pagination > .active > span:focus, 
+.pagination-lime.pagination > .active > a,
+.pagination-lime.pagination > .active > a:focus,
+.pagination-lime.pagination > .active > a:hover,
+.pagination-lime.pagination > .active > span,
+.pagination-lime.pagination > .active > span:focus,
 .pagination-lime.pagination > .active > span:hover,
-.pagination-lime .pagination > .active > a, 
-.pagination-lime .pagination > .active > a:focus, 
-.pagination-lime .pagination > .active > a:hover, 
-.pagination-lime .pagination > .active > span, 
-.pagination-lime .pagination > .active > span:focus, 
+.pagination-lime .pagination > .active > a,
+.pagination-lime .pagination > .active > a:focus,
+.pagination-lime .pagination > .active > a:hover,
+.pagination-lime .pagination > .active > span,
+.pagination-lime .pagination > .active > span:focus,
 .pagination-lime .pagination > .active > span:hover {
     background: #65C56F;
     border-color: #519e59;
 }
-.pagination-warning.pagination > .active > a, 
-.pagination-warning.pagination > .active > a:focus, 
-.pagination-warning.pagination > .active > a:hover, 
-.pagination-warning.pagination > .active > span, 
-.pagination-warning.pagination > .active > span:focus, 
+.pagination-warning.pagination > .active > a,
+.pagination-warning.pagination > .active > a:focus,
+.pagination-warning.pagination > .active > a:hover,
+.pagination-warning.pagination > .active > span,
+.pagination-warning.pagination > .active > span:focus,
 .pagination-warning.pagination > .active > span:hover,
-.pagination-warning .pagination > .active > a, 
-.pagination-warning .pagination > .active > a:focus, 
-.pagination-warning .pagination > .active > a:hover, 
-.pagination-warning .pagination > .active > span, 
-.pagination-warning .pagination > .active > span:focus, 
+.pagination-warning .pagination > .active > a,
+.pagination-warning .pagination > .active > a:focus,
+.pagination-warning .pagination > .active > a:hover,
+.pagination-warning .pagination > .active > span,
+.pagination-warning .pagination > .active > span:focus,
 .pagination-warning .pagination > .active > span:hover {
     background: #fcaf41;
     border-color: #ca8c34;
 }
-.pagination-danger.pagination > .active > a, 
-.pagination-danger.pagination > .active > a:focus, 
-.pagination-danger.pagination > .active > a:hover, 
-.pagination-danger.pagination > .active > span, 
-.pagination-danger.pagination > .active > span:focus, 
+.pagination-danger.pagination > .active > a,
+.pagination-danger.pagination > .active > a:focus,
+.pagination-danger.pagination > .active > a:hover,
+.pagination-danger.pagination > .active > span,
+.pagination-danger.pagination > .active > span:focus,
 .pagination-danger.pagination > .active > span:hover,
-.pagination-danger .pagination > .active > a, 
-.pagination-danger .pagination > .active > a:focus, 
-.pagination-danger .pagination > .active > a:hover, 
-.pagination-danger .pagination > .active > span, 
-.pagination-danger .pagination > .active > span:focus, 
+.pagination-danger .pagination > .active > a,
+.pagination-danger .pagination > .active > a:focus,
+.pagination-danger .pagination > .active > a:hover,
+.pagination-danger .pagination > .active > span,
+.pagination-danger .pagination > .active > span:focus,
 .pagination-danger .pagination > .active > span:hover {
     background: #F04B46;
     border-color: #c03c38;
 }
-.pagination-grey.pagination > .active > a, 
-.pagination-grey.pagination > .active > a:focus, 
-.pagination-grey.pagination > .active > a:hover, 
-.pagination-grey.pagination > .active > span, 
-.pagination-grey.pagination > .active > span:focus, 
+.pagination-grey.pagination > .active > a,
+.pagination-grey.pagination > .active > a:focus,
+.pagination-grey.pagination > .active > a:hover,
+.pagination-grey.pagination > .active > span,
+.pagination-grey.pagination > .active > span:focus,
 .pagination-grey.pagination > .active > span:hover,
-.pagination-grey .pagination > .active > a, 
-.pagination-grey .pagination > .active > a:focus, 
-.pagination-grey .pagination > .active > a:hover, 
-.pagination-grey .pagination > .active > span, 
-.pagination-grey .pagination > .active > span:focus, 
+.pagination-grey .pagination > .active > a,
+.pagination-grey .pagination > .active > a:focus,
+.pagination-grey .pagination > .active > a:hover,
+.pagination-grey .pagination > .active > span,
+.pagination-grey .pagination > .active > span:focus,
 .pagination-grey .pagination > .active > span:hover {
     background: #8a8f94;
     border-color: #888f95;
 }
 
-
 /* 8.20 Pager Setting */
 
-.pager li > a, 
+.pager li > a,
 .pager li > span {
     padding: 4px 13px;
     border: 2px solid #BCBCBD;
     color: #30373e;
 }
-.pager li > a:focus, 
+.pager li > a:focus,
 .pager li > a:hover {
     background: #EAEDEF;
     color: #30373e;
 }
-.pager .disabled > a, 
-.pager .disabled > a:focus, 
-.pager .disabled > a:hover, 
+.pager .disabled > a,
+.pager .disabled > a:focus,
+.pager .disabled > a:hover,
 .pager .disabled > span {
     opacity: 0.5;
 }
-
 
 /* 8.21 Jumbotron Setting */
 
@@ -6485,19 +6387,18 @@ a:focus {
     }
 }
 
-
 /* 8.22 List Group Setting */
 
-.panel > .list-group, 
+.panel > .list-group,
 .panel > .panel-collapse > .list-group {
     margin-bottom: 0;
 }
-.panel > .list-group .list-group-item, 
+.panel > .list-group .list-group-item,
 .panel > .panel-collapse > .list-group .list-group-item {
     border-width: 1px 0;
     border-radius: 0;
 }
-.panel > .list-group:last-child .list-group-item:last-child, 
+.panel > .list-group:last-child .list-group-item:last-child,
 .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
     border-bottom: 0;
     border-bottom-right-radius: 3px;
@@ -6514,15 +6415,15 @@ a:focus {
 .list-group-item > .badge {
     float: right;
 }
-a.list-group-item, 
+a.list-group-item,
 button.list-group-item {
     color: #555;
 }
 .list-group .list-group-item .badge {
     padding: 4px 7px;
 }
-.list-group-item.active, 
-.list-group-item.active:focus, 
+.list-group-item.active,
+.list-group-item.active:focus,
 .list-group-item.active:hover {
     background: #2184DA;
     border-color: #1e77c5;
@@ -6531,10 +6432,10 @@ button.list-group-item {
     border: 1px solid #BCBCBD;
     margin-bottom: -1px;
 }
-a.list-group-item:focus, 
+a.list-group-item:focus,
 a.list-group-item:hover,
-.list-group-item.disabled, 
-.list-group-item.disabled:focus, 
+.list-group-item.disabled,
+.list-group-item.disabled:focus,
 .list-group-item.disabled:hover {
     background: #ebeced;
 }
@@ -6543,7 +6444,7 @@ a.list-group-item-success {
     background: #d1f0ed;
     color: #108073;
 }
-a.list-group-item-success:focus, 
+a.list-group-item-success:focus,
 a.list-group-item-success:hover {
     background: #daf3f1;
     color: #108073;
@@ -6553,7 +6454,7 @@ a.list-group-item-info {
     background: #d7eff6;
     color: #277b94;
 }
-a.list-group-item-info:focus, 
+a.list-group-item-info:focus,
 a.list-group-item-info:hover {
     background: #dff2f8;
     color: #277b94;
@@ -6563,7 +6464,7 @@ a.list-group-item-warning {
     background: #feefd9;
     color: #b17b2e;
 }
-a.list-group-item-warning:focus, 
+a.list-group-item-warning:focus,
 a.list-group-item-warning:hover {
     background: #fef2e1;
     color: #b17b2e;
@@ -6573,12 +6474,11 @@ a.list-group-item-danger {
     background: #fcdbda;
     color: #d8443f;
 }
-a.list-group-item-danger:focus, 
+a.list-group-item-danger:focus,
 a.list-group-item-danger:hover {
     background: #fde2e1;
     color: #d8443f;
 }
-
 
 /* 8.23 Well Setting */
 
@@ -6601,7 +6501,6 @@ a.list-group-item-danger:hover {
     border-radius: 3px;
 }
 
-
 /* 8.24 Nav Tabs & Pills Setting */
 
 .nav-tabs {
@@ -6611,8 +6510,8 @@ a.list-group-item-danger:hover {
     float: left;
     margin-bottom: -1px;
 }
-.nav-tabs > li.active > a, 
-.nav-tabs > li.active > a:focus, 
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
     color: #555;
     cursor: default;
@@ -6633,24 +6532,24 @@ a.list-group-item-danger:hover {
 	float: none;
 }
 .nav-tabs,
-.nav-tabs > li.active > a, 
-.nav-tabs > li.active > a:focus, 
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover,
 .nav.nav-tabs > li > a,
 .nav.nav-tabs > li > a:hover,
 .nav.nav-tabs > li > a:focus,
-.nav-tabs.nav-justified > .active > a, 
-.nav-tabs.nav-justified > .active > a:focus, 
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:focus,
 .nav-tabs.nav-justified > .active > a:hover {
     background: none;
     border: none;
     color: #8a8f94;
 }
-.nav-tabs.nav-justified > .active > a, 
-.nav-tabs.nav-justified > .active > a:focus, 
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:focus,
 .nav-tabs.nav-justified > .active > a:hover,
-.nav-tabs > li.active > a, 
-.nav-tabs > li.active > a:focus, 
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
     color: #30373e;
 }
@@ -6829,11 +6728,11 @@ a.list-group-item-danger:hover {
 .nav.nav-pills + .tab-content {
     margin-top: 10px;
 }
-.nav.nav-pills > li.active > a, 
-.nav.nav-pills > li.active > a:focus, 
+.nav.nav-pills > li.active > a,
+.nav.nav-pills > li.active > a:focus,
 .nav.nav-pills > li.active > a:hover,
-.nav.nav-pills > li > a.active, 
-.nav.nav-pills > li > a.active:focus, 
+.nav.nav-pills > li > a.active,
+.nav.nav-pills > li > a.active:focus,
 .nav.nav-pills > li > a.active:hover {
     color: #fff;
     border-color: rgba(0,0,0,0.3);
@@ -6848,7 +6747,7 @@ a.list-group-item-danger:hover {
 }
 .nav.nav-justified > li + li {
 	margin-left: 0;
-} 
+}
 .nav.nav-pills > li > a {
     color: #8a8f94;
     background: none;
@@ -6878,15 +6777,15 @@ a.list-group-item-danger:hover {
     -moz-border-radius: 0 6px 6px 0;
     border-radius: 0 6px 6px 0;
 }
-.nav-pills > li.active > a, 
-.nav-pills > li.active > a:focus, 
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
 .nav-pills > li.active > a:hover,
-.nav-pills > li > a.active, 
-.nav-pills > li > a.active:focus, 
+.nav-pills > li > a.active,
+.nav-pills > li > a.active:focus,
 .nav-pills > li > a.active:hover {
     color: #fff;
 }
-.list-group-item.active > .badge, 
+.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
     color: #337ab7;
     background-color: #fff;
@@ -6920,7 +6819,7 @@ a.list-group-item-danger:hover {
     margin-bottom: 5px;
     text-align: center;
 }
-.nav-tabs.nav-justified > li, 
+.nav-tabs.nav-justified > li,
 .nav-tabs > li {
     margin-bottom: 0;
 }
@@ -6934,7 +6833,6 @@ a.list-group-item-danger:hover {
 		margin-bottom: 0;
 	}
 }
-
 
 /* 8.25 Accordion Setting */
 
@@ -6962,7 +6860,6 @@ a.list-group-item-danger:hover {
 .panel-group .panel + .panel {
     margin-top: 10px;
 }
-
 
 /* 8.26 Modal Setting */
 
@@ -7038,7 +6935,6 @@ a.list-group-item-danger:hover {
 	opacity: .2;
 }
 
-
 /* 8.27 Popover Setting */
 
 .popover {
@@ -7072,7 +6968,6 @@ a.list-group-item-danger:hover {
     padding: 8px 13px;
 }
 
-
 /* 8.28 Section Container Setting */
 
 .section-container {
@@ -7093,7 +6988,6 @@ a.list-group-item-danger:hover {
         padding: 20px;
     }
 }
-
 
 /* 8.29 Form Header Setting */
 
@@ -7155,7 +7049,6 @@ a.list-group-item-danger:hover {
         line-height: 26px;
     }
 }
-
 
 /* 8.30 Table Setting */
 
@@ -7227,131 +7120,131 @@ table {
     -moz-border-radius: 0 !important;
     border-radius: 0 !important;
 }
-.table > tbody > tr > td, 
-.table > tbody > tr > th, 
-.table > tfoot > tr > td, 
-.table > tfoot > tr > th, 
-.table > thead > tr > td, 
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
 .table > thead > tr > th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
 }
-.table > caption+thead > tr:first-child > td, 
-.table > caption+thead > tr:first-child > th, 
-.table > colgroup+thead > tr:first-child > td, 
-.table > colgroup+thead > tr:first-child > th, 
-.table > thead:first-child > tr:first-child > td, 
+.table > caption+thead > tr:first-child > td,
+.table > caption+thead > tr:first-child > th,
+.table > colgroup+thead > tr:first-child > td,
+.table > colgroup+thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > td,
 .table > thead:first-child > tr:first-child > th {
     border-top: 0;
 }
-.table > tbody > tr.danger > td, 
-.table > tbody > tr.danger > th, 
-.table > tbody > tr > td.danger, 
-.table > tbody > tr > th.danger, 
-.table > tfoot > tr.danger > td, 
-.table > tfoot > tr.danger > th, 
-.table > tfoot > tr > td.danger, 
-.table > tfoot > tr > th.danger, 
+.table > tbody > tr.danger > td,
+.table > tbody > tr.danger > th,
+.table > tbody > tr > td.danger,
+.table > tbody > tr > th.danger,
+.table > tfoot > tr.danger > td,
+.table > tfoot > tr.danger > th,
+.table > tfoot > tr > td.danger,
+.table > tfoot > tr > th.danger,
 .table > thead > tr.danger > td,
-.table > thead > tr.danger > th, 
-.table > thead > tr > td.danger, 
+.table > thead > tr.danger > th,
+.table > thead > tr > td.danger,
 .table > thead > tr> th.danger {
     background-color: #F04B46;
     color: #fff;
 }
-.table-hover > tbody > tr.danger:hover > td, 
-.table-hover > tbody > tr.danger:hover > th, 
-.table-hover > tbody > tr:hover > .danger, 
-.table-hover > tbody > tr > td.danger:hover, 
+.table-hover > tbody > tr.danger:hover > td,
+.table-hover > tbody > tr.danger:hover > th,
+.table-hover > tbody > tr:hover > .danger,
+.table-hover > tbody > tr > td.danger:hover,
 .table-hover > tbody > tr > th.danger:hover {
     background-color: #c03c38;
 }
-.table > tbody > tr.info > td, 
-.table > tbody > tr.info > th, 
-.table > tbody > tr > td.info, 
-.table > tbody > tr > th.info, 
-.table > tfoot > tr.info > td, 
-.table > tfoot > tr.info > th, 
-.table > tfoot > tr > td.info, 
-.table > tfoot > tr > th.info, 
-.table > thead > tr.info > td, 
-.table > thead > tr.info > th, 
-.table > thead > tr > td.info, 
+.table > tbody > tr.info > td,
+.table > tbody > tr.info > th,
+.table > tbody > tr > td.info,
+.table > tbody > tr > th.info,
+.table > tfoot > tr.info > td,
+.table > tfoot > tr.info > th,
+.table > tfoot > tr > td.info,
+.table > tfoot > tr > th.info,
+.table > thead > tr.info > td,
+.table > thead > tr.info > th,
+.table > thead > tr > td.info,
 .table > thead > tr > th.info {
     background-color: #38AFD3;
     color: #fff;
 }
-.table-hover > tbody > tr.info:hover > td, 
-.table-hover > tbody > tr.info:hover > th, 
-.table-hover > tbody > tr:hover > .info, 
-.table-hover > tbody > tr > td.info:hover, 
+.table-hover > tbody > tr.info:hover > td,
+.table-hover > tbody > tr.info:hover > th,
+.table-hover > tbody > tr:hover > .info,
+.table-hover > tbody > tr > td.info:hover,
 .table-hover > tbody > tr > th.info:hover {
     background-color: #2d8ca9;
 }
-.table > tbody > tr.success > td, 
-.table > tbody > tr.success > th, 
-.table > tbody > tr > td.success, 
-.table > tbody > tr > th.success, 
-.table > tfoot > tr.success > td, 
-.table > tfoot > tr.success > th, 
-.table > tfoot > tr > td.success, 
-.table > tfoot > tr > th.success, 
-.table > thead > tr.success > td, 
-.table > thead > tr.success > th, 
-.table > thead > tr > td.success, 
+.table > tbody > tr.success > td,
+.table > tbody > tr.success > th,
+.table > tbody > tr > td.success,
+.table > tbody > tr > th.success,
+.table > tfoot > tr.success > td,
+.table > tfoot > tr.success > th,
+.table > tfoot > tr > td.success,
+.table > tfoot > tr > th.success,
+.table > thead > tr.success > td,
+.table > thead > tr.success > th,
+.table > thead > tr > td.success,
 .table > thead > tr > th.success {
     background-color: #65C56F;
     color: #fff;
 }
-.table-hover > tbody > tr.success:hover > td, 
-.table-hover > tbody > tr.success:hover > th, 
-.table-hover > tbody > tr:hover > .success, 
-.table-hover > tbody > tr > td.success:hover, 
+.table-hover > tbody > tr.success:hover > td,
+.table-hover > tbody > tr.success:hover > th,
+.table-hover > tbody > tr:hover > .success,
+.table-hover > tbody > tr > td.success:hover,
 .table-hover > tbody > tr > th.success:hover {
     background-color: #519e59;
 }
-.table > tbody > tr.warning > td, 
-.table > tbody > tr.warning > th, 
-.table > tbody > tr > td.warning, 
-.table > tbody > tr > th.warning, 
-.table > tfoot > tr.warning > td, 
-.table > tfoot > tr.warning > th, 
-.table > tfoot > tr > td.warning, 
-.table > tfoot > tr > th.warning, 
-.table > thead > tr.warning > td, 
-.table > thead > tr.warning > th, 
-.table > thead > tr > td.warning, 
+.table > tbody > tr.warning > td,
+.table > tbody > tr.warning > th,
+.table > tbody > tr > td.warning,
+.table > tbody > tr > th.warning,
+.table > tfoot > tr.warning > td,
+.table > tfoot > tr.warning > th,
+.table > tfoot > tr > td.warning,
+.table > tfoot > tr > th.warning,
+.table > thead > tr.warning > td,
+.table > thead > tr.warning > th,
+.table > thead > tr > td.warning,
 .table > thead > tr > th.warning {
     background-color: #fcaf41;
     color: #fff;
 }
-.table-hover > tbody > tr.warning:hover > td, 
-.table-hover > tbody > tr.warning:hover > th, 
-.table-hover > tbody > tr:hover > .warning, 
-.table-hover > tbody > tr > td.warning:hover, 
+.table-hover > tbody > tr.warning:hover > td,
+.table-hover > tbody > tr.warning:hover > th,
+.table-hover > tbody > tr:hover > .warning,
+.table-hover > tbody > tr > td.warning:hover,
 .table-hover > tbody > tr > th.warning:hover {
     background-color: #ca8c34;
 }
-.table > tbody > tr.active > td, 
-.table > tbody > tr.active > th, 
-.table > tbody > tr > td.active, 
-.table > tbody > tr > th.active, 
-.table > tfoot > tr.active > td, 
-.table > tfoot > tr.active > th, 
-.table > tfoot > tr > td.active, 
-.table > tfoot > tr > th.active, 
-.table > thead > tr.active > td, 
-.table > thead > tr.active > th, 
-.table > thead > tr > td.active, 
+.table > tbody > tr.active > td,
+.table > tbody > tr.active > th,
+.table > tbody > tr > td.active,
+.table > tbody > tr > th.active,
+.table > tfoot > tr.active > td,
+.table > tfoot > tr.active > th,
+.table > tfoot > tr > td.active,
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > thead > tr.active > th,
+.table > thead > tr > td.active,
 .table > thead > tr > th.active {
     background: #888f95;
     color: #fff;
 }
-.table-hover > tbody > tr.active:hover > td, 
-.table-hover > tbody > tr.active:hover > th, 
-.table-hover > tbody > tr:hover > .active, 
-.table-hover > tbody > tr > td.active:hover, 
+.table-hover > tbody > tr.active:hover > td,
+.table-hover > tbody > tr.active:hover > th,
+.table-hover > tbody > tr:hover > .active,
+.table-hover > tbody > tr > td.active:hover,
 .table-hover > tbody > tr > th.active:hover {
     background: #717b85;
 }
@@ -7405,7 +7298,6 @@ table {
     border-color: #bec3c6 !important;
 }
 
-
 /* 8.31 Background Cover Setting */
 
 .bg-cover {
@@ -7434,7 +7326,6 @@ table {
     }
 }
 
-
 /* 8.32 List Inline Setting */
 
 .list-inline {
@@ -7448,7 +7339,6 @@ table {
     padding-right: 5px;
     padding-left: 5px;
 }
-
 
 /* 8.33 Media Setting */
 
@@ -7470,11 +7360,11 @@ table {
     margin-top: 0;
     margin-bottom: 5px;
 }
-.media-left, 
+.media-left,
 .media > .pull-left {
     padding-right: 10px;
 }
-.media-right, 
+.media-right,
 .media > .pull-right {
     padding-left: 10px;
 }
@@ -7490,7 +7380,6 @@ table {
     display: table-cell;
     vertical-align: top;
 }
-
 
 /* 8.34 Nav Setting */
 
@@ -7509,7 +7398,7 @@ table {
 	display: block;
 	padding: 10px 15px;
 }
-.nav > li > a:focus, 
+.nav > li > a:focus,
 .nav > li > a:hover {
 	text-decoration: none;
 }
@@ -7525,14 +7414,11 @@ table {
 	}
 }
 
-
 /* 8.35 Tooltip Setting */
 
 .tooltip {
 	font-size: 12px;
 }
-
-
 
 /* -------------------------------
    9.0 Plugins
@@ -7620,8 +7506,8 @@ table {
     -moz-border-radius: 40px;
     border-radius: 40px;
 }
-.gritter-item-wrapper.gritter-light .gritter-item, 
-.gritter-item-wrapper.gritter-light .gritter-bottom, 
+.gritter-item-wrapper.gritter-light .gritter-item,
+.gritter-item-wrapper.gritter-light .gritter-bottom,
 .gritter-item-wrapper.gritter-light .gritter-top {
     background: url(../img/transparent/black-0.9.png);
     background: rgba(239, 240, 241, 0.95);
@@ -7641,30 +7527,29 @@ table {
     color: #30373e;
 }
 
-
 /* 9.2 Plugin - Parsley Validation Setting */
-			    
-input.parsley-error, 
-select.parsley-error, 
+
+input.parsley-error,
+select.parsley-error,
 textarea.parsley-error {
     border: 2px solid #F04B46 !important;
     background: #fff !important;
     color: #30373F !important;
 }
-input.parsley-error:focus, 
-select.parsley-error:focus, 
+input.parsley-error:focus,
+select.parsley-error:focus,
 textarea.parsley-error:focus {
     border-color: #c03c38 !important;
 }
-input.parsley-success, 
-select.parsley-success, 
+input.parsley-success,
+select.parsley-success,
 textarea.parsley-success {
     border: 2px solid #17B6A4 !important;
     background: #fff !important;
     color: #30373F !important;
 }
-input.parsley-success:focus, 
-select.parsley-success:focus, 
+input.parsley-success:focus,
+select.parsley-success:focus,
 textarea.parsley-success:focus {
     border-color: #129283 !important;
 }
@@ -7684,7 +7569,6 @@ textarea.parsley-success:focus {
 .checkbox .parsley-error + .parsley-errors-list.filled > li {
     margin-top: 3px;
 }
-
 
 /* 9.3 Plugin - DataTables Setting */
 
@@ -7837,7 +7721,6 @@ table.dataTable thead .sorting:after {
     }
 }
 
-
 /* 9.3.1 Plugin - DataTables Extension - Fixed Columns */
 
 table.DTFC_Cloned tr.even {
@@ -7869,31 +7752,28 @@ div.dataTables_scrollHead .table,
     border-bottom: none !important;
 }
 
-
 /* 9.3.2 Plugin - DataTables Extension - Fixed Header */
 
-.FixedHeader_Cloned table.dataTable thead th, 
+.FixedHeader_Cloned table.dataTable thead th,
 .FixedHeader_Cloned table.dataTable thead td {
     padding: 12px 20px 10px;
 }
 
-
 /* 9.3.3 Plugin - DataTables Extension - KeyTable */
 
-table.KeyTable th.focus, 
+table.KeyTable th.focus,
 table.KeyTable td.focus {
     outline: 2px dashed #8a8f94 !important;
     outline-offset: -2px !important;
 }
 
-
 /* 9.3.4 Plugin - DataTables Extension - Responsive */
 
-table.dataTable.dtr-inline.collapsed tbody td:first-child, 
+table.dataTable.dtr-inline.collapsed tbody td:first-child,
 table.dataTable.dtr-inline.collapsed tbody th:first-child {
     padding-left: 50px !important;
 }
-table.dataTable.dtr-inline.collapsed tbody td:first-child:before, 
+table.dataTable.dtr-inline.collapsed tbody td:first-child:before,
 table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
     left: 13px !important;
     height: 18px !important;
@@ -7915,7 +7795,6 @@ table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
 .table-responsive .dataTables_wrapper > .row > [class*="col-"] {
     padding: 0;
 }
-
 
 /* 9.3.5 Plugin - DataTables Extension - Buttons */
 
@@ -7944,7 +7823,6 @@ table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
     }
 }
 
-
 /* 9.3.6 Plugin - DataTables Extension - RowReorder */
 
 table.dt-rowReorder-float {
@@ -7958,17 +7836,15 @@ tr.dt-rowReorder-moving {
     outline-offset: -3px !important;
 }
 
-
 /* 9.3.7 DataTables Extension - KeyTable */
 
-table.dataTable th.focus, 
+table.dataTable th.focus,
 table.dataTable td.focus {
     position: relative;
     z-index: 1000;
     outline: 3px solid #3C454D !important;
     box-shadow: none !important;
 }
-
 
 /* 9.3.8 Plugin - DataTables Extension - AutoFill */
 
@@ -7982,29 +7858,26 @@ div.dt-autofill-list {
     z-index: 1050 !important;
 }
 
-
 /* 9.3.9 Plugin - DataTables Extension - Scroll */
 
 div.DTS div.dataTables_scrollBody {
     background: #fff !important;
 }
 
-
 /* 9.3.10 Plugin - DataTables Extension - Select */
 
-table.dataTable tbody tr.selected, 
-table.dataTable tbody th.selected, 
+table.dataTable tbody tr.selected,
+table.dataTable tbody th.selected,
 table.dataTable tbody td.selected,
-table.dataTable tbody tr.selected a, 
-table.dataTable tbody th.selected a, 
+table.dataTable tbody tr.selected a,
+table.dataTable tbody th.selected a,
 table.dataTable tbody td.selected a {
     color: initial !important;
 }
-table.dataTable tbody > tr.selected, 
+table.dataTable tbody > tr.selected,
 table.dataTable tbody > tr > .selected {
     background: #ffc !important;
 }
-
 
 /* 9.4 Plugin - Vector Map Setting */
 
@@ -8057,7 +7930,6 @@ table.dataTable tbody > tr > .selected {
     position: relative;
 }
 
-
 /* 9.5 Plugin - Flot Chart Setting */
 
 .legend > div {
@@ -8098,9 +7970,8 @@ table.dataTable tbody > tr > .selected {
     z-index: 10000 !important;
 }
 
-
 /* 9.6 Plugin - Slimscroll Setting */
-		    
+
 .slimScrollBar {
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
@@ -8119,7 +7990,6 @@ table.dataTable tbody > tr > .selected {
 	border-radius: 10px;
 	background: #000;
 }
-
 
 /* 9.7 Plugin - Datetimepicker Setting */
 
@@ -8140,7 +8010,7 @@ body .bootstrap-datetimepicker-widget .picker-switcher {
 	width: 100% !important;
 }
 body .bootstrap-datetimepicker-widget .datepicker > div {
-	display: block;	
+	display: block;
 }
 body .bootstrap-datetimepicker-widget.dropdown-menu {
     width: 320px;
@@ -8185,9 +8055,9 @@ body .bootstrap-datetimepicker-widget table td span {
 body .bootstrap-datetimepicker-widget table td .btn span {
 	background: none;
 }
-body .bootstrap-datetimepicker-widget table td.day:hover, 
-body .bootstrap-datetimepicker-widget table td.hour:hover, 
-body .bootstrap-datetimepicker-widget table td.minute:hover, 
+body .bootstrap-datetimepicker-widget table td.day:hover,
+body .bootstrap-datetimepicker-widget table td.hour:hover,
+body .bootstrap-datetimepicker-widget table td.minute:hover,
 body .bootstrap-datetimepicker-widget table td.second:hover {
     background: #ebeced;
 }
@@ -8213,65 +8083,65 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     line-height: 15px;
     padding-top: 5px;
 }
-.datepicker table tr td.active:hover, 
-.datepicker table tr td.active:hover:hover, 
-.datepicker table tr td.active.disabled:hover, 
-.datepicker table tr td.active.disabled:hover:hover, 
-.datepicker table tr td.active:focus, 
-.datepicker table tr td.active:hover:focus, 
-.datepicker table tr td.active.disabled:focus, 
-.datepicker table tr td.active.disabled:hover:focus, 
-.datepicker table tr td.active:active, 
-.datepicker table tr td.active:hover:active, 
-.datepicker table tr td.active.disabled:active, 
-.datepicker table tr td.active.disabled:hover:active, 
-.datepicker table tr td.active.active, 
-.datepicker table tr td.active:hover.active, 
-.datepicker table tr td.active.disabled.active, 
-.datepicker table tr td.active.disabled:hover.active, 
-.open .dropdown-toggle.datepicker table tr td.active, 
-.open .dropdown-toggle.datepicker table tr td.active:hover, 
-.open .dropdown-toggle.datepicker table tr td.active.disabled, 
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active:hover:hover,
+.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active.disabled:hover:hover,
+.datepicker table tr td.active:focus,
+.datepicker table tr td.active:hover:focus,
+.datepicker table tr td.active.disabled:focus,
+.datepicker table tr td.active.disabled:hover:focus,
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active,
+.open .dropdown-toggle.datepicker table tr td.active,
+.open .dropdown-toggle.datepicker table tr td.active:hover,
+.open .dropdown-toggle.datepicker table tr td.active.disabled,
 .open .dropdown-toggle.datepicker table tr td.active.disabled:hover,
-.datepicker table tr td span.active:hover, 
-.datepicker table tr td span.active:hover:hover, 
-.datepicker table tr td span.active.disabled:hover, 
-.datepicker table tr td span.active.disabled:hover:hover, 
-.datepicker table tr td span.active:focus, 
-.datepicker table tr td span.active:hover:focus, 
-.datepicker table tr td span.active.disabled:focus, 
-.datepicker table tr td span.active.disabled:hover:focus, 
-.datepicker table tr td span.active:active, 
-.datepicker table tr td span.active:hover:active, 
-.datepicker table tr td span.active.disabled:active, 
-.datepicker table tr td span.active.disabled:hover:active, 
-.datepicker table tr td span.active.active, 
-.datepicker table tr td span.active:hover.active, 
-.datepicker table tr td span.active.disabled.active, 
-.datepicker table tr td span.active.disabled:hover.active, 
-.open .dropdown-toggle.datepicker table tr td span.active, 
-.open .dropdown-toggle.datepicker table tr td span.active:hover, 
-.open .dropdown-toggle.datepicker table tr td span.active.disabled, 
+.datepicker table tr td span.active:hover,
+.datepicker table tr td span.active:hover:hover,
+.datepicker table tr td span.active.disabled:hover,
+.datepicker table tr td span.active.disabled:hover:hover,
+.datepicker table tr td span.active:focus,
+.datepicker table tr td span.active:hover:focus,
+.datepicker table tr td span.active.disabled:focus,
+.datepicker table tr td span.active.disabled:hover:focus,
+.datepicker table tr td span.active:active,
+.datepicker table tr td span.active:hover:active,
+.datepicker table tr td span.active.disabled:active,
+.datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active.disabled.active,
+.datepicker table tr td span.active.disabled:hover.active,
+.open .dropdown-toggle.datepicker table tr td span.active,
+.open .dropdown-toggle.datepicker table tr td span.active:hover,
+.open .dropdown-toggle.datepicker table tr td span.active.disabled,
 .open .dropdown-toggle.datepicker table tr td span.active.disabled:hover,
-.datepicker table tr td span.active:hover, 
-.datepicker table tr td span.active:hover:hover, 
-.datepicker table tr td span.active.disabled:hover, 
-.datepicker table tr td span.active.disabled:hover:hover, 
-.datepicker table tr td span.active:focus, 
-.datepicker table tr td span.active:hover:focus, 
-.datepicker table tr td span.active.disabled:focus, 
-.datepicker table tr td span.active.disabled:hover:focus, 
-.datepicker table tr td span.active:active, 
-.datepicker table tr td span.active:hover:active, 
-.datepicker table tr td span.active.disabled:active, 
-.datepicker table tr td span.active.disabled:hover:active, 
-.datepicker table tr td span.active.active, 
-.datepicker table tr td span.active:hover.active, 
-.datepicker table tr td span.active.disabled.active, 
-.datepicker table tr td span.active.disabled:hover.active, 
-.open .dropdown-toggle.datepicker table tr td span.active, 
-.open .dropdown-toggle.datepicker table tr td span.active:hover, 
-.open .dropdown-toggle.datepicker table tr td span.active.disabled, 
+.datepicker table tr td span.active:hover,
+.datepicker table tr td span.active:hover:hover,
+.datepicker table tr td span.active.disabled:hover,
+.datepicker table tr td span.active.disabled:hover:hover,
+.datepicker table tr td span.active:focus,
+.datepicker table tr td span.active:hover:focus,
+.datepicker table tr td span.active.disabled:focus,
+.datepicker table tr td span.active.disabled:hover:focus,
+.datepicker table tr td span.active:active,
+.datepicker table tr td span.active:hover:active,
+.datepicker table tr td span.active.disabled:active,
+.datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active.disabled.active,
+.datepicker table tr td span.active.disabled:hover.active,
+.open .dropdown-toggle.datepicker table tr td span.active,
+.open .dropdown-toggle.datepicker table tr td span.active:hover,
+.open .dropdown-toggle.datepicker table tr td span.active.disabled,
 .open .dropdown-toggle.datepicker table tr td span.active.disabled:hover {
     background: #2184DA !important;
     border-color: #2184DA !important;
@@ -8306,9 +8176,9 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
 .timepicker-picker .table-condensed .btn span:focus {
     background: #ebeced !important;
 }
-.datepicker table tr td.today, 
-.datepicker table tr td.today:hover, 
-.datepicker table tr td.today.disabled, 
+.datepicker table tr td.today,
+.datepicker table tr td.today:hover,
+.datepicker table tr td.today.disabled,
 .datepicker table tr td.today.disabled:hover {
     background: #FFE2BA !important;
 }
@@ -8371,19 +8241,18 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     padding: 0 !important;
 }
 
-
 /* 9.8 Plugin - DateRange Picker Setting */
 
 .daterangepicker .ranges li {
     color: #30373e;
 }
-.daterangepicker .ranges li.active, 
+.daterangepicker .ranges li.active,
 .daterangepicker .ranges li:hover {
     background: #3C454D !important;
     border-color: #3C454D !important;
     color: #fff;
 }
-.daterangepicker td.active, 
+.daterangepicker td.active,
 .daterangepicker td.active:hover {
     background: #2184DA !important;
 }
@@ -8401,7 +8270,7 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     box-shadow: none !important;
     outline: none !important;
 }
-.daterangepicker .calendar th, 
+.daterangepicker .calendar th,
 .daterangepicker .calendar td {
     font-family: inherit !important;
 }
@@ -8427,7 +8296,6 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     }
 }
 
-
 /* 9.9 Colorpicker Setting */
 
 .colorpicker {
@@ -8444,7 +8312,6 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     float: left;
     width: 100%;
 }
-
 
 /* 9.10 Plugin - Timepicker Setting */
 
@@ -8540,7 +8407,6 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
 .bootstrap-timepicker-widget .glyphicon.glyphicon-chevron-down:before {
 	content: '\f078';
 }
-
 
 /* 9.11 Plugin - Select2 Setting */
 
@@ -8638,9 +8504,9 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
 }
 .select2.select2-container:focus,
 .select2 span:focus,
-.select2-container--default.select2-container--open.select2-container--below .select2-selection--single, 
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple,
-.select2-container--default.select2-container--open.select2-container--above .select2-selection--single, 
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--single,
 .select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple {
     outline: none !important;
     border-color: #8d9aa5 !important;
@@ -8672,7 +8538,6 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     color: #fff !important;
 }
 
-
 /* 9.12 Plugin - Datepicker Setting */
 
 .datepicker-inline,
@@ -8698,7 +8563,6 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     text-shadow: none !important;
     padding: 5px 10px !important;
 }
-
 
 /* 9.13 Plugin - Ionrangeslider Setting */
 
@@ -8772,7 +8636,6 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
 	background: #8d9aa5 !important;
 }
 
-
 /* 9.14 Plugin - Autocomplete Setting */
 
 .ui-widget-content.ui-autocomplete {
@@ -8792,11 +8655,11 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     padding: 6px 12px;
     line-height: 18px;
 }
-.ui-state-hover, 
-.ui-widget-content .ui-state-hover, 
-.ui-widget-header .ui-state-hover, 
-.ui-state-focus, 
-.ui-widget-content .ui-state-focus, 
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus,
 .ui-state-active {
     border: none !important;
@@ -8808,7 +8671,6 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     -moz-border-radius: 0;
     border-radius: 0;
 }
-
 
 /* 9.15 Plugin - Strength JS Setting */
 
@@ -8843,14 +8705,12 @@ body .bootstrap-datetimepicker-widget .datepicker-decades span.decade {
     color: #30373e;
 }
 
-
 /* 9.16 Plugin - Bootstrap Select Setting */
 
-.bootstrap-select.btn-group:not(.input-group-btn), 
+.bootstrap-select.btn-group:not(.input-group-btn),
 .bootstrap-select.btn-group[class*="span"] {
     margin-bottom: 0 !important;
 }
-
 
 /* 9.17 Plugin - jQuery TagIt Setting */
 
@@ -8903,7 +8763,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     font-size: 10px;
     color: #fff;
 }
-
 
 /* 9.18 Plugin - Powerange Slider Setting */
 
@@ -8966,7 +8825,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .slider-wrapper.slider-grey .range-quantity {
     background: #8a8f94;
 }
-
 
 /* 9.19 Plugin - Bootstrap Wizard Setting */
 
@@ -9173,7 +9031,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     }
 }
 
-
 /* 9.20 Plugin - SummerNote Setting */
 
 .note-editor {
@@ -9202,7 +9059,7 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     -webkit-box-shadow: 0 1px #5e5e5f;
     box-shadow: 0 1px #5e5e5f;
 }
-.note-popover .popover .popover-content, 
+.note-popover .popover .popover-content,
 .panel-heading.note-toolbar {
     padding: 10px 20px 15px !important;
 }
@@ -9218,7 +9075,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     padding: 20px !important;
 }
 
-
 /* 9.21 Plugin - Morris Chart Setting */
 
 .morris-hover.morris-default-style {
@@ -9231,7 +9087,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     -moz-border-radius: 5px !important;
     border-radius: 5px !important;
 }
-
 
 /* 9.22 Plugin - Fullcalendar Setting */
 
@@ -9286,11 +9141,11 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .fullcalendar .fullcalendar-container .fc-view-container {
     margin: 0 -20px -20px;
 }
-.fullcalendar .fullcalendar-container .fc td:first-child, 
+.fullcalendar .fullcalendar-container .fc td:first-child,
 .fullcalendar .fullcalendar-container .fc th:first-child {
     border-left: none !important;
 }
-.fullcalendar .fullcalendar-container .fc td:last-child, 
+.fullcalendar .fullcalendar-container .fc td:last-child,
 .fullcalendar .fullcalendar-container .fc th:last-child {
     border-right: none !important;
 }
@@ -9317,7 +9172,7 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     font-weight: 300;
     font-size: 24px;
 }
-.fullcalendar .fc-basic-view td.fc-day-number, 
+.fullcalendar .fc-basic-view td.fc-day-number,
 .fullcalendar .fc-basic-view td.fc-week-number span {
     padding-right: 10px;
     padding-top: 5px;
@@ -9364,7 +9219,7 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .fullcalendar .fc-view-container .fc-time-grid-container .fc-event:focus {
     margin: 5px -1px 4px 1px;
 }
-.fullcalendar .fc-ltr .fc-h-event.fc-not-start, 
+.fullcalendar .fc-ltr .fc-h-event.fc-not-start,
 .fullcalendar .fc-rtl .fc-h-event.fc-not-end {
     margin-left: 0 !important;
     padding-left: 5px;
@@ -9373,7 +9228,7 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .fullcalendar .fc-unthemed .fc-today {
     background: #FFFDF3;
 }
-.fullcalendar .fc-unthemed .fc-divider, 
+.fullcalendar .fc-unthemed .fc-divider,
 .fullcalendar .fc-unthemed .fc-popover .fc-header {
     background: #8a8f94;
     color: #fff;
@@ -9384,17 +9239,17 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 }
 .fullcalendar .fc-ltr .fc-time-grid .fc-event-container {
     margin: 0px 5px 0px 3px;
-} 
+}
 .fullcalendar .fc-scroller,
 .fullcalendar .fc-time-grid-container {
     height: auto !important;
 }
-.fullcalendar .fc-row .fc-content-skeleton td, 
+.fullcalendar .fc-row .fc-content-skeleton td,
 .fullcalendar .fc-row .fc-helper-skeleton td {
     border-color: #ddd;
 }
-.fc-view-container .fc-event, 
-.fc-view-container .fc-event:hover, 
+.fc-view-container .fc-event,
+.fc-view-container .fc-event:hover,
 .fc-view-container .ui-widget .fc-event {
     color: #fff !important;
     text-decoration: none;
@@ -9444,7 +9299,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     }
 }
 
-
 /* 9.23 Plugin - Sparkline Setting */
 
 .jqstooltip {
@@ -9454,7 +9308,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     width: auto !important;
     height: auto !important;
 }
-
 
 /* 9.24 Plugin - jQuery Vector Map Setting */
 
@@ -9478,7 +9331,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     padding: 3px 6px !important;
 }
 
-
 /* 9.25 Plugin - Combobox Setting */
 
 .combobox-container .input-group-addon {
@@ -9489,7 +9341,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .combobox-container .glyphicon-remove:before {
 	content: '\f00d';
 }
-
 
 /* 9.26 Plugin - Bootstrap Select Setting */
 
@@ -9503,8 +9354,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .bootstrap-select .btn.btn-white {
 	color: #30373e !important;
 }
-
-
 
 /* -------------------------------
    10.0 Pages
@@ -9567,7 +9416,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     margin-right: 10px;
     float: left;
 }
-
 
 /* 10.2 Page - Coming Soon Setting */
 
@@ -9698,7 +9546,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     }
 }
 
-
 /* 10.3 Page - Gallery Setting */
 
 .gallery-list {
@@ -9799,7 +9646,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     border-color: #30373e;
 }
 
-
 /* 10.4 Page - Invoice Setting */
 
 .invoice {
@@ -9895,10 +9741,9 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     }
 }
 
-
 /* 10.5 Page - Login & Register Setting */
 
-.register, 
+.register,
 .login {
     width: 420px;
     display: block;
@@ -9948,7 +9793,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
         border-radius: 0;
     }
 }
-
 
 /* 10.6 Page - Search Result Setting */
 
@@ -10085,7 +9929,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
         bottom: -2px;
     }
 }
-
 
 /* 10.7 Page - Timeline Setting */
 
@@ -10258,7 +10101,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     }
     .timeline-content .timeline-main-image img,
     .timeline-content .timeline-sub-image img {
-        
     }
 }
 @media (max-width: 767px) {
@@ -10293,9 +10135,7 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     }
 }
 
-
 /* 10.8 Page - Email Inbox Setting */
-
 
 .mail-box {
     position: relative;
@@ -10386,7 +10226,7 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .mail-box-header {
     padding: 15px 25px 0;
 }
-.mail-box-mobile-toggler { 
+.mail-box-mobile-toggler {
     display: none;
 }
 .mail-box-content {
@@ -10511,7 +10351,7 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     .mail-box-container > div {
         height: auto !important;
     }
-    
+
     .email-sidebar.dropdown-menu {
         height: auto !important;
         left: 50px;
@@ -10540,10 +10380,10 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
         padding: 0 !important;
         border: none !important;
     }
-    .table-email .email-checkbox a, 
-    .table-email .email-sender a, 
-    .table-email .email-message a, 
-    .table-email .email-attachment a, 
+    .table-email .email-checkbox a,
+    .table-email .email-sender a,
+    .table-email .email-message a,
+    .table-email .email-attachment a,
     .table-email .email-date a {
         margin: 0 !important;
         padding: 12px 0 !important;
@@ -10580,7 +10420,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
         top: 0;
     }
 }
-
 
 /* 10.9 Page - Email Detail Setting */
 
@@ -10666,7 +10505,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     background: rgba(0,0,0,0.1);
 }
 
-
 /* 10.10 Page - Email Compose Setting */
 
 .mail-to-box,
@@ -10709,8 +10547,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
         border-top: 1px solid #ebeced;
     }
 }
-
-
 
 /* -------------------------------
    11.0 Widgets
@@ -10780,7 +10616,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     position: relative;
 }
 
-
 /* 11.2 Widget - Loader Setting */
 
 .widget-loader {
@@ -10797,7 +10632,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     border-radius: 4px;
     color: #30373e;
 }
-
 
 /* 11.3 Widget - Stat Setting */
 
@@ -10907,7 +10741,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     position: relative;
 }
 
-
 /* 11.4 Widget - Blog Setting */
 
 .widget.widget-blog {
@@ -10928,11 +10761,11 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     max-width: 100%;
     min-height: 100%;
 }
-.animation-grow-hover { 
-    transition: all .1s ease-in-out; 
+.animation-grow-hover {
+    transition: all .1s ease-in-out;
 }
-.animation-grow-hover:hover { 
-    transform: scale(1.1); 
+.animation-grow-hover:hover {
+    transform: scale(1.1);
 }
 .widget-blog-author {
     margin: 0px;
@@ -10965,15 +10798,14 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     margin: 0;
 }
 .widget-blog .widget-blog-cover img {
-    transition: all .1s ease-in-out; 
+    transition: all .1s ease-in-out;
 }
-.widget-blog:hover .widget-blog-cover img { 
+.widget-blog:hover .widget-blog-cover img {
     max-width: 110%;
     min-height: 110%;
     margin-left: -5%;
     margin-top: -5%;
 }
-
 
 /* 11.5 Widget - Gallery List Setting */
 
@@ -11050,12 +10882,12 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     right: 50%;
     bottom: 50%;
     left: 50%;
-    transition: all .2s ease-in-out; 
+    transition: all .2s ease-in-out;
     background: transparent;
     z-index: 1020;
     border-radius: 50%;
 }
-.widget-gallery-list > li:hover a:before { 
+.widget-gallery-list > li:hover a:before {
     content: '';
     left: 0;
     right: 0;
@@ -11071,7 +10903,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #8a8f94;
     text-decoration: none;
 }
-
 
 /* 11.6 Widget - Image Setting */
 
@@ -11105,9 +10936,9 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     max-width: 100%;
 }
 .widget-image .widget-image-cover img {
-    transition: all .1s ease-in-out; 
+    transition: all .1s ease-in-out;
 }
-.widget-image:hover .widget-image-cover img { 
+.widget-image:hover .widget-image-cover img {
     max-width: 110%;
     min-height: 110%;
     margin-left: -5%;
@@ -11171,7 +11002,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #fcaf41;
 }
 
-
 /* 11.7 Widget - Chart Setting */
 
 .widget-chart-placeholder {
@@ -11198,7 +11028,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     left: 0;
     top: 5px;
 }
-
 
 /* 11.8 Widget - Chat History Setting */
 
@@ -11450,7 +11279,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     }
 }
 
-
 /* 11.9 Widget - Todolist Setting */
 
 .widget-todolist-header-title {
@@ -11537,7 +11365,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #bcbdbe;
 }
 
-
 /* 11.10 Widget - Task List Setting */
 
 .widget-task-list {
@@ -11572,7 +11399,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .widget-body .widget-task-list {
     margin: 0;
 }
-
 
 /* 11.11 Widget - Theme Panel Setting */
 
@@ -11675,8 +11501,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     background: rgba(0,0,0,0.5);
 }
 
-
-
 /* -------------------------------
    12.0 Update - v1.1
 ------------------------------- */
@@ -11718,14 +11542,13 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     background: #fff;
 }
 
-
 /* 12.2 Panel - Option */
 
 .panel-option {
-    padding: 15px; 
-    background: #edeff0; 
-    font-size: 12px; 
-    font-weight: bold; 
+    padding: 15px;
+    background: #edeff0;
+    font-size: 12px;
+    font-weight: bold;
 }
 .panel-option .btn {
     margin-top: -6px;
@@ -11733,7 +11556,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .panel-body .panel-option {
     margin: -20px -20px 20px;
 }
-
 
 /* 12.3 Plugins - Chart JS Custom Tooltip */
 
@@ -11779,7 +11601,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     margin-top: -50px;
 }
 
-
 /* 12.4 Chart Summary Setting */
 
 .chart-summary-container:before,
@@ -11789,8 +11610,8 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     clear: both;
 }
 .chart-summary-container .chart-title {
-    font-size: 12px; 
-    font-weight: 600; 
+    font-size: 12px;
+    font-weight: 600;
     margin-bottom: 15px;
     padding-bottom: 5px;
     border-bottom: 2px solid #ebeced;
@@ -11829,7 +11650,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .chart-summary-container .chart-summary + .chart-summary {
     margin-top: 10px;
 }
-
 
 /* 12.5 Feeds Setting */
 
@@ -11878,7 +11698,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #8a8f94;
     font-size: 12px;
 }
-
 
 /* 12.6 Chats Setting */
 
@@ -11953,7 +11772,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     opacity: 0.7;
 }
 
-
 /* 12.7 Project Summary Setting */
 
 .project-summary {
@@ -12025,7 +11843,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     border-radius: 40px;
 }
 
-
 /* 12.8 Sidebar Highlight Theme - Purple */
 
 .sidebar.sidebar-highlight-purple .label.label-theme,
@@ -12042,7 +11859,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .sidebar.sidebar-highlight-purple .nav > li.active > a > i {
     color: #3e2449;
 }
-
 
 /* 12.9 Sidebar Highlight Theme - Primary */
 
@@ -12061,7 +11877,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #231d48;
 }
 
-
 /* 12.10 Sidebar Highlight Theme - Info */
 
 .sidebar.sidebar-highlight-info .label.label-theme,
@@ -12078,7 +11893,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .sidebar.sidebar-highlight-info .nav > li.active > a > i {
     color: #164654;
 }
-
 
 /* 12.11 Sidebar Highlight Theme - Lime */
 
@@ -12097,7 +11911,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #284f2c;
 }
 
-
 /* 12.12 Sidebar Highlight Theme - Warning */
 
 .sidebar.sidebar-highlight-warning .label.label-theme,
@@ -12114,7 +11927,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .sidebar.sidebar-highlight-warning .nav > li.active > a > i {
     color: #65461a;
 }
-
 
 /* 12.13 Sidebar Highlight Theme - Danger */
 
@@ -12133,7 +11945,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #601e1c;
 }
 
-
 /* 12.14 Sidebar Highlight Theme - Grey */
 
 .sidebar.sidebar-highlight-grey .label.label-theme,
@@ -12150,7 +11961,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
 .sidebar.sidebar-highlight-grey .nav > li.active > a > i {
     color: #44484a;
 }
-
 
 /* 12.15 Sidebar Highlight Theme - Light */
 
@@ -12171,7 +11981,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #fff;
 }
 
-
 /* 12.16 Sidebar Highlight Theme - Inverse */
 
 .sidebar.sidebar-highlight-inverse .label.label-theme,
@@ -12191,8 +12000,6 @@ ul.tagit .ui-state-default .ui-icon.ui-icon-close:focus {
     color: #fff;
 }
 
-
-
 /* -------------------------------
    13.0 Update - v1.2
 ------------------------------- */
@@ -12203,13 +12010,11 @@ body.font-open-sans {
     font-family: 'Open Sans', sans-serif;
 }
 
-
 /* 13.2 Font Family - Roboto  */
 
 body.font-roboto {
     font-family: 'Roboto', sans-serif;
 }
-
 
 /* 13.3 Font Family - Lato  */
 
@@ -12217,23 +12022,17 @@ body.font-lato {
     font-family: 'Lato', sans-serif;
 }
 
-
 /* 13.4 Font Family - Helvetica, Arial  */
 
 body.font-helvetica-arial {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-
 /* 13.5 Font Family - Nunito  */
 
 body.font-nunito {
     font-family: 'Nunito', sans-serif;
 }
-
-
-
-
 
 /* -------------------------------
    14.0 Update - v1.4
@@ -12452,11 +12251,11 @@ body.font-nunito {
     display: block;
     padding: .5rem 1rem;
 }
-.card .nav-tabs .nav-link:focus, 
+.card .nav-tabs .nav-link:focus,
 .card .nav-tabs .nav-link:hover {
     border-color: #e9ecef #e9ecef #ddd;
 }
-.card .nav-tabs .nav-item.show .nav-link, 
+.card .nav-tabs .nav-item.show .nav-link,
 .card .nav-tabs .nav-link.active {
     color: #495057;
     background-color: #fff;
@@ -12474,7 +12273,7 @@ body.font-nunito {
     color: #868e96;
     background: none !important;
 }
-.card .nav-pills .nav-link.active, 
+.card .nav-pills .nav-link.active,
 .card .show > .nav-pills .nav-link {
     color: #fff;
     background-color: #007bff;

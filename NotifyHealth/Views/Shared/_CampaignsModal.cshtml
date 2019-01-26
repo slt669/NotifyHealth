@@ -15,8 +15,6 @@
         @Html.ValidationSummary("", htmlAttributes: new { @class = "col-sm-12 form-control-label" })
     </span>
 
-
-
     <div class="form-group row">
         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
@@ -24,14 +22,12 @@
         </div>
     </div>
 
-
     <div class="form-group row">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
             @Html.TextBoxFor(model => model.Description, new { @class = "col-sm-12 form-control" })
         </div>
     </div>
-
 
     <div class="form-group row">
         @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
@@ -48,5 +44,3 @@
         </div>
     </div>
 </div>
-
-

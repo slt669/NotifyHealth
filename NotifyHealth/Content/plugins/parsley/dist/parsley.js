@@ -474,7 +474,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     requirementType: 'string',
 
     priority: 2
-
   };
 
   var ValidatorRegistry = function ValidatorRegistry(validators, catalog) {
@@ -853,7 +852,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   };
 
   UI.Form = {
-
     _actualizeTriggers: function _actualizeTriggers() {
       var _this2 = this;
 
@@ -892,11 +890,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       // Reset all event listeners
       this.$element.off('.Parsley');
     }
-
   };
 
   UI.Field = {
-
     _reflowUI: function _reflowUI() {
       this._buildUI();
 
@@ -1435,7 +1431,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     _trigger: function _trigger(eventName) {
       return this.trigger('form:' + eventName);
     }
-
   };
 
   var Constraint = function Constraint(parsleyField, name, requirements, priority, isDomConstraint) {
@@ -1710,7 +1705,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     * @param {Boolean}  isDomConstraint   optional
     */
     addConstraint: function addConstraint(name, requirements, priority, isDomConstraint) {
-
       if (window.Parsley._validatorRegistry.validators[name]) {
         var constraint = new Constraint(this, name, requirements, priority, isDomConstraint);
 
@@ -1863,7 +1857,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
       return groupedConstraints;
     }
-
   };
 
   var parsley_field = Field;
@@ -1895,7 +1888,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
       // Gather all constraints for each input in the multiple group
       for (var i = 0; i < this.$elements.length; i++) {
-
         // Check if element have not been dynamically removed since last binding
         if (!$('html').has(this.$elements[i]).length) {
           this.$elements.splice(i, 1);
@@ -1953,7 +1945,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     // If the element has already been bound, returns its saved Parsley instance
     var savedparsleyFormInstance = this.$element.data('Parsley');
     if (savedparsleyFormInstance) {
-
       // If the saved instance has been bound without a Form parent and there is one given in this call, add it
       if ('undefined' !== typeof parsleyFormInstance && savedparsleyFormInstance.parent === window.Parsley) {
         savedparsleyFormInstance.parent = parsleyFormInstance;
@@ -2036,7 +2027,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       for (var i = 0; i < $previouslyRelated.length; i++) {
         parsleyMultipleInstance = $($previouslyRelated.get(i)).data('Parsley');
         if ('undefined' !== typeof parsleyMultipleInstance) {
-
           if (!this.$element.data('FieldMultiple')) {
             parsleyMultipleInstance.addElement(this.$element);
           }
@@ -2319,7 +2309,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
       return this;
     }
-
   });
 
   Parsley.addValidator('remote', {
@@ -2435,7 +2424,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     // Slightly odd way construct our object. This way methods are force bound.
     // Used to test for duplicate library.
     _extends(this, {
-
       // For browsers that do not support isTrusted, assumes event is native.
       isNativeEvent: function isNativeEvent(evt) {
         return evt.originalEvent && evt.originalEvent.isTrusted !== false;
@@ -2479,7 +2467,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         delete globals.inputEventPatched;
         $(document).off('.inputevent');
       }
-
     });
   };
 

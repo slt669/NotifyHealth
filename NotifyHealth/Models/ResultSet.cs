@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NotifyHealth.Models;
 using System.Web.UI.WebControls;
-
 
 namespace NotifyHealth.Models
 {
     public class ResultSet
-    {      
+    {
         /// <summary>
         /// SPeed
         /// </summary>
@@ -44,8 +42,8 @@ namespace NotifyHealth.Models
             //    || p.Web != null && p.Web.ToLower().Contains(search.ToLower()) || p.Company != null && p.Company.ToLower().Contains(search.ToLower()) || p.QuoteType != null && p.QuoteType.ToLower().Contains(search.ToLower())
             //        || p.ValidUntil != null && p.ValidUntil.ToString().Contains(search.ToLower()
             //}
-
         }
+
         /// <summary>
         /// Campaigns
         /// </summary>
@@ -82,8 +80,8 @@ namespace NotifyHealth.Models
             //    || p.Web != null && p.Web.ToLower().Contains(search.ToLower()) || p.Company != null && p.Company.ToLower().Contains(search.ToLower()) || p.QuoteType != null && p.QuoteType.ToLower().Contains(search.ToLower())
             //        || p.ValidUntil != null && p.ValidUntil.ToString().Contains(search.ToLower()
             //}
-
         }
+
         /// <summary>
         /// Notifications
         /// </summary>
@@ -120,8 +118,8 @@ namespace NotifyHealth.Models
             //    || p.Web != null && p.Web.ToLower().Contains(search.ToLower()) || p.Company != null && p.Company.ToLower().Contains(search.ToLower()) || p.QuoteType != null && p.QuoteType.ToLower().Contains(search.ToLower())
             //        || p.ValidUntil != null && p.ValidUntil.ToString().Contains(search.ToLower()
             //}
-
         }
+
         /// <summary>
         /// Clients
         /// </summary>
@@ -158,8 +156,8 @@ namespace NotifyHealth.Models
             //    || p.Web != null && p.Web.ToLower().Contains(search.ToLower()) || p.Company != null && p.Company.ToLower().Contains(search.ToLower()) || p.QuoteType != null && p.QuoteType.ToLower().Contains(search.ToLower())
             //        || p.ValidUntil != null && p.ValidUntil.ToString().Contains(search.ToLower()
             //}
-
         }
+
         /// <summary>
         /// Clients
         /// </summary>
@@ -196,8 +194,8 @@ namespace NotifyHealth.Models
             //    || p.Web != null && p.Web.ToLower().Contains(search.ToLower()) || p.Company != null && p.Company.ToLower().Contains(search.ToLower()) || p.QuoteType != null && p.QuoteType.ToLower().Contains(search.ToLower())
             //        || p.ValidUntil != null && p.ValidUntil.ToString().Contains(search.ToLower()
             //}
-
         }
+
         /// <summary>
         /// Clients
         /// </summary>
@@ -222,7 +220,6 @@ namespace NotifyHealth.Models
             results = results.Where(p => (search == null || (p.ClientId.ToString().Contains(search.ToLower()) || p.ClientId != null && p.ClientId.ToString().Contains(search.ToLower())))
                 && (columnFilters[0] == null || (p.Notification != null && p.Notification.ToString().Contains(columnFilters[0].ToLower()))));
             return results;
-
         }
     }
 }

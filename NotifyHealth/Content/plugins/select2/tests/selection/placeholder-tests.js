@@ -44,7 +44,6 @@ test('normalizing placeholder gives object for string', function (assert) {
   assert.equal(normalized.text, 'placeholder');
 });
 
-
 test('text is shown for placeholder option on single', function (assert) {
   var selection = new SinglePlaceholder(
     $('#qunit-fixture .single'),

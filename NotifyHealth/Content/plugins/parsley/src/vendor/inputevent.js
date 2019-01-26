@@ -14,7 +14,6 @@ function InputEvent() {
   // Slightly odd way construct our object. This way methods are force bound.
   // Used to test for duplicate library.
   Object.assign(this, {
-
     // For browsers that do not support isTrusted, assumes event is native.
     isNativeEvent: evt => {
       return evt.originalEvent && evt.originalEvent.isTrusted !== false;
@@ -60,7 +59,6 @@ function InputEvent() {
       delete globals.inputEventPatched;
       $(document).off('.inputevent');
     }
-
   });
 };
 

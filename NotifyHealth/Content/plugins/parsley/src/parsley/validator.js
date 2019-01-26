@@ -37,7 +37,6 @@ Validator.prototype = {
   // Returns `true` iff the given `value` is valid according the given requirements.
   validate: function(value, requirementFirstArg) {
     if (this.fn) { // Legacy style validator
-
       if (arguments.length > 3)  // If more args then value, requirement, instance...
         requirementFirstArg = [].slice.call(arguments, 1, -1);  // Skip first arg (value) and last (instance), combining the rest
       return this.fn(value, requirementFirstArg);
@@ -92,7 +91,6 @@ Validator.prototype = {
   requirementType: 'string',
 
   priority: 2
-
 };
 
 export default Validator;

@@ -39,7 +39,7 @@ $.plot($("#flotContainer"),[
     }, { //original data points
         data: d1,
         points: {show: true}
-    }      
+    }
 ], options);
 
 $.plot($("#flotContainer2"),[
@@ -48,12 +48,10 @@ $.plot($("#flotContainer2"),[
         color: '#CC0000',
         points: {show: true},
         curvedLines: {apply: true}  //<- "curve" points
-     }        
+     }
 ], options);
 });
 </script>
-
-
 </head>
 
 <h3>Demonstration of how CurvedLines creates additional 'Helper Points' to plot line</h3>
@@ -65,6 +63,5 @@ $.plot($("#flotContainer2"),[
 <h4>CurvedLines: internally created helper points</h4>
 <div id="flotContainer2" class="chart-style"></div>
 <a href="index.html">Return to CurvedLines Examples list</a>
-
 </body>
 </html>

@@ -13,15 +13,9 @@
         @using (Ajax.BeginForm("CreatePrograms", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "CreateAssetSuccess", UpdateTargetId = "frmEmp" }, new { @class = "form-horizontal", role = "form" }))
         {
 
-
-
-
             <div class="modal-body" id="frmEmp">
                 @Html.Partial("_ProgramsModal")
             </div>
-
-
-
 
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
@@ -29,6 +23,5 @@
             </div>
 
         }
-
     </div>
 </div>

@@ -5,7 +5,6 @@
  * Licensed under the MIT license
  */
 ;(function ( $, window, document, undefined ) {
-
     var pluginName = "strength",
         defaults = {
             strengthClass: 'strength',
@@ -27,10 +26,7 @@
     }
 
     Plugin.prototype = {
-
         init: function() {
-
-
             var characters = 0;
             var capitalletters = 0;
             var loweletters = 0;
@@ -61,7 +57,6 @@
                 }
 
             function get_total(total,thisid){
-
                 var thismeter = $('div[data-meter="'+thisid+'"]');
                     if (total <= 1) {
                    thismeter.removeClass();
@@ -72,33 +67,26 @@
                 } else if(total == 3){
                     thismeter.removeClass();
                    thismeter.addClass('medium').html('medium');
-
                 } else {
                      thismeter.removeClass();
                    thismeter.addClass('strong').html('strong');
                 }
-                
+
                 if (total == -1) { thismeter.removeClass().html('Strength'); }
             }
-
-
-
-
 
             var isShown = false;
             var strengthButtonText = this.options.strengthButtonText;
             var strengthButtonTextToggle = this.options.strengthButtonTextToggle;
 
-
             thisid = this.$elem.attr('id');
 
             this.$elem.addClass(this.options.strengthClass).attr('data-password',thisid).after('<input style="display:none" class="'+this.options.strengthClass+'" data-password="'+thisid+'" type="text" name="" value=""><a data-password-button="'+thisid+'" href="" class="'+this.options.strengthButtonClass+'">'+this.options.strengthButtonText+'</a><div class="'+this.options.strengthMeterClass+'"><div data-meter="'+thisid+'">Strength</div></div>');
-             
+
             this.$elem.bind('keyup keydown', function(event) {
                 thisval = $('#'+thisid).val();
                 $('input[type="text"][data-password="'+thisid+'"]').val(thisval);
                 check_strength(thisval,thisid);
-                
             });
 
              $('input[type="text"][data-password="'+thisid+'"]').bind('keyup keydown', function(event) {
@@ -106,40 +94,25 @@
                 console.log(thisval);
                 $('input[type="password"][data-password="'+thisid+'"]').val(thisval);
                 check_strength(thisval,thisid);
-                
             });
-
-
 
             $(document.body).on('click', '.'+this.options.strengthButtonClass, function(e) {
                 e.preventDefault();
 
                thisclass = 'hide_'+$(this).attr('class');
 
-
-
-
                 if (isShown) {
                     $('input[type="text"][data-password="'+thisid+'"]').hide();
                     $('input[type="password"][data-password="'+thisid+'"]').show().focus();
                     $('a[data-password-button="'+thisid+'"]').removeClass(thisclass).html(strengthButtonText);
                     isShown = false;
-
                 } else {
                     $('input[type="text"][data-password="'+thisid+'"]').show().focus();
                     $('input[type="password"][data-password="'+thisid+'"]').hide();
                     $('a[data-password-button="'+thisid+'"]').addClass(thisclass).html(strengthButtonTextToggle);
                     isShown = true;
-   
                 }
-
-
-               
             });
-
-
-         
-            
         },
 
         yourOtherFunction: function(el, options) {
@@ -156,7 +129,4 @@
             }
         });
     };
-
 })( jQuery, window, document );
-
-

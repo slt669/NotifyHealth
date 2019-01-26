@@ -5,7 +5,6 @@
 import jQuery from 'jquery'; // Remove this line in ES3
 
 (function ($) {
-
   window.ParsleyConfig = $.extend(true, window.ParsleyConfig, {autoBind: false});
   window.ParsleyExtend = window.ParsleyExtend || {};
 
@@ -47,5 +46,4 @@ import jQuery from 'jquery'; // Remove this line in ES3
       return this;
     }
   });
-
 })(jQuery);

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,12 +13,14 @@ namespace NotifyHealth.Models.ViewModels
 
         [Display(Name = "Logon Name")]
         public string LogonName { get; set; }
+
         public string Organization { get; set; }
 
-
         public string Title { get; set; }
+
         [Required]
         public string Forename { get; set; }
+
         [Required]
         public string Surname { get; set; }
 
@@ -29,11 +29,9 @@ namespace NotifyHealth.Models.ViewModels
         [Display(Name = "Telephone")]
         public string WorkTelephoneNo { get; set; }
 
-
         [Required]
         [Display(Name = "Hint Question")]
         public virtual int HintQuestionID { get; set; }
-
 
         [Display(Name = "Hint Question")]
         public virtual IEnumerable<SelectListItem> HintQuestion { get; set; }
@@ -63,7 +61,6 @@ namespace NotifyHealth.Models.ViewModels
         public string PhotoPath { get; set; }
     }
 
-
     public class PasswordRecoveryGetUserName
     {
         [Required]
@@ -82,5 +79,4 @@ namespace NotifyHealth.Models.ViewModels
         [Display(Name = "Hint Answer")]
         public string HintAnswer { get; set; }
     }
-
 }

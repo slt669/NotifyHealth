@@ -7,7 +7,6 @@
 <h1 class="page-header">Settings</h1>
 <div class="section-container section-with-top-border">
     <p class="m-b-20">
-
     </p>
     @if (@ViewBag.Message != null)
     {
@@ -20,10 +19,6 @@
 
         @using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { id = "asform", enctype = "multipart/form-data" }))
         {
-
-
-
-
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -62,7 +57,6 @@
                         @Html.TextBoxFor(model => model.OldPassword, new { @name = "OldPassword", @type = "password", @class = "col-sm-8 form-control", @disabled = "" })
                         @*<input id="OldPassword" type="password" class="col-sm-8 form-control" value="@Html.DisplayTextFor(model => model.OldPassword)">*@
 
-
                         <div class="input-group-addon">
                             <i toggle="#OldPassword" class="fa fa-fw fa-eye field-icon toggle-3password">
                             </i>
@@ -71,7 +65,6 @@
                 </div>
             </div>
 
-
             <div class="pwd-container">
                 <div class="form-group">
                     @Html.LabelFor(model => model.NewPassword, htmlAttributes: new { @class = "col-sm-2 form-control-label" })
@@ -79,14 +72,12 @@
                         <div class="input-group">
                             <input id="NewPassword" type="password" class="col-sm-8 form-control" name="NewPassword" value="@Html.DisplayTextFor(model => model.NewPassword)">
 
-
                             <div class="input-group-addon">
                                 <i toggle="#NewPassword" class="fa fa-fw fa-eye field-icon toggle-password">
                                 </i>
                             </div>
                         </div>
                         <span class="pwstrength_viewport_verdict"></span>
-
                     </div>
                 </div>
 
@@ -101,11 +92,8 @@
                                 </i>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-
 
                 <div class="form-group">
                     <div class="col-sm-6">
@@ -118,21 +106,11 @@
                         <input type="submit" value="Update Settings" name="updateBtn" id="updateBtn" class="btn btn-success" />
                     </div>
                 </div>
-
             </div>
 
-
-
-
-
         }
-
     </div>
 </div>
-
-
-
-
 
 @*<!-- Modal -->
     <div class="modal fade" id="MessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -144,12 +122,10 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <h4>@TempData["UpdateMessage"]</h4>
-
                 </div>
             </div>
         </div>
     </div>*@
-
 
 <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/pwstrength.js"></script>
@@ -160,13 +136,9 @@
 
                 $("#MessageModal").modal('show');
 
-
             });
         </script>
     }*@
-
-
-
 
 <script>
         var MustChangePwd = '@Model.MustChangePwd';
@@ -197,7 +169,6 @@
             });
             $(".toggle-3password").click(function () {
 
-
                 $(this).toggleClass("field-icon fa-eye-slash");
                 var input = $($(this).attr("toggle"));
                 if (input.attr("type") == "password") {
@@ -209,7 +180,6 @@
 
         $(function () {
             $("#asform")[0].reset();
-
 
             $(document).on('click', ':submit', function (e) {
                 e.preventDefault();
@@ -247,9 +217,3 @@
             //$('#CheckPassword').pwstrength(options);
         });
 </script>
-
-
-
-
-
-

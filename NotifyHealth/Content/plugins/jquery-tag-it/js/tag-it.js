@@ -25,7 +25,6 @@
 *   jQuery UI v1.8+
 */
 (function($) {
-
     $.widget('ui.tagit', {
         options: {
             allowDuplicates   : false,
@@ -93,7 +92,6 @@
 
             onTagClicked        : null,
             onTagLimitExceeded  : null,
-
 
             // DEPRECATED:
             //
@@ -567,7 +565,6 @@
                 tag.remove();
                 this._trigger('afterTagRemoved', null, {tag: tag, tagLabel: this.tagLabel(tag)});
             }
-
         },
 
         removeTagByLabel: function(tagLabel, animate) {
@@ -585,7 +582,5 @@
                 that.removeTag(tag, false);
             });
         }
-
     });
 })(jQuery);
-

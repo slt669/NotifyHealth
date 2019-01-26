@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
 	<style type="text/css" class="init">
-	
+
 td.details-control {
 	background: url('../resources/details_open.png') no-repeat center center;
 	cursor: pointer;
@@ -17,7 +17,6 @@ td.details-control {
 tr.shown td.details-control {
 	background: url('../resources/details_close.png') no-repeat center center;
 }
-
 	</style>
 	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js">
 	</script>
@@ -28,7 +27,6 @@ tr.shown td.details-control {
 	<script type="text/javascript" language="javascript" src="../resources/demo.js">
 	</script>
 	<script type="text/javascript" language="javascript" class="init">
-	
 
 /* Formatting function for row details - modify as you need */
 function format ( d ) {
@@ -66,7 +64,7 @@ $(document).ready(function() {
 		],
 		"order": [[1, 'asc']]
 	} );
-	
+
 	// Add event listener for opening and closing details
 	$('#example tbody').on('click', 'td.details-control', function () {
 		var tr = $(this).closest('tr');
@@ -84,8 +82,6 @@ $(document).ready(function() {
 		}
 	} );
 } );
-
-
 	</script>
 </head>
 <body class="dt-example">
@@ -167,7 +163,7 @@ $(document).ready(function() {
 		],
 		&quot;order&quot;: [[1, 'asc']]
 	} );
-	
+
 	// Add event listener for opening and closing details
 	$('#example tbody').on('click', 'td.details-control', function () {
 		var tr = $(this).closest('tr');

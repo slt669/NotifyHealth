@@ -16,7 +16,6 @@
 </head>
 <h1 class="page-header">Dashboard <small>Welcome back, @Session["UserFullName"].ToString()</small></h1>
 <div class="section-container section-with-top-border">
-
 </div>
 
 <!-- end page-header -->
@@ -97,8 +96,6 @@
             <div id="bar-chart" style="height: 230px"></div>
         </div>
 
-
-
         <!-- end panel -->
     </div>
     <!-- end col-6 -->
@@ -129,12 +126,10 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <h4>@TempData["UpdateMessage"]</h4>
-
             </div>
         </div>
     </div>
 </div>
-
 
 <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/pwstrength.js"></script>
@@ -144,7 +139,6 @@
         $(function () {
 
             $("#MessageModal").modal('show');
-
 
         });
     </script>
@@ -202,9 +196,7 @@
                     },
                     "fnServerParams": function (aoData) {
 
-
                         aoData['organizationID'] = @ViewBag.organizationID;
-
 
                             },
                            "paging": false,

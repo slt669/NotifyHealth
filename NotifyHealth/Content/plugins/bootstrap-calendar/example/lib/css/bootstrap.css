@@ -649,7 +649,6 @@ input:focus, textarea:focus {
   outline: 0;
   outline: thin dotted \9;
   /* IE6-8 */
-
 }
 input[type="file"]:focus, input[type="checkbox"]:focus, select:focus {
   -webkit-box-shadow: none;
@@ -889,7 +888,6 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 .input-prepend .add-on {
   *margin-top: 1px;
   /* IE6-7 */
-
 }
 .input-append input, .input-append .uneditable-input {
   float: left;

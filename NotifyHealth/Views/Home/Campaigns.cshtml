@@ -16,19 +16,16 @@
     <link href="~/Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
-
 </head>
 <h1 class="page-header">Campaigns</h1>
 <div class="section-container section-with-top-border">
     <p class="m-b-20">
-
     </p>
     <!-- begin panel -->
     <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateCampaign","Home", new { @organizationID = Request["organizationID"] })" id="btnCreateAsset">
         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Campaigns
     </button>
     <p class="m-b-20">
-
     </p>
     <div class="panel pagination-inverse m-b-0 clearfix">
 
@@ -99,9 +96,7 @@
                     },
                     "fnServerParams": function (aoData) {
 
-
                         aoData['organizationID'] = @ViewBag.organizationID;
-
 
                             },
                             "paging": true,
@@ -117,17 +112,12 @@
                                {
                                 "title": "Actions",
                                    "data": "CampaignId",
-                                "searchable": false,    
+                                "searchable": false,
                                 "sortable": false,
                                 "render": function (data, type, full, meta) {
                                     return '<a href="@Url.Action("EditCampaign", "Home")?id=' + data + '" class="editAsset">Edit</a>  |  <a href="@Url.Action("CampaignDetails", "Home")?id=' + data + '"class="details">Details</a> |  <a href="@Url.Action("DeleteCampaign", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
                                 }
                             }
-
-
-
-
-
 
                     ],
                     "order": [0, "Asc"],
@@ -211,7 +201,6 @@
 
             });
 
-
             /**** Delet Asset Ajax Form CallBack ********/
 
             function DeleteAssetSuccess(data) {
@@ -241,7 +230,4 @@
             });
 
         });
-
-
 </script>
-
