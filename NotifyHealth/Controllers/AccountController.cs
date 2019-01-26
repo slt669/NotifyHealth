@@ -54,23 +54,12 @@ namespace NotifyHealth.Controllers
                 HttpContext.GetOwinContext().Authentication.SignIn(
                    new AuthenticationProperties { IsPersistent = model.RememberMe }, ident);
                 Session["timestamp"] = DateTime.Now.ToString("yyyy/MM/dd H:mm:ss");  //2018-01-02
-                //Session["menu"] = usermanager.ar;
-                //Session["DataAccessRights"] = usermanager.dar;
-                //Session["UserName"] = model.Email;
                 Session["UserFullName"] = usermanager.accset.Forename + " " + usermanager.accset.Surname;
                 Session["UserSessionId"] = usermanager.SessionId;
                 Session["UserSessionGUID"] = usermanager.SessionGUID;
                 Session["Photo"] = usermanager.accset.PhotoPath ?? "";
                 Session["organizationID"] = usermanager.OrganizationID;
                 Session["UserLogonId"] = usermanager.accset.UserLogonID;
-                //Session["UserRoleId"] = usermanager.accset.UserRole;
-                //Session["UserList"] = usermanager.usr;
-                //Session["CompanyName"] = usermanager.accset.CompanyName;
-                //Session["CompanyID"] = usermanager.accset.CompanyId;
-                //Session["AdminLogonId"] = "";
-                //Session["CustomerType"] = usermanager.accset.CustomerType;
-                //Session["AdminFlag"] = false;
-                //if (returnUrl == "/") returnUrl = "/Home/Index";
                 Session["organization"] = usermanager.Organization;
                 Session["UserLogon"] = 1;
                 return RedirectToAction("Index", "Home"); // auth succeed 
@@ -167,9 +156,9 @@ namespace NotifyHealth.Controllers
 
 
 
-                            path = "C:/inetpub/wwwroot/NotifyHealth/Content/img/";
+                            path = "C:/inetpub/wwwroot/NotifyHealth/Content/img/Users/";
                             data.PhotoFile.SaveAs(path + data.PhotoFile.FileName);
-                            data.PhotoPath = "../Content/img/" + data.PhotoFile.FileName;
+                            data.PhotoPath = "../Content/img/Users/" + data.PhotoFile.FileName;
                         }
 
                     }

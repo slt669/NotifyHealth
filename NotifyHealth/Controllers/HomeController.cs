@@ -866,7 +866,11 @@ namespace NotifyHealth.Controllers
         [HttpPost]
         public JsonResult ValuesAdded(string[][] Memberships)
         {
-            int Clientid = Convert.ToInt32(TempData["ClientId"]);
+            int Clientid = Convert.ToInt32(Memberships[0][0]);
+   int rowToRemove = 0; 
+    //a = a.ToList().Where(i => !i.Equals(a.ElementAt(rowToRemove))).ToArray(); //a now has 2 rows, 1st and 3rd only.
+    Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray(); // even better way to do it maybe
+
             if (Memberships == null)
             {
                 List<Campaigns> Camp = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
@@ -900,7 +904,11 @@ namespace NotifyHealth.Controllers
         [HttpPost]
         public JsonResult ValuesDeleted(string[][] Memberships)
         {
-            int Clientid = Convert.ToInt32(TempData["ClientId"]);
+            int Clientid = Convert.ToInt32(Memberships[0][0]);
+            int rowToRemove = 0;
+            //a = a.ToList().Where(i => !i.Equals(a.ElementAt(rowToRemove))).ToArray(); //a now has 2 rows, 1st and 3rd only.
+            Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray(); // even better way to do it maybe
+
             if (Memberships == null)
             {
 
