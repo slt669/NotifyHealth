@@ -347,7 +347,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("@JobTitle", SqlDbType.NVarChar, 50).Value = asvm.JobTitle;
                     command.Parameters.Add("@SecurityQuestionId", SqlDbType.Int, 4).Value = asvm.HintQuestionID;
                     command.Parameters.Add("@SecurityAnswer", SqlDbType.NVarChar, 50).Value = asvm.HintAnswer;
-                    command.Parameters.Add("@Photo", SqlDbType.NVarChar, 200).Value = asvm.PhotoPath;
+                    command.Parameters.Add("@Photo", SqlDbType.NVarChar, 500).Value = asvm.PhotoPath;
                     command.Parameters.Add("@ValidationMessage", SqlDbType.NVarChar, 500).Direction = ParameterDirection.Output;
                     command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;

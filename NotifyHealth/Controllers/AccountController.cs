@@ -55,7 +55,7 @@ namespace NotifyHealth.Controllers
                 Session["UserFullName"] = usermanager.accset.Forename + " " + usermanager.accset.Surname;
                 Session["UserSessionId"] = usermanager.SessionId;
                 Session["UserSessionGUID"] = usermanager.SessionGUID;
-                Session["Photo"] = usermanager.accset.PhotoPath ?? "";
+                Session["Photo"] = "../Content/img/Users/" + usermanager.accset.PhotoPath ?? null;
                 Session["organizationID"] = usermanager.OrganizationID;
                 Session["UserLogonId"] = usermanager.accset.UserLogonID;
                 Session["organization"] = usermanager.Organization;
@@ -111,7 +111,7 @@ namespace NotifyHealth.Controllers
 
             return View(AccountSettings);
         }
-
+    
         [Authorize]
         [HttpPost]
         public ActionResult Settings(AccountSettingsViewModel data, string updateBtn)
@@ -142,9 +142,13 @@ namespace NotifyHealth.Controllers
                             || Path.GetExtension(data.PhotoFile.FileName).ToLower() == ".jpeg")
 
                         {
-                            path = "C:/inetpub/wwwroot/NotifyHealth/Content/img/Users/";
-                            data.PhotoFile.SaveAs(path + data.PhotoFile.FileName);
-                            data.PhotoPath = "../Content/img/Users/" + data.PhotoFile.FileName;
+                            //path = "C:/inetpub/wwwroot/NotifyHealth/Content/img/Users/";
+
+                            path = Server.MapPath("../Content/img/Users/");
+                            data.PhotoFile.SaveAs(Path.Combine(path, data.PhotoFile.FileName));
+
+                            //data.PhotoPath = "../Content/img/Users/" + data.PhotoFile.FileName;
+                            data.PhotoPath = data.PhotoFile.FileName;
                         }
                     }
                 }
