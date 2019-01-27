@@ -873,7 +873,7 @@ namespace NotifyHealth.Controllers
             List<ClientMemberships> cl = db.GetClientMemberships(Convert.ToInt32(Session["organizationID"]), edit.ClientId);
             List<Campaigns> Camp = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
 
-            TempData["ClientId"] = id;
+
             int count = cl.Count();
 
             for (int i = 0; i < count; i++)

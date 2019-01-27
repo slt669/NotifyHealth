@@ -7,35 +7,38 @@
 </div>
 @using (Ajax.BeginForm("EditClients", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "UpdateAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
 {
+    <div class="row">
 
-<div class="col-sm-4">
-    <label class="col-sm-6 form-control-label">Client Memberships Active</label>
-    <div class="form-group">
+        <div class="col-sm-4">
+            <label class="col-sm-6 form-control-label">Client Memberships Active</label>
+            <div class="form-group">
 
-        <div class="col-sm-8">
-            @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "canselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
+                <div class="col-sm-8">
+                    @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="col-sm-4">
-    <label class="col-sm-8 form-control-label">Campaigns</label>
-    <div class="form-group">
+        <div class="col-sm-4">
+            <label class="col-sm-8 form-control-label">Campaigns</label>
+            <div class="form-group">
 
-        <div class="col-sm-8">
-            @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.Unselected, new { @id = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
+                <div class="col-sm-8">
+                    @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.Unselected, new { @id = "canselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
+                </div>
+            </div>
         </div>
+
+    </div> 
+    <div class="col-sm-4">
+
+        <input type='button' id='btnRight_code' value='  <  ' /> <input type='button' id='btnSubmit' value='Submit' /> <input type='button' id='btnLeft_code' value='  >  ' />
+        @Html.HiddenFor(x => x.CampaignId)
+        <span id="values"></span>
     </div>
-</div>
-<div class="col-sm-4">
+}
 
-    <input type='button' id='btnRight_code' value='  >  ' /> <input type='button' id='btnSubmit' value='Submit' /> <input type='button' id='btnLeft_code' value='  <  ' />
-    @Html.HiddenFor(x => x.CampaignId)
-    <span id="values"></span>
-</div>
-    }
-
-    <script>
+<script>
     $(document).ready(function () {
         $('[id^=\"btnRight\"]').click(function (e) {
 
@@ -108,4 +111,4 @@
         });
 
     });
-    </script>
+</script>
