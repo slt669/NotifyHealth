@@ -666,6 +666,7 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.Start = Date.ToString();
                         CD.Program = reader["Program"] as string;
                         CD.Campaign = reader["Campaign"] as string;
+                        CD.SortTime = Date.Value.Ticks;
                         CM.Add(CD);
                     }
 
@@ -712,7 +713,7 @@ namespace NotifyHealth.Data_Access_Layer
                         TD.Result = reader["Result"] as string;
                         DateTime? Timestamp = reader["Timestamp"] as DateTime?;
                         TD.Timestamp = Timestamp.ToString();
-
+                        TD.SortTime = Timestamp.Value.Ticks;
                         T.Add(TD);
                     }
 

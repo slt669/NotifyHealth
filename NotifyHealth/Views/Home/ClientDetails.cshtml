@@ -210,8 +210,13 @@
                             {
                                 "title": "Campaign", "data": "Campaign", "searchable": true,
                             },
+                            { "data": "SortTime", "width": "20%", "searchable": false, "visible": false },
                             {
-                                "title": "Start", "data": "Start", "searchable": true,
+                                "title": "Start",
+                                "data": "SortTime",
+                                "render": function (data, type, row) {
+                                    return row.Start;
+                                }
                             },
                         ],
                         "order": [0, "Asc"],
@@ -270,8 +275,13 @@
                             {
                                 "title": "Status", "data": "Result", "searchable": true,
                             },
+                            { "data": "SortTime", "width": "20%", "searchable": false, "visible": false },
                             {
-                                "title": "When", "data": "Timestamp", "searchable": true,
+                                "title": "When",
+                                "data": "SortTime",
+                                "render": function (data, type, row) {
+                                    return row.Timestamp;
+                                }
                             },
                         ],
                         "order": [2, "Asc"],
