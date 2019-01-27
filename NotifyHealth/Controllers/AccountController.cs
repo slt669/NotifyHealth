@@ -151,7 +151,7 @@ namespace NotifyHealth.Controllers
                         }
                     }
                 }
-
+                data.PhotoFile = null;
                 string UpdateMessage = dbc.ManageAccount(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString(), data);
 
                 if (UpdateMessage != "Account Settings updated successfully!")
@@ -161,7 +161,11 @@ namespace NotifyHealth.Controllers
                 }
                 else
                 {
-                    Session["Photo"] = "../Content/img/Users/" + data.PhotoFile.FileName;
+                    if (data.PhotoFile != null)
+                    {
+                        Session["Photo"] = "../Content/img/Users/" + data.PhotoFile.FileName;
+                    }
+                    
                     TempData["UpdateMessage"] = UpdateMessage;
                     return RedirectToAction("Index", "Home");
                 }

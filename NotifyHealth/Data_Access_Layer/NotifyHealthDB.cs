@@ -92,8 +92,7 @@ namespace NotifyHealth.Data_Access_Layer
         {
             try
             {
-  
-                string Encpassword = Encrypt(Password, "Stephen");
+                string Encpassword = Encrypt(Password, "27012019");
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp100CreateSession";
 
@@ -230,8 +229,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     while (reader.Read())
                     {
-                        //string Decpassword = Decrypt(Encpassword, "Stephen");
-                        string Decpassword = Decrypt(reader["Password"].ToString(), "Stephen");
+                        string Decpassword = Decrypt(reader["Password"].ToString(), "27012019");
                         asvm.OldPassword = Decpassword;
                         asvm.Title = reader["Title"].ToString();
                         asvm.Forename = reader["Forename"].ToString();
@@ -332,8 +330,8 @@ namespace NotifyHealth.Data_Access_Layer
 
             try
             {
-                string Encpassword = Encrypt(asvm.NewPassword, "Stephen");
-                string EncCheckpassword = Encrypt(asvm.CheckPassword, "Stephen");
+                string Encpassword = Encrypt(asvm.NewPassword, "27012019");
+                string EncCheckpassword = Encrypt(asvm.CheckPassword, "27012019");
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp102ManageAccount";
 
