@@ -1,27 +1,31 @@
 ﻿@{
     Layout = "";
 }
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
 <head>
-
-    <title>Notify Health | 404 Error Page</title>
+    <meta charset="utf-8" />
+    <title>Source Admin | 404 Error Page</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-
+    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
+    <link href="~/Content/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/bootstrap/bootstrap-4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/font-awesome/5.1/css/all.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.min.css" rel="stylesheet" />
     <!-- ================== END BASE CSS STYLE ================== -->
     <!-- ================== BEGIN BASE JS ================== -->
-
+    <script src="~/Content/plugins/pace/pace.min.js"></script>
     <!-- ================== END BASE JS ================== -->
     <!--[if lt IE 9]>
-        <script src="../assets/crossbrowserjs/excanvas.min.js"></script>
+        <script src="~/Content/crossbrowserjs/excanvas.min.js"></script>
     <![endif]-->
 </head>
 <body class="pace-top">
@@ -36,17 +40,39 @@
             <div class="error-content">
                 <div class="error-message m-b-5">Oops... The page you're looking for doesn't exist.</div>
                 <div class="error-desc m-b-20">
-                    <h2 class="text-danger">@ViewBag.ErrorMessage</h2>
+                    The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.    <h2 class="text-danger">@ViewBag.ErrorMessage</h2>
                 </div>
-                <p>
-                    or
-                </p>
+             
                 <div>
-                    <a href="javascript:window.history.back();" class="btn btn-danger btn-rounded">Go Back</a>
+                    <a href="@Url.Action("Index", "Home")"> <i class="fa fa-home"></i> Go Back</a>
                 </div>
             </div>
         </div>
         <!-- end error -->
     </div>
+    <!-- end page container -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.bundle.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="~/Content/crossbrowserjs/html5shiv.js"></script>
+        <script src="~/Content/crossbrowserjs/respond.min.js"></script>
+    <![endif]-->
+    <script src="~/Content/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <!-- ================== END BASE JS ================== -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="~/Content/js/demo.min.js"></script>
+    <script src="~/Content/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+        $(document).ready(function () {
+            App.init();
+         
+        });
+    </script>
 </body>
 </html>

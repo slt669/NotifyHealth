@@ -92,6 +92,8 @@ namespace NotifyHealth.Data_Access_Layer
         {
             try
             {
+  
+                string Encpassword = Encrypt(Password, "Stephen");
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp100CreateSession";
 
@@ -104,7 +106,7 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("@Username", SqlDbType.NVarChar, 50).Value = UserName;
-                    command.Parameters.Add("@Password", SqlDbType.NVarChar, 50).Value = Password;
+                    command.Parameters.Add("@Password", SqlDbType.NVarChar, 50).Value = Encpassword;
                     command.Parameters.Add("@PageName", SqlDbType.NVarChar, 100).Value = PageName;
                     command.Parameters.Add("@ValidationMessage", SqlDbType.NVarChar, 500).Direction = ParameterDirection.Output;
                     command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
@@ -228,7 +230,9 @@ namespace NotifyHealth.Data_Access_Layer
 
                     while (reader.Read())
                     {
-                        asvm.OldPassword = reader["Password"].ToString();
+                        //string Decpassword = Decrypt(Encpassword, "Stephen");
+                        string Decpassword = Decrypt(reader["Password"].ToString(), "Stephen");
+                        asvm.OldPassword = Decpassword;
                         asvm.Title = reader["Title"].ToString();
                         asvm.Forename = reader["Forename"].ToString();
                         asvm.Surname = reader["Surname"].ToString();
@@ -247,7 +251,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-
+                 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
                     if (ReturnError != "0")
@@ -328,6 +332,8 @@ namespace NotifyHealth.Data_Access_Layer
 
             try
             {
+                string Encpassword = Encrypt(asvm.NewPassword, "Stephen");
+                string EncCheckpassword = Encrypt(asvm.CheckPassword, "Stephen");
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp102ManageAccount";
 
@@ -339,8 +345,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("@SessionId", SqlDbType.Int, 4).Value = SessionId;
                     command.Parameters.Add("@SessionGUID", SqlDbType.NVarChar, 36).Value = SessionGUID;
                     command.Parameters.Add("UpdateType", SqlDbType.NVarChar, 20).Value = "EndUserUpdate";
-                    command.Parameters.Add("@Password", SqlDbType.NVarChar, 50).Value = asvm.NewPassword;
-                    command.Parameters.Add("@PasswordRepeat", SqlDbType.NVarChar, 50).Value = asvm.CheckPassword;
+                    command.Parameters.Add("@Password", SqlDbType.NVarChar, 50).Value = Encpassword;
+                    command.Parameters.Add("@PasswordRepeat", SqlDbType.NVarChar, 50).Value = EncCheckpassword;
                     command.Parameters.Add("@Forename", SqlDbType.NVarChar, 50).Value = asvm.Forename;
                     command.Parameters.Add("@Surname", SqlDbType.NVarChar, 50).Value = asvm.Surname;
                     command.Parameters.Add("@WorkTelephoneNo", SqlDbType.NVarChar, 50).Value = asvm.WorkTelephoneNo;
@@ -1642,20 +1648,20 @@ namespace NotifyHealth.Data_Access_Layer
             passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
 
             // Generating salt bytes
-            byte[] saltBytes = GetRandomBytes();
+            //byte[] saltBytes = GetRandomBytes();
 
             // Appending salt bytes to original bytes
-            byte[] bytesToBeEncrypted = new byte[saltBytes.Length + originalBytes.Length];
-            for (int i = 0; i < saltBytes.Length; i++)
-            {
-                bytesToBeEncrypted[i] = saltBytes[i];
-            }
-            for (int i = 0; i < originalBytes.Length; i++)
-            {
-                bytesToBeEncrypted[i + saltBytes.Length] = originalBytes[i];
-            }
+            //byte[] bytesToBeEncrypted = new byte[saltBytes.Length + originalBytes.Length];
+            //for (int i = 0; i < saltBytes.Length; i++)
+            //{
+            //    bytesToBeEncrypted[i] = saltBytes[i];
+            //}
+            //for (int i = 0; i < originalBytes.Length; i++)
+            //{
+            //    bytesToBeEncrypted[i + saltBytes.Length] = originalBytes[i];
+            //}
 
-            encryptedBytes = AES_Encrypt(bytesToBeEncrypted, passwordBytes);
+            encryptedBytes = AES_Encrypt(originalBytes, passwordBytes);
 
             return Convert.ToBase64String(encryptedBytes);
         }
@@ -1670,17 +1676,17 @@ namespace NotifyHealth.Data_Access_Layer
 
             byte[] decryptedBytes = AES_Decrypt(bytesToBeDecrypted, passwordBytes);
 
-            // Getting the size of salt
-            int _saltSize = 4;
+            //// Getting the size of salt
+            //int _saltSize = 4;
 
-            // Removing salt bytes, retrieving original bytes
-            byte[] originalBytes = new byte[decryptedBytes.Length - _saltSize];
-            for (int i = _saltSize; i < decryptedBytes.Length; i++)
-            {
-                originalBytes[i - _saltSize] = decryptedBytes[i];
-            }
+            //// Removing salt bytes, retrieving original bytes
+            //byte[] originalBytes = new byte[decryptedBytes.Length - _saltSize];
+            //for (int i = _saltSize; i < decryptedBytes.Length; i++)
+            //{
+            //    originalBytes[i - _saltSize] = decryptedBytes[i];
+            //}
 
-            return Encoding.UTF8.GetString(originalBytes);
+            return Encoding.UTF8.GetString(decryptedBytes);
         }
 
         public byte[] GetRandomBytes()

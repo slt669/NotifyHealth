@@ -26,7 +26,7 @@ namespace NotifyHealth
             log.Debug("++++++++++++++++++++++++++++");
             log.Error("Exception - \n" + ex);
             log.Debug("++++++++++++++++++++++++++++");
-            Session["Error"] = ex.Message;
+            //Session["Error"] = ex.Message;
             Server.ClearError();
 
             Response.Redirect("/Account/Error");
