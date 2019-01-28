@@ -327,11 +327,19 @@ namespace NotifyHealth.Data_Access_Layer
         public string ManageAccount(Int32 SessionId, String SessionGUID, AccountSettingsViewModel asvm)
         {
             string ReturnValidationError;
-
+            string Encpassword = null;
+            string EncCheckpassword = null;
             try
             {
-                string Encpassword = Encrypt(asvm.NewPassword, "27012019");
-                string EncCheckpassword = Encrypt(asvm.CheckPassword, "27012019");
+                if (asvm.NewPassword != null)
+                {
+                 Encpassword = Encrypt(asvm.NewPassword, "27012019");
+                }
+                if (asvm.NewPassword != null)
+                {
+                  EncCheckpassword = Encrypt(asvm.CheckPassword, "27012019");
+                }
+                 
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp102ManageAccount";
 
