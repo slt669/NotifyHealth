@@ -1,7 +1,7 @@
 define([
   'jquery'
 ], function ($) {
-  function EventRelay () { }
+  function EventRelay() { }
 
   EventRelay.prototype.bind = function (decorated, container, $container) {
     var self = this;

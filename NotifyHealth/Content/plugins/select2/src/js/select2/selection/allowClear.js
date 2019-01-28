@@ -2,7 +2,7 @@ define([
   'jquery',
   '../keys'
 ], function ($, KEYS) {
-  function AllowClear () { }
+  function AllowClear() { }
 
   AllowClear.prototype.bind = function (decorated, container, $container) {
     var self = this;
@@ -21,7 +21,7 @@ define([
     this.$selection.on('mousedown', '.select2-selection__clear',
       function (evt) {
         self._handleClear(evt);
-    });
+      });
 
     container.on('keypress', function (evt) {
       self._handleKeyboardClear(evt, container);
@@ -79,13 +79,13 @@ define([
     decorated.call(this, data);
 
     if (this.$selection.find('.select2-selection__placeholder').length > 0 ||
-        data.length === 0) {
+      data.length === 0) {
       return;
     }
 
     var $remove = $(
       '<span class="select2-selection__clear">' +
-        '&times;' +
+      '&times;' +
       '</span>'
     );
     $remove.data('data', data);

@@ -21,7 +21,7 @@ namespace NotifyHealth.Controllers
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string error, string returnUrl)
-        {  
+        {
             TempData["UpdateMessage"] = error;
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -110,7 +110,7 @@ namespace NotifyHealth.Controllers
 
             return View(AccountSettings);
         }
-    
+
         [Authorize]
         [HttpPost]
         public ActionResult Settings(AccountSettingsViewModel data, string updateBtn)
@@ -151,7 +151,7 @@ namespace NotifyHealth.Controllers
                         }
                     }
                 }
-        
+
                 string UpdateMessage = dbc.ManageAccount(Convert.ToInt32(Session["UserSessionId"]), Session["UserSessionGUID"].ToString(), data);
 
                 if (UpdateMessage != "Account Settings updated successfully!")
@@ -165,7 +165,7 @@ namespace NotifyHealth.Controllers
                     {
                         Session["Photo"] = "../Content/img/Users/" + data.PhotoPath;
                     }
-                    
+
                     TempData["UpdateMessage"] = UpdateMessage;
                     return RedirectToAction("Index", "Home");
                 }

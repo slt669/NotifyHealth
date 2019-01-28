@@ -28,8 +28,8 @@ CKEDITOR.dialog.add("scaytcheck", function (j) {
             title: g.title, minWidth: 360, minHeight: 220, onShow: function () {
                 var b = this; b.data = j.fire("scaytDialog", {}); b.options = b.data.scayt_control.option(); b.chosed_lang = b.sLang = b.data.scayt_control.sLang; if (!b.data || !b.data.scayt || !b.data.scayt_control) alert("Error loading application service"), b.hide(); else {
                     var a = 0; s ? b.data.scayt.getCaption(j.langCode || "en", function (e) {
-                    0 < a++ || (h = e, A.apply(b),
-                        y.apply(b), s = !1)
+                        0 < a++ || (h = e, A.apply(b),
+                            y.apply(b), s = !1)
                     }) : y.apply(b); b.selectPage(b.data.tab)
                 }
             }, onOk: function () { var a = this.data.scayt_control; a.option(this.options); a.setLang(this.chosed_lang); a.refresh() }, onCancel: function () { var b = w(), f; for (f in b) b[f].checked = !1; b = "undefined" != typeof document.forms["languagesbar_" + a] ? document.forms["languagesbar_" + a].scayt_lang : []; x(b, "") }, contents: t
@@ -52,7 +52,7 @@ CKEDITOR.dialog.add("scaytcheck", function (j) {
                 }; j.dic_restore = k.dic_restore || function (a, b, c) {
                     var d = c[0] + "," + c[1], e = h.err_dic_restore, f = h.succ_dic_restore; window.scayt.restoreUserDictionary(b, function (a) {
                         f =
-                        f.replace("%s", a.dname); q(d); p(c[1]); o(f)
+                            f.replace("%s", a.dname); q(d); p(c[1]); o(f)
                     }, function (a) { e = e.replace("%s", a.dname); n(e) })
                 }; i = (m[0] + "," + m[1]).split(","); c = 0; for (e = i.length; c < e; c += 1)if (d = f.getById(i[c])) d.on("click", b, this)
         }, y = function () {

@@ -130,7 +130,7 @@ var addSorting = (function () {
                     addSortIndicators();
                 };
             };
-        for (i =0 ; i < cols.length; i += 1) {
+        for (i = 0; i < cols.length; i += 1) {
             if (cols[i].sortable) {
                 el = getNthColumn(i).querySelector('.sorter');
                 if (el.addEventListener) {

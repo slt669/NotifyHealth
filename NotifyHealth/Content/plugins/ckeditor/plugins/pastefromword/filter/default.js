@@ -46,51 +46,51 @@
                         bogusAttrFilter: function (a, b) { if (-1 == b.name.indexOf("cke:")) return !1 }, applyStyleFilter: null
                     }, getRules: function (a) {
                         var b = CKEDITOR.dtd, c = CKEDITOR.tools.extend({}, b.$block, b.$listItem, b.$tableContent), d = a.config, e = this.filters, a = e.falsyFilter, f = e.stylesFilter, h = e.elementMigrateFilter, g = CKEDITOR.tools.bind(this.filters.styleMigrateFilter, this.filters), i = this.utils.createListBulletMarker, m = e.flattenList, j = e.assembleList, l = this.utils.isListBulletIndicator, k = this.utils.isContainingOnlySpaces, r = this.utils.resolveList,
-                        p = function (a) { a = CKEDITOR.tools.convertToPx(a); return isNaN(a) ? a : a + "px" }, s = this.utils.getStyleComponents, t = this.utils.listDtdParents, n = !1 !== d.pasteFromWordRemoveFontStyles, o = !1 !== d.pasteFromWordRemoveStyles; return {
-                            elementNames: [[/meta|link|script/, ""]], root: function (a) { a.filterChildren(); j(a) }, elements: {
-                                "^": function (a) { var b; CKEDITOR.env.gecko && (b = e.applyStyleFilter) && b(a) }, $: function (a) {
-                                    var u = a.name || "", e = a.attributes; u in c && e.style && (e.style = f([[/^(:?width|height)$/, null, p]])(e.style) || ""); if (u.match(/h\d/)) {
-                                        a.filterChildren();
-                                        if (r(a)) return; h(d["format_" + u])(a)
-                                    } else if (u in b.$inline) a.filterChildren(), k(a) && delete a.name; else if (-1 != u.indexOf(":") && -1 == u.indexOf("cke")) { a.filterChildren(); if ("v:imagedata" == u) { if (u = a.attributes["o:href"]) a.attributes.src = u; a.name = "img"; return } delete a.name } u in t && (a.filterChildren(), j(a))
-                                }, style: function (a) {
-                                    if (CKEDITOR.env.gecko) {
-                                        var a = (a = a.onlyChild().value.match(/\/\* Style Definitions \*\/([\s\S]*?)\/\*/)) && a[1], b = {}; a && (a.replace(/[\n\r]/g, "").replace(/(.+?)\{(.+?)\}/g, function (a,
-                                            c, d) { for (var c = c.split(","), a = c.length, q = 0; q < a; q++)CKEDITOR.tools.trim(c[q]).replace(/^(\w+)(\.[\w-]+)?$/g, function (a, c, q) { c = c || "*"; q = q.substring(1, q.length); q.match(/MsoNormal/) || (b[c] || (b[c] = {}), q ? b[c][q] = d : b[c] = d) }) }), e.applyStyleFilter = function (a) { var c = b["*"] ? "*" : a.name, q = a.attributes && a.attributes["class"]; c in b && (c = b[c], "object" == typeof c && (c = c[q]), c && a.addStyle(c, !0)) })
-                                    } return !1
-                                }, p: function (a) {
-                                    if (/MsoListParagraph/i.exec(a.attributes["class"]) || a.getStyle("mso-list")) {
-                                        var b = a.firstChild(function (a) {
-                                            return a.type ==
-                                                CKEDITOR.NODE_TEXT && !k(a.parent)
-                                        }); (b = b && b.parent) && b.addStyle("mso-list", "Ignore")
-                                    } a.filterChildren(); r(a) || (d.enterMode == CKEDITOR.ENTER_BR ? (delete a.name, a.add(new CKEDITOR.htmlParser.element("br"))) : h(d["format_" + (d.enterMode == CKEDITOR.ENTER_P ? "p" : "div")])(a))
-                                }, div: function (a) { var b = a.onlyChild(); if (b && "table" == b.name) { var c = a.attributes; b.attributes = CKEDITOR.tools.extend(b.attributes, c); c.style && b.addStyle(c.style); b = new CKEDITOR.htmlParser.element("div"); b.addStyle("clear", "both"); a.add(b); delete a.name } },
-                                td: function (a) { a.getAncestor("thead") && (a.name = "th") }, ol: m, ul: m, dl: m, font: function (a) {
-                                    if (l(a.parent)) delete a.name; else {
-                                        a.filterChildren(); var b = a.attributes, c = b.style, d = a.parent; "font" == d.name ? (CKEDITOR.tools.extend(d.attributes, a.attributes), c && d.addStyle(c), delete a.name) : (c = c || "", b.color && ("#000000" != b.color && (c += "color:" + b.color + ";"), delete b.color), b.face && (c += "font-family:" + b.face + ";", delete b.face), b.size && (c += "font-size:" + (3 < b.size ? "large" : 3 > b.size ? "small" : "medium") + ";", delete b.size), a.name =
-                                            "span", a.addStyle(c))
-                                    }
-                                }, span: function (a) {
-                                    if (l(a.parent)) return !1; a.filterChildren(); if (k(a)) return delete a.name, null; if (l(a)) { var b = a.firstChild(function (a) { return a.value || "img" == a.name }), c = (b = b && (b.value || "l.")) && b.match(/^(?:[(]?)([^\s]+?)([.)]?)$/); if (c) return b = i(c, b), (a = a.getAncestor("span")) && / mso-hide:\s*all|display:\s*none /.test(a.attributes.style) && (b.attributes["cke:ignored"] = 1), b } if (c = (b = a.attributes) && b.style) b.style = f([["line-height"], [/^font-family$/, null, !n ? g(d.font_style, "family") :
-                                        null], [/^font-size$/, null, !n ? g(d.fontSize_style, "size") : null], [/^color$/, null, !n ? g(d.colorButton_foreStyle, "color") : null], [/^background-color$/, null, !n ? g(d.colorButton_backStyle, "color") : null]])(c, a) || ""; b.style || delete b.style; CKEDITOR.tools.isEmpty(b) && delete a.name; return null
-                                }, b: h(d.coreStyles_bold), i: h(d.coreStyles_italic), u: h(d.coreStyles_underline), s: h(d.coreStyles_strike), sup: h(d.coreStyles_superscript), sub: h(d.coreStyles_subscript), a: function (a) {
-                                    var b = a.attributes; b && !b.href && b.name ? delete a.name :
-                                        CKEDITOR.env.webkit && (b.href && b.href.match(/file:\/\/\/[\S]+#/i)) && (b.href = b.href.replace(/file:\/\/\/[^#]+/i, ""))
-                                }, "cke:listbullet": function (a) { a.getAncestor(/h\d/) && !d.pasteFromWordNumberedHeadingToList && delete a.name }
-                            }, attributeNames: [[/^onmouse(:?out|over)/, ""], [/^onload$/, ""], [/(?:v|o):\w+/, ""], [/^lang/, ""]], attributes: {
-                                style: f(o ? [[/^list-style-type$/, null], [/^margin$|^margin-(?!bottom|top)/, null, function (a, b, c) {
-                                    if (b.name in { p: 1, div: 1 }) {
-                                        b = "ltr" == d.contentsLangDirection ? "margin-left" : "margin-right";
-                                        if ("margin" == c) a = s(c, a, [b])[b]; else if (c != b) return null; if (a && !E.test(a)) return [b, a]
-                                    } return null
-                                }], [/^clear$/], [/^border.*|margin.*|vertical-align|float$/, null, function (a, b) { if ("img" == b.name) return a }], [/^width|height$/, null, function (a, b) { if (b.name in { table: 1, td: 1, th: 1, img: 1 }) return a }]] : [[/^mso-/], [/-color$/, null, function (a) { if ("transparent" == a) return !1; if (CKEDITOR.env.gecko) return a.replace(/-moz-use-text-color/g, "transparent") }], [/^margin$/, E], ["text-indent", "0cm"], ["page-break-before"], ["tab-stops"],
-                                ["display", "none"], n ? [/font-?/] : null], o), width: function (a, c) { if (c.name in b.$tableContent) return !1 }, border: function (a, c) { if (c.name in b.$tableContent) return !1 }, "class": a, bgcolor: a, valign: o ? a : function (a, b) { b.addStyle("vertical-align", a); return !1 }
-                            }, comment: !CKEDITOR.env.ie ? function (a, b) {
-                                var c = a.match(/<img.*?>/), d = a.match(/^\[if !supportLists\]([\s\S]*?)\[endif\]$/); return d ? (d = (c = d[1] || c && "l.") && c.match(/>(?:[(]?)([^\s]+?)([.)]?)</), i(d, c)) : CKEDITOR.env.gecko && c ? (c = CKEDITOR.htmlParser.fragment.fromHtml(c[0]).children[0],
-                                    (d = (d = (d = b.previous) && d.value.match(/<v:imagedata[^>]*o:href=['"](.*?)['"]/)) && d[1]) && (c.attributes.src = d), c) : !1
-                            } : a
-                        }
+                            p = function (a) { a = CKEDITOR.tools.convertToPx(a); return isNaN(a) ? a : a + "px" }, s = this.utils.getStyleComponents, t = this.utils.listDtdParents, n = !1 !== d.pasteFromWordRemoveFontStyles, o = !1 !== d.pasteFromWordRemoveStyles; return {
+                                elementNames: [[/meta|link|script/, ""]], root: function (a) { a.filterChildren(); j(a) }, elements: {
+                                    "^": function (a) { var b; CKEDITOR.env.gecko && (b = e.applyStyleFilter) && b(a) }, $: function (a) {
+                                        var u = a.name || "", e = a.attributes; u in c && e.style && (e.style = f([[/^(:?width|height)$/, null, p]])(e.style) || ""); if (u.match(/h\d/)) {
+                                            a.filterChildren();
+                                            if (r(a)) return; h(d["format_" + u])(a)
+                                        } else if (u in b.$inline) a.filterChildren(), k(a) && delete a.name; else if (-1 != u.indexOf(":") && -1 == u.indexOf("cke")) { a.filterChildren(); if ("v:imagedata" == u) { if (u = a.attributes["o:href"]) a.attributes.src = u; a.name = "img"; return } delete a.name } u in t && (a.filterChildren(), j(a))
+                                    }, style: function (a) {
+                                        if (CKEDITOR.env.gecko) {
+                                            var a = (a = a.onlyChild().value.match(/\/\* Style Definitions \*\/([\s\S]*?)\/\*/)) && a[1], b = {}; a && (a.replace(/[\n\r]/g, "").replace(/(.+?)\{(.+?)\}/g, function (a,
+                                                c, d) { for (var c = c.split(","), a = c.length, q = 0; q < a; q++)CKEDITOR.tools.trim(c[q]).replace(/^(\w+)(\.[\w-]+)?$/g, function (a, c, q) { c = c || "*"; q = q.substring(1, q.length); q.match(/MsoNormal/) || (b[c] || (b[c] = {}), q ? b[c][q] = d : b[c] = d) }) }), e.applyStyleFilter = function (a) { var c = b["*"] ? "*" : a.name, q = a.attributes && a.attributes["class"]; c in b && (c = b[c], "object" == typeof c && (c = c[q]), c && a.addStyle(c, !0)) })
+                                        } return !1
+                                    }, p: function (a) {
+                                        if (/MsoListParagraph/i.exec(a.attributes["class"]) || a.getStyle("mso-list")) {
+                                            var b = a.firstChild(function (a) {
+                                                return a.type ==
+                                                    CKEDITOR.NODE_TEXT && !k(a.parent)
+                                            }); (b = b && b.parent) && b.addStyle("mso-list", "Ignore")
+                                        } a.filterChildren(); r(a) || (d.enterMode == CKEDITOR.ENTER_BR ? (delete a.name, a.add(new CKEDITOR.htmlParser.element("br"))) : h(d["format_" + (d.enterMode == CKEDITOR.ENTER_P ? "p" : "div")])(a))
+                                    }, div: function (a) { var b = a.onlyChild(); if (b && "table" == b.name) { var c = a.attributes; b.attributes = CKEDITOR.tools.extend(b.attributes, c); c.style && b.addStyle(c.style); b = new CKEDITOR.htmlParser.element("div"); b.addStyle("clear", "both"); a.add(b); delete a.name } },
+                                    td: function (a) { a.getAncestor("thead") && (a.name = "th") }, ol: m, ul: m, dl: m, font: function (a) {
+                                        if (l(a.parent)) delete a.name; else {
+                                            a.filterChildren(); var b = a.attributes, c = b.style, d = a.parent; "font" == d.name ? (CKEDITOR.tools.extend(d.attributes, a.attributes), c && d.addStyle(c), delete a.name) : (c = c || "", b.color && ("#000000" != b.color && (c += "color:" + b.color + ";"), delete b.color), b.face && (c += "font-family:" + b.face + ";", delete b.face), b.size && (c += "font-size:" + (3 < b.size ? "large" : 3 > b.size ? "small" : "medium") + ";", delete b.size), a.name =
+                                                "span", a.addStyle(c))
+                                        }
+                                    }, span: function (a) {
+                                        if (l(a.parent)) return !1; a.filterChildren(); if (k(a)) return delete a.name, null; if (l(a)) { var b = a.firstChild(function (a) { return a.value || "img" == a.name }), c = (b = b && (b.value || "l.")) && b.match(/^(?:[(]?)([^\s]+?)([.)]?)$/); if (c) return b = i(c, b), (a = a.getAncestor("span")) && / mso-hide:\s*all|display:\s*none /.test(a.attributes.style) && (b.attributes["cke:ignored"] = 1), b } if (c = (b = a.attributes) && b.style) b.style = f([["line-height"], [/^font-family$/, null, !n ? g(d.font_style, "family") :
+                                            null], [/^font-size$/, null, !n ? g(d.fontSize_style, "size") : null], [/^color$/, null, !n ? g(d.colorButton_foreStyle, "color") : null], [/^background-color$/, null, !n ? g(d.colorButton_backStyle, "color") : null]])(c, a) || ""; b.style || delete b.style; CKEDITOR.tools.isEmpty(b) && delete a.name; return null
+                                    }, b: h(d.coreStyles_bold), i: h(d.coreStyles_italic), u: h(d.coreStyles_underline), s: h(d.coreStyles_strike), sup: h(d.coreStyles_superscript), sub: h(d.coreStyles_subscript), a: function (a) {
+                                        var b = a.attributes; b && !b.href && b.name ? delete a.name :
+                                            CKEDITOR.env.webkit && (b.href && b.href.match(/file:\/\/\/[\S]+#/i)) && (b.href = b.href.replace(/file:\/\/\/[^#]+/i, ""))
+                                    }, "cke:listbullet": function (a) { a.getAncestor(/h\d/) && !d.pasteFromWordNumberedHeadingToList && delete a.name }
+                                }, attributeNames: [[/^onmouse(:?out|over)/, ""], [/^onload$/, ""], [/(?:v|o):\w+/, ""], [/^lang/, ""]], attributes: {
+                                    style: f(o ? [[/^list-style-type$/, null], [/^margin$|^margin-(?!bottom|top)/, null, function (a, b, c) {
+                                        if (b.name in { p: 1, div: 1 }) {
+                                            b = "ltr" == d.contentsLangDirection ? "margin-left" : "margin-right";
+                                            if ("margin" == c) a = s(c, a, [b])[b]; else if (c != b) return null; if (a && !E.test(a)) return [b, a]
+                                        } return null
+                                    }], [/^clear$/], [/^border.*|margin.*|vertical-align|float$/, null, function (a, b) { if ("img" == b.name) return a }], [/^width|height$/, null, function (a, b) { if (b.name in { table: 1, td: 1, th: 1, img: 1 }) return a }]] : [[/^mso-/], [/-color$/, null, function (a) { if ("transparent" == a) return !1; if (CKEDITOR.env.gecko) return a.replace(/-moz-use-text-color/g, "transparent") }], [/^margin$/, E], ["text-indent", "0cm"], ["page-break-before"], ["tab-stops"],
+                                    ["display", "none"], n ? [/font-?/] : null], o), width: function (a, c) { if (c.name in b.$tableContent) return !1 }, border: function (a, c) { if (c.name in b.$tableContent) return !1 }, "class": a, bgcolor: a, valign: o ? a : function (a, b) { b.addStyle("vertical-align", a); return !1 }
+                                }, comment: !CKEDITOR.env.ie ? function (a, b) {
+                                    var c = a.match(/<img.*?>/), d = a.match(/^\[if !supportLists\]([\s\S]*?)\[endif\]$/); return d ? (d = (c = d[1] || c && "l.") && c.match(/>(?:[(]?)([^\s]+?)([.)]?)</), i(d, c)) : CKEDITOR.env.gecko && c ? (c = CKEDITOR.htmlParser.fragment.fromHtml(c[0]).children[0],
+                                        (d = (d = (d = b.previous) && d.value.match(/<v:imagedata[^>]*o:href=['"](.*?)['"]/)) && d[1]) && (c.attributes.src = d), c) : !1
+                                } : a
+                            }
                     }
                 }, G = function () { this.dataFilter = new CKEDITOR.htmlParser.filter }; G.prototype = { toHtml: function (a) { var a = CKEDITOR.htmlParser.fragment.fromHtml(a), b = new CKEDITOR.htmlParser.basicWriter; a.writeHtml(b, this.dataFilter); return b.getHtml(!0) } }; CKEDITOR.cleanWord = function (a, b) {
                     CKEDITOR.env.gecko && (a = a.replace(/(<\!--\[if[^<]*?\])--\>([\S\s]*?)<\!--(\[endif\]--\>)/gi, "$1$2$3")); CKEDITOR.env.webkit &&

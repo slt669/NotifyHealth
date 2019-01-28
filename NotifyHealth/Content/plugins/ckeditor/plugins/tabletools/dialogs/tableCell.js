@@ -23,8 +23,8 @@ CKEDITOR.dialog.add("cellProperties", function (f) {
                         }, { id: "htmlHeightType", type: "html", html: "<br />" + g.widthPx }]
                     }, e, { type: "select", id: "wordWrap", label: c.wordWrap, "default": "yes", items: [[c.yes, "yes"], [c.no, "no"]], setup: function (a) { var b = a.getAttribute("noWrap"); ("nowrap" == a.getStyle("white-space") || b) && this.setValue("no") }, commit: function (a) { "no" == this.getValue() ? a.setStyle("white-space", "nowrap") : a.removeStyle("white-space"); a.removeAttribute("noWrap") } },
                         e, { type: "select", id: "hAlign", label: c.hAlign, "default": "", items: [[d.notSet, ""], [d.alignLeft, "left"], [d.alignCenter, "center"], [d.alignRight, "right"]], setup: function (a) { var b = a.getAttribute("align"); this.setValue(a.getStyle("text-align") || b || "") }, commit: function (a) { var b = this.getValue(); b ? a.setStyle("text-align", b) : a.removeStyle("text-align"); a.removeAttribute("align") } }, {
-                            type: "select", id: "vAlign", label: c.vAlign, "default": "", items: [[d.notSet, ""], [d.alignTop, "top"], [d.alignMiddle, "middle"], [d.alignBottom,
-                                "bottom"], [c.alignBaseline, "baseline"]], setup: function (a) { var b = a.getAttribute("vAlign"), a = a.getStyle("vertical-align"); switch (a) { case "top": case "middle": case "bottom": case "baseline": break; default: a = "" }this.setValue(a || b || "") }, commit: function (a) { var b = this.getValue(); b ? a.setStyle("vertical-align", b) : a.removeStyle("vertical-align"); a.removeAttribute("vAlign") }
+                        type: "select", id: "vAlign", label: c.vAlign, "default": "", items: [[d.notSet, ""], [d.alignTop, "top"], [d.alignMiddle, "middle"], [d.alignBottom,
+                            "bottom"], [c.alignBaseline, "baseline"]], setup: function (a) { var b = a.getAttribute("vAlign"), a = a.getStyle("vertical-align"); switch (a) { case "top": case "middle": case "bottom": case "baseline": break; default: a = "" }this.setValue(a || b || "") }, commit: function (a) { var b = this.getValue(); b ? a.setStyle("vertical-align", b) : a.removeStyle("vertical-align"); a.removeAttribute("vAlign") }
                     }]
                 }, e, {
                     type: "vbox", padding: 0, children: [{
@@ -37,7 +37,7 @@ CKEDITOR.dialog.add("cellProperties", function (f) {
                         type: "hbox", padding: 0, widths: ["60%", "40%"], children: [{
                             type: "text", id: "bgColor", label: c.bgColor, "default": "", setup: function (a) { var b = a.getAttribute("bgColor"); this.setValue(a.getStyle("background-color") || b) }, commit: function (a) {
                                 this.getValue() ? a.setStyle("background-color", this.getValue()) :
-                                a.removeStyle("background-color"); a.removeAttribute("bgColor")
+                                    a.removeStyle("background-color"); a.removeAttribute("bgColor")
                             }
                         }, i ? { type: "button", id: "bgColorChoose", "class": "colorChooser", label: c.chooseColor, onLoad: function () { this.getElement().getParent().setStyle("vertical-align", "bottom") }, onClick: function () { f.getColorFromDialog(function (a) { a && this.getDialog().getContentElement("info", "bgColor").setValue(a); this.focus() }, this) } } : e]
                     }, e, {

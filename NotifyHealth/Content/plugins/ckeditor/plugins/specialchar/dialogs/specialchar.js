@@ -22,10 +22,10 @@ CKEDITOR.dialog.add("specialchar", function (i) {
             for (var c = this.definition.charColumns, b = i.config.specialChars, a = CKEDITOR.tools.getNextId() + "_specialchar_table_label", f = ['<table role="listbox" aria-labelledby="' + a + '" style="width: 320px; height: 100%; border-collapse: separate;" align="center" cellspacing="2" cellpadding="2" border="0">'], d = 0, g = b.length, h, e; d < g;) {
                 f.push('<tr role="presentation">'); for (var j = 0; j < c; j++ ,
                     d++) {
-                        if (h = b[d]) {
-                            h instanceof Array ? (e = h[1], h = h[0]) : (e = h.replace("&", "").replace(";", "").replace("#", ""), e = l[e] || h); var k = "cke_specialchar_label_" + d + "_" + CKEDITOR.tools.getNextNumber(); f.push('<td class="cke_dark_background" style="cursor: default" role="presentation"><a href="javascript: void(0);" role="option" aria-posinset="' + (d + 1) + '"', ' aria-setsize="' + g + '"', ' aria-labelledby="' + k + '"', ' class="cke_specialchar" title="', CKEDITOR.tools.htmlEncode(e), '" onkeydown="CKEDITOR.tools.callFunction( ' + n +
-                                ', event, this )" onclick="CKEDITOR.tools.callFunction(' + m + ', this); return false;" tabindex="-1"><span style="margin: 0 auto;cursor: inherit">' + h + '</span><span class="cke_voice_label" id="' + k + '">' + e + "</span></a>")
-                        } else f.push('<td class="cke_dark_background">&nbsp;'); f.push("</td>")
+                    if (h = b[d]) {
+                        h instanceof Array ? (e = h[1], h = h[0]) : (e = h.replace("&", "").replace(";", "").replace("#", ""), e = l[e] || h); var k = "cke_specialchar_label_" + d + "_" + CKEDITOR.tools.getNextNumber(); f.push('<td class="cke_dark_background" style="cursor: default" role="presentation"><a href="javascript: void(0);" role="option" aria-posinset="' + (d + 1) + '"', ' aria-setsize="' + g + '"', ' aria-labelledby="' + k + '"', ' class="cke_specialchar" title="', CKEDITOR.tools.htmlEncode(e), '" onkeydown="CKEDITOR.tools.callFunction( ' + n +
+                            ', event, this )" onclick="CKEDITOR.tools.callFunction(' + m + ', this); return false;" tabindex="-1"><span style="margin: 0 auto;cursor: inherit">' + h + '</span><span class="cke_voice_label" id="' + k + '">' + e + "</span></a>")
+                    } else f.push('<td class="cke_dark_background">&nbsp;'); f.push("</td>")
                 } f.push("</tr>")
             } f.push("</tbody></table>", '<span id="' + a + '" class="cke_voice_label">' + l.options + "</span>"); this.getContentElement("info", "charContainer").getElement().setHtml(f.join(""))
         }, contents: [{

@@ -1,14 +1,14 @@
 define(function () {
   // Upper Sorbian
-  var charsWords = ['znamješko', 'znamješce', 'znamješka','znamješkow'];
-  var itemsWords = ['zapisk', 'zapiskaj', 'zapiski','zapiskow'];
+  var charsWords = ['znamješko', 'znamješce', 'znamješka', 'znamješkow'];
+  var itemsWords = ['zapisk', 'zapiskaj', 'zapiski', 'zapiskow'];
 
   var pluralWord = function pluralWord(numberOfChars, words) {
     if (numberOfChars === 1) {
-        return words[0];
+      return words[0];
     } else if (numberOfChars === 2) {
       return words[1];
-    }  else if (numberOfChars > 2 && numberOfChars <= 4) {
+    } else if (numberOfChars > 2 && numberOfChars <= 4) {
       return words[2];
     } else if (numberOfChars >= 5) {
       return words[3];

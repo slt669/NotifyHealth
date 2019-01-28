@@ -1,7 +1,7 @@
 define([
 
 ], function () {
-  function CloseOnSelect () { }
+  function CloseOnSelect() { }
 
   CloseOnSelect.prototype.bind = function (decorated, container, $container) {
     var self = this;

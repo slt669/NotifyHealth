@@ -1,7 +1,7 @@
 define([
 
 ], function () {
-  function StopPropagation () { }
+  function StopPropagation() { }
 
   StopPropagation.prototype.bind = function (decorated, container, $container) {
     decorated.call(this, container, $container);

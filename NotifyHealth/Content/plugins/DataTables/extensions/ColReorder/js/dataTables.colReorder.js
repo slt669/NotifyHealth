@@ -527,31 +527,31 @@
          *    // Get column ordering for the table
          *    var order = $.fn.dataTable.ColReorder( dataTable ).fnOrder();
          *//**
-        * Set the order of the columns, from the positions identified in the
-        * ordering array given. Note that ColReorder takes a brute force approach
-        * to reordering, so it is possible multiple reordering events will occur
-        * before the final order is settled upon.
-        *  @param {array} [set] Array of column identifiers in the new order. Note
-        *    that every column must be included, uniquely, in this array.
-        *  @return {this} Returns `this` for chaining.
-        *
-        *  @example
-        *    // Swap the first and second columns
-        *    $.fn.dataTable.ColReorder( dataTable ).fnOrder( [1, 0, 2, 3, 4] );
-        *
-        *  @example
-        *    // Move the first column to the end for the table `#example`
-        *    var curr = $.fn.dataTable.ColReorder( '#example' ).fnOrder();
-        *    var first = curr.shift();
-        *    curr.push( first );
-        *    $.fn.dataTable.ColReorder( '#example' ).fnOrder( curr );
-        *
-        *  @example
-        *    // Reverse the table's order
-        *    $.fn.dataTable.ColReorder( '#example' ).fnOrder(
-        *      $.fn.dataTable.ColReorder( '#example' ).fnOrder().reverse()
-        *    );
-        */
+       * Set the order of the columns, from the positions identified in the
+       * ordering array given. Note that ColReorder takes a brute force approach
+       * to reordering, so it is possible multiple reordering events will occur
+       * before the final order is settled upon.
+       *  @param {array} [set] Array of column identifiers in the new order. Note
+       *    that every column must be included, uniquely, in this array.
+       *  @return {this} Returns `this` for chaining.
+       *
+       *  @example
+       *    // Swap the first and second columns
+       *    $.fn.dataTable.ColReorder( dataTable ).fnOrder( [1, 0, 2, 3, 4] );
+       *
+       *  @example
+       *    // Move the first column to the end for the table `#example`
+       *    var curr = $.fn.dataTable.ColReorder( '#example' ).fnOrder();
+       *    var first = curr.shift();
+       *    curr.push( first );
+       *    $.fn.dataTable.ColReorder( '#example' ).fnOrder( curr );
+       *
+       *  @example
+       *    // Reverse the table's order
+       *    $.fn.dataTable.ColReorder( '#example' ).fnOrder(
+       *      $.fn.dataTable.ColReorder( '#example' ).fnOrder().reverse()
+       *    );
+       */
         "fnOrder": function (set, original) {
             var a = [], i, ien, j, jen;
             var columns = this.s.dt.aoColumns;

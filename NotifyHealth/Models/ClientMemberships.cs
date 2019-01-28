@@ -10,7 +10,8 @@ namespace NotifyHealth.Models
 
         [Display(Name = "Start Date")]
         public string Start { get; set; }
-        public long SortTime { get; set; }  
+
+        public long SortTime { get; set; }
         public string Clients { get; set; }
         public string Campaign { get; set; }
         public string Program { get; set; }

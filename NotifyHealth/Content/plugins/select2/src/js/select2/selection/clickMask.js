@@ -1,7 +1,7 @@
 define([
   'jquery'
 ], function ($) {
-  function ClickMask () { }
+  function ClickMask() { }
 
   ClickMask.prototype.bind = function (decorate, $container, container) {
     var self = this;

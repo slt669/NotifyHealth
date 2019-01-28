@@ -2,5 +2,5 @@
 import Parsley from '../parsley';
 
 Parsley.addMessages('id', {
-  dateiso: "Harus tanggal yang valid (YYYY-MM-DD)."
+    dateiso: "Harus tanggal yang valid (YYYY-MM-DD)."
 });

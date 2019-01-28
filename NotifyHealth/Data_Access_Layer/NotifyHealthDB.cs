@@ -249,7 +249,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-                 
+
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
 
                     if (ReturnError != "0")
@@ -333,13 +333,13 @@ namespace NotifyHealth.Data_Access_Layer
             {
                 if (asvm.NewPassword != null)
                 {
-                 Encpassword = Encrypt(asvm.NewPassword, "27012019");
+                    Encpassword = Encrypt(asvm.NewPassword, "27012019");
                 }
                 if (asvm.NewPassword != null)
                 {
-                  EncCheckpassword = Encrypt(asvm.CheckPassword, "27012019");
+                    EncCheckpassword = Encrypt(asvm.CheckPassword, "27012019");
                 }
-                 
+
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
                 StoredProcedure = "usp102ManageAccount";
 
@@ -899,11 +899,10 @@ namespace NotifyHealth.Data_Access_Layer
                     connection.Close();
                     if (command.Parameters["@IDENTITY"].Value is DBNull)
                     {
-                       
                     }
                     else
                     {
-                    ClientId = (int)command.Parameters["@IDENTITY"].Value;
+                        ClientId = (int)command.Parameters["@IDENTITY"].Value;
                     }
 
                     if (ParticipationID == 11 || ParticipationID == 8)
@@ -934,7 +933,7 @@ namespace NotifyHealth.Data_Access_Layer
                 StoredProcedure = "usp122UpdateClientMembership";
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
-                { 
+                {
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;

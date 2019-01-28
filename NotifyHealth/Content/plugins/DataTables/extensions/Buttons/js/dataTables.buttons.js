@@ -93,11 +93,11 @@
          * @param  {int|string} Button index
          * @return {function}
          *//**
-        * Set the action of a button
-        * @param  {node} node Button element
-        * @param  {function} action Function to set
-        * @return {Buttons} Self for chaining
-        */
+       * Set the action of a button
+       * @param  {node} node Button element
+       * @param  {function} action Function to set
+       * @return {Buttons} Self for chaining
+       */
         action: function (node, action) {
             var button = this._nodeToButton(node);
 
@@ -302,11 +302,11 @@
          * @param  {int|string} node Button index
          * @return {string} Button text
          *//**
-        * Set the text for a button
-        * @param  {int|string|function} node Button index
-        * @param  {string} label Text
-        * @return {Buttons} Self for chaining
-        */
+       * Set the text for a button
+       * @param  {int|string|function} node Button index
+       * @param  {string} label Text
+       * @return {Buttons} Self for chaining
+       */
         text: function (node, label) {
             var button = this._nodeToButton(node);
             var buttonLiner = this.c.dom.collection.buttonLiner;

@@ -1,7 +1,7 @@
 define([
   'jquery'
 ], function ($) {
-  function InfiniteScroll (decorated, $element, options, dataAdapter) {
+  function InfiniteScroll(decorated, $element, options, dataAdapter) {
     this.lastParams = {};
 
     decorated.call(this, $element, options, dataAdapter);
@@ -60,7 +60,7 @@ define([
   InfiniteScroll.prototype.loadMore = function () {
     this.loading = true;
 
-    var params = $.extend({}, {page: 1}, this.lastParams);
+    var params = $.extend({}, { page: 1 }, this.lastParams);
 
     params.page++;
 
