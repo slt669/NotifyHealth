@@ -172,14 +172,12 @@
                 init: function () {
                     dt = $('#client-data-table').DataTable(
                         {
-                    "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
-                    responsive: true,
-                    dom: 'lf<"col-button"B>rtip',
+                            "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
+                            responsive: true, buttons: false,
                             searching: false,
                             info: false,
                     scrollX: true,
                     scrollCollapse: true,
-                    buttons: ['colvis'],
                     fixedColumns: {
                         leftColumns: 2
                     },
