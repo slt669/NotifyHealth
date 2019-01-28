@@ -941,8 +941,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = OrganizationId;
                     command.Parameters.Add("@ClientId", SqlDbType.BigInt, 4).Value = ClientID;
                     command.Parameters.Add("@CampaignId", SqlDbType.BigInt, 4).Value = CampaignId;
-                    command.Parameters.Add("@Start", SqlDbType.DateTime).Value = DateTime.Now.ToShortDateString();
-                    command.Parameters.Add("@Appointment", SqlDbType.VarChar, 12).Value = "";
+                    command.Parameters.Add("@Start", SqlDbType.DateTime).Value = DateTime.Now;
+                    command.Parameters.Add("@Appointment", SqlDbType.DateTime, 12).Value = DateTime.Now;
                     command.Parameters.Add("@Delete", SqlDbType.Char, 1).Value = Delete;
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();

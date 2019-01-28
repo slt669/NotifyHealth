@@ -63,14 +63,40 @@
                         </div>
                     </div>
                     @*<div class="text-center">
-                        @Html.ActionLink("Forgot your password?", "PasswordRecoveryGetUserName", "Account", new { @class = "text-muted" })
-                    </div>*@
+                            @Html.ActionLink("Forgot your password?", "PasswordRecoveryGetUserName", "Account", new { @class = "text-muted" })
+                        </div>*@
                 }
             </div>
             <!-- end login-content -->
         </div>
         <!-- end login -->
     </div>
+    <div class="modal fade" id="MessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <h4>@TempData["UpdateMessage"]</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/pwstrength.js"></script>
+    @if (TempData["UpdateMessage"] != null)
+    {
+        <script>
+            $(function () {
+
+                $("#MessageModal").modal('show');
+
+            });
+        </script>
+    }
     <!-- end page container -->
     <!-- end theme-panel -->
     <!-- ================== BEGIN BASE JS ================== -->
