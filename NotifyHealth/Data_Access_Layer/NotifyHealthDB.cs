@@ -897,7 +897,14 @@ namespace NotifyHealth.Data_Access_Layer
 
                     reader.Close();
                     connection.Close();
-                    ClientId = Convert.ToInt32(command.Parameters["@IDENTITY"].Value);
+                    if (command.Parameters["@IDENTITY"].Value is DBNull)
+                    {
+                       
+                    }
+                    else
+                    {
+                    ClientId = (int)command.Parameters["@IDENTITY"].Value;
+                    }
 
                     if (ParticipationID == 11 || ParticipationID == 8)
                     {
@@ -927,7 +934,7 @@ namespace NotifyHealth.Data_Access_Layer
                 StoredProcedure = "usp122UpdateClientMembership";
 
                 using (SqlConnection connection = new SqlConnection(strConnection))
-                {
+                { 
                     SqlCommand command = new SqlCommand(StoredProcedure);
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
