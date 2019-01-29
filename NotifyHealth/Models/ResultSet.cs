@@ -27,8 +27,7 @@ namespace NotifyHealth.Models
         {
             IQueryable<Programs> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.ProgramId.ToString().Contains(search.ToLower()) || p.ProgramId != null && p.ProgramId.ToString().Contains(search.ToLower())))
-                && (columnFilters[0] == null || (p.Name != null && p.Name.ToString().Contains(columnFilters[0].ToLower()))));
+            results = results.Where(p => (search == null || (p.Name.ToString().Contains(search.ToLower()) || p.Name != null && p.Name.ToString().Contains(search.ToLower()))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
             /*|| p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToStri5g().Contains(search.ToLower())*/
@@ -65,7 +64,7 @@ namespace NotifyHealth.Models
         {
             IQueryable<Campaigns> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.ProgramId.ToString().Contains(search.ToLower()) || p.ProgramId != null && p.ProgramId.ToString().Contains(search.ToLower())))
+            results = results.Where(p => (search == null || (p.Description.ToString().Contains(search.ToLower()) || p.Description != null && p.Description.ToString().Contains(search.ToLower())))
                 && (columnFilters[0] == null || (p.Name != null && p.Name.ToString().Contains(columnFilters[0].ToLower()))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
@@ -103,7 +102,7 @@ namespace NotifyHealth.Models
         {
             IQueryable<Notifications> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.NotificationId.ToString().Contains(search.ToLower()) || p.NotificationId != null && p.NotificationId.ToString().Contains(search.ToLower())))
+            results = results.Where(p => (search == null || (p.Period.ToString().Contains(search.ToLower()) || p.Period.ToString() != null && p.Period.ToString().Contains(search.ToLower())))
                 && (columnFilters[0] == null || (p.Text != null && p.Text.ToString().Contains(columnFilters[0].ToLower()))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
@@ -141,7 +140,7 @@ namespace NotifyHealth.Models
         {
             IQueryable<Clients> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.ClientId.ToString().Contains(search.ToLower()) || p.ClientId != null && p.ClientId.ToString().Contains(search.ToLower())))
+            results = results.Where(p => (search == null || (p.FirstName.ToString().Contains(search.ToLower()) || p.FirstName != null && p.FirstName.ToString().Contains(search.ToLower())))
                 && (columnFilters[0] == null || (p.FirstName != null && p.FirstName.ToString().Contains(columnFilters[0].ToLower()))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
@@ -179,7 +178,7 @@ namespace NotifyHealth.Models
         {
             IQueryable<ClientMemberships> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.ClientId.ToString().Contains(search.ToLower()) || p.ClientId != null && p.ClientId.ToString().Contains(search.ToLower())))
+            results = results.Where(p => (search == null || (p.Start.ToString().Contains(search.ToLower()) || p.Start != null && p.Start.ToString().Contains(search.ToLower())))
                 && (columnFilters[0] == null || (p.Campaign != null && p.Campaign.ToString().Contains(columnFilters[0].ToLower()))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
@@ -217,7 +216,7 @@ namespace NotifyHealth.Models
         {
             IQueryable<Transactions> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.ClientId.ToString().Contains(search.ToLower()) || p.ClientId != null && p.ClientId.ToString().Contains(search.ToLower())))
+            results = results.Where(p => (search == null || (p.Timestamp.ToString().Contains(search.ToLower()) || p.Timestamp != null && p.Timestamp.ToString().Contains(search.ToLower())))
                 && (columnFilters[0] == null || (p.Notification != null && p.Notification.ToString().Contains(columnFilters[0].ToLower()))));
             return results;
         }
