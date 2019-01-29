@@ -662,7 +662,6 @@ namespace NotifyHealth.Controllers
 
             TempData["Clientsdtsource"] = dtsource;
             TempData["organizationID"] = Convert.ToInt32(Session["organizationID"]);
-            TempData["ClientId"] = dtsource.First().ClientId;
 
             List<String> columnSearch = new List<string>();
 

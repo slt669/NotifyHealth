@@ -156,6 +156,7 @@ namespace NotifyHealth.Controllers
 
                 if (UpdateMessage != "Account Settings updated successfully!")
                 {
+                    ViewBag.Message = UpdateMessage;
                     TempData["UpdateMessage"] = UpdateMessage;
                     return View(data);
                 }
