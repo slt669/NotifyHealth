@@ -14,7 +14,7 @@ namespace NotifyHealth.Models.ViewModels
         [Display(Name = "Logon Name")]
         public string LogonName { get; set; }
 
-        public string Organization { get; set; }
+        public int OrganizationID { get; set; }
 
         public string Title { get; set; }
 

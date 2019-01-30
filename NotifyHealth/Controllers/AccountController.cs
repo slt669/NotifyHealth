@@ -166,7 +166,7 @@ namespace NotifyHealth.Controllers
                     {
                         Session["Photo"] = "../Content/img/Users/" + data.PhotoPath;
                     }
-
+                    Session["organizationID"] = data.OrganizationID;
                     TempData["UpdateMessage"] = UpdateMessage;
                     return RedirectToAction("Index", "Home");
                 }

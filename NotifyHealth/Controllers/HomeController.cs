@@ -974,8 +974,8 @@ namespace NotifyHealth.Controllers
         {
             // These values dont reside in the function in the service but are here to support the example
             string apiCompany = "notify";
-            string apiUsername = "notifyhealth_cpc001";
-            string apiPassword = "6U7gQ458wGUNKm2tS6";
+            //string apiUsername = "notifyhealth_cpc001";
+            //string apiPassword = "6U7gQ458wGUNKm2tS6";
 
             SMSAccount sms = db.GetSMSAccount(Convert.ToInt32(Session["organizationID"]));
             ClientPhone Phone = null;
@@ -998,7 +998,7 @@ namespace NotifyHealth.Controllers
             }
             catch (Exception e)
             {
-                //eventLog1.WriteEntry("Error Loading XML via Carrier Lookup API. Error: " + e.Message, EventLogEntryType.Error, 8500);
+                e.Message.ToString();
             }
 
             XmlElement root = apiResponseXML.DocumentElement;
