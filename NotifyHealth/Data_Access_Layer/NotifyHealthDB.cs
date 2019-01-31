@@ -1216,7 +1216,7 @@ namespace NotifyHealth.Data_Access_Layer
             }
         }
 
-        public List<SelectListItem> GetProgramDDL(string selected = "")
+        public List<SelectListItem> GetProgramDDL(int OrganizationId,string selected = "")
         {
             try
             {
@@ -1231,6 +1231,7 @@ namespace NotifyHealth.Data_Access_Layer
 
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.Add("@OrganizationId", SqlDbType.BigInt, 4).Value = OrganizationId;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
 
                     connection.Open();

@@ -275,7 +275,7 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-                ViewBag.organizationID = 1;
+                ViewBag.organizationID = Convert.ToInt32(Session["organizationID"]);
             }
             catch (Exception ex)
             {
@@ -323,7 +323,7 @@ namespace NotifyHealth.Controllers
             var model = new Campaigns();
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
-            model.Programs = db.GetProgramDDL();
+            model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
             model.Statuses = GetStatusList();
             model.OrganizationID = organizationID;
             return View("_CreateCampaignsPartial", model);
@@ -359,7 +359,7 @@ namespace NotifyHealth.Controllers
         {
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
-            edit.Programs = db.GetProgramDDL();
+            edit.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
             edit.Statuses = GetStatusList();
 
             if (Request.IsAjaxRequest())
@@ -427,7 +427,7 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-                ViewBag.organizationID = 1;
+                ViewBag.organizationID = Convert.ToInt32(Session["organizationID"]);
             }
             catch (Exception ex)
             {
@@ -476,11 +476,11 @@ namespace NotifyHealth.Controllers
             try
             {
                 model.Statuses = GetStatusList();
-                model.Programs = db.GetProgramDDL();
+                model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
 
                 model.NotificationTypes = db.GetNotificationTypes();
 
-                var types = model.NotificationTypes.ToList(); // Get IEnumerable as List
+                var types = model.NotificationTypes.ToList(); 
 
                 types.Remove(types.First(x => x.Value == "1"));
                 types.Remove(types.First(x => x.Value == "2"));
@@ -535,7 +535,7 @@ namespace NotifyHealth.Controllers
             var model = new Notifications();
             model.Statuses = GetStatusList();
             model.NotificationTypes = db.GetNotificationTypes();
-            model.Programs = db.GetProgramDDL();
+            model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
 
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
@@ -575,7 +575,7 @@ namespace NotifyHealth.Controllers
             Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == id);
             edit.Statuses = GetStatusList();
             edit.NotificationTypes = db.GetNotificationTypes();
-            edit.Programs = db.GetProgramDDL();
+            edit.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
             edit.Campaigns = db.GetCampaignDDL(edit.ProgramID);
             if (Request.IsAjaxRequest())
                 return PartialView("_EditNotificationsPartial", edit);
@@ -645,7 +645,7 @@ namespace NotifyHealth.Controllers
         {
             try
             {
-                ViewBag.organizationID = 1;
+                ViewBag.organizationID = Convert.ToInt32(Session["organizationID"]);
             }
             catch (Exception ex)
             {
@@ -805,8 +805,8 @@ namespace NotifyHealth.Controllers
         {
             int Clientid = Convert.ToInt32(Memberships[0][0]);
             int rowToRemove = 0;
-            //a = a.ToList().Where(i => !i.Equals(a.ElementAt(rowToRemove))).ToArray(); //a now has 2 rows, 1st and 3rd only.
-            Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray(); // even better way to do it maybe
+
+            Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray(); 
 
             if (Memberships == null)
             {
@@ -837,8 +837,8 @@ namespace NotifyHealth.Controllers
         {
             int Clientid = Convert.ToInt32(Memberships[0][0]);
             int rowToRemove = 0;
-            //a = a.ToList().Where(i => !i.Equals(a.ElementAt(rowToRemove))).ToArray(); //a now has 2 rows, 1st and 3rd only.
-            Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray(); // even better way to do it maybe
+      
+            Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray();
 
             if (Memberships == null)
             {
@@ -970,14 +970,14 @@ namespace NotifyHealth.Controllers
         /// </summary>
         /// <param name="apiPhoneNumber"></param>
 
-        public JsonResult CollectPhoneStatus(string apiPhoneNumber)
+        public JsonResult CollectPhoneStatus(string apiPhoneNumber, int organizationID)
         {
             // These values dont reside in the function in the service but are here to support the example
             string apiCompany = "notify";
             //string apiUsername = "notifyhealth_cpc001";
             //string apiPassword = "6U7gQ458wGUNKm2tS6";
 
-            SMSAccount sms = db.GetSMSAccount(Convert.ToInt32(Session["organizationID"]));
+            SMSAccount sms = db.GetSMSAccount(organizationID);
             ClientPhone Phone = null;
             if (apiPhoneNumber.Length != 10)
             {
