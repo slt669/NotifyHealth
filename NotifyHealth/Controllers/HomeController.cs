@@ -318,7 +318,7 @@ namespace NotifyHealth.Controllers
         }
 
         [SessionFilterAttribute]
-        public ActionResult CreateCampaign(int? organizationID,int? programID = null)
+        public ActionResult CreateCampaign(int? organizationID, int? programID = null)
         {
             var model = new Campaigns();
 
@@ -417,9 +417,9 @@ namespace NotifyHealth.Controllers
         public List<Notifications> MyGlobalNotificationsInitializer()
         {
             List<Notifications> dtsource = new List<Notifications>();
-            dtsource = (List<Notifications>)TempData["Notificationsdtsource"];
+            dtsource = (List<Notifications>)TempData["NotificationsbyCampaignsdtsource"];
 
-            TempData["Notificationsdtsource"] = dtsource;
+            TempData["NotificationsbyCampaignsdtsource"] = dtsource;
             return dtsource;
         }
 
@@ -481,7 +481,7 @@ namespace NotifyHealth.Controllers
 
                 model.NotificationTypes = db.GetNotificationTypes();
 
-                var types = model.NotificationTypes.ToList(); 
+                var types = model.NotificationTypes.ToList();
 
                 types.Remove(types.First(x => x.Value == "1"));
                 types.Remove(types.First(x => x.Value == "2"));
@@ -531,12 +531,17 @@ namespace NotifyHealth.Controllers
         }
 
         [SessionFilterAttribute]
-        public ActionResult CreateNotification(int? organizationID)
+        public ActionResult CreateNotification(int? organizationID, int? campaignID = null)
         {
             var model = new Notifications();
             model.Statuses = GetStatusList();
             model.NotificationTypes = db.GetNotificationTypes();
             model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
+            if (campaignID != null)
+            {
+                model.CampaignId = Convert.ToInt32(campaignID);
+            }
+
 
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
@@ -555,7 +560,7 @@ namespace NotifyHealth.Controllers
             char delete = 'N';
             db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]), model.Text, model.Period, model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
 
-            return RedirectToAction("Notifications", new { controller = "Home", campaignId = model.CampaignId });
+            return RedirectToAction("CampaignDetails", new { controller = "Home", id = model.CampaignId });
         }
 
         [SessionFilterAttribute]
@@ -598,7 +603,7 @@ namespace NotifyHealth.Controllers
             {
                 ViewBag.Message = ex.Message;
             }
-            return RedirectToAction("Notifications", new { controller = "Home", NotificationId = model.NotificationId });
+            return RedirectToAction("CampaignDetails", new { controller = "Home", id = model.CampaignId });
         }
 
         [SessionFilterAttribute]
@@ -607,6 +612,16 @@ namespace NotifyHealth.Controllers
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
 
             Notifications delete = dtsource.FirstOrDefault(x => x.NotificationId == id);
+            List<Campaigns> CL = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
+            delete.Campaign = CL.FirstOrDefault(c => c.CampaignId.Equals(delete.CampaignId)).ToString();
+
+            var find = CL.FirstOrDefault(x => x.CampaignId == delete.CampaignId);
+            if (find != null)
+            {
+                delete.CampaignId = find.CampaignId;
+                delete.Campaign = find.Name;
+            }
+
             delete.NotificationId = id;
 
             if (Request.IsAjaxRequest())
@@ -629,7 +644,7 @@ namespace NotifyHealth.Controllers
                 ViewBag.Message = ex.Message;
             }
 
-            return RedirectToAction("Notifications");
+            return RedirectToAction("CampaignDetails", new { controller = "Home", id = model.CampaignId });
         }
 
         public List<Clients> MyGlobalClientsInitializer()
@@ -807,7 +822,7 @@ namespace NotifyHealth.Controllers
             int Clientid = Convert.ToInt32(Memberships[0][0]);
             int rowToRemove = 0;
 
-            Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray(); 
+            Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray();
 
             if (Memberships == null)
             {
@@ -838,7 +853,7 @@ namespace NotifyHealth.Controllers
         {
             int Clientid = Convert.ToInt32(Memberships[0][0]);
             int rowToRemove = 0;
-      
+
             Memberships = Memberships.Where((el, i) => i != rowToRemove).ToArray();
 
             if (Memberships == null)

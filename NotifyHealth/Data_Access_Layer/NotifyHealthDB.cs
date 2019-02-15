@@ -1402,6 +1402,7 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.Status = reader["Status"] as string;
                         CD.NTypeId = reader["N_Type_ID"] as int? ?? default(int);
                         CD.NotificationType = reader["NotificationType"] as string;
+                        CD.NotificationId = reader["Notification_ID"] as int? ?? default(int);
                         CL.Add(CD);
                     }
 

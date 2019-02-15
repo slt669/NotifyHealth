@@ -17,10 +17,10 @@ namespace NotifyHealth.Models.ViewModels
         public int OrganizationID { get; set; }
 
         public string Title { get; set; }
-        [Display(Name = "First name")]
+        [Display(Name = "First Name")]
         [Required]
         public string Forename { get; set; }
-        [Display(Name = "Last name")]
+        [Display(Name = "Last Name")]
         [Required]
         public string Surname { get; set; }
 

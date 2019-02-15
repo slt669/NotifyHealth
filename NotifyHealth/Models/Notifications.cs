@@ -7,6 +7,7 @@ namespace NotifyHealth.Models
     public class Notifications
     {
         public int NotificationId { get; set; }
+        [Display(Name = "Day of Contact")]
         public int Period { get; set; }
         public string Text { get; set; }
 

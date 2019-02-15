@@ -104,8 +104,8 @@ namespace NotifyHealth.Models
         {
             IQueryable<Notifications> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.Period.ToString().Contains(search.ToLower()) || p.Period.ToString() != null && p.Period.ToString().Contains(search.ToLower())))
-                && (columnFilters[0] == null || (p.Text != null && p.Text.ToString().Contains(columnFilters[0].ToLower()))));
+            results = results.Where(p => (search == null || p.Text.ToString().ToLower() != null && p.Text.ToString().Contains(search.ToLower()))
+                && (columnFilters[0] == null || (p.Text != null && p.Text.ToString().ToLower().Contains(columnFilters[0].ToLower()))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
             /*|| p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToStri5g().Contains(search.ToLower())*/

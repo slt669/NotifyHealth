@@ -19,10 +19,12 @@
 <h1 class="page-header">Campaigns Details</h1>
 <div class="section-container section-with-top-border">
 </div>
-    <button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Campaigns", "Home")'" id="btnCampaigns">
-        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
-    </button>
-
+<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Campaigns", "Home")'" id="btnCampaigns">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
+</button>
+<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("EditCampaign","Home", new { @id = Request["id"] })" id="btnCreateAsset">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Edit Campaign
+</button>
 <p class="m-b-20">
 </p>
 <dl class="m-b-20">
@@ -75,10 +77,26 @@
 <p class="m-b-20">
     <h1 class="page-header">Related Notifications</h1>
 </p>
-
+<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateNotification","Home", new { @organizationID = Request["organizationID"], @campaignID = @ViewBag.CampaignID})" id="btneditAsset">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Notification
+</button>
+<p class="m-b-20">
+</p>
 <div class="panel pagination-inverse m-b-0 clearfix">
 
     <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
+</div>
+<div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="createAssetContainer">
+    </div>
+</div>
+<div class="modal fade" id="editAssetModal" tabindex="-1" role="dialog" aria-labelledby="EditAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="editAssetContainer">
+    </div>
+</div>
+<div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="DeleteAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="deleteAssetContainer">
+    </div>
 </div>
 
 <!-- ================== BEGIN BASE JS ================== -->
@@ -109,8 +127,8 @@
                     {
                         "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
                         responsive: true,
-                        dom: 'lf<"col-button"B>rtip',
-                        searching: false,
+                        dom: "Bfrtip", buttons: ["copy", "csv", "print"],
+                        searching: true,
                         scrollX: true,
                         scrollCollapse: true,
                         fixedColumns: {
@@ -140,17 +158,27 @@
                         "columns": [
                             {
 
-                                "title": "Text", "data": "Text", "searchable": true,
+                                "title": "Text", "data": "Text", "searchable": true, "render": function (data, row, full, meta) {
+                                    return '<a href="@Url.Action("EditNotification", "Home")?id=' + full['NotificationId']  + '" class="editAsset">' + data + '</a>';
+                                }
                             },
                             {
-                                "title": "Period", "data": "Period", "searchable": true,
+                                "title": "Day of Contact", "data": "Period", "searchable": true,
                             },
-                            { "title": "Notification Type", "data": "NotificationType", "searchable": true, },
                             {
                                 "title": "Status", "data": "Status", "searchable": true,
                             },
+                            {
+                                "title": "Actions",
+                                "data": "NotificationId",
+                                "searchable": false,
+                                "sortable": false,
+                                "render": function (data, type, full, meta) {
+                                    return '<a href="@Url.Action("EditNotification", "Home")?id=' + data + '" class="editAsset">Edit</a> |  <a href="@Url.Action("DeleteNotification", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                }
+                            }
                         ],
-                        "order": [0, "Asc"]
+                        "order": [1, "Asc"]
                     });
             },
             refresh: function () {
@@ -160,5 +188,55 @@
         }
         // initialize the datatables
         assetListVM.init();
+        $("#btnCreateAsset").on("click", function () {
+
+            var url = $(this).data("url");
+
+            $.get(url, function (data) {
+                $('#createAssetContainer').html(data);
+
+                $('#createAssetModal').modal('show');
+            });
+
+        });
+        $("#btneditAsset").on("click", function () {
+
+            var url = $(this).data("url");
+
+            $.get(url, function (data) {
+                $('#createAssetContainer').html(data);
+
+                $('#createAssetModal').modal('show');
+            });
+
+        });
+        $('#assets-data-table').on("click", ".editAsset", function (event) {
+
+            event.preventDefault();
+
+            var url = $(this).attr("href");
+
+            $.get(url, function (data) {
+                $('#editAssetContainer').html(data);
+
+                $('#editAssetModal').modal('show');
+            });
+
+        });
+
+        $('#assets-data-table').on("click", ".deleteAsset", function (event) {
+
+            event.preventDefault();
+
+            var url = $(this).attr("href");
+
+            $.get(url, function (data) {
+                $('#deleteAssetContainer').html(data);
+
+                $('#deleteAssetModal').modal('show');
+            });
+
+        });
+
     });
 </script>

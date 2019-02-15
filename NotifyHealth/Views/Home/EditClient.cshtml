@@ -26,12 +26,22 @@
         </div>
 
         <div class="col-lg-4 offset-1">
-            <h3>Campaign Memberships</h3>
+            <p class="m-b-20">
+                <h1 class="page-header">Campaign Memberships</h1>
+</p>
             <label class="col-sm-12 form-control-label">Active</label>
             <div class="form-group">
 
                 @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
             </div>
+
+
+            <div class="btn-group" style="padding-left:200px">
+                <a id='btnRight_code' class="btn btn-success" href="#"><i class="fa fa-arrow-up"></i></a>
+                <a id='btnLeft_code' class="btn btn-success" href="#"><i class="fa fa-arrow-down"></i></a>
+            </div>
+
+
 
             <label class="col-sm-12 form-control-label">Inactive</label>
             <div class="form-group">
@@ -40,10 +50,12 @@
             </div>
             <div class="col-sm-12">
 
-                <input type='button' id='btnRight_code' value='  <  ' /> @*<input type='button' id='btnSubmit' value='Submit' />*@ <input type='button' id='btnLeft_code' value='  >  ' />
+
                 @Html.HiddenFor(x => x.CampaignId)
                 <span id="values"></span>
             </div>
+
+            @*<input type='button' class="fa fa-arrow-up"  /> @*<input type='button' id='btnSubmit' value='Submit' />*@ @*<input type='button'  value='  >  ' />*@
         </div>
     </div>
 }
