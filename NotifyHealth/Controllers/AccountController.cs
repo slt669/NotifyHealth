@@ -59,6 +59,8 @@ namespace NotifyHealth.Controllers
                 Session["organizationID"] = usermanager.OrganizationID;
                 Session["UserLogon"] = usermanager.accset.UserLogonID;
                 Session["organization"] = usermanager.Organization;
+                Session["Portal"] = usermanager.Portal;
+                Session["Logo"] = "../Content/img/" + usermanager.Logo ?? null; 
                 return RedirectToAction("Index", "Home"); // auth succeed
             }
             // invalid username or password

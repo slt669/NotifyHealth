@@ -6,8 +6,11 @@
         <!-- begin mobile sidebar expand / collapse button -->
         @*@if (Request.IsAuthenticated)
         {*@
-            <div class="navbar-header">
-                <a href="@Url.Action("Index", "Home")"  style="font-weight: 400" class="navbar-brand"><img src="~/Content/img/logo.png" class="logo" alt="" />  Notify Health <small style="color:#006666"> Broadcast</small></a>
+        <div class="navbar-header">
+            @if (@Session["Logo"] != null)
+            {
+            <a href="@Url.Action("Index", "Home")" style="font-weight: 400" class="navbar-brand"><img src="@Session["Logo"].ToString()" class="logo" alt="" />  @Session["Portal"].ToString() <small style="color:#006666"> Broadcast</small></a>
+            }
                 <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

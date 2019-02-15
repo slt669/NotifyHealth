@@ -13,6 +13,8 @@ namespace NotifyHealth.Utils
         public string SessionGUID;
         public string OrganizationID;
         public string Organization;
+        public string Portal;
+        public string Logo;
         public string adminLogonId;
         public string strReturnValidationError;
         public string strReturnValidationMessage;
@@ -50,7 +52,8 @@ namespace NotifyHealth.Utils
             {
                 var LoginError = ex.Message;
             }
-
+            Portal = dbc.Portal;
+            Logo = dbc.Logo;
             OrganizationID = dbc.OrganizationID;
             Organization = dbc.Organization;
 

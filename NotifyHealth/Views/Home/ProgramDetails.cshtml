@@ -67,11 +67,21 @@
 <p class="m-b-20">
     <h1 class="page-header">Related Campaigns</h1>
 </p>
+<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateCampaign","Home", new { @organizationID = Request["organizationID"], @ProgramId = @ViewBag.ProgramId })" id="btnCreateAsset">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Campaign
+</button>
 <div class="panel pagination-inverse m-b-0 clearfix">
 
     <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
 </div>
-
+<div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="createAssetContainer">
+    </div>
+</div>
+<div class="modal fade" id="editAssetModal" tabindex="-1" role="dialog" aria-labelledby="EditAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="editAssetContainer">
+    </div>
+</div>
 <!-- ================== BEGIN BASE JS ================== -->
 <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -131,7 +141,9 @@
                         "columns": [
                             {
 
-                                "title": "Name", "data": "Name", "searchable": true,
+                                "title": "Name", "data": "Name", "searchable": true, "render": function (data, row, full, meta) {
+                                    return '<a href="@Url.Action("EditCampaign", "Home")?id=' + full['CampaignId']  + '" class="editAsset">' + data + '</a>';
+                                }
                             },
                             {
                                 "title": "Description", "data": "Description", "searchable": true,
@@ -150,5 +162,30 @@
         }
         // initialize the datatables
         assetListVM.init();
+
+        $("#btnCreateAsset").on("click", function () {
+
+            var url = $(this).data("url");
+
+            $.get(url, function (data) {
+                $('#createAssetContainer').html(data);
+
+                $('#createAssetModal').modal('show');
+            });
+
+        });
+        $('#assets-data-table').on("click", ".editAsset", function (event) {
+
+            event.preventDefault();
+
+            var url = $(this).attr("href");
+
+            $.get(url, function (data) {
+                $('#editAssetContainer').html(data);
+
+                $('#editAssetModal').modal('show');
+            });
+
+        });
     });
 </script>

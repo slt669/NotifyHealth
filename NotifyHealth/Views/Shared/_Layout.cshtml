@@ -203,7 +203,12 @@
                         <i class="fa fa-arrow-up"></i> <span class="hidden-xs">Back to Top</span>
                     </a>
                 </span>
-                &copy; @DateTime.Now.Year.ToString() <b>Notify Health</b> All Right Reserved
+                &copy;
+                @if (@Session["Portal"] != null)
+                {
+                    @DateTime.Now.Year.ToString() <b>@Session["Portal"].ToString()</b>
+                } All Right Reserved
+
             </div>
             <!-- end #footer -->
         </div>

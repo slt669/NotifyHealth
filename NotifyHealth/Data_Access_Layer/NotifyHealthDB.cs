@@ -25,6 +25,8 @@ namespace NotifyHealth.Data_Access_Layer
         public String SessionGUID;
         public String OrganizationID;
         public String Organization;
+        public String Portal;
+        public String Logo;
         public int CompanyID;
         public String PageName;
         public String Password;
@@ -170,6 +172,8 @@ namespace NotifyHealth.Data_Access_Layer
                         MustChangePwd = reader["MustChangePwd"].ToString();
                         OrganizationID = reader["OrganizationID"] != null ? reader["OrganizationID"].ToString() : "";
                         Organization = reader["Organization"].ToString();
+                        Portal = reader["Portal"].ToString();
+                        Logo = reader["Logo"].ToString();
                     }
 
                     reader.Close();

@@ -318,12 +318,13 @@ namespace NotifyHealth.Controllers
         }
 
         [SessionFilterAttribute]
-        public ActionResult CreateCampaign(int? organizationID)
+        public ActionResult CreateCampaign(int? organizationID,int? programID = null)
         {
             var model = new Campaigns();
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
-            model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
+            model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]), programID.ToString());
+
             model.Statuses = GetStatusList();
             model.OrganizationID = organizationID;
             return View("_CreateCampaignsPartial", model);

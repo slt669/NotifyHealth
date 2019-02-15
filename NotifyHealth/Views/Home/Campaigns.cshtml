@@ -1,6 +1,4 @@
 ﻿@{
-    /**/
-
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
@@ -65,11 +63,11 @@
 
 <script type="text/javascript">
 
-        var assetListVM;
+    var assetListVM;
         $(function () {
              assetListVM = {
                 dt: null,
-
+               
                 init: function () {
                     dt = $('#assets-data-table').DataTable(
                         {
@@ -82,7 +80,7 @@
                     fixedColumns: {
                         leftColumns: 2
                     },
-
+                      
                     "serverSide": true,
                     "ajax": {
                         "type": "POST",
@@ -104,8 +102,9 @@
                     "columns": [
 
                         { "title": "Name", "data": "Name", "searchable": true,  "render": function (data, row, full, meta) {
-                            return '<a href="@Url.Action("CampaignDetails", "Home")?id=' + row.CampaignId + '" class="details">' + data + '</a>';
-                                } },
+                            return '<a href="@Url.Action("CampaignDetails", "Home")?id=' + full['CampaignId'] + '" class="details">' + data + '</a>';
+                        }
+                        },
                         { "title": "Description", "data": "Description", "searchable": true, },
                         { "title": "Tracks", "data": "Program", "searchable": true, },
                         { "title": "Status", "data": "Status", "searchable": true, },
