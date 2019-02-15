@@ -77,8 +77,8 @@
                         {
                     "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
                             responsive: true,
-                            buttons: false,
-                    searching: false,
+                            dom: "Bfrtip", buttons: ["copy", "csv","print"],
+                    searching: true,
                     scrollX: true,
                     scrollCollapse: true,
                     fixedColumns: {
@@ -104,12 +104,17 @@
                     "processing": true,
                     "deferRender": true,
                     "columns": [
+                        { "title": "First Name", "data": "FirstName", "searchable": true,   "render": function (data, type, row, meta) {
+                            return '<a href="@Url.Action("ClientDetails", "Home")?id=' + row.ClientId + '"class="details">'+ data +'</a>';
+                                }},
 
-                        { "title": "First Name", "data": "FirstName", "searchable": true, },
-                        { "title": "Last Name", "data": "LastName", "searchable": true, },
-                        { "title": "Client Status", "data": "ClientStatus", "searchable": true, },
-                        { "title": "Phone Status", "data": "PhoneStatus", "searchable": true, },
-                        { "title": "Participation Reason", "data": "ParticipationReason", "searchable": true },
+                        {
+                            "title": "Last Name", "data": "LastName", "searchable": true, "render": function (data, type, row, meta) {
+                                return '<a href="@Url.Action("ClientDetails", "Home")?id=' + row.ClientId + '"class="details">' + data + '</a>';
+                                } },
+                        { "title": "Client Status", "data": "ClientStatus", "searchable": false, },
+                        { "title": "Phone Status", "data": "PhoneStatus", "searchable": false, },
+                        { "title": "Participation Reason", "data": "ParticipationReason", "searchable": false },
                                {
                                 "title": "Actions",
                                    "data": "ClientId",
@@ -120,7 +125,7 @@
                                 }
                             }
                     ],
-                    "order": [0, "Asc"],
+                    "order": [1, "Desc"],
                     });
                 },
 

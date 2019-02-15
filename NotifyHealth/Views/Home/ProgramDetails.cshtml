@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-    <title>Notify Health | Programs Details</title>
+    <title>Notify Health | Tracks Details</title>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 
@@ -16,7 +16,7 @@
     <link href="~/Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 </head>
-<h1 class="page-header">Program Details</h1>
+<h1 class="page-header">Tracks Details</h1>
 <div class="section-container section-with-top-border">
 </div>
 <button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Programs", "Home")'" id="btnProgram">
@@ -100,8 +100,8 @@
                     {
                         "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
                         responsive: true,
-                        dom: 'lf<"col-button"B>rtip',
-                        searching: false,
+                        dom: "Bfrtip", buttons: ["copy", "csv", "print"],
+                        searching: true,
                         scrollX: true,
                         scrollCollapse: true,
                         fixedColumns: {
@@ -140,7 +140,7 @@
                                 "title": "Status", "data": "Status", "searchable": true,
                             },
                         ],
-                        "order": [0, "Asc"]
+                        "order": [0, "Desc"]
                     });
             },
             refresh: function () {

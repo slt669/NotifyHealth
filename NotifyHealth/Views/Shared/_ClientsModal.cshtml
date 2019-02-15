@@ -46,21 +46,21 @@
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneCarrier, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @name = "PhoneCarrier", @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @name = "PhoneCarrier", @class = "col-sm-12 form-control", @disabled = "" })
          @*   <input type="hidden" name="PhoneCarrier" id="PhoneCarrier" />*@
         </div>
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.MessageAddress, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.MessageAddress, new { @id = "MessageAddress", @name = "MessageAddress", @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.MessageAddress, new { @id = "MessageAddress", @name = "MessageAddress", @class = "col-sm-12 form-control", @disabled = "" })
            @* <input type="hidden" name="MessageAddress" id="MessageAddress" />*@
         </div>
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneStatus, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.PStatusId, Model.PhoneStatuses, new { @id = "PStatusId", @class = "col-sm-12 form-control" })
+            @Html.DropDownListFor(model => model.PStatusId, Model.PhoneStatuses, new { @id = "PStatusId", @class = "col-sm-12 form-control", @disabled = "" })
             @Html.ValidationMessageFor(model => model.PStatusId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -68,7 +68,7 @@
     <div class="form-group row">
         @Html.LabelFor(model => model.ParticipationReason, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.ParticipationId, Model.ParticipationReasons, new { @class = "col-sm-12 form-control" })
+            @Html.DropDownListFor(model => model.ParticipationId, Model.ParticipationReasons, new { @class = "col-sm-12 form-control", @disabled = "" })
             @Html.ValidationMessageFor(model => model.ParticipationId, "", new { @class = "text-danger" })
         </div>
     </div>

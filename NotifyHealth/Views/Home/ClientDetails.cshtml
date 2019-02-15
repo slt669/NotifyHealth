@@ -22,6 +22,9 @@
 <button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Clients", "Home")'" id="btnClients">
     <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
 </button>
+<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("EditClient", "Home",new { id = Request.QueryString["id"] })'" id="btnEditClient">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Edit
+</button>
 
 <p class="m-b-20">
 </p>
@@ -241,7 +244,7 @@
                     {
                         "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
                         responsive: true,
-                        dom: "Bfrtip", buttons: ["copy", "csv", "excel", "pdf", "print"],
+
                         scrollX: true,
                         scrollCollapse: true,
                         searching: false,

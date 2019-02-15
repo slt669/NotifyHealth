@@ -42,52 +42,137 @@
             <div data-scrollbar="true" data-height="100%">
                 <!-- begin sidebar nav -->
                 <ul class="nav">
-                    <li class="nav-user">
-                        <div class="image">
-                        </div>
+                    <li class="nav-header">
                         <div class="info">
                             <div class="name dropdown">
 
                                 @if (@Session["organization"] != null)
                                 {
-                                    <h1 class="page-header" style="color:white">@Session["organization"].ToString() </h1>
-
+                                    <h1 class="page-header" style="color:white;font-weight: 400;margin: 10px 0px 10px 0px">@Session["organization"].ToString()</h1>
                                 }
                             </div>
                         </div>
                     </li>
 
-                    <li class="has-sub">
-                        <a href="@Url.Action("Index", "Home")">
-                            <i class="fa fa-home"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="has-sub">
-                        <a href="@Url.Action("Notifications", "Home")">
+                    @if (ViewContext.RouteData.Values["Action"].ToString() == "Index")
+                    {
+                        <li class="has-sub active">
+                            <a href="@Url.Action("Index", "Home")">
+                                <i class="fa fa-home"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
 
-                            <i class="fa fa-bell"></i>
-                            <span>Notifications</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Programs", "Home")">
-                            <i class="fa fa-gem"></i>
-                            <span>Programs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Campaigns", "Home")">
-                            <i class="fa fa-suitcase"></i>
-                            <span>Campaigns</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Clients", "Home")">
-                            <i class="fa fa-calendar"></i>
-                            <span>Clients</span>
-                        </a>
-                    </li>
+                    }
+                    else
+                    {
+                        <li class="has-sub">
+                            <a href="@Url.Action("Index", "Home")">
+                                <i class="fa fa-home"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                    }
+                    @if (ViewContext.RouteData.Values["Action"].ToString() == "Clients")
+                    {
+                        <li class="has-sub active">
+                            <a href="@Url.Action("Clients", "Home")">
+                                <i class="fa fa-users"></i>
+                                <span>Clients</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="has-sub">
+                            <a href="@Url.Action("Clients", "Home")">
+                                <i class="fa fa-users"></i>
+                                <span>Clients</span>
+                            </a>
+                        </li>
+                    }
+                    @if (ViewContext.RouteData.Values["Action"].ToString() == "Programs")
+                    {
+                        <li class="has-sub active">
+                            <a href="@Url.Action("Programs", "Home")">
+                                <i class="fa fa-university"></i>
+                                <span>Programs</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="has-sub">
+                            <a href="@Url.Action("Programs", "Home")">
+                                <i class="fa fa-university"></i>
+                                <span>Programs</span>
+                            </a>
+                        </li>
+
+                    }
+                    @if (ViewContext.RouteData.Values["Action"].ToString() == "Campaigns")
+                    {
+                        <li class="has-sub active">
+                            <a href="@Url.Action("Campaigns", "Home")">
+                                <i class="fa fa-sitemap"></i>
+                                <span>Campaigns</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="has-sub">
+                            <a href="@Url.Action("Campaigns", "Home")">
+                                <i class="fa fa-sitemap"></i>
+                                <span>Campaigns</span>
+                            </a>
+                        </li>
+
+                    }
+                    @*@if (ViewContext.RouteData.Values["Action"].ToString() == "Notifications")
+        {
+            <li class="has-sub active">
+                <a href="@Url.Action("Notifications", "Home")">
+
+                    <i class="fa fa-comments"></i>
+                    <span>Notifications</span>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="has-sub">
+                <a href="@Url.Action("Notifications", "Home")">
+
+                    <i class="fa fa-comments"></i>
+                    <span>Notifications</span>
+                </a>
+            </li>
+
+        }*@
+                    @if (ViewContext.RouteData.Values["Action"].ToString() == "Support")
+                    {
+                        <li class="has-sub active">
+                            <a href="@Url.Action("Support", "Home")">
+
+                                <i class="fa fa-question-circle"></i>
+                                <span>Support</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="has-sub">
+                            <a href="@Url.Action("Support", "Home")">
+
+                                <i class="fa fa-question-circle"></i>
+                                <span>Support</span>
+                            </a>
+                        </li>
+
+                    }
+
                     <li class="divider has-minify-btn">
                         <!-- begin sidebar minify button -->
                         <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-left"></i></a>

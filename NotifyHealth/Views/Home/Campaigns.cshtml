@@ -75,8 +75,8 @@
                         {
                     "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
                             responsive: true,
-                            buttons: false,
-                    searching: false,
+                            dom: "Bfrtip", buttons: ["copy", "csv", "print"],
+                    searching: true,
                     scrollX: true,
                     scrollCollapse: true,
                     fixedColumns: {
@@ -103,9 +103,11 @@
                     "deferRender": true,
                     "columns": [
 
-                        { "title": "Name", "data": "Name", "searchable": true, },
+                        { "title": "Name", "data": "Name", "searchable": true,  "render": function (data, row, full, meta) {
+                            return '<a href="@Url.Action("CampaignDetails", "Home")?id=' + row.CampaignId + '" class="details">' + data + '</a>';
+                                } },
                         { "title": "Description", "data": "Description", "searchable": true, },
-                        { "title": "Programs", "data": "Program", "searchable": true, },
+                        { "title": "Tracks", "data": "Program", "searchable": true, },
                         { "title": "Status", "data": "Status", "searchable": true, },
                         { "title": "Related Notifications", "data": "RelatedNotifications", "searchable": true, },
                                {
@@ -119,7 +121,7 @@
                             }
 
                     ],
-                    "order": [0, "Asc"],
+                            "order": [[2, "desc"], [0, "desc"]],
                     });
                 },
 

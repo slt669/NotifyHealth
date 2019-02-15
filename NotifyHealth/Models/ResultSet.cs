@@ -26,8 +26,9 @@ namespace NotifyHealth.Models
         private IQueryable<Programs> FilterResult(string search, List<Programs> dtResult, List<string> columnFilters)
         {
             IQueryable<Programs> results = dtResult.AsQueryable();
-
-            results = results.Where(p => (search == null || (p.Name.ToString().Contains(search.ToLower()) || p.Name != null && p.Name.ToString().Contains(search.ToLower()))));
+            results = results.Where(p => (search == null || p.Name != null && (p.Name.ToString().ToLower().Contains(search.ToLower()) || p.Description != null && p.Description.ToLower().ToString().Contains(search.ToLower())))
+                       && (columnFilters[0] == null || (p.Name != null && p.Name.ToString().ToLower().Contains(columnFilters[0].ToLower())
+                       && (columnFilters[1] == null || (p.Description != null && p.Description.ToString().ToLower().Contains(columnFilters[1].ToLower()))))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
             /*|| p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToStri5g().Contains(search.ToLower())*/
@@ -64,8 +65,9 @@ namespace NotifyHealth.Models
         {
             IQueryable<Campaigns> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.Description.ToString().Contains(search.ToLower()) || p.Description != null && p.Description.ToString().Contains(search.ToLower())))
-                && (columnFilters[0] == null || (p.Name != null && p.Name.ToString().Contains(columnFilters[0].ToLower()))));
+            results = results.Where(p => (search == null || p.Name != null && (p.Name.ToString().ToLower().Contains(search.ToLower()) || p.Description != null && p.Description.ToLower().ToString().Contains(search.ToLower())))
+                       && (columnFilters[0] == null || (p.Name != null && p.Name.ToString().ToLower().Contains(columnFilters[0].ToLower())
+                       && (columnFilters[1] == null || (p.Description != null && p.Description.ToString().ToLower().Contains(columnFilters[1].ToLower()))))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
             /*|| p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToStri5g().Contains(search.ToLower())*/
@@ -140,21 +142,10 @@ namespace NotifyHealth.Models
         {
             IQueryable<Clients> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.FirstName.ToString().Contains(search.ToLower()) || p.FirstName != null && p.FirstName.ToString().Contains(search.ToLower())))
-                && (columnFilters[0] == null || (p.FirstName != null && p.FirstName.ToString().Contains(columnFilters[0].ToLower()))));
+            results = results.Where(p => (search == null || p.FirstName != null && (p.FirstName.ToString().ToLower().Contains(search.ToLower()) || p.LastName != null && p.LastName.ToLower().ToString().Contains(search.ToLower())))
+                && (columnFilters[0] == null || (p.FirstName != null && p.FirstName.ToString().ToLower().Contains(columnFilters[0].ToLower())
+                && (columnFilters[1] == null || (p.LastName != null && p.LastName.ToString().ToLower().Contains(columnFilters[1].ToLower()))))));
             return results;
-            /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
-            /*|| p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToStri5g().Contains(search.ToLower())*/
-            //&& (columnFilters[2] == null || (p.Status != null && p.Status.ToString().Contains(columnFilters[2].ToLower()))
-
-            //       && (columnFilters[3] == null || (p.Web != null && p.Web.ToLower().Contains(columnFilters[3].ToLower())))
-            //&& (columnFilters[4] == null || (p.Company != null && p.Company.ToLower().Contains(columnFilters[4].ToLower())))
-            //&& (columnFilters[5] == null || (p.QuoteType != null && p.QuoteType.ToLower().Contains(columnFilters[5].ToLower())))
-            //&& (columnFilters[6] == null || (p.ValidUntil != null && p.ValidUntil.ToString().Contains(columnFilters[6].ToLower())))
-
-            //    || p.Web != null && p.Web.ToLower().Contains(search.ToLower()) || p.Company != null && p.Company.ToLower().Contains(search.ToLower()) || p.QuoteType != null && p.QuoteType.ToLower().Contains(search.ToLower())
-            //        || p.ValidUntil != null && p.ValidUntil.ToString().Contains(search.ToLower()
-            //}
         }
 
         /// <summary>

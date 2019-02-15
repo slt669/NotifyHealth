@@ -6,7 +6,7 @@
     ViewBag.Title = "Programs";
 }
 <head>
-    <title>Notify Health | Programs</title>
+    <title>Notify Health | Tracks</title>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 
@@ -19,13 +19,13 @@
     <link href="~/Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 </head>
-<h1 class="page-header">Programs</h1>
+<h1 class="page-header">Tracks</h1>
 <div class="section-container section-with-top-border">
     <p class="m-b-20">
     </p>
     <!-- begin panel -->
     <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateProgram","Home", new { @organizationID = Session["organizationID"]})" id="btnCreateAsset">
-        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Programs
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Tracks
     </button>
     <p class="m-b-20">
     </p>
@@ -77,8 +77,8 @@
                         {
                     "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
                             responsive: true,
-                            buttons: false,
-                            searching: false,
+                            dom: "Bfrtip", buttons: ["copy", "csv", "print"],
+                            searching: true,
                     scrollX: true,
                     scrollCollapse: true,
 
@@ -129,7 +129,7 @@
                             }
 
                     ],
-                    "order": [0, "Asc"]
+                    "order": [0, "Desc"]
                     });
                 },
 

@@ -39,13 +39,13 @@
         <!-- begin login -->
         <div class="login">
             <!-- begin login-brand -->
-            <div class="login-brand bg-inverse text-white">
-                <img src="~/Content/img/logo.png" height="36" class="pull-right" alt="" /> Notify Health
+            <div style="font-weight: 400"  class="login-brand bg-white">
+                <img src="~/Content/img/logo.png" height="36" class="pull-right" alt="" /> Notify Health<small style="color:#006666"> Broadcast</small>
             </div>
             <!-- end login-brand -->
             <!-- begin login-content -->
             <div class="login-content">
-                <h4 class="text-center m-t-0 m-b-20">Great to have you back!</h4>
+               
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form" }))
                 {
                     @Html.AntiForgeryToken()

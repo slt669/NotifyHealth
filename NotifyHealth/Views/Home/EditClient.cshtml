@@ -26,13 +26,14 @@
         </div>
 
         <div class="col-lg-4 offset-1">
-            <label class="col-sm-12 form-control-label">Client Memberships Active</label>
+            <h3>Campaign Memberships</h3>
+            <label class="col-sm-12 form-control-label">Active</label>
             <div class="form-group">
 
                 @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
             </div>
 
-            <label class="col-sm-12 form-control-label">Campaigns</label>
+            <label class="col-sm-12 form-control-label">Inactive</label>
             <div class="form-group">
 
                 @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.Unselected, new { @id = "canselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })

@@ -12,7 +12,7 @@
     <link href="~/Content/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
-    <title>Notify Health | Dashboard</title>
+    <title>Broadcast | Dashboard</title>
 </head>
 <h1 class="page-header">Dashboard <small>Welcome back, @Session["UserFullName"].ToString()</small></h1>
 <div class="section-container section-with-top-border">
@@ -25,7 +25,7 @@
     <div class="col-lg-3 col-sm-6">
         <!-- begin widget -->
         <div class="widget widget-stat bg-primary text-white">
-            <div class="widget-stat-icon"><i class="fa fa-users"></i></div>
+            <div class="widget-stat-icon"><i class="fa fa-user-plus"></i></div>
             <div class="widget-stat-info">
                 <div class="widget-stat-title">New Clients</div>
                 <div class="widget-stat-number">@Html.DisplayFor(model => model.NewClientsLast30)</div>
@@ -39,25 +39,11 @@
     <div class="col-lg-3 col-sm-6">
         <!-- begin widget -->
         <div class="widget widget-stat bg-success text-white">
-            <div class="widget-stat-icon"><i class="fa fa-handshake"></i></div>
+            <div class="widget-stat-icon"><i class="fa fa-users"></i></div>
             <div class="widget-stat-info">
                 <div class="widget-stat-title">Clients</div>
                 <div class="widget-stat-number">@Html.DisplayFor(model => model.NoOfClients)</div>
-                <div class="widget-stat-text">(Since @Html.DisplayFor(model => model.NoOfClientDate))</div>
-            </div>
-        </div>
-        <!-- end widget -->
-    </div>
-    <!-- end col-3 -->
-    <!-- begin col-3 -->
-    <div class="col-lg-3 col-sm-6">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-grey text-white">
-            <div class="widget-stat-icon"><i class="fa fa-bell"></i></div>
-            <div class="widget-stat-info">
-                <div class="widget-stat-title">Total Notifications Sent</div>
-                <div class="widget-stat-number">@Html.DisplayFor(model => model.NotificationsSentLast30)</div>
-                <div class="widget-stat-text">(Last 30 Days)</div>
+                <div class="widget-stat-text">(Since 1/1/2019)</div>
             </div>
         </div>
         <!-- end widget -->
@@ -67,11 +53,25 @@
     <div class="col-lg-3 col-sm-6">
         <!-- begin widget -->
         <div class="widget widget-stat bg-inverse text-white">
-            <div class="widget-stat-icon"><i class="fa fa-exchange-alt"></i></div>
+            <div class="widget-stat-icon"><i class="fa fa-comment"></i></div>
             <div class="widget-stat-info">
-                <div class="widget-stat-title">Transactions</div>
+                <div class="widget-stat-title">Today's Notifications</div>
                 <div class="widget-stat-number">@Html.DisplayFor(model => model.NotificationsSentToday)</div>
-                <div class="widget-stat-text">(New Transactions Today)</div>
+                <div class="widget-stat-text">(Messages Sent Today)</div>
+            </div>
+        </div>
+        <!-- end widget -->
+    </div>
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-lg-3 col-sm-6">
+        <!-- begin widget -->
+        <div class="widget widget-stat bg-grey text-white">
+            <div class="widget-stat-icon"><i class="fa fa-comments"></i></div>
+            <div class="widget-stat-info">
+                <div class="widget-stat-title">Notifications</div>
+                <div class="widget-stat-number">@Html.DisplayFor(model => model.NotificationsSentLast30)</div>
+                <div class="widget-stat-text">(Messages Sent the Last 30 Days)</div>
             </div>
         </div>
         <!-- end widget -->
@@ -91,7 +91,7 @@
                         <li><a href="#" class="btn btn-white">1 Jan 2019 - 31 Jan 2019 <i class="fa fa-cog"></i></a></li>
                     </ul>*@
 
-                <h4 class="text-white">Notifications Bar Chart </h4>
+                <h4 class="text-white">Notifications<small> (Per Month)</small></h4>
             </div>
             <div id="bar-chart" style="height: 230px"></div>
         </div>
@@ -104,7 +104,7 @@
         <!-- begin widget -->
         <div class="widget">
             <div class="widget-header bg-inverse-dark">
-                <h4 class="text-white">Clients</h4>
+                <h4 class="text-white">Clients<small> (Most Recent)</small></h4>
             </div>
             <div class="widget-body p-0">
 
@@ -202,19 +202,17 @@
                     "deferRender": true,
                     "columns": [
 
-                        { "title": "First Name", "data": "FirstName", "searchable": true, },
-                        { "title": "Last Name", "data": "LastName", "searchable": true, },
+                        { "title": "First Name", "data": "FirstName", "searchable": true,   "render": function (data, type, row, meta) {
+                            return '<a href="@Url.Action("ClientDetails", "Home")?id=' + row.ClientId + '"class="details">'+ data +'</a>';
+                                }},
+
+                        {
+                            "title": "Last Name", "data": "LastName", "searchable": true, "render": function (data, type, row, meta) {
+                                return '<a href="@Url.Action("ClientDetails", "Home")?id=' + row.ClientId + '"class="details">' + data + '</a>';
+                                } },
                         { "title": "Client Status", "data": "ClientStatus", "searchable": true, },
                         { "title": "Phone Status", "data": "PhoneStatus", "searchable": true, },
-                          {
-                                "title": "Actions",
-                                   "data": "ClientId",
-                                "searchable": false,
-                                "sortable": false,
-                                "render": function (data, type, full, meta) {
-                                    return '<a href="@Url.Action("ClientDetails", "Home")?id=' + data + '"class="details">View</a>';
-                                }
-                            }
+                       
                     ],
                     "order": [0, "Asc"],
                     });
