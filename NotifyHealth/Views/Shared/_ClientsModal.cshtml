@@ -40,38 +40,81 @@
         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
             @Html.TextBoxFor(model => model.PhoneNumber, new { @id = "PhoneNumber", @name = "PhoneNumber", @class = "col-sm-12 form-control" })
-        @*    <input type="hidden" name="PhoneNumber" id="PhoneNumber" />*@
+            @Html.HiddenFor(x => x.PhoneNumber)
         </div>
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneCarrier, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
-        <div class="col-md-12">
-            @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @name = "PhoneCarrier", @class = "col-sm-12 form-control", @disabled = "" })
-         @*   <input type="hidden" name="PhoneCarrier" id="PhoneCarrier" />*@
-        </div>
+        @if (ViewContext.RouteData.Values["Action"].ToString() == "EditClient")
+        {
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @name = "PhoneCarrier", @class = "col-sm-12 form-control", @disabled = "" })
+                @Html.HiddenFor(x => x.PhoneCarrier)
+            </div>
+        }
+        else
+        {
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @name = "PhoneCarrier", @class = "col-sm-12 form-control"})
+                @Html.HiddenFor(x => x.PhoneCarrier)
+            </div>
+
+        }
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.MessageAddress, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
             @Html.TextBoxFor(model => model.MessageAddress, new { @id = "MessageAddress", @name = "MessageAddress", @class = "col-sm-12 form-control", @disabled = "" })
-           @* <input type="hidden" name="MessageAddress" id="MessageAddress" />*@
+            @Html.HiddenFor(x => x.MessageAddress)
         </div>
     </div>
-    <div class="form-group row">
-        @Html.LabelFor(model => model.PhoneStatus, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
-        <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.PStatusId, Model.PhoneStatuses, new { @id = "PStatusId", @class = "col-sm-12 form-control", @disabled = "" })
-            @Html.ValidationMessageFor(model => model.PStatusId, "", new { @class = "text-danger" })
+    @if (ViewContext.RouteData.Values["Action"].ToString() == "EditClient")
+    {
+        <div class="form-group row">
+            @Html.LabelFor(model => model.PhoneStatus, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.PhoneStatus, new { @id = "PhoneStatus", @name = "PhoneStatus", @class = "col-sm-12 form-control", @disabled = "" })
+                @Html.HiddenFor(x => x.PhoneStatus)
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row">
-        @Html.LabelFor(model => model.ParticipationReason, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
-        <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.ParticipationId, Model.ParticipationReasons, new { @class = "col-sm-12 form-control", @disabled = "" })
-            @Html.ValidationMessageFor(model => model.ParticipationId, "", new { @class = "text-danger" })
+
+    }
+    else
+    {
+        <div class="form-group row">
+            @Html.LabelFor(model => model.PhoneStatus, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+            <div class="col-sm-12">
+                @Html.DropDownListFor(model => model.PStatusId, Model.PhoneStatuses, new { @id = "PStatusId", @class = "col-sm-12 form-control" })
+                @Html.ValidationMessageFor(model => model.PStatusId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
+    }
+    @if (ViewContext.RouteData.Values["Action"].ToString() == "EditClient")
+    {
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ParticipationReason, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.ParticipationReason, new { @id = "ParticipationReason", @name = "ParticipationReason", @class = "col-sm-12 form-control", @disabled = "" })
+                @Html.HiddenFor(x => x.ParticipationReason)
+            </div>
+        </div>
+
+
+    }
+    else
+    {
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ParticipationReason, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+            <div class="col-sm-12">
+                @Html.DropDownListFor(model => model.ParticipationId, Model.ParticipationReasons, new { @class = "col-sm-12 form-control", })
+                @Html.ValidationMessageFor(model => model.ParticipationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    }
+
+
     <div class="form-group row">
         @Html.LabelFor(model => model.AccountType, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-sm-12">

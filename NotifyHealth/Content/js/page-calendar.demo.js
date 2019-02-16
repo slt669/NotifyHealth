@@ -26,10 +26,11 @@ var handleCalendar = function () {
     currentMonth = (currentMonth < 10) ? '0' + currentMonth : currentMonth;
 
     $('#calendar').fullCalendar({
+        defaultView: 'month',
         header: {
-            left: 'month,agendaWeek,agendaDay',
+            left: 'Month',
             center: 'title',
-            right: 'prev,today,next '
+            right: 'prev,today,next'
         },
         droppable: true, // this allows things to be dropped onto the calendar
         drop: function () {
@@ -87,10 +88,7 @@ var handleCalendar = function () {
         }, {
             title: 'Dinner',
             start: currentYear + '-' + currentMonth + '-12T20:00:00'
-        }, {
-            title: 'Birthday Party',
-            start: currentYear + '-' + currentMonth + '-13T07:00:00'
-        }, {
+        },{
             title: 'Click for Google',
             url: 'http://google.com/',
             start: currentYear + '-' + currentMonth + '-28'

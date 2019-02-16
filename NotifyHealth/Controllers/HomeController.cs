@@ -818,6 +818,46 @@ namespace NotifyHealth.Controllers
             ViewBag.clientID = id;
             return View("ClientDetails", edit);
         }
+        public ActionResult Schedule()
+        {
+  
+            return View();
+        }
+        public JsonResult GetNotifications123()
+        {
+            List<Notifications> dtsource = new List<Notifications>();
+
+            dtsource = db.GetNotifications(Convert.ToInt32(Session["organizationID"]));
+        
+                return new JsonResult { Data = dtsource, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+         
+        }
+        [HttpPost]
+        public JsonResult SaveNotification(Notifications model)
+        {
+            var status = false;
+
+            ModelState.Clear();
+            List<Notifications> dtsource = MyGlobalNotificationsInitializer();
+            char delete = 'N';
+            db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]), model.Text, model.Period, model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
+            status = true;
+
+           
+            return new JsonResult { Data = new { status = status } };
+        }
+        [HttpPost]
+        public JsonResult DeleteNotification(Notifications model)
+        {
+            var status = false;
+            char delete = 'Y';
+            db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]), model.Text, model.Period, model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
+
+            status = true;
+                
+     
+            return new JsonResult { Data = new { status = status } };
+        }
 
         [HttpPost]
         public JsonResult ValuesAdded(string[][] Memberships)
@@ -833,7 +873,8 @@ namespace NotifyHealth.Controllers
                 int count = Camp.Count();
                 foreach (Campaigns C in Camp)
                 {
-                    db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(C.CampaignId), Clientid, 'Y');
+                    
+                    db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(C.CampaignId), Clientid,DateTime.Now, 'Y');
                 }
             }
             else
@@ -844,7 +885,10 @@ namespace NotifyHealth.Controllers
                 {
                     foreach (string valueinner in value)
                     {
-                        db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(valueinner), Clientid, 'N');
+                        string[] Membership = valueinner.Split('|');
+                        int Campaign = Convert.ToInt32(Membership[0]);
+                        DateTime start = Convert.ToDateTime(Membership[1]);
+                        db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Campaign, Clientid, start, 'N');
                     }
                 }
             }
@@ -870,12 +914,25 @@ namespace NotifyHealth.Controllers
                 {
                     foreach (string valueinner in value)
                     {
-                        db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Convert.ToInt32(valueinner), Clientid, 'Y');
+                        string[] Membership = valueinner.Split('|');
+                        int Campaign = Convert.ToInt32(Membership[0]);
+                        DateTime start = Convert.ToDateTime(Membership[1]);
+                        db.UpdateClientMembership(Convert.ToInt32(Session["organizationID"]), Campaign, Clientid, start, 'Y');
                     }
                 }
             }
 
             return Json(new { Memberships }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult ClientMembershipsStartDate(int id)
+        {
+            List<Clients> dtsource = MyGlobalClientsInitializer();
+            Clients edit = dtsource.FirstOrDefault(x => x.ClientId == id);
+            List<ClientMemberships> cl = db.GetClientMemberships(Convert.ToInt32(Session["organizationID"]), edit.ClientId);
+            //List<Campaigns> Camp = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
+
+            return PartialView("_ClientMembershipsStartDatePartial", edit);
         }
 
         [SessionFilterAttribute]
@@ -890,7 +947,8 @@ namespace NotifyHealth.Controllers
 
             List<ClientMemberships> cl = db.GetClientMemberships(Convert.ToInt32(Session["organizationID"]), edit.ClientId);
             List<Campaigns> Camp = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
-
+            edit.ClientMemberships = cl;
+            
             int count = cl.Count();
 
             for (int i = 0; i < count; i++)
@@ -905,7 +963,7 @@ namespace NotifyHealth.Controllers
                                   new SelectListItem()
                                   {
                                       Text = x.Campaign,
-                                      Value = x.CampaignId.ToString()
+                                      Value = x.CampaignId.ToString() + "|" + x.Start.ToString()
                                   });
 
             ViewBag.Unselected = Camp.Select(x =>
@@ -913,7 +971,7 @@ namespace NotifyHealth.Controllers
                               new SelectListItem()
                               {
                                   Text = x.Name,
-                                  Value = x.CampaignId.ToString()
+                                  Value = x.CampaignId.ToString() + "|" + DateTime.Now.ToString()
                               });
 
             return View(edit);

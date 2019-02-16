@@ -82,5 +82,9 @@ namespace NotifyHealth.Models
 
         [Display(Name = "CampaignDDL")]
         public string CampaignDDL { get; set; }
+
+
+        public List<ClientMemberships> ClientMemberships { get; set; }
+       
     }
 }

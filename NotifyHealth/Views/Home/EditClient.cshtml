@@ -1,10 +1,13 @@
 ﻿@model NotifyHealth.Models.Clients
-<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <title>Notify Health | Edit Client Details</title>
 <h1 class="page-header">Edit Client Details</h1>
 <div class="section-container section-with-top-border">
 </div>
 <button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Clients", "Home")'" id="btnClients">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
+</button>
+<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Schedule", "Home")'" id="btnClients">
     <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
 </button>
 @using (Ajax.BeginForm("EditClients", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "UpdateAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
@@ -25,10 +28,10 @@
             </div>
         </div>
 
-        <div class="col-lg-4 offset-1">
+        <div class="col-lg-3 offset-1">
             <p class="m-b-20">
                 <h1 class="page-header">Campaign Memberships</h1>
-</p>
+            </p>
             <label class="col-sm-12 form-control-label">Active</label>
             <div class="form-group">
 
@@ -39,6 +42,7 @@
             <div class="btn-group" style="padding-left:200px">
                 <a id='btnRight_code' class="btn btn-success" href="#"><i class="fa fa-arrow-up"></i></a>
                 <a id='btnLeft_code' class="btn btn-success" href="#"><i class="fa fa-arrow-down"></i></a>
+                <input type="button" class="btn btn-success  btn-md" id='btnSelect' value="Save">
             </div>
 
 
@@ -57,15 +61,58 @@
 
             @*<input type='button' class="fa fa-arrow-up"  /> @*<input type='button' id='btnSubmit' value='Submit' />*@ @*<input type='button'  value='  >  ' />*@
         </div>
+        <div class="col-lg-3">
+            <p class="m-b-20">
+                <h1 class="page-header">Select Campaign Start Date</h1>
+            </p>
+            <div class="load" id="load">
+                @*@Html.Partial("_ClientMembershipsStartDatePartial")*@
+
+                <div class="input-group date" id="datetimepicker1">
+                    <input type="text" class="form-control" placeholder="dd/mm/yyyy hh:mm:ss">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 }
 
 <script>
     $(document).ready(function () {
+        $("#datetimepicker1").datetimepicker({
+            format: 'DD/MM/YYYY hh:mm:ss'
+        });
+        $("#isselect_code").dblclick(function () {
+            // Iterate through each selected item (since you are iterating, I'm assuming you allow multiple selection)
+            $(this).find('option:selected').each(function () {
+
+                alert($(this).val());
+
+            });
+
+            // Trigger your click
+            $(this).trigger('click');
+        });
+
         $('[id^=\"btnRight\"]').click(function (e) {
 
             $("#canselect_code > option:selected").each(function () {
+                var myString = $(this).val();
+                var arr = myString.split('|');
+                var $label = $("<label>").text($(this).text());
+                $('.load').append($label);
+                var input = $('<input type="text">').attr({ id: 'from', name: 'from', value: arr[1] });
+                input.appendTo($label);
+                input.datetimepicker({
+                    format: 'DD/MM/YYYY hh:mm:ss'
+                });
                 $(this).remove().appendTo("#isselect_code");
+
+
             });
 
         });
@@ -77,8 +124,7 @@
             });
 
         });
-
-        $('[id^=\"btnSubmit\"]').click(function (e) {
+        $('[id^=\"btnSelect\"]').click(function (e) {
 
             var id = '@Model.ClientId';
 
@@ -129,8 +175,9 @@
                 }
             });
 
-            window.location.href = '@Url.Action("Clients", "Home")';
+
         });
 
     });
+
 </script>

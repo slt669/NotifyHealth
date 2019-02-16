@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -50,5 +51,11 @@ namespace NotifyHealth.Models
 
         [Display(Name = "Program")]
         public string Program { get; set; }
+
+        [Display(Name = "Program")]
+        public DateTime Start { get; set; }
+
+        [Display(Name = "Program")]
+        public DateTime? End { get; set; }
     }
 }
