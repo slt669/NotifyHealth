@@ -4,8 +4,8 @@
     <!-- begin container-fluid -->
     <div class="container-fluid">
         <!-- begin mobile sidebar expand / collapse button -->
-        @*@if (Request.IsAuthenticated)
-        {*@
+        @if (Request.IsAuthenticated)
+        {
         <div class="navbar-header">
             @if (@Session["Logo"] != null)
             {
@@ -49,7 +49,7 @@
                     </li>
             </ul>
             <!-- end navbar-right -->
-        @*}*@
+        }
         </div>
     <!-- end container-fluid -->
 </div>

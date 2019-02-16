@@ -93,7 +93,8 @@ namespace NotifyHealth.Controllers
             var model = new Programs();
             //string id = RouteData.Values["userID"].ToString();
             List<Programs> dtsource = MyGlobalProgramsInitializer();
-            model.Statuses = GetStatusList();
+            model.StatusId = 1;
+            model.Statuses = DropDownListUtility.GetStatusList(model.StatusId);
             model.OrganizationID = Convert.ToInt32(Session["organizationID"]);
             return View("_CreateProgramsPartial", model);
         }
@@ -119,7 +120,7 @@ namespace NotifyHealth.Controllers
         {
             List<Programs> dtsource = MyGlobalProgramsInitializer();
             Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == id);
-            edit.Statuses = GetStatusList();
+            edit.Statuses = DropDownListUtility. GetStatusList(edit.StatusId);
             ViewBag.organizationID = Session["organizationID"];
             ViewBag.ProgramId = id;
 
@@ -133,7 +134,7 @@ namespace NotifyHealth.Controllers
         {
             List<Programs> dtsource = MyGlobalProgramsInitializer();
             Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == id);
-            edit.Statuses = GetStatusList();
+            edit.Statuses = DropDownListUtility. GetStatusList(edit.StatusId);
             ViewBag.organizationID = Session["organizationID"];
             ViewBag.ProgramId = id;
 
@@ -324,8 +325,8 @@ namespace NotifyHealth.Controllers
 
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]), programID.ToString());
-
-            model.Statuses = GetStatusList();
+            model.StatusId = 1;
+            model.Statuses = DropDownListUtility.GetStatusList(model.StatusId);
             model.OrganizationID = organizationID;
             return View("_CreateCampaignsPartial", model);
         }
@@ -348,7 +349,7 @@ namespace NotifyHealth.Controllers
         {
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
-            edit.Statuses = GetStatusList();
+            edit.Statuses = DropDownListUtility.GetStatusList(edit.StatusId.ToString());
             ViewBag.organizationID = Session["organizationID"];
             ViewBag.CampaignId = id;
 
@@ -361,8 +362,8 @@ namespace NotifyHealth.Controllers
             List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
             Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
             edit.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
-            edit.Statuses = GetStatusList();
-
+            //edit.Statuses = GetStatusList();
+            edit.Statuses = DropDownListUtility.GetStatusList(edit.StatusId);
             if (Request.IsAjaxRequest())
                 return PartialView("_EditCampaignsPartial", edit);
             return View(edit);
@@ -476,7 +477,8 @@ namespace NotifyHealth.Controllers
             var model = new Notifications();
             try
             {
-                model.Statuses = GetStatusList();
+                model.StatusId = 1;
+                model.Statuses = DropDownListUtility.GetStatusList(model.StatusId);
                 model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
 
                 model.NotificationTypes = db.GetNotificationTypes();
@@ -534,7 +536,8 @@ namespace NotifyHealth.Controllers
         public ActionResult CreateNotification(int? organizationID, int? campaignID = null)
         {
             var model = new Notifications();
-            model.Statuses = GetStatusList();
+            model.StatusId = 1;
+            model.Statuses = DropDownListUtility.GetStatusList(model.StatusId);
             model.NotificationTypes = db.GetNotificationTypes();
             model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
             if (campaignID != null)
@@ -568,7 +571,7 @@ namespace NotifyHealth.Controllers
         {
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
             Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == id);
-            edit.Statuses = GetStatusList();
+            edit.Statuses = DropDownListUtility.GetStatusList(edit.StatusId);
             edit.NotificationTypes = db.GetNotificationTypes();
 
             return View("NotificationDetails", edit);
@@ -579,7 +582,7 @@ namespace NotifyHealth.Controllers
         {
             List<Notifications> dtsource = MyGlobalNotificationsInitializer();
             Notifications edit = dtsource.FirstOrDefault(x => x.NotificationId == id);
-            edit.Statuses = GetStatusList();
+            edit.Statuses = DropDownListUtility.GetStatusList(edit.StatusId);
             edit.NotificationTypes = db.GetNotificationTypes();
             edit.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
             edit.Campaigns = db.GetCampaignDDL(edit.ProgramID);
@@ -969,17 +972,17 @@ namespace NotifyHealth.Controllers
 
             return RedirectToAction("Clients");
         }
-
-        public SelectList GetStatusList()
+        public static class DropDownListUtility
         {
-            SelectList asl = new SelectList(new List<SelectListItem>
+            public static IEnumerable<SelectListItem> GetStatusList(object selectedValue)
             {
-                new SelectListItem{ Text = "Enabled", Value = "1"},
-                new SelectListItem{ Text = "Disabled", Value = "0"},
-            }, "Value", "Text");
-            return asl;
+                return new List<SelectListItem>
+        {
+            new SelectListItem{ Text="Enabled", Value = "1", Selected = "1" == selectedValue.ToString()},
+            new SelectListItem{ Text="Disabled", Value = "0", Selected = "0" == selectedValue.ToString()},
+        };
+            }
         }
-
         /// <summary>
         /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// EXAMPLE

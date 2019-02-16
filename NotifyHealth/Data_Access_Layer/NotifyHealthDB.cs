@@ -526,6 +526,7 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.Name = reader["Campaign"] as string;
                         CD.ProgramId = reader["Program_ID"] as int? ?? default(int);
                         CD.Status = reader["Value"] as string;
+                        CD.StatusId = reader["Status_ID"] as int? ?? default(int);
                         CD.Program = reader["Program"] as string;
                         CD.RelatedNotifications = reader["RelatedNotifications"] as int? ?? default(int);
                         CL.Add(CD);
