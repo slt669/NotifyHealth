@@ -7,9 +7,6 @@
 <button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Clients", "Home")'" id="btnClients">
     <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
 </button>
-<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Schedule", "Home")'" id="btnClients">
-    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
-</button>
 @using (Ajax.BeginForm("EditClients", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "UpdateAssetSuccess" }, new { @class = "form-horizontal", role = "form" }))
 {
     <div class="row">
@@ -35,7 +32,7 @@
             <label class="col-sm-12 form-control-label">Active</label>
             <div class="form-group">
 
-                @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
+                @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.ClientMembershipsSelected, new { @id = "isselect_code", @name = "isselect_code", @class = "col-sm-12 form-control", @multiple = "@multiple" })
             </div>
 
 
@@ -46,6 +43,7 @@
             </div>
 
 
+            <p id="result"></p>
 
             <label class="col-sm-12 form-control-label">Inactive</label>
             <div class="form-group">
@@ -61,15 +59,17 @@
 
             @*<input type='button' class="fa fa-arrow-up"  /> @*<input type='button' id='btnSubmit' value='Submit' />*@ @*<input type='button'  value='  >  ' />*@
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 offset-1">
             <p class="m-b-20">
                 <h1 class="page-header">Select Campaign Start Date</h1>
             </p>
             <div class="load" id="load">
                 @*@Html.Partial("_ClientMembershipsStartDatePartial")*@
-
+                <input type="hidden" id="hiddenid" name="hiddenid">
                 <div class="input-group date" id="datetimepicker1">
-                    <input type="text" class="form-control" placeholder="dd/mm/yyyy hh:mm:ss">
+                    <label id="cname" class="col-sm-12 form-control-label"></label>
+
+                    <input type="text" class="col-sm-12 form-control" id="datet" placeholder="dd/mm/yyyy hh:mm:ss">
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
@@ -83,19 +83,123 @@
 
 <script>
     $(document).ready(function () {
+        //$('#isselect_code').change(function () {
+        //    console.log($(this).val())
+        //    var myString = $(this).val() +  '';
+        //    var arr = myString.split('|');
+        //    console.log(arr);
+        //    console.log($(this).text());
+        //    $("#datet").val(arr[1]);
+        //});
+        //  $('#isselect_code').change(function () {
+        //var val1 = $('select[name="isselect_code"] option:selected').map(function () {
+        //    return $(this).val();
+        //}).toArray();
+        //console.log(val1);
+        //});
+    //        $('#isselect_code').change(function () {
+    //    var values = [];
+    //    $("select.isselect_code").each(function (i, sel) {
+    //        var selectedVal = $(sel).val();
+    //        values.push(selectedVal);
+    //    });
+
+    //});
+
+        //var optionValues = [];
+        //var optionText = [];
+        //$('#isselect_code option').each(function () {
+        //    optionValues.push($(this).val());
+        //    optionText.push($(this).text());
+        //});
+        // $('#isselect_code').change(function () {
+        //     var myString = $('#isselect_code').val() + '';
+        //     var arr = myString.split('|');
+
+        //var output = $('#isselect_code :selected').map(function () {
+        //    return $(this).text() + "," + arr[1] ;  //this line has been changed to prefix year
+        //}).get();
+
+
+        //$('#result').html(output);
+        //     console.log(output);
+
+        // });
+
         $("#datetimepicker1").datetimepicker({
-            format: 'DD/MM/YYYY hh:mm:ss'
+            format: 'DD/MM/YYYY HH:mm:ss'
         });
+
+     
         $("#isselect_code").dblclick(function () {
             // Iterate through each selected item (since you are iterating, I'm assuming you allow multiple selection)
             $(this).find('option:selected').each(function () {
-
-                alert($(this).val());
-
+                      var myString = $(this).val() +  '';
+                var arr = myString.split('|');
+                var myString2 = $(this).text() + '';
+            console.log(arr);
+                console.log($(this).text());
+                console.log(myString2);
+                $("#cname").empty();
+                $("#cname").append(myString2);
+                $("#hiddenid").val(arr[0]);
+                console.log($("#hiddenid").val());
+                $("#datet").val(arr[1]);
+                //alert($(this).val());
+                
+         
             });
 
             // Trigger your click
             $(this).trigger('click');
+        });
+
+        $("#datetimepicker1").on("dp.change", function () {
+          
+
+        });
+
+        $('[id^=\"btnSelect\"]').click(function (e) {
+              var pickedtime = $("#datet").val();
+            var hiddenid = $("#hiddenid").val();
+            //$("#isselect_code > option:selected").each(function () {
+            //    $("#isselect_code option:[value]") = pickedtime;
+            //    console.log($("#isselect_code option").val());
+            //});
+            //var ValuesAdded = $.map($('#isselect_code option:selected'), function (e) { return e.value; });
+            var ValuesAdded = hiddenid + "|" + pickedtime
+             var id = '@Model.ClientId';
+
+            // as a comma separated string
+            //$('#values').text(ValuesAdded.join(','));
+
+            //'use strict';
+            //var to = $('#values').text();
+
+            //let emailList = to.split(',').map(values => {
+            //    return {
+            //        CampaignId: values.trim(),
+            //    }
+            //});
+
+            //var mergedAdded = [].concat.apply([], ValuesAdded);
+
+            $.ajax({
+                url: "/Home/ValuesAdded",
+                type: "POST",
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                data: JSON.stringify(
+                    [
+                        id, ValuesAdded
+                    ]),
+
+                success: function (data) {
+                    location.reload();
+                }
+            });
+
         });
 
         $('[id^=\"btnRight\"]').click(function (e) {
@@ -103,13 +207,13 @@
             $("#canselect_code > option:selected").each(function () {
                 var myString = $(this).val();
                 var arr = myString.split('|');
-                var $label = $("<label>").text($(this).text());
-                $('.load').append($label);
-                var input = $('<input type="text">').attr({ id: 'from', name: 'from', value: arr[1] });
-                input.appendTo($label);
-                input.datetimepicker({
-                    format: 'DD/MM/YYYY hh:mm:ss'
-                });
+                //var $label = $("<label>").text($(this).text());
+                //$('.load').append($label);
+                //var input = $('<input type="text">').attr({ id: 'from', name: 'from', value: arr[1] });
+                //input.appendTo($label);
+                //input.datetimepicker({
+                //    format: 'DD/MM/YYYY hh:mm:ss'
+                //});
                 $(this).remove().appendTo("#isselect_code");
 
 
@@ -124,7 +228,7 @@
             });
 
         });
-        $('[id^=\"btnSelect\"]').click(function (e) {
+        $('[id^=\"btnSubmit\"]').click(function (e) {
 
             var id = '@Model.ClientId';
 

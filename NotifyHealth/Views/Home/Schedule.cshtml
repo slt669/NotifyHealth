@@ -1,5 +1,17 @@
 ﻿
-<div id="calender"></div>
+    <h1 class="page-header">Notifications Schedule</h1>
+    <!-- end page-header -->
+    <!-- begin fullcalendar -->
+    <div class="fullcalendar vertical-box m-b-20">
+        <!-- begin fullcalendar-event -->
+        <!-- end fullcalendar-event -->
+        <!-- begin fullcalendar-container -->
+        <div class="fullcalendar-container vertical-box-column">
+            <div id='calender'></div>
+        </div>
+        <!-- end fullcalendar-container -->
+    </div>
+
 
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -34,10 +46,10 @@
             <div class="modal-body">
                 <form class="col-md-12 form-horizontal">
                     <input type="hidden" id="hdEventID" value="0" />
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" id="txtSubject" class="form-control" />
-                    </div>
+                    @*<div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="txtSubject" class="form-control" />
+        </div>*@
                     <div class="form-group">
                         <label>Start</label>
                         <div class="input-group date" id="dtp1">
@@ -48,10 +60,19 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="checkbox">
-                            <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
+                        <label>End</label>
+                        <div class="input-group date" id="dtp1">
+                            <input type="text" id="txtStart" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
                     </div>
+                    @*<div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
+            </div>
+        </div>*@
                     <div class="form-group" id="divEndDate" style="display:none">
                         <label>End</label>
                         <div class="input-group date" id="dtp2">
@@ -65,16 +86,16 @@
                         <label>Text</label>
                         <textarea id="txtDescription" rows="3" class="form-control"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>Theme Color</label>
-                        <select id="ddThemeColor" class="form-control">
-                            <option value="">Default</option>
-                            <option value="red">Red</option>
-                            <option value="blue">Blue</option>
-                            <option value="black">Black</option>
-                            <option value="green">Green</option>
-                        </select>
-                    </div>
+                    @*<div class="form-group">
+            <label>Theme Color</label>
+            <select id="ddThemeColor" class="form-control">
+                <option value="">Default</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="black">Black</option>
+                <option value="green">Green</option>
+            </select>
+        </div>*@
                     <button type="button" id="btnSave" class="btn btn-success">Save</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
@@ -118,7 +139,7 @@
         function GenerateCalender(events) {
             $('#calender').fullCalendar('destroy');
             $('#calender').fullCalendar({
-                contentHeight: 900,
+                contentHeight: 750,
                 defaultDate: new Date(),
                 timeFormat: 'h(:mm)a',
 

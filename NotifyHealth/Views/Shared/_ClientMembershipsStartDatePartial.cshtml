@@ -4,15 +4,32 @@
     for (var i = 0; i < Model.ClientMemberships.Count(); i++)
     {
 
-        <tr>
-            @Html.HiddenFor(x => Model.ClientMemberships[i].ClientId)
-            <td>
-                @Html.DisplayFor(model => model.ClientMemberships[i].Campaign, new { @class = "col-sm-12 form-control-label" })
-            </td>
-            <td>
-                @Html.TextBoxFor(model => model.ClientMemberships[i].Start, new { @class = "col-sm-12 form-control someclass" })
-            </td>
+<tr>
+    @Html.HiddenFor(x => Model.ClientMemberships[i].ClientId)
+    <td>
+        @Html.DisplayFor(model => model.ClientMemberships[i].Campaign, new { @class = "col-sm-12 form-control-label" })
+    </td>
+    <td>
+        <div class="input-group date" id="datetimepicker1">
+            @Html.TextBoxFor(model => model.ClientMemberships[i].Start, new { @class = "col-sm-12 form-control someclass" })
+            <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+            </div>
 
-        </tr>
+        </div>
+    </td>
+
+
+</tr>
     }
 }
+
+        <script>
+            $(document).ready(function () {
+
+                $(".someclass").datetimepicker({
+                    format: 'DD/MM/YYYY HH:mm:ss'
+                });
+            });
+
+        </script>
