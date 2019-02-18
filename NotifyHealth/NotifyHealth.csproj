@@ -5484,6 +5484,7 @@
     <Content Include="Views\Shared\_LayoutPage3.cshtml" />
     <Content Include="Views\Home\Schedule.cshtml" />
     <Content Include="Views\Shared\_ClientMembershipsStartDatePartial.cshtml" />
+    <Content Include="Views\Home\Schedule2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

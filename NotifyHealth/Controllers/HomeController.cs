@@ -818,7 +818,7 @@ namespace NotifyHealth.Controllers
             ViewBag.clientID = id;
             return View("ClientDetails", edit);
         }
-        public ActionResult Schedule()
+        public ActionResult Schedule2()
         {
   
             return View();
