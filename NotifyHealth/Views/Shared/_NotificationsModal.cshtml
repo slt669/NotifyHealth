@@ -4,6 +4,42 @@
 
     Layout = null;
 }
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+    #feedback {
+        font-size: 1.4em;
+    }
+
+    #selectable .ui-selecting {
+        background: #17B6A4;
+    }
+
+    #selectable .ui-selected {
+        background: #17B6A4;
+        color: white;
+    }
+
+    #selectable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 240px;
+    }
+
+    .ui-state-grey {
+        background: coral;
+    }
+
+    #selectable li {
+        margin: 3px;
+        padding: 1px;
+        float: left;
+        width: 25px;
+        height: 20px;
+        font-size: 0.75em;
+        text-align: center;
+    }
+</style>
 <div class="form-horizontal">
     @*@Html.AntiForgeryToken()*@
     @if (ViewBag.Message != null)
@@ -26,10 +62,107 @@
     <div class="form-group row">
         @Html.LabelFor(model => model.Period, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.Period, new { @class = "col-sm-12 form-control" })
+            @Html.TextBoxFor(model => model.Period, new { @id = "Period", @class = "col-sm-12 form-control" })
         </div>
     </div>
+    <div class="form-group row">
+        <ol id="selectable">
+            <li class="ui-state-default" id="1" data-period="1" data-text="Please schedule your Urine Test.">1</li>
+            <li class="ui-state-default" id="2" data-period="2">2</li>
+            <li class="ui-state-default" id="3" data-period="3">3</li>
+            <li class="ui-state-default" id="4" data-period="4">4</li>
+            <li class="ui-state-default" id="5" data-period="5">5</li>
+            <li class="ui-state-default" id="6" data-period="6">6</li>
+            <li class="ui-state-default" id="7" data-period="7">7</li>
 
+            <li class="ui-state-default" id="8" data-period="8">1</li>
+            <li class="ui-state-default" id="9" data-period="9">2</li>
+            <li class="ui-state-default" id="10" data-period="10">3</li>
+            <li class="ui-state-default" id="11" data-period="11">4</li>
+            <li class="ui-state-default" id="12" data-period="12">5</li>
+            <li class="ui-state-default" id="13" data-period="13">6</li>
+            <li class="ui-state-default" id="14" data-period="14">7</li>
+
+            <li class="ui-state-default" id="15" data-period="15">1</li>
+            <li class="ui-state-default" id="16" data-period="16">2</li>
+            <li class="ui-state-default" id="17" data-period="17">3</li>
+            <li class="ui-state-default" id="18" data-period="18">4</li>
+            <li class="ui-state-default" id="19" data-period="19">5</li>
+            <li class="ui-state-default" id="20" data-period="20">6</li>
+            <li class="ui-state-default" id="21" data-period="21">7</li>
+
+            <li class="ui-state-default" id="22" data-period="22">1</li>
+            <li class="ui-state-default" id="23" data-period="23">2</li>
+            <li class="ui-state-default" id="24" data-period="24">3</li>
+            <li class="ui-state-default" id="25" data-period="25">4</li>
+            <li class="ui-state-default" id="26" data-period="26">5</li>
+            <li class="ui-state-default" id="27" data-period="27">6</li>
+            <li class="ui-state-default" id="28" data-period="28">7</li>
+
+            <li class="ui-state-default" id="29" data-period="29">1</li>
+            <li class="ui-state-default" id="30" data-period="30">2</li>
+            <li class="ui-state-default" id="31" data-period="31">3</li>
+            <li class="ui-state-default" id="32" data-period="32">4</li>
+            <li class="ui-state-default" id="33" data-period="33">5</li>
+            <li class="ui-state-default" id="34" data-period="34">6</li>
+            <li class="ui-state-default" id="35" data-period="35">7</li>
+
+            <li class="ui-state-default" id="36" data-period="36">1</li>
+            <li class="ui-state-default" id="37" data-period="37">2</li>
+            <li class="ui-state-default" id="38" data-period="38">3</li>
+            <li class="ui-state-default" id="39" data-period="39">4</li>
+            <li class="ui-state-default" id="40" data-period="40">5</li>
+            <li class="ui-state-default" id="41" data-period="41">6</li>
+            <li class="ui-state-default" id="42" data-period="42">7</li>
+
+            <li class="ui-state-default" id="43" data-period="43">1</li>
+            <li class="ui-state-default" id="44" data-period="44">2</li>
+            <li class="ui-state-default" id="45" data-period="45">3</li>
+            <li class="ui-state-default" id="46" data-period="46">4</li>
+            <li class="ui-state-default" id="47" data-period="47">5</li>
+            <li class="ui-state-default" id="48" data-period="48">6</li>
+            <li class="ui-state-default" id="49" data-period="49">7</li>
+
+            <li class="ui-state-default" id="50" data-period="50">1</li>
+            <li class="ui-state-default" id="51" data-period="51">2</li>
+            <li class="ui-state-default" id="52" data-period="52">3</li>
+            <li class="ui-state-default" id="53" data-period="53">4</li>
+            <li class="ui-state-default" id="54" data-period="54">5</li>
+            <li class="ui-state-default" id="55" data-period="55">6</li>
+            <li class="ui-state-default" id="56" data-period="56">7</li>
+
+            <li class="ui-state-default" id="57" data-period="57">1</li>
+            <li class="ui-state-default" id="58" data-period="58">2</li>
+            <li class="ui-state-default" id="59" data-period="59">3</li>
+            <li class="ui-state-default" id="60" data-period="60">4</li>
+            <li class="ui-state-default" id="61" data-period="61">5</li>
+            <li class="ui-state-default" id="62" data-period="62">6</li>
+            <li class="ui-state-default" id="63" data-period="63">7</li>
+
+            <li class="ui-state-default" id="64" data-period="64">1</li>
+            <li class="ui-state-default" id="65" data-period="65">2</li>
+            <li class="ui-state-default" id="66" data-period="66">3</li>
+            <li class="ui-state-default" id="67" data-period="67">4</li>
+            <li class="ui-state-default" id="68" data-period="68">5</li>
+            <li class="ui-state-default" id="69" data-period="69">6</li>
+            <li class="ui-state-default" id="70" data-period="70">7</li>
+
+            <li class="ui-state-default" id="71" data-period="71">1</li>
+            <li class="ui-state-default" id="72" data-period="72">2</li>
+            <li class="ui-state-default" id="73" data-period="73">3</li>
+            <li class="ui-state-default" id="74" data-period="74">4</li>
+            <li class="ui-state-default" id="75" data-period="75">5</li>
+            <li class="ui-state-default" id="76" data-period="76">6</li>
+            <li class="ui-state-default" id="77" data-period="77">7</li>
+
+            <li class="ui-state-default" id="78" data-period="78">1</li>
+            <li class="ui-state-default" id="79" data-period="79">2</li>
+            <li class="ui-state-default" id="80" data-period="80">3</li>
+            <li class="ui-state-default" id="81" data-period="81">4</li>
+            <li class="ui-state-default" id="82" data-period="82">5</li>
+            <li class="ui-state-default" id="83" data-period="83">6</li>
+            <li class="ui-state-default" id="84" data-period="84">7</li>
+    </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
@@ -45,25 +178,28 @@
     </div>
 
     @*<div class="form-group row">
-        @Html.LabelFor(model => model.Program, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
-        <div class="col-sm-12">
-            @Html.DropDownListFor(model => model.ProgramID, Model.Programs, "---Select A Program ---", new { @id = "Program-DropDownID", @class = "col-sm-12 form-control" })
-            @Html.ValidationMessageFor(model => model.ProgramID, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
+            @Html.LabelFor(model => model.Program, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+            <div class="col-sm-12">
+                @Html.DropDownListFor(model => model.ProgramID, Model.Programs, "---Select A Program ---", new { @id = "Program-DropDownID", @class = "col-sm-12 form-control" })
+                @Html.ValidationMessageFor(model => model.ProgramID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
     @*<div class="form-group row">
-        @Html.LabelFor(model => model.Campaign, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
-        <div class="col-sm-12">
-            <select class="col-sm-12 form-control" id="CampaignId" name="CampaignId">
-                <option value="" selected disabled hidden>Select a Program 1st</option>
-            </select>
-            @Html.ValidationMessageFor(model => model.CampaignId, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
+            @Html.LabelFor(model => model.Campaign, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
+            <div class="col-sm-12">
+                <select class="col-sm-12 form-control" id="CampaignId" name="CampaignId">
+                    <option value="" selected disabled hidden>Select a Program 1st</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.CampaignId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 </div>
 
-<script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.min.js"></script>
+    <script>
         $(document).ready(function () {
 
           $('#Program-DropDownID').change(function () {
@@ -82,6 +218,77 @@
                     }
                  });
             });
+            $("#selectable").selectable({
+                stop: function () {
+                    $('#selectable .ui-state-default.ui-selected').each(function (index) {
+                      
+                            $('#Period').val($(this).data('period'));
+                   
+                    });
 
+                }
+            });
+    
+        $(function () {
+            $("#selectable").selectable({
+                selecting: function (event, ui) {
+                    if ($(".ui-selected, .ui-selecting").length > 1) {
+                        $(ui.selecting).removeClass("ui-selecting");
+                    }
+                }
+            });
         });
-</script>
+
+        var events = [];
+        var selectedEvent = null;
+        FetchEventAndRenderCalendar();
+        function FetchEventAndRenderCalendar() {
+            events = [];
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetNotifications123?CampaignID=2",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        events.push({
+                            NotificationId: v.NotificationId,
+                            Text: v.Text,
+                            start: moment(v.Start),
+                            end: v.End != null ? moment(v.End) : null,
+                            Period: v.Period
+                        });
+                    })
+
+                    var text = "";
+                    for (x in events) {
+                        text += events[x].Period + ",";
+                    }
+                   var textedited = text.slice(0, -1);
+
+                    var numbersArray = textedited.split(',');
+
+                    var dataArray = new Array();
+                    for (x in numbersArray) {
+                        $('.ui-state-default').each(function () {
+                            var dataLayer = $(this).data('period');
+                            if (numbersArray[x] == dataLayer) {
+                                    $('.ui-state-default[data-period="' + dataLayer + '"]').each(function () {
+
+                                        $('.ui-state-default[id="' + dataLayer + '"]').css('backgroundColor', 'coral');
+                                        $('.ui-state-default[id="' + dataLayer + '"]').attr('data-text', events[x].Text);
+                                    });
+                            }
+                        });
+                    }
+
+                },
+                error: function (error) {
+                    alert('failed23432' + error);
+                }
+            })
+        }
+    });
+
+    </script>
+
+

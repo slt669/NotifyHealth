@@ -102,6 +102,10 @@
     <div id="deleteAssetContainer">
     </div>
 </div>
+<div class="modal fade" id="btneditAssetModal" tabindex="-1" role="dialog" aria-labelledby="btneditAssetModal" aria-hidden="true" data-backdrop="static">
+    <div id="btneditAssetContainer">
+    </div>
+</div>
 
 <!-- ================== BEGIN BASE JS ================== -->
 <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
@@ -208,9 +212,9 @@
             var url = $(this).data("url");
 
             $.get(url, function (data) {
-                $('#createAssetContainer').html(data);
+                $('#btneditAssetContainer').html(data);
 
-                $('#createAssetModal').modal('show');
+                $('#btneditAssetModal').modal('show');
             });
 
         });
