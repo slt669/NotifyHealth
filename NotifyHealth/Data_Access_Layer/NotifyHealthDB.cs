@@ -1407,7 +1407,8 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.CampaignId = reader["Campaign_ID"] as int? ?? default(int);
                         CD.Text = reader["Text"] as string;
                         CD.Period = reader["Period"] as int? ?? default(int);
-                        CD.Status = reader["Status"] as string;
+                        CD.Status = reader["Value"] as string;
+                        CD.StatusId = reader["Status_ID"] as int? ?? default(int);
                         CD.NTypeId = reader["N_Type_ID"] as int? ?? default(int);
                         CD.NotificationType = reader["NotificationType"] as string;
                         CD.NotificationId = reader["Notification_ID"] as int? ?? default(int);

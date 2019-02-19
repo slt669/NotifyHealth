@@ -48,6 +48,10 @@
             //$("button").click(function () {
             //    $("ol").append("<li class='ui-state-default'> 1</li ><li class='ui-state-default'>2</li><li class='ui-state-default'>3</li><li class='ui-state-default'>4</li><li class='ui-state-default'>5</li><li class='ui-state-default'>6</li><li class='ui-state-default'>7</li>");
             //});
+            $("#button").click(function () {
+                $("ol").append($("#template").html());
+                $('#button').attr("disabled", true);
+       });
             $("#selectable").selectable({
                 stop: function () {
                     $('#myModal').modal('toggle');
@@ -75,7 +79,7 @@
         });
     </script>
 </head>
-<button>Add new list item</button>
+<button id="button">Add new list item</button>
 <p id="feedback">
     <span>You've selected:</span> <span id="select-result">none</span>.
 </p>
@@ -179,87 +183,104 @@
     <li class="ui-state-default" id="82" data-period="82">5</li>
     <li class="ui-state-default" id="83" data-period="83">6</li>
     <li class="ui-state-default" id="84" data-period="84">7</li>
-    @*<li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>
-
-        <li class="ui-state-default">1</li>
-        <li class="ui-state-default">2</li>
-        <li class="ui-state-default">3</li>
-        <li class="ui-state-default">4</li>
-        <li class="ui-state-default">5</li>
-        <li class="ui-state-default">6</li>
-        <li class="ui-state-default">7</li>*@
 </ol>
+<div class="hide" id="template">
+    <li class="ui-state-default" id="85" data-period="85">1</li>
+    <li class="ui-state-default" id="86" data-period="86">2</li>
+    <li class="ui-state-default" id="87" data-period="87">3</li>
+    <li class="ui-state-default" id="88" data-period="88">4</li>
+    <li class="ui-state-default" id="89" data-period="89">5</li>
+    <li class="ui-state-default" id="90" data-period="90">6</li>
+    <li class="ui-state-default" id="91" data-period="91">7</li>
 
+    <li class="ui-state-default" id="92" data-period="92">1</li>
+    <li class="ui-state-default" id="93" data-period="93">2</li>
+    <li class="ui-state-default" id="94" data-period="94">3</li>
+    <li class="ui-state-default" id="95" data-period="95">4</li>
+    <li class="ui-state-default" id="96" data-period="96">5</li>
+    <li class="ui-state-default" id="97" data-period="97">6</li>
+    <li class="ui-state-default" id="98" data-period="98">7</li>
+
+    <li class="ui-state-default" id="99" data-period="99">1</li>
+    <li class="ui-state-default" id="100" data-period="100">2</li>
+    <li class="ui-state-default" id="101" data-period="101">3</li>
+    <li class="ui-state-default" id="102" data-period="102">4</li>
+    <li class="ui-state-default" id="103" data-period="103">5</li>
+    <li class="ui-state-default" id="104" data-period="104">6</li>
+    <li class="ui-state-default" id="105" data-period="105">7</li>
+
+    <li class="ui-state-default" id="106" data-period="106">1</li>
+    <li class="ui-state-default" id="107" data-period="107">2</li>
+    <li class="ui-state-default" id="108" data-period="108">3</li>
+    <li class="ui-state-default" id="109" data-period="109">4</li>
+    <li class="ui-state-default" id="110" data-period="110">5</li>
+    <li class="ui-state-default" id="111" data-period="111">6</li>
+    <li class="ui-state-default" id="112" data-period="112">7</li>
+
+    <li class="ui-state-default" id="113" data-period="113">1</li>
+    <li class="ui-state-default" id="114" data-period="114">2</li>
+    <li class="ui-state-default" id="115" data-period="115">3</li>
+    <li class="ui-state-default" id="116" data-period="116">4</li>
+    <li class="ui-state-default" id="117" data-period="117">5</li>
+    <li class="ui-state-default" id="118" data-period="118">6</li>
+    <li class="ui-state-default" id="119" data-period="119">7</li>
+
+    <li class="ui-state-default" id="120" data-period="120">1</li>
+    <li class="ui-state-default" id="121" data-period="121">2</li>
+    <li class="ui-state-default" id="122" data-period="122">3</li>
+    <li class="ui-state-default" id="123" data-period="123">4</li>
+    <li class="ui-state-default" id="124" data-period="124">5</li>
+    <li class="ui-state-default" id="125" data-period="125">6</li>
+    <li class="ui-state-default" id="126" data-period="126">7</li>
+
+    <li class="ui-state-default" id="127" data-period="127">1</li>
+    <li class="ui-state-default" id="128" data-period="128">2</li>
+    <li class="ui-state-default" id="129" data-period="129">3</li>
+    <li class="ui-state-default" id="130" data-period="130">4</li>
+    <li class="ui-state-default" id="131" data-period="131">5</li>
+    <li class="ui-state-default" id="132" data-period="132">6</li>
+    <li class="ui-state-default" id="133" data-period="133">7</li>
+
+    <li class="ui-state-default" id="134" data-period="134">1</li>
+    <li class="ui-state-default" id="135" data-period="135">2</li>
+    <li class="ui-state-default" id="136" data-period="136">3</li>
+    <li class="ui-state-default" id="137" data-period="137">4</li>
+    <li class="ui-state-default" id="138" data-period="138">5</li>
+    <li class="ui-state-default" id="139" data-period="139">6</li>
+    <li class="ui-state-default" id="140" data-period="140">7</li>
+
+    <li class="ui-state-default" id="141" data-period="141">1</li>
+    <li class="ui-state-default" id="142" data-period="142">2</li>
+    <li class="ui-state-default" id="143" data-period="143">3</li>
+    <li class="ui-state-default" id="144" data-period="144">4</li>
+    <li class="ui-state-default" id="145" data-period="145">5</li>
+    <li class="ui-state-default" id="146" data-period="146">6</li>
+    <li class="ui-state-default" id="147" data-period="147">7</li>
+
+    <li class="ui-state-default" id="148" data-period="148">1</li>
+    <li class="ui-state-default" id="149" data-period="149">2</li>
+    <li class="ui-state-default" id="150" data-period="150">3</li>
+    <li class="ui-state-default" id="151" data-period="151">4</li>
+    <li class="ui-state-default" id="152" data-period="152">5</li>
+    <li class="ui-state-default" id="153" data-period="153">6</li>
+    <li class="ui-state-default" id="154" data-period="154">7</li>
+
+    <li class="ui-state-default" id="155" data-period="155">1</li>
+    <li class="ui-state-default" id="156" data-period="156">2</li>
+    <li class="ui-state-default" id="157" data-period="157">3</li>
+    <li class="ui-state-default" id="158" data-period="158">4</li>
+    <li class="ui-state-default" id="159" data-period="159">5</li>
+    <li class="ui-state-default" id="160" data-period="160">6</li>
+    <li class="ui-state-default" id="161" data-period="161">7</li>
+
+    <li class="ui-state-default" id="162" data-period="162">1</li>
+    <li class="ui-state-default" id="163" data-period="163">2</li>
+    <li class="ui-state-default" id="164" data-period="164">3</li>
+    <li class="ui-state-default" id="165" data-period="165">4</li>
+    <li class="ui-state-default" id="166" data-period="166">5</li>
+    <li class="ui-state-default" id="167" data-period="167">6</li>
+    <li class="ui-state-default" id="168" data-period="168">7</li>
+</div>
 
 
 <div id="myModal" class="modal fade" role="dialog">
