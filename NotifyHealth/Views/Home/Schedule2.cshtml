@@ -26,15 +26,19 @@
             width: 240px;
         }
 
-            #selectable li {
-                margin: 3px;
-                padding: 1px;
-                float: left;
-                width: 25px;
-                height: 20px;
-                font-size: 0.75em;
-                text-align: center;
-            }
+        .ui-state-grey {
+            background: coral;
+        }
+
+        #selectable li {
+            margin: 3px;
+            padding: 1px;
+            float: left;
+            width: 25px;
+            height: 20px;
+            font-size: 0.75em;
+            text-align: center;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -52,6 +56,17 @@
                     });
                 }
             });
+            //alert($(".ui-state-default").data().period);
+            //$('.ui-state-default').each(function (i) {
+            //    var color = $(this).data().period;
+            //    //alert($(this).data().period);
+            //    if (color == 1 || color == 6) {
+            //        $(this).css('backgroundColor', 'coral');
+            //        alert("div " + i + " is blue!\nColor detected: " + color);
+            //    }
+
+            //})
+
         });
     </script>
 </head>
@@ -59,96 +74,137 @@
 <p id="feedback">
     <span>You've selected:</span> <span id="select-result">none</span>.
 </p>
+<p id="feedback2">
+</p>
+<p id="demo"></p>
 
 <ol id="selectable">
+    <li class="ui-state-default" id="1" data-period="1" data-text="Please schedule your Urine Test.">1</li>
+    <li class="ui-state-default" id="2" data-period="2">2</li>
+    <li class="ui-state-default" id="3" data-period="3">3</li>
+    <li class="ui-state-default" id="4" data-period="4">4</li>
+    <li class="ui-state-default" id="5" data-period="5">5</li>
+    <li class="ui-state-default" id="6" data-period="6">6</li>
+    <li class="ui-state-default" id="7" data-period="7">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+    <li class="ui-state-default" id="8" data-period="8">1</li>
+    <li class="ui-state-default" id="9" data-period="9">2</li>
+    <li class="ui-state-default" id="10" data-period="10">3</li>
+    <li class="ui-state-default" id="11" data-period="11">4</li>
+    <li class="ui-state-default" id="12" data-period="12">5</li>
+    <li class="ui-state-default" id="13" data-period="13">6</li>
+    <li class="ui-state-default" id="14" data-period="14">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+    <li class="ui-state-default" id="15" data-period="15">1</li>
+    <li class="ui-state-default" id="16" data-period="16">2</li>
+    <li class="ui-state-default" id="17" data-period="17">3</li>
+    <li class="ui-state-default" id="18" data-period="18">4</li>
+    <li class="ui-state-default" id="19" data-period="19">5</li>
+    <li class="ui-state-default" id="20" data-period="20">6</li>
+    <li class="ui-state-default" id="21" data-period="21">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+    <li class="ui-state-default" id="22" data-period="22">1</li>
+    <li class="ui-state-default" id="23" data-period="23">2</li>
+    <li class="ui-state-default" id="24" data-period="24">3</li>
+    <li class="ui-state-default" id="25" data-period="25">4</li>
+    <li class="ui-state-default" id="26" data-period="26">5</li>
+    <li class="ui-state-default" id="27" data-period="27">6</li>
+    <li class="ui-state-default" id="28" data-period="28">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+    <li class="ui-state-default" id="29" data-period="29">1</li>
+    <li class="ui-state-default" id="30" data-period="30">2</li>
+    <li class="ui-state-default" id="31" data-period="31">3</li>
+    <li class="ui-state-default" id="32" data-period="32">4</li>
+    <li class="ui-state-default" id="33" data-period="33">5</li>
+    <li class="ui-state-default" id="34" data-period="34">6</li>
+    <li class="ui-state-default" id="35" data-period="35">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+    <li class="ui-state-default" id="36" data-period="36">1</li>
+    <li class="ui-state-default" id="37" data-period="37">2</li>
+    <li class="ui-state-default" id="38" data-period="38">3</li>
+    <li class="ui-state-default" id="39" data-period="39">4</li>
+    <li class="ui-state-default" id="40" data-period="40">5</li>
+    <li class="ui-state-default" id="41" data-period="41">6</li>
+    <li class="ui-state-default" id="42" data-period="42">7</li>
+    @*<li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
 
-    <li class="ui-state-default">1</li>
-    <li class="ui-state-default">2</li>
-    <li class="ui-state-default">3</li>
-    <li class="ui-state-default">4</li>
-    <li class="ui-state-default">5</li>
-    <li class="ui-state-default">6</li>
-    <li class="ui-state-default">7</li>
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
+
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
+
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>
+
+        <li class="ui-state-default">1</li>
+        <li class="ui-state-default">2</li>
+        <li class="ui-state-default">3</li>
+        <li class="ui-state-default">4</li>
+        <li class="ui-state-default">5</li>
+        <li class="ui-state-default">6</li>
+        <li class="ui-state-default">7</li>*@
 </ol>
 
 
@@ -260,15 +316,68 @@
                 success: function (data) {
                     $.each(data, function (i, v) {
                         events.push({
-                            //NotificationId: v.NotificationId,
-                            //Text: v.Text,
-                            //start: moment(v.Start),
-                            //end: v.End != null ? moment(v.End) : null,
-                            ////color: v.ThemeColor,
+                            NotificationId: v.NotificationId,
+                            Text: v.Text,
+                            start: moment(v.Start),
+                            end: v.End != null ? moment(v.End) : null,
+                            //color: v.ThemeColor,
                             Period: v.Period
                         });
                     })
                 
+                    var text = "";
+                    for (x in events) {
+                        text += events[x].Period + ",";
+                    }
+                   var textedited = text.slice(0, -1);
+                    //text.slice(0, -1);
+                    var numbersArray = textedited.split(',');
+
+                    var dataArray = new Array();
+                    for (x in numbersArray) {
+                        $('.ui-state-default').each(function () {
+                            var dataLayer = $(this).data('period');
+                            if (numbersArray[x] == dataLayer) {
+                                //check if data-layer already processed
+                                //if (!dataArray.indexOf(dataLayer)) {
+                                    ////update data array
+                                    //dataArray.push(dataLayer);
+
+                                    $('.ui-state-default[data-period="' + dataLayer + '"]').each(function () {
+
+
+                                        alert("Match");
+                                        alert("after" + numbersArray[dataLayer]);
+                                        $('.ui-state-default[id="' + dataLayer + '"]').css('backgroundColor', 'coral');
+                                        textedited = dataLayer;
+
+
+                                    });
+
+                                //}
+                            }
+                        });
+                    }
+                    
+
+
+
+
+                    var elements = document.querySelectorAll('.ui-state-default'),
+                        array = Array.prototype.map.call(elements, function (el) {
+                            return el.dataset.period;
+                        });
+                    alert('elements' + array);
+
+                    var array123 = $('.ui-state-default').map(function () {
+                        return this.dataset.period;
+                    }).get();
+                    alert('array123' + array123);
+                    //var text = "";
+                    //for (i = 0; i < $("#selectable li").length; i++) {
+                    //    text += 1 + "<br>";
+                    //}
+                    document.getElementById("demo").innerHTML = textedited;
                     GenerateCalender(events);
                 },
                 error: function (error) {
@@ -277,115 +386,135 @@
             })
         }
 
+
         function GenerateCalender(events) {
-            var result = $.unique(events)
-            alert("Output for integer: " + result)
+            //var result = $.unique(events.Period)
+            //alert("Output for integer: " + result)
+
+            //$('.ui-state-default').each(function (i) {
+            //    var periodtable = $(this).data().period;
+            //    alert($(this).data().period);
+            //    if ($("#selectable li").length == events[i].Period) {
+            //        $(this).css('backgroundColor', 'coral');
+
+            //    }
+
+            //})
+            //var text = "";
+            //for (x in events) {
+            //    text += "," + events[x].Period;
+            //}
+            ////var text = "";
+            ////for (i = 0; i < $("#selectable li").length; i++) {
+            ////    text += 1 + "<br>";
+            ////}
+            //document.getElementById("demo").innerHTML = text;
         }
 
-        $('#btnEdit').click(function () {
-            //Open modal dialog for edit event
-            openAddEditForm();
-        })
-        $('#btnDelete').click(function () {
-            if (selectedEvent != null && confirm('Are you sure?')) {
-                $.ajax({
-                    type: "POST",
-                    url: '/home/DeleteNotification',
-                    data: { 'NotificationId': selectedEvent.NotificationId },
-                    success: function (data) {
-                        if (data.status) {
-                            //Refresh the calender
-                            FetchEventAndRenderCalendar();
-                            $('#myModal').modal('hide');
-                        }
-                    },
-                    error: function () {
-                        alert('Failed');
-                    }
-                })
-            }
-        })
-
-        $('#dtp1,#dtp2').datetimepicker({
-            format: 'DD/MM/YYYY HH:mm A'
-        });
-
-        //$('#chkIsFullDay').change(function () {
-        //    if ($(this).is(':checked')) {
-        //        $('#divEndDate').hide();
+        //$('#btnEdit').click(function () {
+        //    //Open modal dialog for edit event
+        //    openAddEditForm();
+        //})
+        //$('#btnDelete').click(function () {
+        //    if (selectedEvent != null && confirm('Are you sure?')) {
+        //        $.ajax({
+        //            type: "POST",
+        //            url: '/home/DeleteNotification',
+        //            data: { 'NotificationId': selectedEvent.NotificationId },
+        //            success: function (data) {
+        //                if (data.status) {
+        //                    //Refresh the calender
+        //                    FetchEventAndRenderCalendar();
+        //                    $('#myModal').modal('hide');
+        //                }
+        //            },
+        //            error: function () {
+        //                alert('Failed');
+        //            }
+        //        })
         //    }
-        //    else {
-        //        $('#divEndDate').show();
-        //    }
+        //})
+
+        //$('#dtp1,#dtp2').datetimepicker({
+        //    format: 'DD/MM/YYYY HH:mm A'
         //});
 
-        function openAddEditForm() {
-            if (selectedEvent != null) {
-                $('#hdEventID').val(selectedEvent.eventID);
-                $('#txtSubject').val(selectedEvent.title);
-                $('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm A'));
-                $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
-                $('#chkIsFullDay').change();
-                $('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('DD/MM/YYYY HH:mm A') : '');
-                $('#txtDescription').val(selectedEvent.description);
-                $('#ddThemeColor').val(selectedEvent.color);
-            }
-            $('#myModal').modal('hide');
-            $('#myModalSave').modal();
-        }
+        ////$('#chkIsFullDay').change(function () {
+        ////    if ($(this).is(':checked')) {
+        ////        $('#divEndDate').hide();
+        ////    }
+        ////    else {
+        ////        $('#divEndDate').show();
+        ////    }
+        ////});
 
-        $('#btnSave').click(function () {
-            //Validation/
-            if ($('#txtSubject').val().trim() == "") {
-                alert('Subject required');
-                return;
-            }
-            if ($('#txtStart').val().trim() == "") {
-                alert('Start date required');
-                return;
-            }
-            if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "") {
-                alert('End date required');
-                return;
-            }
-            else {
-                var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A").toDate();
-                var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A").toDate();
-                if (startDate > endDate) {
-                    alert('Invalid end date');
-                    return;
-                }
-            }
+        //function openAddEditForm() {
+        //    if (selectedEvent != null) {
+        //        $('#hdEventID').val(selectedEvent.eventID);
+        //        $('#txtSubject').val(selectedEvent.title);
+        //        $('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm A'));
+        //        $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
+        //        $('#chkIsFullDay').change();
+        //        $('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('DD/MM/YYYY HH:mm A') : '');
+        //        $('#txtDescription').val(selectedEvent.description);
+        //        $('#ddThemeColor').val(selectedEvent.color);
+        //    }
+        //    $('#myModal').modal('hide');
+        //    $('#myModalSave').modal();
+        //}
 
-            var data = {
-                EventID: $('#hdEventID').val(),
-                Subject: $('#txtSubject').val().trim(),
-                Start: $('#txtStart').val().trim(),
-                End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
-                Description: $('#txtDescription').val(),
-                ThemeColor: $('#ddThemeColor').val(),
-                IsFullDay: $('#chkIsFullDay').is(':checked')
-            }
-            SaveEvent(data);
-            // call function for submit data to the server
-        })
+        //$('#btnSave').click(function () {
+        //    //Validation/
+        //    if ($('#txtSubject').val().trim() == "") {
+        //        alert('Subject required');
+        //        return;
+        //    }
+        //    if ($('#txtStart').val().trim() == "") {
+        //        alert('Start date required');
+        //        return;
+        //    }
+        //    if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "") {
+        //        alert('End date required');
+        //        return;
+        //    }
+        //    else {
+        //        var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A").toDate();
+        //        var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A").toDate();
+        //        if (startDate > endDate) {
+        //            alert('Invalid end date');
+        //            return;
+        //        }
+        //    }
 
-        function SaveEvent(data) {
-            $.ajax({
-                type: "POST",
-                url: '/Home/SaveNotification',
-                data: data,
-                success: function (data) {
-                    if (data.status) {
-                        //Refresh the calender
-                        FetchEventAndRenderCalendar();
-                        $('#myModalSave').modal('hide');
-                    }
-                },
-                error: function () {
-                    alert('Failed');
-                }
-            })
-        }
+        //    var data = {
+        //        EventID: $('#hdEventID').val(),
+        //        Subject: $('#txtSubject').val().trim(),
+        //        Start: $('#txtStart').val().trim(),
+        //        End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
+        //        Description: $('#txtDescription').val(),
+        //        ThemeColor: $('#ddThemeColor').val(),
+        //        IsFullDay: $('#chkIsFullDay').is(':checked')
+        //    }
+        //    SaveEvent(data);
+        //    // call function for submit data to the server
+        //})
+
+        //function SaveEvent(data) {
+        //    $.ajax({
+        //        type: "POST",
+        //        url: '/Home/SaveNotification',
+        //        data: data,
+        //        success: function (data) {
+        //            if (data.status) {
+        //                //Refresh the calender
+        //                FetchEventAndRenderCalendar();
+        //                $('#myModalSave').modal('hide');
+        //            }
+        //        },
+        //        error: function () {
+        //            alert('Failed');
+        //        }
+        //    })
+        //}
     })
 </script>

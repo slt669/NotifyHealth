@@ -826,10 +826,10 @@ namespace NotifyHealth.Controllers
         public JsonResult GetNotifications123()
         {
             List<Notifications> dtsource = new List<Notifications>();
+            dtsource = db.GetNotificationsbyCampaigns(Convert.ToInt32(Session["organizationID"]), 2);
+            //dtsource = db.GetNotifications(Convert.ToInt32(Session["organizationID"]));
 
-            dtsource = db.GetNotifications(Convert.ToInt32(Session["organizationID"]));
-        
-                return new JsonResult { Data = dtsource, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = dtsource, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
          
         }
         [HttpPost]
