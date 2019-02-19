@@ -818,15 +818,15 @@ namespace NotifyHealth.Controllers
             ViewBag.clientID = id;
             return View("ClientDetails", edit);
         }
-        public ActionResult Schedule2()
+        public ActionResult Schedule2(int? CampaignID)
         {
-  
+            ViewBag.CampaignId = CampaignID;
             return View();
         }
-        public JsonResult GetNotifications123()
+        public JsonResult GetNotifications123(int? CampaignID)
         {
             List<Notifications> dtsource = new List<Notifications>();
-            dtsource = db.GetNotificationsbyCampaigns(Convert.ToInt32(Session["organizationID"]), 2);
+            dtsource = db.GetNotificationsbyCampaigns(Convert.ToInt32(Session["organizationID"]), CampaignID);
             //dtsource = db.GetNotifications(Convert.ToInt32(Session["organizationID"]));
 
             return new JsonResult { Data = dtsource, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
