@@ -104,8 +104,7 @@ namespace NotifyHealth.Models
         {
             IQueryable<Notifications> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || p.Text.ToString().ToLower() != null && p.Text.ToString().Contains(search.ToLower()))
-                && (columnFilters[0] == null || (p.Text != null && p.Text.ToString().ToLower().Contains(columnFilters[0].ToLower()))));
+            results = results.Where(p => (search == null || p.Text.ToString().ToLower() != null && p.Text.ToString().ToLower().Contains(search.ToLower())));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
             /*|| p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToStri5g().Contains(search.ToLower())*/
@@ -169,8 +168,8 @@ namespace NotifyHealth.Models
         {
             IQueryable<ClientMemberships> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.Start.ToString().Contains(search.ToLower()) || p.Start != null && p.Start.ToString().Contains(search.ToLower())))
-                && (columnFilters[0] == null || (p.Campaign != null && p.Campaign.ToString().Contains(columnFilters[0].ToLower()))));
+            results = results.Where(p => (search == null || (p.Start.ToString().Contains(search.ToLower()) || p.Start != null && p.Start.ToString().ToLower().Contains(search.ToLower())))
+                && (columnFilters[0] == null || (p.Campaign != null && p.Campaign.ToString().ToLower().Contains(columnFilters[0].ToLower()))));
             return results;
             /* && (columnFilters[3] == null || (p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToString().Contains(columnFilters[3].ToLower())))*/
             /*|| p.InvoiceAmount.ToString() != null && p.InvoiceAmount.ToStri5g().Contains(search.ToLower())*/
@@ -207,8 +206,8 @@ namespace NotifyHealth.Models
         {
             IQueryable<Transactions> results = dtResult.AsQueryable();
 
-            results = results.Where(p => (search == null || (p.Timestamp.ToString().Contains(search.ToLower()) || p.Timestamp != null && p.Timestamp.ToString().Contains(search.ToLower())))
-                && (columnFilters[0] == null || (p.Notification != null && p.Notification.ToString().Contains(columnFilters[0].ToLower()))));
+            results = results.Where(p => (search == null || (p.Timestamp.ToString().ToLower().Contains(search.ToLower()) || p.Timestamp != null && p.Timestamp.ToString().ToLower().Contains(search.ToLower())))
+                && (columnFilters[0] == null || (p.Notification != null && p.Notification.ToString().ToLower().Contains(columnFilters[0].ToLower()))));
             return results;
         }
     }
