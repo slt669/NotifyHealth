@@ -138,7 +138,7 @@ namespace NotifyHealth.Controllers
             ViewBag.organizationID = Session["organizationID"];
             ViewBag.ProgramId = id;
 
-            return View("TrackDetails", edit);
+            return View(edit);
         }
 
         [SessionFilterAttribute]
@@ -347,7 +347,9 @@ namespace NotifyHealth.Controllers
         [SessionFilterAttribute]
         public ActionResult CampaignDetails(int? id)
         {
-            List<Campaigns> dtsource = MyGlobalCampaignsInitializer();
+        
+          
+            List<Campaigns> dtsource = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
             Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
             edit.Statuses = DropDownListUtility.GetStatusList(edit.StatusId.ToString());
             ViewBag.organizationID = Session["organizationID"];

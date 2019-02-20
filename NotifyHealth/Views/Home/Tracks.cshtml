@@ -106,8 +106,9 @@
                     "deferRender": true,
                     "columns": [
                         {
-
-                            "title": "Name", "data": "Name", "searchable": true,
+                            "title": "Name", "data": "Name", "searchable": true, "render": function (data, row, full, meta) {
+                                return '<a href="@Url.Action("TrackDetails", "Home")?id=' + full['ProgramId'] + '" class="details">' + data + '</a>';
+                            },
                         },
                         {
                             "title": "Description", "data": "Description", "searchable": false,

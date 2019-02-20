@@ -19,7 +19,7 @@
 <h1 class="page-header">Tracks Details</h1>
 <div class="section-container section-with-top-border">
 </div>
-<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Programs", "Home")'" id="btnProgram">
+<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Tracks", "Home")'" id="btnProgram">
     <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Return
 </button>
 
@@ -144,7 +144,7 @@
                             {
 
                                 "title": "Name", "data": "Name", "searchable": true, "render": function (data, row, full, meta) {
-                                    return '<a href="@Url.Action("EditCampaign", "Home")?id=' + full['CampaignId']  + '" class="editAsset">' + data + '</a>';
+                                    return '<a href="@Url.Action("CampaignDetails", "Home")?id=' + full['CampaignId']  + '">' + data + '</a>';
                                 }
                             },
                             {
