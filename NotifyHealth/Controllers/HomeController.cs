@@ -31,7 +31,7 @@ namespace NotifyHealth.Controllers
         }
 
         [SessionFilterAttribute]
-        public ActionResult Programs(int? organizationID)
+        public ActionResult Tracks(int? organizationID)
         {
             try
             {
@@ -130,7 +130,7 @@ namespace NotifyHealth.Controllers
         }
 
         [SessionFilterAttribute]
-        public ActionResult ProgramDetails(int? id)
+        public ActionResult TrackDetails(int? id)
         {
             List<Programs> dtsource = MyGlobalProgramsInitializer();
             Programs edit = dtsource.FirstOrDefault(x => x.ProgramId == id);
@@ -138,7 +138,7 @@ namespace NotifyHealth.Controllers
             ViewBag.organizationID = Session["organizationID"];
             ViewBag.ProgramId = id;
 
-            return View("ProgramDetails", edit);
+            return View("TrackDetails", edit);
         }
 
         [SessionFilterAttribute]
@@ -158,7 +158,7 @@ namespace NotifyHealth.Controllers
                 ViewBag.Message = ex.Message;
             }
 
-            return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
+            return RedirectToAction("Tracks", new { organizationID = model.OrganizationID });
         }
 
         [SessionFilterAttribute]
@@ -189,7 +189,7 @@ namespace NotifyHealth.Controllers
                 ViewBag.Message = ex.Message;
             }
 
-            return RedirectToAction("Programs", new { organizationID = model.OrganizationID });
+            return RedirectToAction("Tracks", new { organizationID = model.OrganizationID });
         }
 
         public JsonResult GetCampaignsbyProgram(DTParameters param, int? organizationID, int? ProgramId)

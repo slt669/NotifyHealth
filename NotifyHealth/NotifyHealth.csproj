@@ -5451,7 +5451,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Home\Programs.cshtml" />
+    <Content Include="Views\Home\Tracks.cshtml" />
     <Content Include="Views\Home\Campaigns.cshtml" />
     <Content Include="Views\Home\Clients.cshtml" />
     <Content Include="Views\Home\Notifications.cshtml" />
@@ -5477,7 +5477,7 @@
     <Content Include="Views\Home\NotificationWizard.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Home\ClientDetails.cshtml" />
-    <Content Include="Views\Home\ProgramDetails.cshtml" />
+    <Content Include="Views\Home\TrackDetails.cshtml" />
     <Content Include="Views\Home\CampaignDetails.cshtml" />
     <Content Include="Views\Home\NotificationDetails.cshtml" />
     <Content Include="Views\Home\EditClient.cshtml" />

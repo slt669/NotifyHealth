@@ -98,10 +98,10 @@
                             </a>
                         </li>
                     }
-                    @if (ViewContext.RouteData.Values["Action"].ToString() == "Programs")
+                    @if (ViewContext.RouteData.Values["Action"].ToString() == "Tracks")
                     {
                         <li class="has-sub active">
-                            <a href="@Url.Action("Programs", "Home")">
+                            <a href="@Url.Action("Tracks", "Home")">
                                 <i class="fa fa-university"></i>
                                 <span>Tracks</span>
                             </a>
@@ -110,7 +110,7 @@
                     else
                     {
                         <li class="has-sub">
-                            <a href="@Url.Action("Programs", "Home")">
+                            <a href="@Url.Action("Tracks", "Home")">
                                 <i class="fa fa-university"></i>
                                 <span>Tracks</span>
                             </a>

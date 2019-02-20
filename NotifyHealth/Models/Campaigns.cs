@@ -24,13 +24,13 @@ namespace NotifyHealth.Models
         [Display(Name = "Related Notifications")]
         public int RelatedNotifications { get; set; }
 
-        [Display(Name = "Program Id")]
+        [Display(Name = "Tracks Id")]
         public virtual int ProgramId { get; set; }
 
-        [Display(Name = "Programs")]
+        [Display(Name = "Track")]
         public virtual IEnumerable<SelectListItem> Programs { get; set; }
 
-        [Display(Name = "Program")]
+        [Display(Name = "Track")]
         public string Program { get; set; }
     }
 }

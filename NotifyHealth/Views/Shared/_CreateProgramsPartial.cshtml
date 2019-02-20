@@ -8,7 +8,7 @@
     <div class="modal-content">
         <div class="modal-header">
 
-            <h4 class="modal-title">Add Program</h4>
+            <h4 class="modal-title">Add Track</h4>
         </div>
         @using (Ajax.BeginForm("CreatePrograms", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "CreateAssetSuccess", UpdateTargetId = "frmEmp" }, new { @class = "form-horizontal", role = "form" }))
         {
