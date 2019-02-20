@@ -203,7 +203,7 @@
     <script>
         $(document).ready(function () {
 
-          $('#Program-DropDownID').change(function () {
+          @*$('#Program-DropDownID').change(function () {
               $("#CampaignId").empty();
                 var ProgramID = $('#Program-DropDownID').find('option:selected').val();
 
@@ -218,7 +218,7 @@
 
                     }
                  });
-            });
+            });*@
             $("#selectable").selectable({
                 stop: function () {
                     $('#selectable .ui-state-default.ui-selected').each(function (index) {

@@ -3,7 +3,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>jQuery UI Selectable - Display as grid</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    @*<link rel="stylesheet" href="/resources/demos/style.css">*@
 
     <style>
         #feedback {
@@ -58,8 +57,9 @@
                     $('#selectable .ui-state-default.ui-selected').each(function (index) {
                         if (typeof $(this).data('text') !== 'undefined') {
 
-                            $('#myModal #eventTitle').text($(this).data('text'));
                             $('#myModal #eventperiod').text($(this).data('period'));
+                            $('#myModal #txtnotificationid').text($(this).data('notificationid'));
+                            $('#myModal #txtText').text($(this).data('text'));
                         }
                     });
                  
@@ -80,15 +80,9 @@
     </script>
 </head>
 <button id="button">Add new list item</button>
-<p id="feedback">
-    <span>You've selected:</span> <span id="select-result">none</span>.
-</p>
-<p id="feedback2">
-</p>
-<p id="demo"></p>
 
 <ol id="selectable" data-toggle="modal" href="#myModal" >
-    <li class="ui-state-default" id="1" data-period="1" data-text="Please schedule your Urine Test.">1</li>
+    <li class="ui-state-default" id="1" data-period="1" data-text="Please schedule your Urine Test." data-notificationid="Please schedule your Urine Test.">1</li>
     <li class="ui-state-default" id="2" data-period="2">2</li>
     <li class="ui-state-default" id="3" data-period="3">3</li>
     <li class="ui-state-default" id="4" data-period="4">4</li>
@@ -288,88 +282,31 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                <h4 class="modal-title"><span>Edit Notification</span></h4>
             </div>
             <div class="modal-body">
-                <button id="btnDelete" class="btn btn-danger btn-sm pull-right">
+                <div class="form-group">
+
+                    <text id="txtnotificationid" style=" visibility: hidden;" class="form-control"></text>
+                </div>
+                <div class="form-group">
+
+                    <label>Period</label>
+                    <text id="eventperiod" class="form-control disabled"></text>
+                </div>
+                <div class="form-group">
+
+                    <label>Text</label>
+                    <textarea id="txtText" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+         
+            <div class="modal-footer">
+                <button id="btnDelete" class="btn btn-danger btn-sm left">
                     <i class="fa fa-minus" aria-hidden="true"></i> Remove
                 </button>
-                <button id="btnEdit" class="btn btn-success btn-sm pull-right" style="margin-right:5px;">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
-                </button>
-                <p id="pDetails"></p>
-                <span id="eventperiod"></span>
-            </div>
-            <div class="modal-footer">
+                <button type="button" id="btnSave" class="btn btn-success">Save</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="myModalSave" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Save Event</h4>
-            </div>
-            <div class="modal-body">
-                <form class="col-md-12 form-horizontal">
-                    <input type="hidden" id="hdNotificationID" value="0" />
-                    @*<div class="form-group">
-                            <label>Subject</label>
-                            <input type="text" id="txtSubject" class="form-control" />
-                        </div>*@
-                    <div class="form-group">
-                        <label>Start</label>
-                        <div class="input-group date" id="dtp1">
-                            <input type="text" id="txtStart" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>End</label>
-                        <div class="input-group date" id="dtp1">
-                            <input type="text" id="txtStart" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    @*<div class="form-group">
-                            <div class="checkbox">
-                                <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
-                            </div>
-                        </div>*@
-                    <div class="form-group" id="divEndDate" style="display:none">
-                        <label>End</label>
-                        <div class="input-group date" id="dtp2">
-                            <input type="text" id="txtEnd" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Text</label>
-                        <textarea id="txtDescription" rows="3" class="form-control"></textarea>
-                    </div>
-                    @*<div class="form-group">
-                            <label>Theme Color</label>
-                            <select id="ddThemeColor" class="form-control">
-                                <option value="">Default</option>
-                                <option value="red">Red</option>
-                                <option value="blue">Blue</option>
-                                <option value="black">Black</option>
-                                <option value="green">Green</option>
-                            </select>
-                        </div>*@
-                    <button type="button" id="btnSave" class="btn btn-success">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </form>
             </div>
         </div>
     </div>
@@ -383,8 +320,9 @@
             $('#myModal').modal('toggle');
             if (typeof $(this).data('text') !== 'undefined') {
 
-                $('#myModal #eventTitle').text(calEvent.text);
-
+                //$('#myModal #eventTitle').text(calEvent.text);
+                $('#myModal #txtnotificationid').val(calEvent.notificationid);
+                $('#myModal #txtText').val(calEvent.text);
             }
     });
         $(function () {
@@ -413,7 +351,6 @@
                             Text: v.Text,
                             start: moment(v.Start),
                             end: v.End != null ? moment(v.End) : null,
-                            //color: v.ThemeColor,
                             Period: v.Period
                         });
                     })
@@ -440,6 +377,7 @@
 
                                         $('.ui-state-default[id="' + dataLayer + '"]').css('backgroundColor', 'coral');
                                         $('.ui-state-default[id="' + dataLayer + '"]').attr('data-text', events[x].Text);
+                                        $('.ui-state-default[id="' + dataLayer + '"]').attr('data-notificationid', events[x].NotificationId);
                                     });
 
                                 //}
@@ -447,109 +385,38 @@
                         });
                     }
                     
-
-
-
-
-                    var elements = document.querySelectorAll('.ui-state-default'),
-                        array = Array.prototype.map.call(elements, function (el) {
-                            return el.dataset.period;
-                        });
-
-
                     var array123 = $('.ui-state-default').map(function () {
                         return this.dataset.period;
                     }).get();
 
-                    //var text = "";
-                    //for (i = 0; i < $("#selectable li").length; i++) {
-                    //    text += 1 + "<br>";
-                    //}
-                    document.getElementById("demo").innerHTML = textedited;
-                    GenerateCalender(events);
+           
                 },
                 error: function (error) {
                     alert('failed23432' + error);
                 }
             })
         }
-
-
-        function GenerateCalender(events) {
-            //var result = $.unique(events.Period)
-            //alert("Output for integer: " + result)
-
-            //$('.ui-state-default').each(function (i) {
-            //    var periodtable = $(this).data().period;
-            //    alert($(this).data().period);
-            //    if ($("#selectable li").length == events[i].Period) {
-            //        $(this).css('backgroundColor', 'coral');
-
-            //    }
-
-            //})
-            //var text = "";
-            //for (x in events) {
-            //    text += "," + events[x].Period;
-            //}
-            ////var text = "";
-            ////for (i = 0; i < $("#selectable li").length; i++) {
-            ////    text += 1 + "<br>";
-            ////}
-            //document.getElementById("demo").innerHTML = text;
-        }
-
-        $('#btnEdit').click(function () {
-            //Open modal dialog for edit event
-            openAddEditForm();
+        $('#btnDelete').click(function () {
+            var NotificationId = $('#txtnotificationid').text();
+                $.ajax({
+                    type: "POST",
+                    url: '/home/DeleteNotification',
+                    data: { 'Notificationid': NotificationId },
+                    success: function (data) {
+                        if (data.status) {
+                            //Refresh the calender
+                            FetchEventAndRenderCalendar();
+                        
+                            $('#myModal').modal('hide');
+                            location.reload();
+                        }
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                })
+            
         })
-        //$('#btnDelete').click(function () {
-        //    if (selectedEvent != null && confirm('Are you sure?')) {
-        //        $.ajax({
-        //            type: "POST",
-        //            url: '/home/DeleteNotification',
-        //            data: { 'NotificationId': selectedEvent.NotificationId },
-        //            success: function (data) {
-        //                if (data.status) {
-        //                    //Refresh the calender
-        //                    FetchEventAndRenderCalendar();
-        //                    $('#myModal').modal('hide');
-        //                }
-        //            },
-        //            error: function () {
-        //                alert('Failed');
-        //            }
-        //        })
-        //    }
-        //})
-
-        //$('#dtp1,#dtp2').datetimepicker({
-        //    format: 'DD/MM/YYYY HH:mm A'
-        //});
-
-        ////$('#chkIsFullDay').change(function () {
-        ////    if ($(this).is(':checked')) {
-        ////        $('#divEndDate').hide();
-        ////    }
-        ////    else {
-        ////        $('#divEndDate').show();
-        ////    }
-        ////});
-
-        function openAddEditForm() {
-            if (selectedEvent != null) {
-                $('#hdNotificationID').val(selectedEvent.eventID);
-                $('#txtSubject').val(selectedEvent.title);
-                $('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm A'));
-                $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
-                $('#chkIsFullDay').change();
-                $('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('DD/MM/YYYY HH:mm A') : '');
-                $('#txtDescription').val(selectedEvent.description);
-                $('#ddThemeColor').val(selectedEvent.color);
-            }
-            $('#myModal').modal('hide');
-            $('#myModalSave').modal();
-        }
 
         //$('#btnSave').click(function () {
         //    //Validation/
