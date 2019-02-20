@@ -44,44 +44,40 @@
     <script src="~/Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.min.js"></script>
     <script>
         $(function () {
-            //$("button").click(function () {
-            //    $("ol").append("<li class='ui-state-default'> 1</li ><li class='ui-state-default'>2</li><li class='ui-state-default'>3</li><li class='ui-state-default'>4</li><li class='ui-state-default'>5</li><li class='ui-state-default'>6</li><li class='ui-state-default'>7</li>");
-            //});
             $("#button").click(function () {
                 $("ol").append($("#template").html());
                 $('#button').attr("disabled", true);
-       });
+            });
             $("#selectable").selectable({
                 stop: function () {
                     $('#myModal').modal('toggle');
                     $('#selectable .ui-state-default.ui-selected').each(function (index) {
-                        if (typeof $(this).data('text') !== 'undefined') {
+                        if (typeof $(this).data('period') !== 'undefined') {
 
+                            $('#myModal #title').text("Add Notification");
+                            $('#myModal #eventperiod').text(this.id);
+                            $('#myModal #txtnotificationid').text("");
+                            $('#myModal #txtText').text("");
+                            $('#myModal #title').text("Add Notification");
+                            $("#btnDelete").css("visibility", "hidden")
+                        }
+                        if (typeof $(this).data('text') !== 'undefined') {
+                            $('#myModal #title').text("Edit Notification");
                             $('#myModal #eventperiod').text($(this).data('period'));
                             $('#myModal #txtnotificationid').text($(this).data('notificationid'));
                             $('#myModal #txtText').text($(this).data('text'));
+                            $("#btnDelete").css("visibility", "visible")
                         }
                     });
-                 
+
                 }
             });
-            //alert($(".ui-state-default").data().period);
-            //$('.ui-state-default').each(function (i) {
-            //    var color = $(this).data().period;
-            //    //alert($(this).data().period);
-            //    if (color == 1 || color == 6) {
-            //        $(this).css('backgroundColor', 'coral');
-            //        alert("div " + i + " is blue!\nColor detected: " + color);
-            //    }
-
-            //})
-
         });
     </script>
 </head>
 <button id="button">Add new list item</button>
 
-<ol id="selectable" data-toggle="modal" href="#myModal" >
+<ol id="selectable" data-toggle="modal" href="#myModal">
     <li class="ui-state-default" id="1" data-period="1" data-text="Please schedule your Urine Test." data-notificationid="Please schedule your Urine Test.">1</li>
     <li class="ui-state-default" id="2" data-period="2">2</li>
     <li class="ui-state-default" id="3" data-period="3">3</li>
@@ -282,13 +278,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><span>Edit Notification</span></h4>
+                <h4 class="modal-title"><span id="title"></span></h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-
-                    <text id="txtnotificationid" style=" visibility: hidden;" class="form-control"></text>
-                </div>
+                <input type="hidden" id="txtnotificationid">
                 <div class="form-group">
 
                     <label>Period</label>
@@ -300,7 +293,7 @@
                     <textarea id="txtText" rows="3" class="form-control"></textarea>
                 </div>
             </div>
-         
+
             <div class="modal-footer">
                 <button id="btnDelete" class="btn btn-danger btn-sm left">
                     <i class="fa fa-minus" aria-hidden="true"></i> Remove
@@ -354,7 +347,7 @@
                             Period: v.Period
                         });
                     })
-                
+
                     var text = "";
                     for (x in events) {
                         text += events[x].Period + ",";
@@ -384,15 +377,15 @@
                             }
                         });
                     }
-                    
+
                     var array123 = $('.ui-state-default').map(function () {
                         return this.dataset.period;
                     }).get();
 
-           
+
                 },
                 error: function (error) {
-                    alert('failed23432' + error);
+                    alert('failed' + error);
                 }
             })
         }
@@ -406,7 +399,7 @@
                         if (data.status) {
                             //Refresh the calender
                             FetchEventAndRenderCalendar();
-                        
+
                             $('#myModal').modal('hide');
                             location.reload();
                         }
@@ -415,61 +408,45 @@
                         alert('Failed');
                     }
                 })
-            
+
         })
 
-        //$('#btnSave').click(function () {
-        //    //Validation/
-        //    if ($('#txtSubject').val().trim() == "") {
-        //        alert('Subject required');
-        //        return;
-        //    }
-        //    if ($('#txtStart').val().trim() == "") {
-        //        alert('Start date required');
-        //        return;
-        //    }
-        //    if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "") {
-        //        alert('End date required');
-        //        return;
-        //    }
-        //    else {
-        //        var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A").toDate();
-        //        var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A").toDate();
-        //        if (startDate > endDate) {
-        //            alert('Invalid end date');
-        //            return;
-        //        }
-        //    }
+        $('#btnSave').click(function () {
+            //Validation/
+            var CampaignID = parseInt(@ViewBag.CampaignID);
+            if ($('#txtText').val().trim() == "") {
+                alert('Text required');
+                return;
+            }
+            var data = {
+                NotificationId: $('#txtnotificationid').val(),
+                Text: $('#txtText').val().trim(),
+                Period: $('#eventperiod').text(),
+                CampaignID: CampaignID,
+                StatusId: 1,
+                NTypeId:8
+            }
+            SaveEvent(data);
+            // call function for submit data to the server
+        })
 
-        //    var data = {
-        //        EventID: $('#hdEventID').val(),
-        //        Subject: $('#txtSubject').val().trim(),
-        //        Start: $('#txtStart').val().trim(),
-        //        End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
-        //        Description: $('#txtDescription').val(),
-        //        ThemeColor: $('#ddThemeColor').val(),
-        //        IsFullDay: $('#chkIsFullDay').is(':checked')
-        //    }
-        //    SaveEvent(data);
-        //    // call function for submit data to the server
-        //})
-
-        //function SaveEvent(data) {
-        //    $.ajax({
-        //        type: "POST",
-        //        url: '/Home/SaveNotification',
-        //        data: data,
-        //        success: function (data) {
-        //            if (data.status) {
-        //                //Refresh the calender
-        //                FetchEventAndRenderCalendar();
-        //                $('#myModalSave').modal('hide');
-        //            }
-        //        },
-        //        error: function () {
-        //            alert('Failed');
-        //        }
-        //    })
-        //}
+        function SaveEvent(data) {
+            $.ajax({
+                type: "POST",
+                url: '/Home/SaveNotification',
+                data: data,
+                success: function (data) {
+                    if (data.status) {
+                        //Refresh the calender
+                        FetchEventAndRenderCalendar();
+                        $('#myModalSave').modal('hide');
+                        location.reload();
+                    }
+                },
+                error: function () {
+                    alert('Failed');
+                }
+            })
+        }
     })
 </script>
