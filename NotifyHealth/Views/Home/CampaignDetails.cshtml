@@ -75,62 +75,73 @@
         </dd>
     </div>
 </dl>
-<p class="m-b-20">
-    <h1 class="page-header">Notifications Schedule</h1>
-</p>
-<div class="m-b-20">
-    @*@Html.Partial("_SchedulePartial")*@
-</div>
-<p class="m-b-20">
-    <h1 class="page-header">Related Notifications</h1>
-</p>
-<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateNotification","Home", new { @organizationID = Request["organizationID"], @campaignID = @ViewBag.CampaignID})" id="btneditAsset">
-    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Notification
-</button>
-@*<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Schedule2", "Home",new { @campaignID = @ViewBag.CampaignID})'" id="btnNotificationsSchedule">
-    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Notifications Schedule
-</button>*@
-<p class="m-b-20">
-</p>
-<div class="panel pagination-inverse m-b-0 clearfix">
+<div class="row">
+    <div class="col-sm-3">
+        <p class="m-b-20">
+            <h1 class="page-header">Notifications Schedule</h1>
+        </p>
+ 
+        <div class="m-b-20" style="padding-top:52px">
+            @Html.Partial("_SchedulePartial")
+        </div>
+    </div>
 
-    <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
-</div>
+    <div class="col-sm-9">
+        <p class="m-b-20">
+            <h1 class="page-header">Related Notifications</h1>  <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-url="@Url.Action("CreateNotification","Home", new { @organizationID = Request["organizationID"], @campaignID = @ViewBag.CampaignID})" id="btneditAsset">
+                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Notification
+            </button>
+        </p>
+      
+        <p class="m-b-20">
+        </p>
+        <div class="panel pagination-inverse m-b-0 clearfix">
 
-<div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModal" aria-hidden="true" data-backdrop="static">
-    <div id="createAssetContainer">
-    </div>
-</div>
-<div class="modal fade" id="editAssetModal" tabindex="-1" role="dialog" aria-labelledby="EditAssetModal" aria-hidden="true" data-backdrop="static">
-    <div id="editAssetContainer">
-    </div>
-</div>
-<div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="DeleteAssetModal" aria-hidden="true" data-backdrop="static">
-    <div id="deleteAssetContainer">
-    </div>
-</div>
-<div class="modal fade" id="btneditAssetModal" tabindex="-1" role="dialog" aria-labelledby="btneditAssetModal" aria-hidden="true" data-backdrop="static">
-    <div id="btneditAssetContainer">
+            <table id="assets-data-table" class="table table-bordered table-hover" cellspacing="0" style="width:100%;"></table>
+        </div>
+
     </div>
 </div>
 
-<!-- ================== BEGIN BASE JS ================== -->
-<script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
-<script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    @*<button type="button" class="btn btn-success btn-md" onclick="location.href='@Url.Action("Schedule2", "Home",new { @campaignID = @ViewBag.CampaignID})'" id="btnNotificationsSchedule">
+            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Notifications Schedule
+        </button>*@
+    
 
-<!--[if lt IE 9]>
-    <script src="~/Content/crossbrowserjs/html5shiv.js"></script>
-    <script src="~/Content/crossbrowserjs/respond.min.js"></script>
-<![endif]-->
-<!-- ================== END BASE JS ================== -->
-<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-<script src="~/Content/plugins/DataTables/media/js/jquery.dataTables.js"></script>
-<script src="~/Content/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
-<script src="~/Content/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModal" aria-hidden="true" data-backdrop="static">
+        <div id="createAssetContainer">
+        </div>
+    </div>
+    <div class="modal fade" id="editAssetModal" tabindex="-1" role="dialog" aria-labelledby="EditAssetModal" aria-hidden="true" data-backdrop="static">
+        <div id="editAssetContainer">
+        </div>
+    </div>
+    <div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="DeleteAssetModal" aria-hidden="true" data-backdrop="static">
+        <div id="deleteAssetContainer">
+        </div>
+    </div>
+    <div class="modal fade" id="btneditAssetModal" tabindex="-1" role="dialog" aria-labelledby="btneditAssetModal" aria-hidden="true" data-backdrop="static">
+        <div id="btneditAssetContainer">
+        </div>
+    </div>
 
-<!-- ================== END PAGE LEVEL JS ================== -->
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-<script type="text/javascript">
+    <!--[if lt IE 9]>
+        <script src="~/Content/crossbrowserjs/html5shiv.js"></script>
+        <script src="~/Content/crossbrowserjs/respond.min.js"></script>
+    <![endif]-->
+    <!-- ================== END BASE JS ================== -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="~/Content/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+    <script src="~/Content/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script type="text/javascript">
 
         var assetListVM;
     $(function () {
@@ -254,4 +265,4 @@
         });
 
     });
-</script>
+    </script>

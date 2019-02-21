@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
     <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
     <script src="~/Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.ui.touch-punch.min.js"></script>
     <style>
         #feedback {
             font-size: 1.4em;
@@ -77,8 +77,6 @@
         $(function () {
             $(function () {
                 $("#selectable").selectable({
-                    event.stopPropagation();
-
                     selecting: function (event, ui) {
                         if ($(".ui-selected, .ui-selecting").length > 1) {
                             $(ui.selecting).removeClass("ui-selecting");
@@ -95,38 +93,39 @@
                 //    }
                 //});
             });
-            $(function () {
-                $("#selectable").selectable({
-                    event.stopPropagation();
-
-                    stop: function () {
-                        $('#myScheduleModal').modal('toggle');
-                        $('#selectable .ui-state-default.ui-selected').each(function (index) {
-                            if (typeof $(this).data('period') !== 'undefined') {
-
-                                $('#myScheduleModal #title').text("Add Notification");
-                                $('#myScheduleModal #eventperiod').text(this.id);
-                                $('#myScheduleModal #txtnotificationid').text("");
-                                $('#myScheduleModal #txtText').text("");
-                                $('#myScheduleModal #title').text("Add Notification");
-                                $("#btnDelete").css("visibility", "hidden")
-                            }
-                            if (typeof $(this).data('text') !== 'undefined') {
-                                $('#myScheduleModal #title').text("Edit Notification");
-                                $('#myScheduleModal #eventperiod').text($(this).data('period'));
-                                $('#myScheduleModal #txtnotificationid').text($(this).data('notificationid'));
-                                $('#myScheduleModal #txtText').text($(this).data('text'));
-                                $("#btnDelete").css("visibility", "visible")
-                            }
-                        });
-
-                    }
-                });
+            $('#selectable').scroll(function () {
+                $("ol").append($("#template13").html());
+                $('#button').attr("disabled", true);
             });
+            $("#selectable").selectable({
+                stop: function () {
+                    $('#myModal').modal('toggle');
+                    $('#selectable .ui-state-default.ui-selected').each(function (index) {
+                        if (typeof $(this).data('period') !== 'undefined') {
+
+                            $('#myModal #title').text("Add Notification");
+                            $('#myModal #eventperiod').text(this.id);
+                            $('#myModal #txtnotificationid').text("");
+                            $('#myModal #txtText').text("");
+                            $('#myModal #title').text("Add Notification");
+                            $("#btnDelete").css("visibility", "hidden")
+                        }
+                        if (typeof $(this).data('text') !== 'undefined') {
+                            $('#myModal #title').text("Edit Notification");
+                            $('#myModal #eventperiod').text($(this).data('period'));
+                            $('#myModal #txtnotificationid').text($(this).data('notificationid'));
+                            $('#myModal #txtText').text($(this).data('text'));
+                            $("#btnDelete").css("visibility", "visible")
+                        }
+                    });
+
+                }
+            });
+        });
     </script>
 </head>
-<div style="overflow-y:scroll; height:350px; width:320px; background:#ffffff; margin:auto;   padding:10px; ">
-    <ol id="selectable" data-toggle="modal" href="#myScheduleModal">
+<div class="panel pagination-inverse m-b-0 clearfix" style="overflow-y:scroll; height:530px; width:320px; background:#ffffff; padding:10px; ">
+    <ol id="selectable" data-toggle="modal" href="#myModal">
         <div class="ui-state-title"><b></b></div>
         <li class="ui-state-title"><b>Sun</b></li>
         <li class="ui-state-title"><b>Mon</b></li>
@@ -768,7 +767,7 @@
 
 
 
-<div id="myScheduleModal" class="modal fade" role="dialog">
+<div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -805,16 +804,13 @@
 <script>
     $(document).ready(function () {
         $('#selectable').click(function (calEvent) {
-
-            $('#myScheduleModal').modal('toggle');
+            $('#myModal').modal('toggle');
             if (typeof $(this).data('text') !== 'undefined') {
 
-                //$('#myScheduleModal #eventTitle').text(calEvent.text);
-                $('#myScheduleModal #txtnotificationid').val(calEvent.notificationid);
-                $('#myScheduleModal #txtText').val(calEvent.text);
+                //$('#myModal #eventTitle').text(calEvent.text);
+                $('#myModal #txtnotificationid').val(calEvent.notificationid);
+                $('#myModal #txtText').val(calEvent.text);
             }
-            event.stopPropagation();
-
     });
 
 
@@ -892,7 +888,7 @@
                             //Refresh the calender
                             FetchEventAndRenderCalendar();
 
-                            $('#myScheduleModal').modal('hide');
+                            $('#myModal').modal('hide');
                             location.reload();
                         }
                     },
