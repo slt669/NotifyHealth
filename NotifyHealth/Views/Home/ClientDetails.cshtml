@@ -3,7 +3,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-    <title>Notify Health | Client Details</title>
+    @if (@Session["Portal"] != null)
+    {
+
+
+    <title>@Session["Portal"].ToString() | Client Details</title>
+    }
+
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 

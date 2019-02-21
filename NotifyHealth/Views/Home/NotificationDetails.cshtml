@@ -2,7 +2,13 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<title>Notify Health | Notifications Details</title>
+@if (@Session["Portal"] != null)
+{
+
+
+<title>@Session["Portal"].ToString() |  Notifications Details</title>
+}
+
 <h1 class="page-header">Notifications Details</h1>
 <div class="section-container section-with-top-border">
 </div>

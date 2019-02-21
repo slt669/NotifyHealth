@@ -2,7 +2,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-    <title>Notify Health | Notifications</title>
+    @if (@Session["Portal"] != null)
+    {
+
+
+        <title>@Session["Portal"].ToString() |  Notifications</title>
+    }
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 

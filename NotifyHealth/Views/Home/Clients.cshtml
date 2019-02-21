@@ -6,7 +6,12 @@
     ViewBag.Title = "Clients";
 }
 <head>
-    <title>Notify Health | Clients Details</title>
+    @if (@Session["Portal"] != null)
+    {
+
+
+        <title>@Session["Portal"].ToString() | Clients</title>
+    }
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
 

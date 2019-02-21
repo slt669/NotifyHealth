@@ -3,7 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<title>Notify Health | Settings</title>
+@if (@Session["Portal"] != null)
+{
+
+
+<title>@Session["Portal"].ToString() |  Settings</title>
+}
 <h1 class="page-header">Settings</h1>
 <div class="section-container section-with-top-border">
     <p class="m-b-20">

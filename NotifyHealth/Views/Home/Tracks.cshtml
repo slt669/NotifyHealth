@@ -6,6 +6,12 @@
     ViewBag.Title = "Programs";
 }
 <head>
+    @if (@Session["Portal"] != null)
+    {
+
+
+        <title>@Session["Portal"].ToString() |  Tracks</title>
+    }
     <title>Notify Health | Tracks</title>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />

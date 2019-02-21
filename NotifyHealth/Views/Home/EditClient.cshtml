@@ -1,6 +1,12 @@
 ﻿@model NotifyHealth.Models.Clients
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<title>Notify Health | Edit Client Details</title>
+@if (@Session["Portal"] != null)
+{
+
+
+<title>@Session["Portal"].ToString() |  Edit Client Details</title>
+}
+
 <h1 class="page-header">Edit Client Details</h1>
 <div class="section-container section-with-top-border">
 </div>
@@ -130,7 +136,7 @@
             format: 'DD/MM/YYYY HH:mm:ss'
         });
 
-     
+
         $("#isselect_code").dblclick(function () {
             // Iterate through each selected item (since you are iterating, I'm assuming you allow multiple selection)
             $(this).find('option:selected').each(function () {
@@ -146,8 +152,8 @@
                 console.log($("#hiddenid").val());
                 $("#datet").val(arr[1]);
                 //alert($(this).val());
-                
-         
+
+
             });
 
             // Trigger your click
@@ -155,7 +161,7 @@
         });
 
         $("#datetimepicker1").on("dp.change", function () {
-          
+
 
         });
 
