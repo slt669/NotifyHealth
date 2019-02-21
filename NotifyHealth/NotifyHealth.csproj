@@ -5429,6 +5429,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -5485,6 +5486,8 @@
     <Content Include="Views\Home\Schedule.cshtml" />
     <Content Include="Views\Shared\_ClientMembershipsStartDatePartial.cshtml" />
     <Content Include="Views\Home\Schedule2.cshtml" />
+    <Content Include="Views\Shared\_SchedulePartial.cshtml" />
+    <Content Include="Views\Shared\_NotificationsModal2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

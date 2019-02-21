@@ -1,0 +1,945 @@
+﻿
+@{
+
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Content/plugins/bootstrap/bootstrap-4.1.1/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.ui.touch-punch.min.js"></script>
+    <style>
+        #feedback {
+            font-size: 1.4em;
+        }
+
+        #selectable .ui-selecting {
+            background: #17B6A4;
+        }
+
+        #selectable .ui-selected {
+            background: #17B6A4;
+            color: white;
+        }
+
+        .ui-state-title {
+            margin: 3px;
+            padding: 1px;
+            float: left;
+            width: 50px;
+            height: 20px;
+            font-size: 0.75em;
+            text-align: right;
+            pointer-events: none;
+        }
+
+        #selectable {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 280px;
+        }
+        /*<div style="overflow-y:scroll; height:400px;  background:gray" > 78 weeks 546 days*/
+        .ui-state-grey {
+            background: coral;
+        }
+
+        #selectable li {
+            margin: 3px;
+            padding: 1px;
+            float: left;
+            width: 25px;
+            height: 20px;
+            font-size: 0.75em;
+            text-align: center;
+            display: inline-block;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            $(function () {
+                $("#selectable").selectable({
+                    event.stopPropagation();
+
+                    selecting: function (event, ui) {
+                        if ($(".ui-selected, .ui-selecting").length > 1) {
+                            $(ui.selecting).removeClass("ui-selecting");
+                        }
+                    }
+                });
+            });
+            $("#button").click(function () {
+                $("ol").append($("#template13").html());
+                $('#button').attr("disabled", true);
+                //$(function () {
+                //    for (let i = 1; i < 547; i++) {
+                //        $('ol').append('<li class="ui-state-default" id="' + i + '" data-period="' + i + '">1</li>');
+                //    }
+                //});
+            });
+            $(function () {
+                $("#selectable").selectable({
+                    event.stopPropagation();
+
+                    stop: function () {
+                        $('#myScheduleModal').modal('toggle');
+                        $('#selectable .ui-state-default.ui-selected').each(function (index) {
+                            if (typeof $(this).data('period') !== 'undefined') {
+
+                                $('#myScheduleModal #title').text("Add Notification");
+                                $('#myScheduleModal #eventperiod').text(this.id);
+                                $('#myScheduleModal #txtnotificationid').text("");
+                                $('#myScheduleModal #txtText').text("");
+                                $('#myScheduleModal #title').text("Add Notification");
+                                $("#btnDelete").css("visibility", "hidden")
+                            }
+                            if (typeof $(this).data('text') !== 'undefined') {
+                                $('#myScheduleModal #title').text("Edit Notification");
+                                $('#myScheduleModal #eventperiod').text($(this).data('period'));
+                                $('#myScheduleModal #txtnotificationid').text($(this).data('notificationid'));
+                                $('#myScheduleModal #txtText').text($(this).data('text'));
+                                $("#btnDelete").css("visibility", "visible")
+                            }
+                        });
+
+                    }
+                });
+            });
+    </script>
+</head>
+<div style="overflow-y:scroll; height:350px; width:320px; background:#ffffff; margin:auto;   padding:10px; ">
+    <ol id="selectable" data-toggle="modal" href="#myScheduleModal">
+        <div class="ui-state-title"><b></b></div>
+        <li class="ui-state-title"><b>Sun</b></li>
+        <li class="ui-state-title"><b>Mon</b></li>
+        <li class="ui-state-title"><b>Tues</b></li>
+        <li class="ui-state-title"><b>Wed</b></li>
+        <li class="ui-state-title"><b>Thurs</b></li>
+        <li class="ui-state-title"><b>Fri</b></li>
+        <li class="ui-state-title"><b>Sat</b></li>
+        <div class="ui-state-title"><b>Week 1</b></div>
+        <li class="ui-state-default" id="1" data-period="1">1</li>
+        <li class="ui-state-default" id="2" data-period="2">2</li>
+        <li class="ui-state-default" id="3" data-period="3">3</li>
+        <li class="ui-state-default" id="4" data-period="4">4</li>
+        <li class="ui-state-default" id="5" data-period="5">5</li>
+        <li class="ui-state-default" id="6" data-period="6">6</li>
+        <li class="ui-state-default" id="7" data-period="7">7</li>
+
+        <div class="ui-state-title"><b>Week 2</b></div>
+
+        <li class="ui-state-default" id="8" data-period="8">1</li>
+        <li class="ui-state-default" id="9" data-period="9">2</li>
+        <li class="ui-state-default" id="10" data-period="10">3</li>
+        <li class="ui-state-default" id="11" data-period="11">4</li>
+        <li class="ui-state-default" id="12" data-period="12">5</li>
+        <li class="ui-state-default" id="13" data-period="13">6</li>
+        <li class="ui-state-default" id="14" data-period="14">7</li>
+        <div class="ui-state-title"><b>Week 3</b></div>
+        <li class="ui-state-default" id="15" data-period="15">1</li>
+        <li class="ui-state-default" id="16" data-period="16">2</li>
+        <li class="ui-state-default" id="17" data-period="17">3</li>
+        <li class="ui-state-default" id="18" data-period="18">4</li>
+        <li class="ui-state-default" id="19" data-period="19">5</li>
+        <li class="ui-state-default" id="20" data-period="20">6</li>
+        <li class="ui-state-default" id="21" data-period="21">7</li>
+        <div class="ui-state-title"><b>Week 4</b></div>
+        <li class="ui-state-default" id="22" data-period="22">1</li>
+        <li class="ui-state-default" id="23" data-period="23">2</li>
+        <li class="ui-state-default" id="24" data-period="24">3</li>
+        <li class="ui-state-default" id="25" data-period="25">4</li>
+        <li class="ui-state-default" id="26" data-period="26">5</li>
+        <li class="ui-state-default" id="27" data-period="27">6</li>
+        <li class="ui-state-default" id="28" data-period="28">7</li>
+        <div class="ui-state-title"><b>Week 5</b></div>
+        <li class="ui-state-default" id="29" data-period="29">1</li>
+        <li class="ui-state-default" id="30" data-period="30">2</li>
+        <li class="ui-state-default" id="31" data-period="31">3</li>
+        <li class="ui-state-default" id="32" data-period="32">4</li>
+        <li class="ui-state-default" id="33" data-period="33">5</li>
+        <li class="ui-state-default" id="34" data-period="34">6</li>
+        <li class="ui-state-default" id="35" data-period="35">7</li>
+        <div class="ui-state-title"><b>Week 6</b></div>
+        <li class="ui-state-default" id="36" data-period="36">1</li>
+        <li class="ui-state-default" id="37" data-period="37">2</li>
+        <li class="ui-state-default" id="38" data-period="38">3</li>
+        <li class="ui-state-default" id="39" data-period="39">4</li>
+        <li class="ui-state-default" id="40" data-period="40">5</li>
+        <li class="ui-state-default" id="41" data-period="41">6</li>
+        <li class="ui-state-default" id="42" data-period="42">7</li>
+        <div class="ui-state-title"><b>Week 7</b></div>
+        <li class="ui-state-default" id="43" data-period="43">1</li>
+        <li class="ui-state-default" id="44" data-period="44">2</li>
+        <li class="ui-state-default" id="45" data-period="45">3</li>
+        <li class="ui-state-default" id="46" data-period="46">4</li>
+        <li class="ui-state-default" id="47" data-period="47">5</li>
+        <li class="ui-state-default" id="48" data-period="48">6</li>
+        <li class="ui-state-default" id="49" data-period="49">7</li>
+        <div class="ui-state-title"><b>Week 8</b></div>
+        <li class="ui-state-default" id="50" data-period="50">1</li>
+        <li class="ui-state-default" id="51" data-period="51">2</li>
+        <li class="ui-state-default" id="52" data-period="52">3</li>
+        <li class="ui-state-default" id="53" data-period="53">4</li>
+        <li class="ui-state-default" id="54" data-period="54">5</li>
+        <li class="ui-state-default" id="55" data-period="55">6</li>
+        <li class="ui-state-default" id="56" data-period="56">7</li>
+        <div class="ui-state-title"><b>Week 9</b></div>
+        <li class="ui-state-default" id="57" data-period="57">1</li>
+        <li class="ui-state-default" id="58" data-period="58">2</li>
+        <li class="ui-state-default" id="59" data-period="59">3</li>
+        <li class="ui-state-default" id="60" data-period="60">4</li>
+        <li class="ui-state-default" id="61" data-period="61">5</li>
+        <li class="ui-state-default" id="62" data-period="62">6</li>
+        <li class="ui-state-default" id="63" data-period="63">7</li>
+        <div class="ui-state-title"><b>Week 10</b></div>
+        <li class="ui-state-default" id="64" data-period="64">1</li>
+        <li class="ui-state-default" id="65" data-period="65">2</li>
+        <li class="ui-state-default" id="66" data-period="66">3</li>
+        <li class="ui-state-default" id="67" data-period="67">4</li>
+        <li class="ui-state-default" id="68" data-period="68">5</li>
+        <li class="ui-state-default" id="69" data-period="69">6</li>
+        <li class="ui-state-default" id="70" data-period="70">7</li>
+        <div class="ui-state-title"><b>Week 11</b></div>
+        <li class="ui-state-default" id="71" data-period="71">1</li>
+        <li class="ui-state-default" id="72" data-period="72">2</li>
+        <li class="ui-state-default" id="73" data-period="73">3</li>
+        <li class="ui-state-default" id="74" data-period="74">4</li>
+        <li class="ui-state-default" id="75" data-period="75">5</li>
+        <li class="ui-state-default" id="76" data-period="76">6</li>
+        <li class="ui-state-default" id="77" data-period="77">7</li>
+        <div class="ui-state-title"><b>Week 12</b></div>
+        <li class="ui-state-default" id="78" data-period="78">1</li>
+        <li class="ui-state-default" id="79" data-period="79">2</li>
+        <li class="ui-state-default" id="80" data-period="80">3</li>
+        <li class="ui-state-default" id="81" data-period="81">4</li>
+        <li class="ui-state-default" id="82" data-period="82">5</li>
+        <li class="ui-state-default" id="83" data-period="83">6</li>
+        <li class="ui-state-default" id="84" data-period="84">7</li>
+
+        <div class="ui-state-title"><b>Week 13</b></div>
+        <li class="ui-state-default" id="85" data-period="85">1</li>
+        <li class="ui-state-default" id="86" data-period="86">2</li>
+        <li class="ui-state-default" id="87" data-period="87">3</li>
+        <li class="ui-state-default" id="88" data-period="88">4</li>
+        <li class="ui-state-default" id="89" data-period="89">5</li>
+        <li class="ui-state-default" id="90" data-period="90">6</li>
+        <li class="ui-state-default" id="91" data-period="91">7</li>
+        <div class="ui-state-title"><b>Week 14</b></div>
+        <li class="ui-state-default" id="92" data-period="92">1</li>
+        <li class="ui-state-default" id="93" data-period="93">2</li>
+        <li class="ui-state-default" id="94" data-period="94">3</li>
+        <li class="ui-state-default" id="95" data-period="95">4</li>
+        <li class="ui-state-default" id="96" data-period="96">5</li>
+        <li class="ui-state-default" id="97" data-period="97">6</li>
+        <li class="ui-state-default" id="98" data-period="98">7</li>
+        <div class="ui-state-title"><b>Week 15</b></div>
+        <li class="ui-state-default" id="99" data-period="99">1</li>
+        <li class="ui-state-default" id="100" data-period="100">2</li>
+        <li class="ui-state-default" id="101" data-period="101">3</li>
+        <li class="ui-state-default" id="102" data-period="102">4</li>
+        <li class="ui-state-default" id="103" data-period="103">5</li>
+        <li class="ui-state-default" id="104" data-period="104">6</li>
+        <li class="ui-state-default" id="105" data-period="105">7</li>
+        <div class="ui-state-title"><b>Week 16</b></div>
+        <li class="ui-state-default" id="106" data-period="106">1</li>
+        <li class="ui-state-default" id="107" data-period="107">2</li>
+        <li class="ui-state-default" id="108" data-period="108">3</li>
+        <li class="ui-state-default" id="109" data-period="109">4</li>
+        <li class="ui-state-default" id="110" data-period="110">5</li>
+        <li class="ui-state-default" id="111" data-period="111">6</li>
+        <li class="ui-state-default" id="112" data-period="112">7</li>
+        <div class="ui-state-title"><b>Week 17</b></div>
+        <li class="ui-state-default" id="113" data-period="113">1</li>
+        <li class="ui-state-default" id="114" data-period="114">2</li>
+        <li class="ui-state-default" id="115" data-period="115">3</li>
+        <li class="ui-state-default" id="116" data-period="116">4</li>
+        <li class="ui-state-default" id="117" data-period="117">5</li>
+        <li class="ui-state-default" id="118" data-period="118">6</li>
+        <li class="ui-state-default" id="119" data-period="119">7</li>
+        <div class="ui-state-title"><b>Week 18</b></div>
+        <li class="ui-state-default" id="120" data-period="120">1</li>
+        <li class="ui-state-default" id="121" data-period="121">2</li>
+        <li class="ui-state-default" id="122" data-period="122">3</li>
+        <li class="ui-state-default" id="123" data-period="123">4</li>
+        <li class="ui-state-default" id="124" data-period="124">5</li>
+        <li class="ui-state-default" id="125" data-period="125">6</li>
+        <li class="ui-state-default" id="126" data-period="126">7</li>
+        <div class="ui-state-title"><b>Week 19</b></div>
+        <li class="ui-state-default" id="127" data-period="127">1</li>
+        <li class="ui-state-default" id="128" data-period="128">2</li>
+        <li class="ui-state-default" id="129" data-period="129">3</li>
+        <li class="ui-state-default" id="130" data-period="130">4</li>
+        <li class="ui-state-default" id="131" data-period="131">5</li>
+        <li class="ui-state-default" id="132" data-period="132">6</li>
+        <li class="ui-state-default" id="133" data-period="133">7</li>
+        <div class="ui-state-title"><b>Week 20</b></div>
+        <li class="ui-state-default" id="134" data-period="134">1</li>
+        <li class="ui-state-default" id="135" data-period="135">2</li>
+        <li class="ui-state-default" id="136" data-period="136">3</li>
+        <li class="ui-state-default" id="137" data-period="137">4</li>
+        <li class="ui-state-default" id="138" data-period="138">5</li>
+        <li class="ui-state-default" id="139" data-period="139">6</li>
+        <li class="ui-state-default" id="140" data-period="140">7</li>
+        <div class="ui-state-title"><b>Week 21</b></div>
+        <li class="ui-state-default" id="141" data-period="141">1</li>
+        <li class="ui-state-default" id="142" data-period="142">2</li>
+        <li class="ui-state-default" id="143" data-period="143">3</li>
+        <li class="ui-state-default" id="144" data-period="144">4</li>
+        <li class="ui-state-default" id="145" data-period="145">5</li>
+        <li class="ui-state-default" id="146" data-period="146">6</li>
+        <li class="ui-state-default" id="147" data-period="147">7</li>
+        <div class="ui-state-title"><b>Week 22</b></div>
+        <li class="ui-state-default" id="148" data-period="148">1</li>
+        <li class="ui-state-default" id="149" data-period="149">2</li>
+        <li class="ui-state-default" id="150" data-period="150">3</li>
+        <li class="ui-state-default" id="151" data-period="151">4</li>
+        <li class="ui-state-default" id="152" data-period="152">5</li>
+        <li class="ui-state-default" id="153" data-period="153">6</li>
+        <li class="ui-state-default" id="154" data-period="154">7</li>
+        <div class="ui-state-title"><b>Week 23</b></div>
+        <li class="ui-state-default" id="155" data-period="155">1</li>
+        <li class="ui-state-default" id="156" data-period="156">2</li>
+        <li class="ui-state-default" id="157" data-period="157">3</li>
+        <li class="ui-state-default" id="158" data-period="158">4</li>
+        <li class="ui-state-default" id="159" data-period="159">5</li>
+        <li class="ui-state-default" id="160" data-period="160">6</li>
+        <li class="ui-state-default" id="161" data-period="161">7</li>
+        <div class="ui-state-title"><b>Week 24</b></div>
+        <li class="ui-state-default" id="162" data-period="162">1</li>
+        <li class="ui-state-default" id="163" data-period="163">2</li>
+        <li class="ui-state-default" id="164" data-period="164">3</li>
+        <li class="ui-state-default" id="165" data-period="165">4</li>
+        <li class="ui-state-default" id="166" data-period="166">5</li>
+        <li class="ui-state-default" id="167" data-period="167">6</li>
+        <li class="ui-state-default" id="168" data-period="168">7</li>
+
+        <div class="ui-state-title"><b>Week 25</b></div>
+        <li class="ui-state-default" id="169" data-period="169">1</li>
+        <li class="ui-state-default" id="170" data-period="170">2</li>
+        <li class="ui-state-default" id="171" data-period="171">3</li>
+        <li class="ui-state-default" id="172" data-period="172">4</li>
+        <li class="ui-state-default" id="173" data-period="173">5</li>
+        <li class="ui-state-default" id="174" data-period="174">6</li>
+        <li class="ui-state-default" id="175" data-period="175">7</li>
+        <div class="ui-state-title"><b>Week 26</b></div>
+        <li class="ui-state-default" id="176" data-period="176">1</li>
+        <li class="ui-state-default" id="177" data-period="177">2</li>
+        <li class="ui-state-default" id="178" data-period="178">3</li>
+        <li class="ui-state-default" id="179" data-period="179">4</li>
+        <li class="ui-state-default" id="180" data-period="180">5</li>
+        <li class="ui-state-default" id="181" data-period="181">6</li>
+        <li class="ui-state-default" id="182" data-period="182">7</li>
+        <div class="ui-state-title"><b>Week 27</b></div>
+        <li class="ui-state-default" id="183" data-period="183">1</li>
+        <li class="ui-state-default" id="184" data-period="184">2</li>
+        <li class="ui-state-default" id="185" data-period="185">3</li>
+        <li class="ui-state-default" id="186" data-period="186">4</li>
+        <li class="ui-state-default" id="187" data-period="187">5</li>
+        <li class="ui-state-default" id="188" data-period="188">6</li>
+        <li class="ui-state-default" id="189" data-period="189">7</li>
+        <div class="ui-state-title"><b>Week 28</b></div>
+        <li class="ui-state-default" id="190" data-period="190">1</li>
+        <li class="ui-state-default" id="191" data-period="191">2</li>
+        <li class="ui-state-default" id="192" data-period="192">3</li>
+        <li class="ui-state-default" id="193" data-period="193">4</li>
+        <li class="ui-state-default" id="194" data-period="194">5</li>
+        <li class="ui-state-default" id="195" data-period="195">6</li>
+        <li class="ui-state-default" id="196" data-period="196">7</li>
+        <div class="ui-state-title"><b>Week 29</b></div>
+        <li class="ui-state-default" id="197" data-period="197">1</li>
+        <li class="ui-state-default" id="198" data-period="198">2</li>
+        <li class="ui-state-default" id="199" data-period="199">3</li>
+        <li class="ui-state-default" id="200" data-period="200">4</li>
+        <li class="ui-state-default" id="201" data-period="201">5</li>
+        <li class="ui-state-default" id="202" data-period="202">6</li>
+        <li class="ui-state-default" id="203" data-period="203">7</li>
+        <div class="ui-state-title"><b>Week 30</b></div>
+        <li class="ui-state-default" id="204" data-period="204">1</li>
+        <li class="ui-state-default" id="205" data-period="205">2</li>
+        <li class="ui-state-default" id="206" data-period="206">3</li>
+        <li class="ui-state-default" id="207" data-period="207">4</li>
+        <li class="ui-state-default" id="208" data-period="208">5</li>
+        <li class="ui-state-default" id="209" data-period="209">6</li>
+        <li class="ui-state-default" id="210" data-period="210">7</li>
+        <div class="ui-state-title"><b>Week 31</b></div>
+        <li class="ui-state-default" id="211" data-period="211">1</li>
+        <li class="ui-state-default" id="212" data-period="212">2</li>
+        <li class="ui-state-default" id="213" data-period="213">3</li>
+        <li class="ui-state-default" id="214" data-period="214">4</li>
+        <li class="ui-state-default" id="215" data-period="215">5</li>
+        <li class="ui-state-default" id="216" data-period="216">6</li>
+        <li class="ui-state-default" id="217" data-period="217">7</li>
+        <div class="ui-state-title"><b>Week 32</b></div>
+        <li class="ui-state-default" id="218" data-period="218">1</li>
+        <li class="ui-state-default" id="219" data-period="219">2</li>
+        <li class="ui-state-default" id="220" data-period="220">3</li>
+        <li class="ui-state-default" id="221" data-period="221">4</li>
+        <li class="ui-state-default" id="222" data-period="222">5</li>
+        <li class="ui-state-default" id="223" data-period="223">6</li>
+        <li class="ui-state-default" id="224" data-period="224">7</li>
+        <div class="ui-state-title"><b>Week 33</b></div>
+        <li class="ui-state-default" id="225" data-period="225">1</li>
+        <li class="ui-state-default" id="226" data-period="226">2</li>
+        <li class="ui-state-default" id="227" data-period="227">3</li>
+        <li class="ui-state-default" id="228" data-period="228">4</li>
+        <li class="ui-state-default" id="229" data-period="229">5</li>
+        <li class="ui-state-default" id="230" data-period="230">6</li>
+        <li class="ui-state-default" id="231" data-period="231">7</li>
+        <div class="ui-state-title"><b>Week 34</b></div>
+        <li class="ui-state-default" id="232" data-period="232">1</li>
+        <li class="ui-state-default" id="233" data-period="233">2</li>
+        <li class="ui-state-default" id="234" data-period="234">3</li>
+        <li class="ui-state-default" id="235" data-period="235">4</li>
+        <li class="ui-state-default" id="236" data-period="236">5</li>
+        <li class="ui-state-default" id="237" data-period="237">6</li>
+        <li class="ui-state-default" id="238" data-period="238">7</li>
+        <div class="ui-state-title"><b>Week 35</b></div>
+        <li class="ui-state-default" id="239" data-period="239">1</li>
+        <li class="ui-state-default" id="240" data-period="240">2</li>
+        <li class="ui-state-default" id="241" data-period="241">3</li>
+        <li class="ui-state-default" id="242" data-period="242">4</li>
+        <li class="ui-state-default" id="243" data-period="243">5</li>
+        <li class="ui-state-default" id="244" data-period="244">6</li>
+        <li class="ui-state-default" id="245" data-period="245">7</li>
+        <div class="ui-state-title"><b>Week 36</b></div>
+        <li class="ui-state-default" id="246" data-period="246">1</li>
+        <li class="ui-state-default" id="247" data-period="247">2</li>
+        <li class="ui-state-default" id="248" data-period="248">3</li>
+        <li class="ui-state-default" id="249" data-period="249">4</li>
+        <li class="ui-state-default" id="250" data-period="250">5</li>
+        <li class="ui-state-default" id="251" data-period="251">6</li>
+        <li class="ui-state-default" id="252" data-period="252">7</li>
+        <div class="ui-state-title"><b>Week 37</b></div>
+        <li class="ui-state-default" id="253" data-period="253">1</li>
+        <li class="ui-state-default" id="254" data-period="254">2</li>
+        <li class="ui-state-default" id="255" data-period="255">3</li>
+        <li class="ui-state-default" id="256" data-period="256">4</li>
+        <li class="ui-state-default" id="257" data-period="257">5</li>
+        <li class="ui-state-default" id="258" data-period="258">6</li>
+        <li class="ui-state-default" id="259" data-period="259">7</li>
+        <div class="ui-state-title"><b>Week 38</b></div>
+        <li class="ui-state-default" id="260" data-period="260">1</li>
+        <li class="ui-state-default" id="261" data-period="261">2</li>
+        <li class="ui-state-default" id="262" data-period="262">3</li>
+        <li class="ui-state-default" id="263" data-period="263">4</li>
+        <li class="ui-state-default" id="264" data-period="264">5</li>
+        <li class="ui-state-default" id="265" data-period="265">6</li>
+        <li class="ui-state-default" id="266" data-period="266">7</li>
+        <div class="ui-state-title"><b>Week 39</b></div>
+        <li class="ui-state-default" id="267" data-period="267">1</li>
+        <li class="ui-state-default" id="268" data-period="268">2</li>
+        <li class="ui-state-default" id="269" data-period="269">3</li>
+        <li class="ui-state-default" id="270" data-period="270">4</li>
+        <li class="ui-state-default" id="271" data-period="271">5</li>
+        <li class="ui-state-default" id="272" data-period="272">6</li>
+        <li class="ui-state-default" id="273" data-period="273">7</li>
+        <div class="ui-state-title"><b>Week 40</b></div>
+        <li class="ui-state-default" id="274" data-period="274">1</li>
+        <li class="ui-state-default" id="275" data-period="275">2</li>
+        <li class="ui-state-default" id="276" data-period="276">3</li>
+        <li class="ui-state-default" id="277" data-period="277">4</li>
+        <li class="ui-state-default" id="278" data-period="278">5</li>
+        <li class="ui-state-default" id="279" data-period="279">6</li>
+        <li class="ui-state-default" id="280" data-period="280">7</li>
+        <div class="ui-state-title"><b>Week 41</b></div>
+        <li class="ui-state-default" id="281" data-period="281">1</li>
+        <li class="ui-state-default" id="282" data-period="282">2</li>
+        <li class="ui-state-default" id="283" data-period="283">3</li>
+        <li class="ui-state-default" id="284" data-period="284">4</li>
+        <li class="ui-state-default" id="285" data-period="285">5</li>
+        <li class="ui-state-default" id="286" data-period="286">6</li>
+        <li class="ui-state-default" id="287" data-period="287">7</li>
+        <div class="ui-state-title"><b>Week 42</b></div>
+        <li class="ui-state-default" id="288" data-period="288">1</li>
+        <li class="ui-state-default" id="289" data-period="289">2</li>
+        <li class="ui-state-default" id="290" data-period="290">3</li>
+        <li class="ui-state-default" id="291" data-period="291">4</li>
+        <li class="ui-state-default" id="292" data-period="292">5</li>
+        <li class="ui-state-default" id="293" data-period="293">6</li>
+        <li class="ui-state-default" id="294" data-period="294">7</li>
+        <div class="ui-state-title"><b>Week 43</b></div>
+        <li class="ui-state-default" id="295" data-period="295">1</li>
+        <li class="ui-state-default" id="296" data-period="296">2</li>
+        <li class="ui-state-default" id="297" data-period="297">3</li>
+        <li class="ui-state-default" id="298" data-period="298">4</li>
+        <li class="ui-state-default" id="299" data-period="299">5</li>
+        <li class="ui-state-default" id="300" data-period="300">6</li>
+        <li class="ui-state-default" id="301" data-period="301">7</li>
+        <div class="ui-state-title"><b>Week 44</b></div>
+        <li class="ui-state-default" id="302" data-period="302">1</li>
+        <li class="ui-state-default" id="303" data-period="303">2</li>
+        <li class="ui-state-default" id="304" data-period="304">3</li>
+        <li class="ui-state-default" id="305" data-period="305">4</li>
+        <li class="ui-state-default" id="306" data-period="306">5</li>
+        <li class="ui-state-default" id="307" data-period="307">6</li>
+        <li class="ui-state-default" id="308" data-period="308">7</li>
+        <div class="ui-state-title"><b>Week 45</b></div>
+        <li class="ui-state-default" id="309" data-period="309">1</li>
+        <li class="ui-state-default" id="310" data-period="310">2</li>
+        <li class="ui-state-default" id="311" data-period="311">3</li>
+        <li class="ui-state-default" id="312" data-period="312">4</li>
+        <li class="ui-state-default" id="313" data-period="313">5</li>
+        <li class="ui-state-default" id="314" data-period="314">6</li>
+        <li class="ui-state-default" id="315" data-period="315">7</li>
+        <div class="ui-state-title"><b>Week 46</b></div>
+        <li class="ui-state-default" id="316" data-period="316">1</li>
+        <li class="ui-state-default" id="317" data-period="317">2</li>
+        <li class="ui-state-default" id="318" data-period="318">3</li>
+        <li class="ui-state-default" id="319" data-period="319">4</li>
+        <li class="ui-state-default" id="320" data-period="320">5</li>
+        <li class="ui-state-default" id="321" data-period="321">6</li>
+        <li class="ui-state-default" id="322" data-period="322">7</li>
+        <div class="ui-state-title"><b>Week 47</b></div>
+        <li class="ui-state-default" id="323" data-period="323">1</li>
+        <li class="ui-state-default" id="324" data-period="324">2</li>
+        <li class="ui-state-default" id="325" data-period="325">3</li>
+        <li class="ui-state-default" id="326" data-period="326">4</li>
+        <li class="ui-state-default" id="327" data-period="327">5</li>
+        <li class="ui-state-default" id="328" data-period="328">6</li>
+        <li class="ui-state-default" id="329" data-period="329">7</li>
+        <div class="ui-state-title"><b>Week 48</b></div>
+        <li class="ui-state-default" id="330" data-period="330">1</li>
+        <li class="ui-state-default" id="331" data-period="331">2</li>
+        <li class="ui-state-default" id="332" data-period="332">3</li>
+        <li class="ui-state-default" id="333" data-period="333">4</li>
+        <li class="ui-state-default" id="334" data-period="334">5</li>
+        <li class="ui-state-default" id="335" data-period="335">6</li>
+        <li class="ui-state-default" id="336" data-period="336">7</li>
+        <div class="ui-state-title"><b>Week 49</b></div>
+        <li class="ui-state-default" id="337" data-period="337">1</li>
+        <li class="ui-state-default" id="338" data-period="338">2</li>
+        <li class="ui-state-default" id="339" data-period="339">3</li>
+        <li class="ui-state-default" id="340" data-period="340">4</li>
+        <li class="ui-state-default" id="341" data-period="341">5</li>
+        <li class="ui-state-default" id="342" data-period="342">6</li>
+        <li class="ui-state-default" id="343" data-period="343">7</li>
+        <div class="ui-state-title"><b>Week 50</b></div>
+        <li class="ui-state-default" id="344" data-period="344">1</li>
+        <li class="ui-state-default" id="345" data-period="345">2</li>
+        <li class="ui-state-default" id="346" data-period="346">3</li>
+        <li class="ui-state-default" id="347" data-period="347">4</li>
+        <li class="ui-state-default" id="348" data-period="348">5</li>
+        <li class="ui-state-default" id="349" data-period="349">6</li>
+        <li class="ui-state-default" id="350" data-period="350">7</li>
+        <div class="ui-state-title"><b>Week 51</b></div>
+        <li class="ui-state-default" id="351" data-period="351">1</li>
+        <li class="ui-state-default" id="352" data-period="352">2</li>
+        <li class="ui-state-default" id="353" data-period="353">3</li>
+        <li class="ui-state-default" id="354" data-period="354">4</li>
+        <li class="ui-state-default" id="355" data-period="355">5</li>
+        <li class="ui-state-default" id="356" data-period="356">6</li>
+        <li class="ui-state-default" id="357" data-period="357">7</li>
+        <div class="ui-state-title"><b>Week 52</b></div>
+        <li class="ui-state-default" id="358" data-period="358">1</li>
+        <li class="ui-state-default" id="359" data-period="359">2</li>
+        <li class="ui-state-default" id="360" data-period="360">3</li>
+        <li class="ui-state-default" id="361" data-period="361">4</li>
+        <li class="ui-state-default" id="362" data-period="362">5</li>
+        <li class="ui-state-default" id="363" data-period="363">6</li>
+        <li class="ui-state-default" id="364" data-period="364">7</li>
+        <div class="ui-state-title"><b>Week 53</b></div>
+        <li class="ui-state-default" id="365" data-period="365">1</li>
+        <li class="ui-state-default" id="366" data-period="366">2</li>
+        <li class="ui-state-default" id="367" data-period="367">3</li>
+        <li class="ui-state-default" id="368" data-period="368">4</li>
+        <li class="ui-state-default" id="369" data-period="369">5</li>
+        <li class="ui-state-default" id="370" data-period="370">6</li>
+        <li class="ui-state-default" id="371" data-period="371">7</li>
+        <div class="ui-state-title"><b>Week 54</b></div>
+        <li class="ui-state-default" id="372" data-period="372">1</li>
+        <li class="ui-state-default" id="373" data-period="373">2</li>
+        <li class="ui-state-default" id="374" data-period="374">3</li>
+        <li class="ui-state-default" id="375" data-period="375">4</li>
+        <li class="ui-state-default" id="376" data-period="376">5</li>
+        <li class="ui-state-default" id="377" data-period="377">6</li>
+        <li class="ui-state-default" id="378" data-period="378">7</li>
+        <div class="ui-state-title"><b>Week 55</b></div>
+        <li class="ui-state-default" id="379" data-period="379">1</li>
+        <li class="ui-state-default" id="380" data-period="380">2</li>
+        <li class="ui-state-default" id="381" data-period="381">3</li>
+        <li class="ui-state-default" id="382" data-period="382">4</li>
+        <li class="ui-state-default" id="383" data-period="383">5</li>
+        <li class="ui-state-default" id="384" data-period="384">6</li>
+        <li class="ui-state-default" id="385" data-period="385">7</li>
+        <div class="ui-state-title"><b>Week 56</b></div>
+        <li class="ui-state-default" id="386" data-period="386">1</li>
+        <li class="ui-state-default" id="387" data-period="387">2</li>
+        <li class="ui-state-default" id="388" data-period="388">3</li>
+        <li class="ui-state-default" id="389" data-period="389">4</li>
+        <li class="ui-state-default" id="390" data-period="390">5</li>
+        <li class="ui-state-default" id="391" data-period="391">6</li>
+        <li class="ui-state-default" id="392" data-period="392">7</li>
+        <div class="ui-state-title"><b>Week 57</b></div>
+        <li class="ui-state-default" id="393" data-period="393">1</li>
+        <li class="ui-state-default" id="394" data-period="394">2</li>
+        <li class="ui-state-default" id="395" data-period="395">3</li>
+        <li class="ui-state-default" id="396" data-period="396">4</li>
+        <li class="ui-state-default" id="397" data-period="397">5</li>
+        <li class="ui-state-default" id="398" data-period="398">6</li>
+        <li class="ui-state-default" id="399" data-period="399">7</li>
+        <div class="ui-state-title"><b>Week 58</b></div>
+        <li class="ui-state-default" id="400" data-period="400">1</li>
+        <li class="ui-state-default" id="401" data-period="401">2</li>
+        <li class="ui-state-default" id="402" data-period="402">3</li>
+        <li class="ui-state-default" id="403" data-period="403">4</li>
+        <li class="ui-state-default" id="404" data-period="404">5</li>
+        <li class="ui-state-default" id="405" data-period="405">6</li>
+        <li class="ui-state-default" id="406" data-period="406">7</li>
+        <div class="ui-state-title"><b>Week 59</b></div>
+        <li class="ui-state-default" id="407" data-period="407">1</li>
+        <li class="ui-state-default" id="408" data-period="408">2</li>
+        <li class="ui-state-default" id="409" data-period="409">3</li>
+        <li class="ui-state-default" id="410" data-period="410">4</li>
+        <li class="ui-state-default" id="411" data-period="411">5</li>
+        <li class="ui-state-default" id="412" data-period="412">6</li>
+        <li class="ui-state-default" id="413" data-period="413">7</li>
+        <div class="ui-state-title"><b>Week 60</b></div>
+        <li class="ui-state-default" id="414" data-period="414">1</li>
+        <li class="ui-state-default" id="415" data-period="415">2</li>
+        <li class="ui-state-default" id="416" data-period="416">3</li>
+        <li class="ui-state-default" id="417" data-period="417">4</li>
+        <li class="ui-state-default" id="418" data-period="418">5</li>
+        <li class="ui-state-default" id="419" data-period="419">6</li>
+        <li class="ui-state-default" id="420" data-period="420">7</li>
+        <div class="ui-state-title"><b>Week 61</b></div>
+        <li class="ui-state-default" id="421" data-period="421">1</li>
+        <li class="ui-state-default" id="422" data-period="422">2</li>
+        <li class="ui-state-default" id="423" data-period="423">3</li>
+        <li class="ui-state-default" id="424" data-period="424">4</li>
+        <li class="ui-state-default" id="425" data-period="425">5</li>
+        <li class="ui-state-default" id="426" data-period="426">6</li>
+        <li class="ui-state-default" id="427" data-period="427">7</li>
+        <div class="ui-state-title"><b>Week 62</b></div>
+        <li class="ui-state-default" id="428" data-period="428">1</li>
+        <li class="ui-state-default" id="429" data-period="429">2</li>
+        <li class="ui-state-default" id="430" data-period="430">3</li>
+        <li class="ui-state-default" id="431" data-period="431">4</li>
+        <li class="ui-state-default" id="432" data-period="432">5</li>
+        <li class="ui-state-default" id="433" data-period="433">6</li>
+        <li class="ui-state-default" id="434" data-period="434">7</li>
+        <div class="ui-state-title"><b>Week 63</b></div>
+        <li class="ui-state-default" id="435" data-period="435">1</li>
+        <li class="ui-state-default" id="436" data-period="436">2</li>
+        <li class="ui-state-default" id="437" data-period="437">3</li>
+        <li class="ui-state-default" id="438" data-period="438">4</li>
+        <li class="ui-state-default" id="439" data-period="439">5</li>
+        <li class="ui-state-default" id="440" data-period="440">6</li>
+        <li class="ui-state-default" id="441" data-period="441">7</li>
+        <div class="ui-state-title"><b>Week 64</b></div>
+        <li class="ui-state-default" id="442" data-period="442">1</li>
+        <li class="ui-state-default" id="443" data-period="443">2</li>
+        <li class="ui-state-default" id="444" data-period="444">3</li>
+        <li class="ui-state-default" id="445" data-period="445">4</li>
+        <li class="ui-state-default" id="446" data-period="446">5</li>
+        <li class="ui-state-default" id="447" data-period="447">6</li>
+        <li class="ui-state-default" id="448" data-period="448">7</li>
+        <div class="ui-state-title"><b>Week 65</b></div>
+        <li class="ui-state-default" id="449" data-period="449">1</li>
+        <li class="ui-state-default" id="450" data-period="450">2</li>
+        <li class="ui-state-default" id="451" data-period="451">3</li>
+        <li class="ui-state-default" id="452" data-period="452">4</li>
+        <li class="ui-state-default" id="453" data-period="453">5</li>
+        <li class="ui-state-default" id="454" data-period="454">6</li>
+        <li class="ui-state-default" id="455" data-period="455">7</li>
+        <div class="ui-state-title"><b>Week 66</b></div>
+        <li class="ui-state-default" id="456" data-period="456">1</li>
+        <li class="ui-state-default" id="457" data-period="457">2</li>
+        <li class="ui-state-default" id="458" data-period="458">3</li>
+        <li class="ui-state-default" id="459" data-period="459">4</li>
+        <li class="ui-state-default" id="460" data-period="460">5</li>
+        <li class="ui-state-default" id="461" data-period="461">6</li>
+        <li class="ui-state-default" id="462" data-period="462">7</li>
+        <div class="ui-state-title"><b>Week 67</b></div>
+        <li class="ui-state-default" id="463" data-period="463">1</li>
+        <li class="ui-state-default" id="464" data-period="464">2</li>
+        <li class="ui-state-default" id="465" data-period="465">3</li>
+        <li class="ui-state-default" id="466" data-period="466">4</li>
+        <li class="ui-state-default" id="467" data-period="467">5</li>
+        <li class="ui-state-default" id="468" data-period="468">6</li>
+        <li class="ui-state-default" id="469" data-period="469">7</li>
+        <div class="ui-state-title"><b>Week 68</b></div>
+        <li class="ui-state-default" id="470" data-period="470">1</li>
+        <li class="ui-state-default" id="471" data-period="471">2</li>
+        <li class="ui-state-default" id="472" data-period="472">3</li>
+        <li class="ui-state-default" id="473" data-period="473">4</li>
+        <li class="ui-state-default" id="474" data-period="474">5</li>
+        <li class="ui-state-default" id="475" data-period="475">6</li>
+        <li class="ui-state-default" id="476" data-period="476">7</li>
+        <div class="ui-state-title"><b>Week 69</b></div>
+        <li class="ui-state-default" id="477" data-period="477">1</li>
+        <li class="ui-state-default" id="478" data-period="478">2</li>
+        <li class="ui-state-default" id="479" data-period="479">3</li>
+        <li class="ui-state-default" id="480" data-period="480">4</li>
+        <li class="ui-state-default" id="481" data-period="481">5</li>
+        <li class="ui-state-default" id="482" data-period="482">6</li>
+        <li class="ui-state-default" id="483" data-period="483">7</li>
+        <div class="ui-state-title"><b>Week 70</b></div>
+        <li class="ui-state-default" id="484" data-period="484">1</li>
+        <li class="ui-state-default" id="485" data-period="485">2</li>
+        <li class="ui-state-default" id="486" data-period="486">3</li>
+        <li class="ui-state-default" id="487" data-period="487">4</li>
+        <li class="ui-state-default" id="488" data-period="488">5</li>
+        <li class="ui-state-default" id="489" data-period="489">6</li>
+        <li class="ui-state-default" id="490" data-period="490">7</li>
+        <div class="ui-state-title"><b>Week 71</b></div>
+        <li class="ui-state-default" id="491" data-period="491">1</li>
+        <li class="ui-state-default" id="492" data-period="492">2</li>
+        <li class="ui-state-default" id="493" data-period="493">3</li>
+        <li class="ui-state-default" id="494" data-period="494">4</li>
+        <li class="ui-state-default" id="495" data-period="495">5</li>
+        <li class="ui-state-default" id="496" data-period="496">6</li>
+        <li class="ui-state-default" id="497" data-period="497">7</li>
+        <div class="ui-state-title"><b>Week 72</b></div>
+        <li class="ui-state-default" id="498" data-period="498">1</li>
+        <li class="ui-state-default" id="499" data-period="499">2</li>
+        <li class="ui-state-default" id="500" data-period="500">3</li>
+        <li class="ui-state-default" id="501" data-period="501">4</li>
+        <li class="ui-state-default" id="502" data-period="502">5</li>
+        <li class="ui-state-default" id="503" data-period="503">6</li>
+        <li class="ui-state-default" id="504" data-period="504">7</li>
+        <div class="ui-state-title"><b>Week 73</b></div>
+        <li class="ui-state-default" id="505" data-period="505">1</li>
+        <li class="ui-state-default" id="506" data-period="506">2</li>
+        <li class="ui-state-default" id="507" data-period="507">3</li>
+        <li class="ui-state-default" id="508" data-period="508">4</li>
+        <li class="ui-state-default" id="509" data-period="509">5</li>
+        <li class="ui-state-default" id="510" data-period="510">6</li>
+        <li class="ui-state-default" id="511" data-period="511">7</li>
+        <div class="ui-state-title"><b>Week 74</b></div>
+        <li class="ui-state-default" id="512" data-period="512">1</li>
+        <li class="ui-state-default" id="513" data-period="513">2</li>
+        <li class="ui-state-default" id="514" data-period="514">3</li>
+        <li class="ui-state-default" id="515" data-period="515">4</li>
+        <li class="ui-state-default" id="516" data-period="516">5</li>
+        <li class="ui-state-default" id="517" data-period="517">6</li>
+        <li class="ui-state-default" id="518" data-period="518">7</li>
+        <div class="ui-state-title"><b>Week 75</b></div>
+        <li class="ui-state-default" id="519" data-period="519">1</li>
+        <li class="ui-state-default" id="520" data-period="520">2</li>
+        <li class="ui-state-default" id="521" data-period="521">3</li>
+        <li class="ui-state-default" id="522" data-period="522">4</li>
+        <li class="ui-state-default" id="523" data-period="523">5</li>
+        <li class="ui-state-default" id="524" data-period="524">6</li>
+        <li class="ui-state-default" id="525" data-period="525">7</li>
+        <div class="ui-state-title"><b>Week 76</b></div>
+        <li class="ui-state-default" id="526" data-period="526">1</li>
+        <li class="ui-state-default" id="527" data-period="527">2</li>
+        <li class="ui-state-default" id="528" data-period="528">3</li>
+        <li class="ui-state-default" id="529" data-period="529">4</li>
+        <li class="ui-state-default" id="530" data-period="530">5</li>
+        <li class="ui-state-default" id="531" data-period="531">6</li>
+        <li class="ui-state-default" id="532" data-period="532">7</li>
+        <div class="ui-state-title"><b>Week 77</b></div>
+        <li class="ui-state-default" id="533" data-period="533">1</li>
+        <li class="ui-state-default" id="534" data-period="534">2</li>
+        <li class="ui-state-default" id="535" data-period="535">3</li>
+        <li class="ui-state-default" id="536" data-period="536">4</li>
+        <li class="ui-state-default" id="537" data-period="537">5</li>
+        <li class="ui-state-default" id="538" data-period="538">6</li>
+        <li class="ui-state-default" id="539" data-period="539">7</li>
+        <div class="ui-state-title"><b>Week 78</b></div>
+        <li class="ui-state-default" id="540" data-period="540">1</li>
+        <li class="ui-state-default" id="541" data-period="541">2</li>
+        <li class="ui-state-default" id="542" data-period="542">3</li>
+        <li class="ui-state-default" id="543" data-period="543">4</li>
+        <li class="ui-state-default" id="544" data-period="544">5</li>
+        <li class="ui-state-default" id="545" data-period="545">6</li>
+        <li class="ui-state-default" id="546" data-period="546">7</li>
+    </ol>
+</div>
+
+
+
+<div id="myScheduleModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span id="title"></span></h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="txtnotificationid">
+                <div class="form-group">
+
+                    <label>Period</label>
+                    <text id="eventperiod" class="form-control disabled"></text>
+                </div>
+                <div class="form-group">
+
+                    <label>Text</label>
+                    <textarea id="txtText" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnDelete" class="btn btn-danger btn-sm left">
+                    <i class="fa fa-minus" aria-hidden="true"></i> Remove
+                </button>
+                <button type="button" id="btnSave" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#selectable').click(function (calEvent) {
+
+            $('#myScheduleModal').modal('toggle');
+            if (typeof $(this).data('text') !== 'undefined') {
+
+                //$('#myScheduleModal #eventTitle').text(calEvent.text);
+                $('#myScheduleModal #txtnotificationid').val(calEvent.notificationid);
+                $('#myScheduleModal #txtText').val(calEvent.text);
+            }
+            event.stopPropagation();
+
+    });
+
+
+        var events = [];
+        var selectedEvent = null;
+        FetchEventAndRenderCalendar();
+        function FetchEventAndRenderCalendar() {
+            events = [];
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetNotifications123?CampaignID=@ViewBag.CampaignID",
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        events.push({
+                            NotificationId: v.NotificationId,
+                            Text: v.Text,
+                            start: moment(v.Start),
+                            end: v.End != null ? moment(v.End) : null,
+                            Period: v.Period
+                        });
+                    })
+
+                    var text = "";
+                    for (x in events) {
+                        text += events[x].Period + ",";
+                    }
+                   var textedited = text.slice(0, -1);
+                    //text.slice(0, -1);
+                    var numbersArray = textedited.split(',');
+
+                    var dataArray = new Array();
+                    for (x in numbersArray) {
+                        $('.ui-state-default').each(function () {
+                            var dataLayer = $(this).data('period');
+                            if (numbersArray[x] == dataLayer) {
+                                //check if data-layer already processed
+                                //if (!dataArray.indexOf(dataLayer)) {
+                                    ////update data array
+                                    //dataArray.push(dataLayer);
+
+                                    $('.ui-state-default[data-period="' + dataLayer + '"]').each(function () {
+
+                                        $('.ui-state-default[id="' + dataLayer + '"]').css('backgroundColor', '#d5d8da');
+                                        $('.ui-state-default[id="' + dataLayer + '"]').attr('data-text', events[x].Text);
+                                        $('.ui-state-default[id="' + dataLayer + '"]').attr('data-notificationid', events[x].NotificationId);
+                                    });
+
+                                //}
+                            }
+                        });
+                    }
+
+                    var array123 = $('.ui-state-default').map(function () {
+                        return this.dataset.period;
+                    }).get();
+
+
+                },
+                error: function (error) {
+                    alert('failed' + error);
+                }
+            })
+        }
+        $('#btnDelete').click(function () {
+            var NotificationId = $('#txtnotificationid').text();
+                $.ajax({
+                    type: "POST",
+                    url: '/home/DeleteNotification',
+                    async: true,
+                    data: { 'Notificationid': NotificationId },
+                    success: function (data) {
+                        if (data.status) {
+                            //Refresh the calender
+                            FetchEventAndRenderCalendar();
+
+                            $('#myScheduleModal').modal('hide');
+                            location.reload();
+                        }
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                })
+
+        })
+
+        $('#btnSave').click(function () {
+            //Validation/
+            var CampaignID = parseInt(@ViewBag.CampaignID);
+            if ($('#txtText').val().trim() == "") {
+                alert('Text required');
+                return;
+            }
+            var data = {
+                NotificationId: $('#txtnotificationid').val(),
+                Text: $('#txtText').val().trim(),
+                Period: $('#eventperiod').text(),
+                CampaignID: CampaignID,
+                StatusId: 1,
+                NTypeId:8
+            }
+            SaveEvent(data);
+            // call function for submit data to the server
+        })
+
+        function SaveEvent(data) {
+            $.ajax({
+                type: "POST",
+                url: '/Home/SaveNotification',
+                data: data,
+                async: true,
+                success: function (data) {
+                    if (data.status) {
+                        //Refresh the calender
+                        FetchEventAndRenderCalendar();
+                        $('#myModalSave').modal('hide');
+                        location.reload();
+                    }
+                },
+                error: function () {
+                    alert('Failed');
+                }
+            })
+        }
+    })
+</script>

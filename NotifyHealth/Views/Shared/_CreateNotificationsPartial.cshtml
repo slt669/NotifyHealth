@@ -13,12 +13,12 @@
         @using (Ajax.BeginForm("CreateNotifications", "Home", Model, new AjaxOptions { HttpMethod = "Post", OnSuccess = "CreateAssetSuccess", UpdateTargetId = "frmEmp" }, new { @class = "form-horizontal", role = "form" }))
         {
 
-            <div class="modal-body" id="frmEmp">
+            <div class="modal-body" id="frmCreate">
                 @Html.Partial("_NotificationsModal")
             </div>
 
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                <button type="button" onclick="javascript:window.location.reload()" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">Close</button>
                 <input type="submit" class="btn btn-success" name="Save" value="Save">
             </div>
 
