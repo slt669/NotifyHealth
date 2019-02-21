@@ -39,8 +39,8 @@
         width: 280px;
     }
     /*<div style="overflow-y:scroll; height:400px;  background:gray" > 78 weeks 546 days*/
-    .ui-state-grey {
-        background: coral;
+    .grey {
+        background: #d5d8da;
     }
 
     #selectable123 li {
@@ -91,8 +91,8 @@
             @Html.TextBoxFor(model => model.Period, new { @id = "Period", @class = "col-sm-12 form-control" })
         </div>
     </div>
-    <div class="form-group row">
-        <div style="overflow-y:scroll; height:350px; width:320px; background:#ffffff;margin:auto;   padding:10px;  ">
+    <div class="form-group row" style="padding-top:15px;">
+        <div style="overflow-y:scroll; height:350px; width:320px; background:#ffffff;margin:auto; padding:10px;">
             <ol id="selectable123">
                 <div class="ui-state-title"><b></b></div>
                 <li class="ui-state-title"><b>Sun</b></li>
@@ -773,11 +773,22 @@
 <script src="~/Scripts/jquery.ui.touch-punch.min.js"></script>
 <script>
         $(document).ready(function () {
+            $("#Period").on("keypress keyup blur", function (event) {
+                $(this).val($(this).val().replace(/[^\d].+/, ""));
+                if ((event.which < 48 || event.which > 57)) {
+                    event.preventDefault();
+                }
+
+            });
+            $("#Period").change(function () {
+                var Period = $("#Period").val();
+                $('.ui-state-default[id="' + Period + '"]').addClass('ui-selected');
 
 
+            });
 
-              });
 
+        });
           @*$('#Program-DropDownID').change(function () {
               $("#CampaignId").empty();
                 var ProgramID = $('#Program-DropDownID').find('option:selected').val();
@@ -797,7 +808,7 @@
             $("#selectable123").selectable({
                 stop: function () {
                     $('#selectable123 .ui-state-default.ui-selected').each(function (index) {
-                      
+
                             $('#Period').val($(this).data('period'));
 
                     });
@@ -806,7 +817,10 @@
 
                 }
             });
+    $("#myModal").on("hidden.bs.modal", function () {
 
+        $("#selectable123").selectable("destroy");
+    });
         $(function () {
             $("#selectable123").selectable({
                 selecting: function (event, ui) {
@@ -820,13 +834,16 @@
         });
 
         var events = [];
-        var selectedEvent = null;
+    var selectedEvent = null;
+    var baseUrl = (window.location).href; // You can also use document.URL
+    var id = baseUrl.substring(baseUrl.lastIndexOf('=') + 1);
+ 
         FetchEventAndRenderCalendar();
         function FetchEventAndRenderCalendar() {
             events = [];
             $.ajax({
                 type: "GET",
-                url: "/Home/GetNotifications123?CampaignID=2",
+                url: "/Home/GetNotifications123?CampaignID=" + id,
                 dataType: "json",
                 cache: false,
                 success: function (data) {
@@ -854,8 +871,12 @@
                             var dataLayer = $(this).data('period');
                             if (numbersArray[x] == dataLayer) {
                                     $('.ui-state-default[data-period="' + dataLayer + '"]').each(function () {
+                                        var Period = 0;
+                                        Period =  $("#Period").val();
 
-                                        $('.ui-state-default[id="' + dataLayer + '"]').css('backgroundColor', '#d5d8da');
+                                        $('.ui-state-default[id="' + Period + '"]').css('backgroundColor', '#167abc');
+
+                                        $('.ui-state-default[id="' + dataLayer + '"]').addClass('grey');
                                         $('.ui-state-default[id="' + dataLayer + '"]').attr('data-text', events[x].Text);
                                     });
                             }

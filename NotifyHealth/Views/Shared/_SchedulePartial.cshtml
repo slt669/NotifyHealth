@@ -71,6 +71,15 @@
             border: none;
             border-radius: 4px;
         }
+
+        html {
+            overflow: scroll;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; /* make scrollbar transparent */
+        }
     </style>
 
     <script>
@@ -124,6 +133,13 @@
         });
     </script>
 </head>
+<div class="btn-group" style="padding-left:115px">
+    <button type="button" id='btnRight_code' class="btn btn-success" href="#"><i class="fa fa-arrow-up"></i></button>
+    <button type="button" id='btnLeft_code' class="btn btn-success" href="#"><i class="fa fa-arrow-down"></i></button>
+
+</div>
+<p class="m-b-20">
+</p>
 <div class="panel pagination-inverse m-b-0 clearfix" style="overflow-y:scroll; height:530px; width:320px; background:#ffffff; padding:10px; ">
     <ol id="selectable" data-toggle="modal" href="#myModal">
         <div class="ui-state-title"><b></b></div>
@@ -803,6 +819,16 @@
 
 <script>
     $(document).ready(function () {
+        $("#btnLeft_code").click(function () {
+            $('.panel').animate({
+                scrollTop: '+=100'
+            }, 100);
+        });
+        $("#btnRight_code").click(function () {
+            $('.panel').animate({
+                scrollTop: '-=100'
+            }, 100);
+        });
         $('#selectable').click(function (calEvent) {
             $('#myModal').modal('toggle');
             if (typeof $(this).data('text') !== 'undefined') {

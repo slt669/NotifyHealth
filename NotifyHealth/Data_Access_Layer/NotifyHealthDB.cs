@@ -680,11 +680,14 @@ namespace NotifyHealth.Data_Access_Layer
                         CD.ClientMembershipId = reader["Client_Membership_ID"] as int? ?? default(int);
                         CD.ClientId = reader["Client_ID"] as int? ?? default(int);
                         CD.CampaignId = reader["Campaign_ID"] as int? ?? default(int);
-                        DateTime? Date = reader["Start"] as DateTime?;
-                        CD.Start = Date.ToString();
+                        if (Convert.ToDateTime(reader["Start"]) != null)
+                        {
+                            DateTime Timestamp = Convert.ToDateTime(reader["Start"]);
+                            CD.Start = Timestamp.ToString("yyyy/MM/dd HH:mm:ss");
+                            CD.SortTime = Timestamp.Ticks;
+                        }
                         CD.Program = reader["Program"] as string;
                         CD.Campaign = reader["Campaign"] as string;
-                        CD.SortTime = Date.Value.Ticks;
                         CM.Add(CD);
                     }
 
@@ -729,9 +732,14 @@ namespace NotifyHealth.Data_Access_Layer
                         TD.ClientId = reader["Client_ID"] as int? ?? default(int);
                         TD.Notification = reader["Notification"] as string;
                         TD.Result = reader["Result"] as string;
-                        DateTime? Timestamp = reader["Timestamp"] as DateTime?;
-                        TD.Timestamp = Timestamp.ToString();
-                        TD.SortTime = Timestamp.Value.Ticks;
+                        if (Convert.ToDateTime(reader["Timestamp"]) != null)
+                        {
+                            DateTime Timestamp = Convert.ToDateTime(reader["Timestamp"]);
+                            TD.Timestamp = Timestamp.ToString("yyyy/MM/dd HH:mm:ss");
+                            TD.SortTime = Timestamp.Ticks;
+                        }
+                    
+                     
                         T.Add(TD);
                     }
 

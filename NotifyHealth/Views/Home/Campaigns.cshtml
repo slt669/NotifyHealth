@@ -108,7 +108,7 @@
                     "columns": [
 
                         { "title": "Name", "data": "Name", "searchable": true,  "render": function (data, row, full, meta) {
-                            return '<a href="@Url.Action("CampaignDetails", "Home")?id=' + full['CampaignId'] + '" class="details">' + data + '</a>';
+                            return '<a href="@Url.Action("CampaignDetails", "Home")?CampaignId=' + full['CampaignId'] + '" class="details">' + data + '</a>';
                         }
                         },
                         { "title": "Description", "data": "Description", "searchable": true, },
@@ -121,7 +121,7 @@
                                 "searchable": false,
                                 "sortable": false,
                                 "render": function (data, type, full, meta) {
-                                    return '<a href="@Url.Action("EditCampaign", "Home")?id=' + data + '" class="editAsset">Edit</a>  |  <a href="@Url.Action("CampaignDetails", "Home")?id=' + data + '"class="details">Details</a> |  <a href="@Url.Action("DeleteCampaign", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
+                                    return '<a href="@Url.Action("EditCampaign", "Home")?id=' + data + '" class="editAsset">Edit</a>  |  <a href="@Url.Action("CampaignDetails", "Home")?CampaignId=' + data + '"class="details">Details</a> |  <a href="@Url.Action("DeleteCampaign", "Home")?id=' + data + '" class="deleteAsset">Delete</a>';
                                 }
                             }
 

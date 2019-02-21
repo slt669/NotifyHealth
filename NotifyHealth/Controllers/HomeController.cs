@@ -345,15 +345,16 @@ namespace NotifyHealth.Controllers
         }
 
         [SessionFilterAttribute]
-        public ActionResult CampaignDetails(int? id)
+        public ActionResult CampaignDetails(int? CampaignId)
         {
         
           
             List<Campaigns> dtsource = db.GetCampaigns(Convert.ToInt32(Session["organizationID"]));
-            Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == id);
+            Campaigns edit = dtsource.FirstOrDefault(x => x.CampaignId == CampaignId);
             edit.Statuses = DropDownListUtility.GetStatusList(edit.StatusId.ToString());
             ViewBag.organizationID = Session["organizationID"];
-            ViewBag.CampaignId = id;
+            ViewBag.CampaignId = CampaignId;
+            Session["CampaignId"] = CampaignId;
 
             return View("CampaignDetails", edit);
         }
@@ -372,6 +373,7 @@ namespace NotifyHealth.Controllers
         }
 
         [HttpPost]
+        [SessionFilterAttribute]
         //[ValidateAntiForgeryToken]
         public ActionResult EditCampaigns(Campaigns model)
         {
@@ -566,7 +568,7 @@ namespace NotifyHealth.Controllers
             char delete = 'N';
             db.UpdateNotifications(Convert.ToInt32(Session["organizationID"]), model.Text, model.Period, model.NTypeId, model.NotificationId, model.CampaignId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
 
-            return RedirectToAction("CampaignDetails", new { controller = "Home", id = model.CampaignId });
+            return RedirectToAction("CampaignDetails", new { controller = "Home", CampaignId = model.CampaignId });
         }
 
         [SessionFilterAttribute]
@@ -596,6 +598,7 @@ namespace NotifyHealth.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
+        [SessionFilterAttribute]
         public ActionResult EditNotifications(Notifications model)
         {
             try
@@ -609,7 +612,7 @@ namespace NotifyHealth.Controllers
             {
                 ViewBag.Message = ex.Message;
             }
-            return RedirectToAction("CampaignDetails", new { controller = "Home", id = model.CampaignId });
+            return RedirectToAction("CampaignDetails", new { controller = "Home", CampaignId = model.CampaignId });
         }
 
         [SessionFilterAttribute]
@@ -636,6 +639,7 @@ namespace NotifyHealth.Controllers
         }
 
         [HttpPost]
+        [SessionFilterAttribute]
         public ActionResult DeleteNotifications(Notifications model)
         {
             try
@@ -650,7 +654,7 @@ namespace NotifyHealth.Controllers
                 ViewBag.Message = ex.Message;
             }
 
-            return RedirectToAction("CampaignDetails", new { controller = "Home", id = model.CampaignId });
+            return RedirectToAction("CampaignDetails", new { controller = "Home", CampaignId = model.CampaignId });
         }
 
         public List<Clients> MyGlobalClientsInitializer()
