@@ -540,7 +540,8 @@ namespace NotifyHealth.Controllers
             var model = new Notifications();
             model.StatusId = 1;
             model.Statuses = DropDownListUtility.GetStatusList(model.StatusId);
-            model.NotificationTypes = db.GetNotificationTypes();
+            model.NTypeId = 8;
+            model.NotificationTypes = db.GetNotificationTypes(model.NTypeId.ToString());
             model.Programs = db.GetProgramDDL(Convert.ToInt32(Session["organizationID"]));
             if (campaignID != null)
             {
