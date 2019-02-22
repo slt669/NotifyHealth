@@ -878,8 +878,9 @@ namespace NotifyHealth.Data_Access_Layer
             }
         }
 
-        public void UpdateClients(int? OrganizationId, string FirstName, string LastName, int CStatusId, int PStatusId, int ATypeID, string PhoneNumber, string MessageAddress, int ParticipationID, string PhoneCarrier, int ClientId, int Created_By, int Edited_By, char Delete)
+        public string UpdateClients(int? OrganizationId, string FirstName, string LastName, int CStatusId, int PStatusId, int ATypeID, string PhoneNumber, string MessageAddress, int ParticipationID, string PhoneCarrier, int ClientId, int Created_By, int Edited_By, char Delete)
         {
+            string Success = "";
             try
             {
                 strConnection = ConfigurationManager.ConnectionStrings["notifyDB"].ConnectionString;
@@ -934,8 +935,10 @@ namespace NotifyHealth.Data_Access_Layer
                     else if (ParticipationID == 12)
                     {
                         //Phone.Warning = "Submit button inserts new record into Queue table and adds record to clients table";
-                        string Success = QueueOnBoardingNotification(OrganizationId, ClientId, 1);
+                         Success = QueueOnBoardingNotification(OrganizationId, ClientId, 1);
                     }
+
+                    return Success;
                 }
             }
             catch (Exception ex)
@@ -1454,6 +1457,8 @@ namespace NotifyHealth.Data_Access_Layer
                     command.Parameters.Add("@ClientId", SqlDbType.Int, 4).Value = ClientId;
                     command.Parameters.Add("@NotificationType", SqlDbType.Int, 4).Value = NotificationType;
                     command.Parameters.Add("@ReturnValue", SqlDbType.Int, 4).Direction = ParameterDirection.ReturnValue;
+                    command.Parameters.Add("@ValidationMessage", SqlDbType.NVarChar, 500).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("@ValidationErrorNo", SqlDbType.NVarChar, 10).Direction = ParameterDirection.Output;
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -1466,10 +1471,11 @@ namespace NotifyHealth.Data_Access_Layer
                     connection.Close();
 
                     ReturnError = command.Parameters["@ReturnValue"].Value.ToString();
-
-                    if (ReturnError != "0")
+                    ReturnValidationError = command.Parameters["@ValidationErrorNo"].Value.ToString();
+                    ReturnValidationMessage = command.Parameters["@ValidationMessage"].Value.ToString();
+                    if (ReturnValidationError != "0")
                     {
-                        throw new ApplicationException("Error Code " + ReturnError + " returned from " + StoredProcedure);
+                        return ReturnValidationMessage;
                     }
                 }
                 return "Notification Inserted";

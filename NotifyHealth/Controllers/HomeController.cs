@@ -667,11 +667,12 @@ namespace NotifyHealth.Controllers
         }
 
         [SessionFilterAttribute]
-        public ActionResult Clients(int? organizationID)
+        public ActionResult Clients(int? organizationID,string status = null)
         {
             try
             {
                 ViewBag.organizationID = Convert.ToInt32(Session["organizationID"]);
+                ViewBag.Message = status;
             }
             catch (Exception ex)
             {
@@ -807,9 +808,13 @@ namespace NotifyHealth.Controllers
             List<Clients> dtsource = MyGlobalClientsInitializer();
 
             char delete = 'N';
-            db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId, model.ATypeId, model.PhoneNumber, MessageAddressBindingBroke, model.ParticipationId, PhoneCarrierBindingBroke, model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
-
-            return RedirectToAction("Clients", new { controller = "Home", clientId = model.ClientId });
+            string Message  = db.UpdateClients(Convert.ToInt32(Session["organizationID"]), model.FirstName, model.LastName, model.CStatusId, model.PStatusId, model.ATypeId, model.PhoneNumber, MessageAddressBindingBroke, model.ParticipationId, PhoneCarrierBindingBroke, model.ClientId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), delete);
+            if (Message == "There are no related Notifications set.")
+            {
+                ViewBag.Message = Message;
+                TempData["UpdateMessage"] = Message;
+            }
+            return RedirectToAction("Clients", new { controller = "Home", clientId = model.ClientId, status = Message });
         }
 
         [SessionFilterAttribute]
