@@ -45,13 +45,13 @@
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.PhoneCarrier, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
-        @if (ViewContext.RouteData.Values["Action"].ToString() == "EditClient")
-        {
+        @*@if (ViewContext.RouteData.Values["Action"].ToString() == "EditClient")
+        {*@
             <div class="col-md-12">
                 @Html.TextBoxFor(model => model.PhoneCarrier, new { @id = "PhoneCarrier", @name = "PhoneCarrier", @class = "col-sm-12 form-control", @disabled = "" })
-                @Html.HiddenFor(x => x.PhoneCarrier)
+                @Html.HiddenFor(x => x.PhoneCarrier, new { @id = "PhoneCarrierHD"})
             </div>
-        }
+        @*}
         else
         {
             <div class="col-md-12">
@@ -59,13 +59,13 @@
                 @Html.HiddenFor(x => x.PhoneCarrier)
             </div>
 
-        }
+        }*@
     </div>
     <div class="form-group row">
         @Html.LabelFor(model => model.MessageAddress, htmlAttributes: new { @class = "col-sm-12 form-control-label" })
         <div class="col-md-12">
             @Html.TextBoxFor(model => model.MessageAddress, new { @id = "MessageAddress", @name = "MessageAddress", @class = "col-sm-12 form-control", @disabled = "" })
-            @Html.HiddenFor(x => x.MessageAddress)
+            @Html.HiddenFor(x => x.MessageAddress, new { @id = "MessageAddressHD" })
         </div>
     </div>
     @if (ViewContext.RouteData.Values["Action"].ToString() == "EditClient")
@@ -139,7 +139,9 @@
                         $("#ParticipationId").val(data["ParticipationId"]);
                         $("#PStatusId").val(data["PStatusId"]);
                         $("#PhoneCarrier").val(data["PhoneCarrier"]);
+                        $("#PhoneCarrierHD").val(data["PhoneCarrier"]);
                         $("#MessageAddress").val(data["MessageAddress"]);
+                        $("#MessageAddressHD").val(data["MessageAddress"]);
                        alert(data["Warning"]);
                     },
                     error: function (jqXHR, exception) {

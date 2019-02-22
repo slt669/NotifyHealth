@@ -111,7 +111,7 @@ namespace NotifyHealth.Controllers
             char delete = 'N';
             db.UpdatePrograms(Convert.ToInt32(Session["organizationID"]), model.Description, model.Name, model.ProgramId, Convert.ToInt32(Session["UserLogon"]), Convert.ToInt32(Session["UserLogon"]), model.StatusId, delete);
 
-            return RedirectToAction("Programs", new { controller = "Home", organizationID = model.OrganizationID });
+            return RedirectToAction("Tracks", new { controller = "Home", organizationID = model.OrganizationID });
         }
 
         // GET: Asset/Edit/5
