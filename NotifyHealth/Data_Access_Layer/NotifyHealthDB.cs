@@ -233,7 +233,8 @@ namespace NotifyHealth.Data_Access_Layer
 
                     while (reader.Read())
                     {
-                        string Decpassword = Decrypt(reader["Password"].ToString(), "27012019");
+                        string Decpassword = reader["Password"].ToString();
+                        //string Decpassword = Decrypt(reader["Password"].ToString(), "27012019");
                         asvm.OldPassword = Decpassword;
                         asvm.Title = reader["Title"].ToString();
                         asvm.Forename = reader["Forename"].ToString();
